@@ -1,20 +1,20 @@
-<%= simple_form_for(@user) do |f| %>
+<%= simple_form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <div class="form-group">
       <label for="email"><%= f.label :email %></label>
-      <%= f.input :email, label: false %>
+      <%= f.input :email, label: false, input_html: { class: "form-control" } %>
       <small id="emailHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group">
       <label for="password"><%= f.label :password %></label>
-      <%= f.input :password, label: false %>
+      <%= f.input :password, label: false, input_html: { class: "form-control" } %>
       <small id="passwordHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group">
       <label for="sign_in_count"><%= f.label :sign_in_count %></label>
-      <%= f.input :sign_in_count, label: false %>
+      <%= f.input :sign_in_count, label: false, input_html: { class: "form-control" } %>
       <small id="sign_in_countHelp" class="form-text text-muted"></small>
     </div>
   </div>

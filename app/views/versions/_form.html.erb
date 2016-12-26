@@ -1,35 +1,35 @@
-<%= simple_form_for(@version) do |f| %>
+<%= simple_form_for(@version, html: { class: 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <div class="form-group">
       <label for="item_type"><%= f.label :item_type %></label>
-      <%= f.input :item_type, label: false %>
+      <%= f.input :item_type, label: false, input_html: { class: "form-control" } %>
       <small id="item_typeHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group">
       <label for="item_id"><%= f.label :item_id %></label>
-      <%= f.input :item_id, label: false %>
+      <%= f.input :item_id, label: false, input_html: { class: "form-control" } %>
       <small id="item_idHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group">
       <label for="event"><%= f.label :event %></label>
-      <%= f.input :event, label: false %>
+      <%= f.input :event, label: false, input_html: { class: "form-control" } %>
       <small id="eventHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group">
       <label for="whodunnit"><%= f.label :whodunnit %></label>
-      <%= f.input :whodunnit, label: false %>
+      <%= f.input :whodunnit, label: false, input_html: { class: "form-control" } %>
       <small id="whodunnitHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group">
       <label for="object"><%= f.label :object %></label>
-      <%= f.input :object, label: false %>
+      <%= f.input :object, label: false, input_html: { class: "form-control" } %>
       <small id="objectHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group">
       <label for="created_at"><%= f.label :created_at %></label>
-      <%= f.input :created_at, label: false %>
+      <%= f.input :created_at, label: false, input_html: { class: "form-control" } %>
       <small id="created_atHelp" class="form-text text-muted"></small>
     </div>
   </div>

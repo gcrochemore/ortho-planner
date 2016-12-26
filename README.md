@@ -5,3 +5,24 @@
 ===== Lancer les tests
 	
 	``` bundle exec rake ```
+
+
+===== Generate entity
+
+
+rails generate scaffold Office name:string
+
+rails generate scaffold Practitioner first_name:string last_name:string birth_date:date birth_place:string profession:references
+
+rails generate scaffold PractitionerProfession name:string
+
+rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string
+
+
+rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime
+
+
+
+rails generate scaffold_controller User email:string password:string sign_in_count:integer
+
+

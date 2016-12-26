@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  resources :offices
-  resources :practitioners
-  resources :practitioner_professions
   resources :paper_trail_versions, controller: 'versions'
-  resources :patients, :users
+  resources :patients, :offices, :practitioners, :practitioner_professions, :patients, :users
   devise_for :users, controllers: { confirmations: 'confirmations' }
   root to: "application#index"
   # The priority is based upon order of creation: first created -> highest priority.

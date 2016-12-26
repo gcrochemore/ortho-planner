@@ -1,30 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Practitioners</h1>
+<h1>Practitioners</h1>
 
-<table>
+<table class="table table-hover table-condensed table-bordered">
   <thead>
     <tr>
+
       <th>First name</th>
+
       <th>Last name</th>
+
       <th>Birth date</th>
+
       <th>Birth place</th>
+
       <th>Profession</th>
-      <th colspan="3"></th>
+
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @practitioners.each do |practitioner| %>
       <tr>
+
         <td><%= practitioner.first_name %></td>
+
         <td><%= practitioner.last_name %></td>
+
         <td><%= practitioner.birth_date %></td>
+
         <td><%= practitioner.birth_place %></td>
+
         <td><%= practitioner.profession %></td>
-        <td><%= link_to 'Show', practitioner %></td>
-        <td><%= link_to 'Edit', edit_practitioner_path(practitioner) %></td>
-        <td><%= link_to 'Destroy', practitioner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, practitioner %>
+          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_practitioner_path(practitioner) %>
+          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, practitioner, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

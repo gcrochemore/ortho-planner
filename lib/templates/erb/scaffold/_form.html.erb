@@ -1,11 +1,11 @@
-<%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
+<%%= simple_form_for(@<%= singular_table_name %>, html: { class: 'form-horizontal' }) do |f| %>
   <%%= f.error_notification %>
 
   <div class="form-inputs">
   <%- attributes.each do |attribute| -%>
     <div class="form-group">
       <label for="<%= attribute.name %>"><%%= f.label :<%= attribute.name %> %></label>
-      <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, label: false %>
+      <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %>, label: false, input_html: { class: "form-control" } %>
       <small id="<%= attribute.name %>Help" class="form-text text-muted"></small>
     </div>
   <%- end -%>
