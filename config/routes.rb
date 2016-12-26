@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :patients
-  resources :patients
   devise_for :users, controllers: { confirmations: 'confirmations' }
   root to: "application#index"
   # The priority is based upon order of creation: first created -> highest priority.
