@@ -1,0 +1,15 @@
+<%= simple_form_for(@office) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="name"><%= f.label :name %></label>
+      <%= f.input :name, label: false %>
+      <small id="nameHelp" class="form-text text-muted"></small>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

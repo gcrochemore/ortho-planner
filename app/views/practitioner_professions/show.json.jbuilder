@@ -1,0 +1,1 @@
+json.partial! "practitioner_professions/practitioner_profession", practitioner_profession: @practitioner_profession

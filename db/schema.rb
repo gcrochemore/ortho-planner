@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226155655) do
+ActiveRecord::Schema.define(version: 20161226191948) do
+
+  create_table "offices", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "patients", force: :cascade do |t|
     t.string   "last_name"
@@ -22,6 +28,24 @@ ActiveRecord::Schema.define(version: 20161226155655) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "practitioner_professions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "practitioners", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "birth_date"
+    t.string   "birth_place"
+    t.integer  "profession_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "practitioners", ["profession_id"], name: "index_practitioners_on_profession_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

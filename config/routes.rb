@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :offices
+  resources :practitioners
+  resources :practitioner_professions
   resources :paper_trail_versions, controller: 'versions'
   resources :patients, :users
   devise_for :users, controllers: { confirmations: 'confirmations' }

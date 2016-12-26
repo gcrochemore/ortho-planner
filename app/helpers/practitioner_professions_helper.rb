@@ -1,0 +1,2 @@
+module PractitionerProfessionsHelper
+end
