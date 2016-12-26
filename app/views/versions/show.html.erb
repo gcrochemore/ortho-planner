@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item type:<paper_trail_%= @version.item_type %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @version.item_id %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @version.event %>
+</p>
+
+<p>
+  <strong>Whodunnit:</strong>
+  <%= @version.whodunnit %>
+</p>
+
+<p>
+  <strong>Object:</strong>
+  <%= @version.object %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @version.created_at %>
+</p>
+
+<%= link_to 'Edit', edit_paper_trail_version_path(@version) %> |
+<%= link_to 'Back', paper_trail_versions_path %>

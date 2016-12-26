@@ -1,0 +1,40 @@
+<%= simple_form_for(@version) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <div class="form-group">
+      <label for="item_type"><%= f.label :item_type %></label>
+      <%= f.input :item_type, label: false %>
+      <small id="item_typeHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="item_id"><%= f.label :item_id %></label>
+      <%= f.input :item_id, label: false %>
+      <small id="item_idHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="event"><%= f.label :event %></label>
+      <%= f.input :event, label: false %>
+      <small id="eventHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="whodunnit"><%= f.label :whodunnit %></label>
+      <%= f.input :whodunnit, label: false %>
+      <small id="whodunnitHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="object"><%= f.label :object %></label>
+      <%= f.input :object, label: false %>
+      <small id="objectHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="created_at"><%= f.label :created_at %></label>
+      <%= f.input :created_at, label: false %>
+      <small id="created_atHelp" class="form-text text-muted"></small>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
