@@ -3,4 +3,5 @@
 ##TODO : Lancer automatique rake db:migrate
 
 ===== Lancer les tests
-	gem 'simplecov', require: false  # code coverage analysis tool
+	
+	``` bundle exec rake ```

@@ -64,3 +64,7 @@ gem 'autoprefixer-rails'
 gem 'simple_form'
 
 gem 'andand'
+
+gem 'factory_girl_rails', require:false      # framework and DSL for defining and using factories
+
+gem 'paper_trail'
