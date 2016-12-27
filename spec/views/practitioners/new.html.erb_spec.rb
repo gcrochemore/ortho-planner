@@ -6,7 +6,7 @@ RSpec.describe "practitioners/new", type: :view do
       :first_name => "MyString",
       :last_name => "MyString",
       :birth_place => "MyString",
-      :profession => nil
+      :practitioner_profession => nil
     ))
   end
 
@@ -21,7 +21,7 @@ RSpec.describe "practitioners/new", type: :view do
 
       assert_select "input#practitioner_birth_place[name=?]", "practitioner[birth_place]"
 
-      assert_select "input#practitioner_profession_id[name=?]", "practitioner[profession_id]"
+      assert_select "input#practitioner_practitioner_profession_id[name=?]", "practitioner[practitioner_profession_id]"
     end
   end
 end

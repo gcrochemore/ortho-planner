@@ -69,6 +69,6 @@ class PractitionersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def practitioner_params
-      params.require(:practitioner).permit(:first_name, :last_name, :birth_date, :birth_place, :profession_id)
+      params.require(:practitioner).permit(:first_name, :last_name, :birth_date, :birth_place, :practitioner_profession_id)
     end
 end

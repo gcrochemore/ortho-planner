@@ -6,7 +6,7 @@ RSpec.describe "practitioners/show", type: :view do
       :first_name => "First Name",
       :last_name => "Last Name",
       :birth_place => "Birth Place",
-      :profession => nil
+      :practitioner_profession => nil
     ))
   end
 

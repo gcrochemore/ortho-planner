@@ -7,13 +7,13 @@ RSpec.describe "practitioners/index", type: :view do
         :first_name => "First Name",
         :last_name => "Last Name",
         :birth_place => "Birth Place",
-        :profession => nil
+        :practitioner_profession => nil
       ),
       Practitioner.create!(
         :first_name => "First Name",
         :last_name => "Last Name",
         :birth_place => "Birth Place",
-        :profession => nil
+        :practitioner_profession => nil
       )
     ])
   end
