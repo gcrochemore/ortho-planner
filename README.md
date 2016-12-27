@@ -12,43 +12,24 @@
 
 rails generate scaffold Office name:string
 
-rails generate scaffold Practitioner first_name:string last_name:string birth_date:date birth_place:string profession:references
+rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string
 
 rails generate scaffold PractitionerProfession name:string
 
-rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string
+rails generate scaffold Practitioner first_name:string last_name:string birth_date:date birth_place:string PractitionerProfession:references
+
 
 
 rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime
-
-
 
 rails generate scaffold_controller User email:string password:string sign_in_count:integer
 
 
 ===== Docker
 
-docker build -t ortho-planner-dev .
-
-
-
-
-docker-compose build
-docker-compose up
-
-
-
-bundle install	
--> docker-compose run web bundle install
-rails s	
--> docker-compose run web rails s
-rspec spec/path/to/spec.rb	
--> docker-compose run web rspec spec/path/to/spec.rb
-RAILS_ENV=test rake db:create	
--> docker-compose run -e RAILS_ENV=test web rake db:create
-tail -f log/development.log	
--> docker-compose run web tail -f log/development.log
-
+docker-compose build --no-cache
+docker-compose up -d
+docker exec orthoplanner_ortho-planner_1 rake db:migrate
 
 
 ===== heroku
@@ -57,4 +38,5 @@ heroku login
 heroku apps -> liste des apps
 heroku run rake db:migrate --app ortho-planner
 heroku logs --tail --app ortho-planner
+
 
