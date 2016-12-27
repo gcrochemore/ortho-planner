@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Therapies</h1>
+
+<table class="table table-hover table-condensed table-bordered">
+  <thead>
+    <tr>
+
+      <th>Practitioner</th>
+
+      <th>Begin date</th>
+
+      <th>End date</th>
+
+      <th>Patient</th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @therapies.each do |therapy| %>
+      <tr>
+
+        <td><%= therapy.practitioner %></td>
+
+        <td><%= therapy.begin_date %></td>
+
+        <td><%= therapy.end_date %></td>
+
+        <td><%= therapy.patient %></td>
+
+        <td>
+          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, therapy %>
+          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_therapy_path(therapy) %>
+          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, therapy, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Therapy', new_therapy_path %>

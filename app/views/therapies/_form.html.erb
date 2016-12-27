@@ -1,0 +1,35 @@
+<%= simple_form_for(@therapy, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <div class="form-group">
+      <label for="practitioner"><%= f.label :practitioner %></label>
+      <%= f.association :practitioner, label: false, input_html: { class: "form-control" } %>
+      <small id="practitionerHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="begin_date"><%= f.label :begin_date %></label>
+      <%= f.input :begin_date, label: false, input_html: { class: "form-control" } %>
+      <small id="begin_dateHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="end_date"><%= f.label :end_date %></label>
+      <%= f.input :end_date, label: false, input_html: { class: "form-control" } %>
+      <small id="end_dateHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="patient"><%= f.label :patient %></label>
+      <%= f.association :patient, label: false, input_html: { class: "form-control" } %>
+      <small id="patientHelp" class="form-text text-muted"></small>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

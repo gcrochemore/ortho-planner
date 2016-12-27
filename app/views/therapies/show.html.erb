@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Practitioner:</strong>
+  <%= @therapy.practitioner %>
+</p>
+
+<p>
+  <strong>Begin date:</strong>
+  <%= @therapy.begin_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @therapy.end_date %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @therapy.patient %>
+</p>
+
+<%= link_to 'Edit', edit_therapy_path(@therapy) %> |
+<%= link_to 'Back', therapies_path %>

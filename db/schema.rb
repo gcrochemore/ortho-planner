@@ -11,9 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226191950) do
+ActiveRecord::Schema.define(version: 20161226191954) do
+
+  create_table "acts", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "AMO"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "offices", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pathologies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,6 +59,32 @@ ActiveRecord::Schema.define(version: 20161226191950) do
   end
 
   add_index "practitioners", ["practitioner_profession_id"], name: "index_practitioners_on_practitioner_profession_id"
+
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "begin_date"
+    t.datetime "end_date"
+    t.integer  "therapy_id"
+    t.integer  "act_id"
+    t.integer  "practitioner_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "sessions", ["act_id"], name: "index_sessions_on_act_id"
+  add_index "sessions", ["practitioner_id"], name: "index_sessions_on_practitioner_id"
+  add_index "sessions", ["therapy_id"], name: "index_sessions_on_therapy_id"
+
+  create_table "therapies", force: :cascade do |t|
+    t.integer  "practitioner_id"
+    t.datetime "begin_date"
+    t.datetime "end_date"
+    t.integer  "patient_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "therapies", ["patient_id"], name: "index_therapies_on_patient_id"
+  add_index "therapies", ["practitioner_id"], name: "index_therapies_on_practitioner_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

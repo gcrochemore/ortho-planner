@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :sessions
+  resources :therapies
+  resources :acts
+  resources :pathologies
   root to: "application#index"
   resources :paper_trail_versions, controller: 'versions'
   devise_for :users, controllers: { confirmations: 'confirmations' }

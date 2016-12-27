@@ -18,6 +18,13 @@ rails generate scaffold PractitionerProfession name:string
 
 rails generate scaffold Practitioner first_name:string last_name:string birth_date:date birth_place:string PractitionerProfession:references
 
+rails generate scaffold Pathology name:string
+
+rails generate scaffold Act name:string AMO:integer
+
+rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references
+
+rails generate scaffold session begin_date:datetime end_date:datetime therapy:references act:references practitioner:references
 
 
 rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime
