@@ -1,5 +1,4 @@
 class OfficesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_office, only: [:show, :edit, :update, :destroy]
 
   # GET /offices
