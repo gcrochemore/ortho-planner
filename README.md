@@ -26,3 +26,26 @@ rails generate scaffold_controller Version item_type:string item_id:integer even
 rails generate scaffold_controller User email:string password:string sign_in_count:integer
 
 
+===== Docker
+
+docker build -t ortho-planner-dev .
+
+
+
+
+docker-compose build
+docker-compose up
+
+
+
+bundle install	
+-> docker-compose run web bundle install
+rails s	
+-> docker-compose run web rails s
+rspec spec/path/to/spec.rb	
+-> docker-compose run web rspec spec/path/to/spec.rb
+RAILS_ENV=test rake db:create	
+-> docker-compose run -e RAILS_ENV=test web rake db:create
+tail -f log/development.log	
+-> docker-compose run web tail -f log/development.log
+

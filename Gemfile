@@ -35,7 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
   gem 'rspec-rails'
 
 group :production do
-	gem 'pg'
+  gem 'pg'
 end
 
 group :development, :test do
@@ -50,7 +50,7 @@ group :development do
 end
 
 group :test do
-	gem 'simplecov', require: false  # code coverage analysis tool
+  gem 'simplecov', require: false  # code coverage analysis tool
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
