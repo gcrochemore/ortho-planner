@@ -5,7 +5,7 @@ class CreatePractitioners < ActiveRecord::Migration
       t.string :last_name
       t.date :birth_date
       t.string :birth_place
-      t.references :practitioner_professions, index: true, foreign_key: true
+      t.references :practitioner_profession, index: true, foreign_key: true
 
       t.timestamps null: false
     end
