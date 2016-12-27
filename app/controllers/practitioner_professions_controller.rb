@@ -1,4 +1,5 @@
 class PractitionerProfessionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_practitioner_profession, only: [:show, :edit, :update, :destroy]
 
   # GET /practitioner_professions

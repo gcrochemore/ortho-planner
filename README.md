@@ -49,3 +49,12 @@ RAILS_ENV=test rake db:create
 tail -f log/development.log	
 -> docker-compose run web tail -f log/development.log
 
+
+
+===== heroku
+
+heroku login
+heroku apps -> liste des apps
+heroku run rake db:migrate --app ortho-planner
+heroku logs --tail --app ortho-planner
+
