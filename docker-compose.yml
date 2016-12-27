@@ -2,7 +2,7 @@ ortho-planner:
   build: .
   command: rails server -p 3000 -b '0.0.0.0'
   volumes:
-    - .:/ortho-planner
+    - .:/var/app
   ports:
     - "3000:3000"
   environment:

@@ -9,5 +9,4 @@ COPY Gemfile /var/app/Gemfile
 WORKDIR /var/app
 
 RUN bundle install
-COPY . ./
 CMD ["rails","server","-b","0.0.0.0"]
