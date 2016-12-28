@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  resources :sessions
-  resources :therapies
-  resources :acts
-  resources :pathologies
   root to: "application#index"
-  resources :paper_trail_versions, controller: 'versions'
   devise_for :users, controllers: { confirmations: 'confirmations' }
-  resources :patients, :offices, :practitioners, :practitioner_professions, :patients, :users
+
+  resources :paper_trail_versions, controller: 'versions'
+  devise_scope :user do 
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
+  resources :patients, :offices, :practitioners, :practitioner_professions, 
+            :users, :sessions, :therapies, :acts, :pathologies
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
