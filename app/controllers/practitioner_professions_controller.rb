@@ -1,4 +1,5 @@
 class PractitionerProfessionsController < ApplicationController
+  authorize_resource
   before_action :set_practitioner_profession, only: [:show, :edit, :update, :destroy]
 
   # GET /practitioner_professions

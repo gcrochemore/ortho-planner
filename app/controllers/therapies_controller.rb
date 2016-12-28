@@ -1,4 +1,5 @@
 class TherapiesController < ApplicationController
+  authorize_resource
   before_action :set_therapy, only: [:show, :edit, :update, :destroy]
 
   # GET /therapies

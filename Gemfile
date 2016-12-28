@@ -72,3 +72,7 @@ gem 'paper_trail'
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
 gem 'bootstrap-datepicker-rails'
+
+gem 'cancancan'
+
+gem 'rolify'

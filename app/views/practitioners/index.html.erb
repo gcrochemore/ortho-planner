@@ -36,7 +36,9 @@
 
         <td>
           <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, practitioner %>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_practitioner_path(practitioner) %>
+          <% if can? :edit, practitioner %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_practitioner_path(practitioner) %>
+          <% end %>
           <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, practitioner, method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>

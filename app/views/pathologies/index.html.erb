@@ -20,8 +20,12 @@
 
         <td>
           <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, pathology %>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_pathology_path(pathology) %>
-          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, pathology, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if can? :edit, pathology %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_pathology_path(pathology) %>
+          <% end %>
+          <% if can? :destroy, pathology %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, pathology, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -30,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New Pathology', new_pathology_path %>
+<% if can? :create, Pathology %>
+  <%= link_to 'New Pathology', new_pathology_path %>
+<% end %>

@@ -1,4 +1,5 @@
 class VersionsController < ApplicationController
+  authorize_resource
   before_action :set_version, only: [:show, :edit, :update, :destroy]
 
   # GET /versions

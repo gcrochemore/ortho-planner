@@ -1,4 +1,5 @@
 class PractitionersController < ApplicationController
+  authorize_resource
   before_action :set_practitioner, only: [:show, :edit, :update, :destroy]
 
   # GET /practitioners

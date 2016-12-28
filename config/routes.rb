@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :pathologies
+  resources :pathologies
+  resources :pathologies
+  resources :pathologies
+  resources :pathologies
+  resources :pathologies
+  resources :pathologies
   root to: "application#index"
   devise_for :users, controllers: { confirmations: 'confirmations' }
 

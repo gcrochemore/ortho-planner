@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+  authorize_resource
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   # GET /patients

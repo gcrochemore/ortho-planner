@@ -1,4 +1,5 @@
 class PathologiesController < ApplicationController
+  authorize_resource
   before_action :set_pathology, only: [:show, :edit, :update, :destroy]
 
   # GET /pathologies
