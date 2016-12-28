@@ -27,3 +27,5 @@
 
 <%= link_to 'Edit', edit_practitioner_path(@practitioner) %> |
 <%= link_to 'Back', practitioners_path %>
+
+<%= render partial: 'calendrier', locals: {sessions: @practitioner.sessions} %>
