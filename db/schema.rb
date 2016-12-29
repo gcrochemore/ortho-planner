@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228200413) do
+ActiveRecord::Schema.define(version: 20161229134225) do
 
   create_table "acts", force: :cascade do |t|
     t.string   "name"
@@ -136,5 +136,20 @@ ActiveRecord::Schema.define(version: 20161228200413) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+
+  create_table "waiting_lists", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "office_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "pathology_id"
+    t.string   "comments"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "waiting_lists", ["office_id"], name: "index_waiting_lists_on_office_id"
+  add_index "waiting_lists", ["pathology_id"], name: "index_waiting_lists_on_pathology_id"
+  add_index "waiting_lists", ["patient_id"], name: "index_waiting_lists_on_patient_id"
 
 end

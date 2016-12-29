@@ -27,6 +27,8 @@ rails generate scaffold therapy practitioner:references begin_date:datetime end_
 
 rails generate scaffold session begin_date:datetime end_date:datetime therapy:references act:references practitioner:references
 
+rails generate scaffold WaitingList patient:references office:references start_date:datetime end_date:datetime pathology:references comments:string
+
 
 rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime
 

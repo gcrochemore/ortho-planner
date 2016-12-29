@@ -14,25 +14,26 @@ class Ability
       can :manage, :pathology
       can :manage, :practioner_profession
       can :manage, :office
-      can :manage, :practioner
+      can :manage, :practitioner
     end
 
-    if user.has_role? :practioner
+    if user.has_role? :practitioner
       #can :read, Project, active: true, :user_id user.id
       can :manage, :patient
       can :manage, :therapy
       can :manage, :session
+      can :manage, :waiting_list
       can :read, :office
-      can :read, :practioner
+      can :read, :practitioner
     end  
 
     if user.has_role? :secretary
       #can :read, Project, active: true, :user_id user.id
       can :read, :patient
-      can :read, :therapy 
-      can :manage, :session
+      can :read, :therapy #si la therapy concerne un medecin du cabinet ou elle est rattachée 
+      can :manage, :session #si la session concerne une therapy qui concerne un medecin du cabinet ou elle est rattachée 
       can :read, :office
-      can :read, :practioner
+      can :read, :practitioner
     end   
     #
     # The first argument to `can` is the action you are giving the user

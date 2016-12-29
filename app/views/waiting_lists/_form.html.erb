@@ -1,0 +1,47 @@
+<%= simple_form_for(@waiting_list, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <div class="form-group">
+      <label for="patient"><%= f.label :patient %></label>
+      <%= f.association :patient, label: false, input_html: { class: "form-control" } %>
+      <small id="patientHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="office"><%= f.label :office %></label>
+      <%= f.association :office, label: false, input_html: { class: "form-control" } %>
+      <small id="officeHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="start_date"><%= f.label :start_date %></label>
+      <%= f.input :start_date, label: false, input_html: { class: "form-control" } %>
+      <small id="start_dateHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="end_date"><%= f.label :end_date %></label>
+      <%= f.input :end_date, label: false, input_html: { class: "form-control" } %>
+      <small id="end_dateHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="pathology"><%= f.label :pathology %></label>
+      <%= f.association :pathology, label: false, input_html: { class: "form-control" } %>
+      <small id="pathologyHelp" class="form-text text-muted"></small>
+    </div>
+
+    <div class="form-group">
+      <label for="comments"><%= f.label :comments %></label>
+      <%= f.input :comments, label: false, input_html: { class: "form-control" } %>
+      <small id="commentsHelp" class="form-text text-muted"></small>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

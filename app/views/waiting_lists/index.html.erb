@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Waiting Lists</h1>
+
+<table class="table table-hover table-condensed table-bordered">
+  <thead>
+    <tr>
+
+      <th>Patient</th>
+
+      <th>Office</th>
+
+      <th>Start date</th>
+
+      <th>End date</th>
+
+      <th>Pathology</th>
+
+      <th>Comments</th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @waiting_lists.each do |waiting_list| %>
+      <tr>
+
+        <td><%= waiting_list.patient %></td>
+
+        <td><%= waiting_list.office %></td>
+
+        <td><%= waiting_list.start_date %></td>
+
+        <td><%= waiting_list.end_date %></td>
+
+        <td><%= waiting_list.pathology %></td>
+
+        <td><%= waiting_list.comments %></td>
+
+        <td>
+          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
+          <% if can? :edit, waiting_list %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_waiting_list_path(waiting_list) %>
+          <% end %>
+          <% if can? :destroy, waiting_list %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, waiting_list, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :create, WaitingList %>
+  <%= link_to '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Waiting List'.html_safe, new_waiting_list_path, class: "btn" %>
+<% end %>

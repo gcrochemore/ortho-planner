@@ -34,6 +34,6 @@
 
 <br>
 
-<%% if can? :create, <%= singular_table_name.titleize  %> %>
-  <%%= link_to 'New <%= singular_table_name.titleize %>', new_<%= singular_table_name %>_path %>
+<%% if can? :create, <%= plural_table_name.classify  %> %>
+  <%%= link_to '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New <%= singular_table_name.titleize %>'.html_safe, new_<%= singular_table_name %>_path, class: "btn" %>
 <%% end %>

@@ -24,6 +24,9 @@
             <% if can? :read, Session %>
               <li><%= link_to('Liste des séances', sessions_path)  %> </li>
             <% end %>
+            <% if can? :read, Act %>
+              <li><%= link_to('Liste d\'attente', waiting_lists_path)  %> </li>
+            <% end %>
             </ul>
           </li>
         </ul>

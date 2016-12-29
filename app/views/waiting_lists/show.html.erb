@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @waiting_list.patient %>
+</p>
+
+<p>
+  <strong>Office:</strong>
+  <%= @waiting_list.office %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @waiting_list.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @waiting_list.end_date %>
+</p>
+
+<p>
+  <strong>Pathology:</strong>
+  <%= @waiting_list.pathology %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @waiting_list.comments %>
+</p>
+
+<%= link_to 'Edit', edit_waiting_list_path(@waiting_list) %> |
+<%= link_to 'Back', waiting_lists_path %>
