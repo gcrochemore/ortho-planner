@@ -20,8 +20,12 @@
 
         <td>
           <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, practitioner_profession %>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_practitioner_profession_path(practitioner_profession) %>
-          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, practitioner_profession, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if can? :edit, practitioner_profession %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_practitioner_profession_path(practitioner_profession) %>
+          <% end %>
+          <% if can? :destroy, practitioner_profession %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, practitioner_profession, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -30,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New Practitioner Profession', new_practitioner_profession_path %>
+<% if can? :create, Practitioner Profession %>
+  <%= link_to 'New Practitioner Profession', new_practitioner_profession_path %>
+<% end %>

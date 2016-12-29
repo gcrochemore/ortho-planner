@@ -20,8 +20,12 @@
 
         <td>
           <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, office %>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_office_path(office) %>
-          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, office, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if can? :edit, office %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_office_path(office) %>
+          <% end %>
+          <% if can? :destroy, office %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, office, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -30,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New Office', new_office_path %>
+<% if can? :create, Office %>
+  <%= link_to 'New Office', new_office_path %>
+<% end %>

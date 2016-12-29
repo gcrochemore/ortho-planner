@@ -9,6 +9,7 @@
 
 ===== Generate entity
 
+Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 rails generate scaffold Office name:string
 
@@ -35,6 +36,9 @@ rails generate scaffold_controller User email:string password:string sign_in_cou
 ===== Docker
 
 docker-compose build --no-cache
+
+Supprimer Gemfile.lock
+
 docker-compose up -d
 docker exec orthoplanner_ortho-planner_1 rake db:migrate
 
@@ -46,4 +50,7 @@ heroku apps -> liste des apps
 heroku run rake db:migrate --app ortho-planner
 heroku logs --tail --app ortho-planner
 
+
+
+heroku run rails console --app ortho-planner
 

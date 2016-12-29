@@ -14,7 +14,7 @@
 
       <th>Birth place</th>
 
-      <th>Practitioner profession</th>
+      <th>Practitionerprofession</th>
 
       <th></th>
     </tr>
@@ -32,14 +32,16 @@
 
         <td><%= practitioner.birth_place %></td>
 
-        <td><%= practitioner.practitioner_profession %></td>
+        <td><%= practitioner.PractitionerProfession %></td>
 
         <td>
           <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, practitioner %>
           <% if can? :edit, practitioner %>
             <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_practitioner_path(practitioner) %>
           <% end %>
-          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, practitioner, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if can? :destroy, practitioner %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, practitioner, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         </td>
       </tr>
     <% end %>
@@ -48,4 +50,6 @@
 
 <br>
 
-<%= link_to 'New Practitioner', new_practitioner_path %>
+<% if can? :create, Practitioner %>
+  <%= link_to 'New Practitioner', new_practitioner_path %>
+<% end %>
