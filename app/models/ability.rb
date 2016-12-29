@@ -7,9 +7,33 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
       can :manage, :all
-    else
-      can :read, :all
     end
+
+    if user.has_role? :repository_manager
+      can :manage, :office
+      can :manage, :pathology
+      can :manage, :practioner_profession
+      can :manage, :office
+      can :manage, :practioner
+    end
+
+    if user.has_role? :practioner
+      #can :read, Project, active: true, :user_id user.id
+      can :manage, :patient
+      can :manage, :therapy
+      can :manage, :session
+      can :read, :office
+      can :read, :practioner
+    end  
+
+    if user.has_role? :secretary
+      #can :read, Project, active: true, :user_id user.id
+      can :read, :patient
+      can :read, :therapy 
+      can :manage, :session
+      can :read, :office
+      can :read, :practioner
+    end   
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
