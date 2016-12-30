@@ -15,6 +15,7 @@ class WaitingListsController < ApplicationController
   # GET /waiting_lists/new
   def new
     @waiting_list = WaitingList.new
+    @patient = Patient.new
   end
 
   # GET /waiting_lists/1/edit
@@ -24,6 +25,7 @@ class WaitingListsController < ApplicationController
   # POST /waiting_lists
   # POST /waiting_lists.json
   def create
+    @patient = Patient.new(waiting_list_params)
     @waiting_list = WaitingList.new(waiting_list_params)
 
     respond_to do |format|
@@ -69,6 +71,6 @@ class WaitingListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def waiting_list_params
-      params.require(:waiting_list).permit(:patient_id, :office_id, :start_date, :end_date, :pathology_id, :comments)
+      params.require(:waiting_list).permit(:office_id, :start_date, :end_date, :pathology_id, :comments, patient_attribute: [:last_name, :first_name, :birth_date, :birth_place, :phone_number])
     end
 end

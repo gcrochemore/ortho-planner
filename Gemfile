@@ -76,3 +76,5 @@ gem 'bootstrap-datepicker-rails'
 gem 'cancancan'
 
 gem 'rolify'
+
+gem 'cocoon' #nested form
