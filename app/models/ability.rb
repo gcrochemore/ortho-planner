@@ -5,6 +5,9 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
+
+    alias_action :create, :read, :update, to: :crud
+
     if user.has_role? :admin
       can :manage, :all
     end
@@ -19,10 +22,10 @@ class Ability
 
     if user.has_role? :practitioner
       #can :read, Project, active: true, :user_id user.id
-      can :manage, :patient
-      can :manage, :therapy
-      can :manage, :session
-      can :manage, :waiting_list
+      can :crud, :patient
+      can :crud, :therapy
+      can :crud, :session
+      can :crud, :waiting_list
       can :read, :office
       can :read, :practitioner
     end  
@@ -31,7 +34,7 @@ class Ability
       #can :read, Project, active: true, :user_id user.id
       can :read, :patient
       can :read, :therapy #si la therapy concerne un medecin du cabinet ou elle est rattachée 
-      can :manage, :session #si la session concerne une therapy qui concerne un medecin du cabinet ou elle est rattachée 
+      can :crud, :session #si la session concerne une therapy qui concerne un medecin du cabinet ou elle est rattachée 
       can :read, :office
       can :read, :practitioner
     end   

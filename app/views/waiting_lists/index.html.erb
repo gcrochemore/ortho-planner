@@ -10,13 +10,13 @@
 
       <th>Office</th>
 
-      <th>Start date</th>
-
-      <th>End date</th>
-
       <th>Pathology</th>
 
       <th>Comments</th>
+
+      <th>Start date</th>
+
+      <th>End date</th>
 
       <th></th>
     </tr>
@@ -26,17 +26,17 @@
     <% @waiting_lists.each do |waiting_list| %>
       <tr>
 
-        <td><%= waiting_list.patient %></td>
+        <td><%= waiting_list.patient.andand.to_label %></td>
 
         <td><%= waiting_list.office %></td>
-
-        <td><%= waiting_list.start_date %></td>
-
-        <td><%= waiting_list.end_date %></td>
 
         <td><%= waiting_list.pathology %></td>
 
         <td><%= waiting_list.comments %></td>
+
+        <td><%= waiting_list.start_date %></td>
+
+        <td><%= waiting_list.end_date %></td>
 
         <td>
           <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>

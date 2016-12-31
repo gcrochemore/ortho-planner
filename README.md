@@ -2,6 +2,8 @@
 
 ##TODO : Lancer automatique rake db:migrate
 
+##TODO : Ajouter date de dernier appel sur liste d'attente, changer comment en text
+
 ===== Lancer les tests
 	
 	``` bundle exec rake ```
