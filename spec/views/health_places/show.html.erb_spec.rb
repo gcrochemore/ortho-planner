@@ -4,7 +4,7 @@ RSpec.describe "health_places/show", type: :view do
   before(:each) do
     @health_place = assign(:health_place, HealthPlace.create!(
       :name => "Name",
-      :HealthPlaceType => nil
+      :health_place_type => nil
     ))
   end
 

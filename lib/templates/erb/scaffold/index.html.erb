@@ -1,39 +1,59 @@
 <p id="notice"><%%= notice %></p>
 
-<h1><%%= t('.title') %></h1>
+<h1><%%= t('.title') %><span class="badge"><%%= @<%= plural_table_name %>.count %></span></h1>
 
-<table class="table table-hover table-condensed table-bordered">
-  <thead>
-    <tr>
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-      <th><%%= t('.<%= attribute.name %>') %></th>
-<% end -%>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
-      <tr>
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
-<% end -%>
-        <td>
-          <%%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, <%= singular_table_name %> %>
-          <%% if can? :edit, <%= singular_table_name %> %>
-            <%%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
-          <%% end %>
-          <%% if can? :destroy, <%= singular_table_name %> %>
-            <%%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%% end %>
-        </td>
-      </tr>
+<div class="row">
+  <div class="col-md-2">
+    <legend class="filter-title"><%%= t :filter_title %></legend>
+  </div>
+  <div class="col-md-3 btn-new-top">
+    <%% if can? :create, <%= plural_table_name.classify  %> %>
+      <%%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
     <%% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <fieldset class="filter-panel">
+      <%%= search_form_for @q do |f| %>
+<% attributes.reject {|i| i.name == 'activated' || i.password_digest?}.each do |attribute| -%>
+        <%%= f.search_field :<%= attribute.name %>_cont, {placeholder: <%= "t('activerecord.attributes.#{singular_table_name}.#{attribute.name}')" %>} %>
+<% end -%>
+        <br>
+        <br>
+        <%%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <%% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr>
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+          <th><%%= sort_link(@q, :<%= attribute.name %>, default_order: :asc) %></th>
+    <% end -%>
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
 
-<br>
-
-<%% if can? :create, <%= plural_table_name.classify  %> %>
-  <%%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, new_<%= singular_table_name %>_path, class: "btn btn-default" %>
-<%% end %>
+      <tbody>
+        <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+          <tr>
+    <% attributes.reject(&:password_digest?).each do |attribute| -%>
+            <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+    <% end -%>
+            <td>
+              <%%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, <%= singular_table_name %> %>
+              <%% if can? :edit, <%= singular_table_name %> %>
+                <%%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
+              <%% end %>
+              <%% if can? :destroy, <%= singular_table_name %> %>
+                <%%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%% end %>
+            </td>
+          </tr>
+        <%% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

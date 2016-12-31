@@ -4,7 +4,7 @@ RSpec.describe "health_places/edit", type: :view do
   before(:each) do
     @health_place = assign(:health_place, HealthPlace.create!(
       :name => "MyString",
-      :HealthPlaceType => nil
+      :health_place_type => nil
     ))
   end
 
@@ -15,7 +15,7 @@ RSpec.describe "health_places/edit", type: :view do
 
       assert_select "input#health_place_name[name=?]", "health_place[name]"
 
-      assert_select "input#health_place_HealthPlaceType_id[name=?]", "health_place[HealthPlaceType_id]"
+      assert_select "input#health_place_health_place_type_id[name=?]", "health_place[health_place_type_id]"
     end
   end
 end

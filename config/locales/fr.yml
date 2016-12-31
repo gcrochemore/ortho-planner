@@ -20,15 +20,22 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  filter_title: Filtres
   hello: "Hello world"
   new: Nouveau
 
+
+
   activerecord:
     models:
+      health_place_type: "Type de centre de santé"
       waiting_list: "Liste d'attente"
     attributes:
       health_place:
         health_place_type: 'Type'
+        name: Centre de santé
+      health_place_type:
+        name: Type
       patient:
         birth_date: 'Date de naissance'
         birth_place: 'Lieu de naissance'
@@ -43,9 +50,9 @@ fr:
   layouts:
     navbar:
       acts: Actes
-      health_place_types: 'Type de centre de santé'
-      health_places: 'Centre de santé'
-      practitioner_professions: 'Type de professionels de santé'
+      health_place_types: 'Types de centres de santé'
+      health_places: 'Centres de santé'
+      practitioner_professions: 'Types de professionels de santé'
       practitioners: 'Professionnels de santé'
 
 
@@ -53,13 +60,13 @@ fr:
     index: 
       name: Nom
       new_button: 'Créer un type de centre de santé'
-      title: "Type de centre de santé"
+      title: "Types de centres de santé"
   health_places:
     index: 
-      HealthPlaceType: Type
+      health_place_type: Type
       name: Nom
       new_button: 'Créer un centre de santé'
-      title: "Centre de santé"
+      title: "Centres de santé"
 
 
   waiting_lists:

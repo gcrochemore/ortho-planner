@@ -78,3 +78,5 @@ gem 'cancancan'
 gem 'rolify'
 
 gem 'cocoon' #nested form
+
+gem 'ransack'

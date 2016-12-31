@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 20161231110448) do
 
   create_table "health_places", force: :cascade do |t|
     t.string   "name"
-    t.integer  "HealthPlaceType_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "health_place_type_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
-  add_index "health_places", ["HealthPlaceType_id"], name: "index_health_places_on_HealthPlaceType_id"
+  add_index "health_places", ["health_place_type_id"], name: "index_health_places_on_health_place_type_id"
 
   create_table "offices", force: :cascade do |t|
     t.string   "name"

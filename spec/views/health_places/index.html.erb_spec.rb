@@ -5,11 +5,11 @@ RSpec.describe "health_places/index", type: :view do
     assign(:health_places, [
       HealthPlace.create!(
         :name => "Name",
-        :HealthPlaceType => nil
+        :health_place_type => nil
       ),
       HealthPlace.create!(
         :name => "Name",
-        :HealthPlaceType => nil
+        :health_place_type => nil
       )
     ])
   end

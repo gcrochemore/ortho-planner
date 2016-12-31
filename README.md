@@ -18,7 +18,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 rails generate scaffold HealthPlaceType name:string 
 
-rails generate scaffold HealthPlace name:string HealthPlaceType:references
+rails generate scaffold HealthPlace name:string health_place_type:references
 
 rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string
 
