@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :waiting_lists
   root to: "application#index"
   devise_for :users, controllers: { confirmations: 'confirmations' }
 
@@ -8,7 +7,8 @@ Rails.application.routes.draw do
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
   resources :patients, :offices, :practitioners, :practitioner_professions, 
-            :users, :sessions, :therapies, :acts, :pathologies, :waiting_lists
+            :users, :sessions, :therapies, :acts, :pathologies, :waiting_lists, 
+            :health_places, :health_place_types
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

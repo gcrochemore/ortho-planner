@@ -1,12 +1,12 @@
 <p id="notice"><%%= notice %></p>
 
-<h1><%= plural_table_name.titleize %></h1>
+<h1><%%= t('.title') %></h1>
 
 <table class="table table-hover table-condensed table-bordered">
   <thead>
     <tr>
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
-      <th><%= attribute.human_name %></th>
+      <th><%%= t('.<%= attribute.name %>') %></th>
 <% end -%>
       <th></th>
     </tr>
@@ -35,5 +35,5 @@
 <br>
 
 <%% if can? :create, <%= plural_table_name.classify  %> %>
-  <%%= link_to '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New <%= singular_table_name.titleize %>'.html_safe, new_<%= singular_table_name %>_path, class: "btn" %>
+  <%%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, new_<%= singular_table_name %>_path, class: "btn btn-default" %>
 <%% end %>

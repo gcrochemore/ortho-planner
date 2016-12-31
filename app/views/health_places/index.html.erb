@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('.title') %></h1>
+
+<table class="table table-hover table-condensed table-bordered">
+  <thead>
+    <tr>
+
+      <th><%= t('.name') %></th>
+
+      <th><%= t('.HealthPlaceType') %></th>
+
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @health_places.each do |health_place| %>
+      <tr>
+
+        <td><%= health_place.name %></td>
+
+        <td><%= health_place.HealthPlaceType %></td>
+
+        <td>
+          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, health_place %>
+          <% if can? :edit, health_place %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_health_place_path(health_place) %>
+          <% end %>
+          <% if can? :destroy, health_place %>
+            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, health_place, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :create, HealthPlace %>
+  <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, new_health_place_path, class: "btn" %>
+<% end %>

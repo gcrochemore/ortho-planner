@@ -4,16 +4,21 @@
 
 ##TODO : Ajouter date de dernier appel sur liste d'attente, changer comment en text
 
+##TODO : Patient ajouter année scolaire + suivi orthophoniste précédent (créer une thérapie)
+
+##TODO : Patient ajouter suivi en institution + quel domaine
+
 ===== Lancer les tests
 	
 	``` bundle exec rake ```
-
 
 ===== Generate entity
 
 Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
-rails generate scaffold Office name:string
+rails generate scaffold HealthPlaceType name:string 
+
+rails generate scaffold HealthPlace name:string HealthPlaceType:references
 
 rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string
 
@@ -25,11 +30,14 @@ rails generate scaffold Pathology name:string
 
 rails generate scaffold Act name:string AMO:integer
 
-rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references
+rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references HealthPlace:references
 
 rails generate scaffold session begin_date:datetime end_date:datetime therapy:references act:references practitioner:references
 
-rails generate scaffold WaitingList patient:belongs_to office:references start_date:datetime end_date:datetime pathology:references comments:string
+rails generate scaffold WaitingList patient:belongs_to office:references start_date:datetime end_date:datetime pathology:references comments:text
+
+
+
 
 
 rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime

@@ -36,19 +36,22 @@
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
             <% if can? :read, Practitioner %>
-              <li><%= link_to('Liste des praticiens', practitioners_path)  %></li>
+              <li><%= link_to(t('.practitioners'), practitioners_path)  %></li>
             <% end %>
             <% if can? :read, PractitionerProfession %>
-              <li><%= link_to('Liste des type de praticiens', practitioner_professions_path)  %></li>
+              <li><%= link_to(t('.practitioner_professions'), practitioner_professions_path)  %></li>
             <% end %>
-            <% if can? :read, Office %>
-              <li><%= link_to('Liste des offices', offices_path)  %> </li>
+            <% if can? :read, HealthPlace %>
+              <li><%= link_to(t('.health_places'), health_places_path)  %> </li>
+            <% end %>
+            <% if can? :read, HealthPlaceType %>
+              <li><%= link_to(t('.health_place_types'), health_place_types_path)  %> </li>
             <% end %>
             <% if can? :read, Pathology %>
-              <li><%= link_to('Liste des pathologies', pathologies_path)  %> </li>
+              <li><%= link_to(t('.pathologies'), pathologies_path)  %> </li>
             <% end %>
             <% if can? :read, Act %>
-              <li><%= link_to('Liste des actes', acts_path)  %> </li>
+              <li><%= link_to(t('.acts'), acts_path)  %> </li>
             <% end %>
             </ul>
           </li>

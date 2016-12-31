@@ -27,6 +27,8 @@ fr:
     models:
       waiting_list: "Liste d'attente"
     attributes:
+      health_place:
+        health_place_type: 'Type'
       patient:
         birth_date: 'Date de naissance'
         birth_place: 'Lieu de naissance'
@@ -38,11 +40,34 @@ fr:
         office: 'Cabinet'
         pathology: 'Trouble'
         patient: Patient
+  layouts:
+    navbar:
+      acts: Actes
+      health_place_types: 'Type de centre de santé'
+      health_places: 'Centre de santé'
+      practitioner_professions: 'Type de professionels de santé'
+      practitioners: 'Professionnels de santé'
+
+
+  health_place_types:
+    index: 
+      name: Nom
+      new_button: 'Créer un type de centre de santé'
+      title: "Type de centre de santé"
+  health_places:
+    index: 
+      HealthPlaceType: Type
+      name: Nom
+      new_button: 'Créer un centre de santé'
+      title: "Centre de santé"
+
+
   waiting_lists:
     new:
       title: "Ajouter à la liste d'attente"
     form:
       submit: "Valider l'ajout à la liste d'attente"
+
 
 
 

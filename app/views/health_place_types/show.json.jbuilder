@@ -1,0 +1,1 @@
+json.partial! "health_place_types/health_place_type", health_place_type: @health_place_type

@@ -18,6 +18,8 @@ class Ability
       can :manage, :practioner_profession
       can :manage, :office
       can :manage, :practitioner
+      can :manage, :health_place
+      can :manage, :health_place_type
     end
 
     if user.has_role? :practitioner
@@ -28,6 +30,7 @@ class Ability
       can :crud, :waiting_list
       can :read, :office
       can :read, :practitioner
+      can :read, :health_place
     end  
 
     if user.has_role? :secretary
