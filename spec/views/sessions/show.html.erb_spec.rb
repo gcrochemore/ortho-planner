@@ -5,12 +5,14 @@ RSpec.describe "sessions/show", type: :view do
     @session = assign(:session, Session.create!(
       :therapy => nil,
       :act => nil,
-      :practitioner => nil
+      :practitioner => nil,
+      :health_place => nil
     ))
   end
 
   it "renders attributes in <p>" do
     render
+    expect(rendered).to match(//)
     expect(rendered).to match(//)
     expect(rendered).to match(//)
     expect(rendered).to match(//)

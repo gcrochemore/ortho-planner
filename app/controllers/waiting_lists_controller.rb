@@ -1,4 +1,5 @@
 class WaitingListsController < ApplicationController
+  authorize_resource
   before_action :set_waiting_list, only: [:show, :edit, :update, :destroy]
 
   # GET /waiting_lists

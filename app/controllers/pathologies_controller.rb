@@ -1,15 +1,12 @@
 class PathologiesController < ApplicationController
   authorize_resource
   before_action :set_pathology, only: [:show, :edit, :update, :destroy]
-
   # GET /pathologies
-  # GET /pathologies.json
   def index
-    @pathologies = Pathology.all
+    @q = Pathology.ransack(params[:q])
+    @pathologies = @q.result
   end
-
   # GET /pathologies/1
-  # GET /pathologies/1.json
   def show
   end
 
@@ -23,53 +20,38 @@ class PathologiesController < ApplicationController
   end
 
   # POST /pathologies
-  # POST /pathologies.json
   def create
     @pathology = Pathology.new(pathology_params)
 
-    respond_to do |format|
-      if @pathology.save
-        format.html { redirect_to @pathology, notice: 'Pathology was successfully created.' }
-        format.json { render :show, status: :created, location: @pathology }
-      else
-        format.html { render :new }
-        format.json { render json: @pathology.errors, status: :unprocessable_entity }
-      end
+    if @pathology.save
+      redirect_to @pathology, notice: 'Pathology was successfully created.'
+    else
+      render :new
     end
   end
-
   # PATCH/PUT /pathologies/1
-  # PATCH/PUT /pathologies/1.json
   def update
-    respond_to do |format|
-      if @pathology.update(pathology_params)
-        format.html { redirect_to @pathology, notice: 'Pathology was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pathology }
-      else
-        format.html { render :edit }
-        format.json { render json: @pathology.errors, status: :unprocessable_entity }
-      end
+    if @pathology.update(pathology_params)
+      redirect_to @pathology, notice: 'Pathology was successfully updated.'
+    else
+      render :edit
     end
   end
-
   # DELETE /pathologies/1
-  # DELETE /pathologies/1.json
   def destroy
     @pathology.destroy
-    respond_to do |format|
-      format.html { redirect_to pathologies_url, notice: 'Pathology was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to pathologies_url, notice: 'Pathology was successfully destroyed.'
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pathology
       @pathology = Pathology.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Only allow a trusted parameter "white list" through.
     def pathology_params
+
       params.require(:pathology).permit(:name)
+
     end
 end

@@ -19,6 +19,7 @@
 
         <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.health_place.name')} %>
 
+        <%= f.search_field :health_place_type_name_cont, {placeholder: t('activerecord.attributes.health_place.health_place_type')} %>
 
         <br>
         <br>
@@ -33,6 +34,7 @@
     
           <th><%= sort_link(@q, :name, default_order: :asc) %></th>
     
+          <th><%= sort_link(@q, :health_place_type_name, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -44,6 +46,7 @@
     
             <td><%= health_place.name %></td>
     
+            <td><%= health_place.health_place_type.andand.name %></td>
     
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, health_place %>

@@ -1,37 +1,65 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Acts</h1>
+<h1><%= t('.title') %><span class="badge"><%= @acts.count %></span></h1>
 
-<table class="table table-hover table-condensed table-bordered">
-  <thead>
-    <tr>
-
-      <th>Name</th>
-
-      <th>Amo</th>
-
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @acts.each do |act| %>
-      <tr>
-
-        <td><%= act.name %></td>
-
-        <td><%= act.AMO %></td>
-
-        <td>
-          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, act %>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_act_path(act) %>
-          <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, act, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
+<div class="row">
+  <div class="col-md-2">
+    <legend class="filter-title"><%= t :filter_title %></legend>
+  </div>
+  <div class="col-md-3 btn-new-top">
+    <% if can? :create, Act %>
+      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
 
-<br>
+        <%= f.search_field :name_cont, {placeholder: t('activerecord.attributes.act.name')} %>
 
-<%= link_to 'New Act', new_act_path %>
+        <%= f.search_field :AMO_cont, {placeholder: t('activerecord.attributes.act.AMO')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :AMO, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @acts.each do |act| %>
+          <tr>
+    
+            <td><%= act.name %></td>
+    
+            <td><%= act.AMO %></td>
+    
+            <td>
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, act %>
+              <% if can? :edit, act %>
+                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_act_path(act) %>
+              <% end %>
+              <% if can? :destroy, act %>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, act, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

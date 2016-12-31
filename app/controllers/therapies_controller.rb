@@ -1,15 +1,12 @@
 class TherapiesController < ApplicationController
   authorize_resource
   before_action :set_therapy, only: [:show, :edit, :update, :destroy]
-
   # GET /therapies
-  # GET /therapies.json
   def index
-    @therapies = Therapy.all
+    @q = Therapy.ransack(params[:q])
+    @therapies = @q.result
   end
-
   # GET /therapies/1
-  # GET /therapies/1.json
   def show
   end
 
@@ -23,53 +20,38 @@ class TherapiesController < ApplicationController
   end
 
   # POST /therapies
-  # POST /therapies.json
   def create
     @therapy = Therapy.new(therapy_params)
 
-    respond_to do |format|
-      if @therapy.save
-        format.html { redirect_to @therapy, notice: 'Therapy was successfully created.' }
-        format.json { render :show, status: :created, location: @therapy }
-      else
-        format.html { render :new }
-        format.json { render json: @therapy.errors, status: :unprocessable_entity }
-      end
+    if @therapy.save
+      redirect_to @therapy, notice: 'Therapy was successfully created.'
+    else
+      render :new
     end
   end
-
   # PATCH/PUT /therapies/1
-  # PATCH/PUT /therapies/1.json
   def update
-    respond_to do |format|
-      if @therapy.update(therapy_params)
-        format.html { redirect_to @therapy, notice: 'Therapy was successfully updated.' }
-        format.json { render :show, status: :ok, location: @therapy }
-      else
-        format.html { render :edit }
-        format.json { render json: @therapy.errors, status: :unprocessable_entity }
-      end
+    if @therapy.update(therapy_params)
+      redirect_to @therapy, notice: 'Therapy was successfully updated.'
+    else
+      render :edit
     end
   end
-
   # DELETE /therapies/1
-  # DELETE /therapies/1.json
   def destroy
     @therapy.destroy
-    respond_to do |format|
-      format.html { redirect_to therapies_url, notice: 'Therapy was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to therapies_url, notice: 'Therapy was successfully destroyed.'
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_therapy
       @therapy = Therapy.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Only allow a trusted parameter "white list" through.
     def therapy_params
-      params.require(:therapy).permit(:practitioner_id, :begin_date, :end_date, :patient_id)
+
+      params.require(:therapy).permit(:practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id)
+
     end
 end

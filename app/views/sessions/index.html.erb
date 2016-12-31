@@ -1,55 +1,89 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sessions</h1>
+<h1><%= t('.title') %><span class="badge"><%= @sessions.count %></span></h1>
 
-<table class="table table-hover table-condensed table-bordered">
-  <thead>
-    <tr>
-
-      <th>Begin date</th>
-
-      <th>End date</th>
-
-      <th>Therapy</th>
-
-      <th>Act</th>
-
-      <th>Practitioner</th>
-
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sessions.each do |session| %>
-      <tr>
-
-        <td><%= session.begin_date %></td>
-
-        <td><%= session.end_date %></td>
-
-        <td><%= session.therapy %></td>
-
-        <td><%= session.act %></td>
-
-        <td><%= session.practitioner %></td>
-
-        <td>
-          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, session %>
-          <% if can? :edit, session %>
-            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_session_path(session) %>
-          <% end %>
-          <% if can? :destroy, session %>
-            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, session, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
-      </tr>
+<div class="row">
+  <div class="col-md-2">
+    <legend class="filter-title"><%= t :filter_title %></legend>
+  </div>
+  <div class="col-md-3 btn-new-top">
+    <% if can? :create, Session %>
+      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
 
-<br>
+        <%= f.search_field :begin_date_cont, {placeholder: t('activerecord.attributes.session.begin_date')} %>
 
-<% if can? :create, Session %>
-  <%= link_to 'New Session', new_session_path %>
-<% end %>
+        <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.session.end_date')} %>
+
+        <%= f.search_field :therapy_cont, {placeholder: t('activerecord.attributes.session.therapy')} %>
+
+        <%= f.search_field :act_cont, {placeholder: t('activerecord.attributes.session.act')} %>
+
+        <%= f.search_field :practitioner_cont, {placeholder: t('activerecord.attributes.session.practitioner')} %>
+
+        <%= f.search_field :health_place_cont, {placeholder: t('activerecord.attributes.session.health_place')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :begin_date, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :end_date, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :therapy, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :act, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :practitioner, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :health_place, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @sessions.each do |session| %>
+          <tr>
+    
+            <td><%= session.begin_date %></td>
+    
+            <td><%= session.end_date %></td>
+    
+            <td><%= session.therapy %></td>
+    
+            <td><%= session.act %></td>
+    
+            <td><%= session.practitioner %></td>
+    
+            <td><%= session.health_place %></td>
+    
+            <td>
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, session %>
+              <% if can? :edit, session %>
+                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_session_path(session) %>
+              <% end %>
+              <% if can? :destroy, session %>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, session, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

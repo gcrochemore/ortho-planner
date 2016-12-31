@@ -1,4 +1,4 @@
-<%= simple_form_for(@act, html: { class: 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@act) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -6,13 +6,11 @@
     <div class="form-group">
       <label for="name"><%= f.label :name %></label>
       <%= f.input :name, label: false, input_html: { class: "form-control" } %>
-      <small id="nameHelp" class="form-text text-muted"></small>
     </div>
 
     <div class="form-group">
       <label for="AMO"><%= f.label :AMO %></label>
       <%= f.input :AMO, label: false, input_html: { class: "form-control" } %>
-      <small id="AMOHelp" class="form-text text-muted"></small>
     </div>
 
   </div>

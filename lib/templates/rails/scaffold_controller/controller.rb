@@ -3,6 +3,7 @@ require_dependency "<%= namespaced_path %>/application_controller"
 <% end -%>
 <% module_namespacing do -%>
 class <%= controller_class_name %>Controller < ApplicationController
+  authorize_resource
   before_action :set_<%= singular_table_name %>, only: [:show, :edit, :update, :destroy]
   # GET <%= route_url %>
   def index

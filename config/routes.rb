@@ -1,20 +1,5 @@
 Rails.application.routes.draw do
-  resources :health_places
-  resources :health_places
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
-  resources :health_place_types
+  resources :practitioner_professions
   root to: "application#index"
   devise_for :users, controllers: { confirmations: 'confirmations' }
 

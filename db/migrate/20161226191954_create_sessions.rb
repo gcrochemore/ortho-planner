@@ -6,6 +6,7 @@ class CreateSessions < ActiveRecord::Migration
       t.references :therapy, index: true, foreign_key: true
       t.references :act, index: true, foreign_key: true
       t.references :practitioner, index: true, foreign_key: true
+      t.references :health_place, index: true, foreign_key: true
 
       t.timestamps null: false
     end

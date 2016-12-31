@@ -1,4 +1,4 @@
-<%= simple_form_for(@practitioner, html: { class: 'form-horizontal' }) do |f| %>
+<%= simple_form_for(@practitioner) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -6,31 +6,26 @@
     <div class="form-group">
       <label for="first_name"><%= f.label :first_name %></label>
       <%= f.input :first_name, label: false, input_html: { class: "form-control" } %>
-      <small id="first_nameHelp" class="form-text text-muted"></small>
     </div>
 
     <div class="form-group">
       <label for="last_name"><%= f.label :last_name %></label>
       <%= f.input :last_name, label: false, input_html: { class: "form-control" } %>
-      <small id="last_nameHelp" class="form-text text-muted"></small>
     </div>
 
     <div class="form-group">
       <label for="birth_date"><%= f.label :birth_date %></label>
       <%= f.input :birth_date, label: false, input_html: { class: "form-control" } %>
-      <small id="birth_dateHelp" class="form-text text-muted"></small>
     </div>
 
     <div class="form-group">
       <label for="birth_place"><%= f.label :birth_place %></label>
       <%= f.input :birth_place, label: false, input_html: { class: "form-control" } %>
-      <small id="birth_placeHelp" class="form-text text-muted"></small>
     </div>
 
     <div class="form-group">
       <label for="practitioner_profession"><%= f.label :practitioner_profession %></label>
       <%= f.association :practitioner_profession, label: false, input_html: { class: "form-control" } %>
-      <small id="practitioner_professionHelp" class="form-text text-muted"></small>
     </div>
 
   </div>
