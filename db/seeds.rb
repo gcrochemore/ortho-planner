@@ -21,3 +21,18 @@ user.add_role :repository_manager
 user = User.create( email: "admin@ortho-planner.com", password: "ortho-planner", password_confirmation: "ortho-planner")
 user.save
 user.add_role :admin
+
+
+act = Act.create(name: "Bilan de la déglutition et des fonctions oro-myo fonctionnelles.", AMO: 16)
+act.save
+act = Act.create(name: "Bilan de renouvellement", AMO: 11.2)
+act.save
+
+act = Act.create(name: "Bilan de la phonation", AMO: 24)
+act.save
+act = Act.create(name: "Bilan du langage oral et/ou bilan d’aptitudes à l’acquisition du langage écrit", AMO: 24)
+act.save
+act = Act.create(name: "Bilan du langage écrit", AMO: 24)
+act.save
+act = Act.create(name: "Bilan de la dyscalculie et des troubles du raisonnement logico- mathématique", AMO: 24)
+act.save

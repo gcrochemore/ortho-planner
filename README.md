@@ -66,3 +66,9 @@ heroku logs --tail --app ortho-planner
 
 heroku run rails console --app ortho-planner
 
+
+===== Database 
+
+rake db:reset RAILS_ENV=development
+rake db:seed RAILS_ENV=development
+
