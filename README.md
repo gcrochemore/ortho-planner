@@ -32,7 +32,7 @@ rails generate scaffold Act name:string AMO:integer
 
 rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references health_place:references
 
-rails generate scaffold session begin_date:datetime end_date:datetime therapy:references act:references practitioner:references
+rails generate scaffold session begin_date:datetime end_date:datetime therapy:references act:references practitioner:references health_place:references
 
 rails generate scaffold WaitingList patient:belongs_to office:references start_date:datetime end_date:datetime pathology:references comments:text
 

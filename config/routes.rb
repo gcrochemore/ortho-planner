@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  resources :practitioner_professions
   root to: "application#index"
   devise_for :users, controllers: { confirmations: 'confirmations' }
-
   resources :paper_trail_versions, controller: 'versions'
   devise_scope :user do 
     match '/sessions/user', to: 'devise/sessions#create', via: :post

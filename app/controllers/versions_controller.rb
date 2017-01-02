@@ -1,5 +1,5 @@
 class VersionsController < ApplicationController
-  authorize_resource
+  authorize_resource :class => "PaperTrail::Version"
   before_action :set_version, only: [:show, :edit, :update, :destroy]
 
   # GET /versions

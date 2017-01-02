@@ -16,16 +16,16 @@
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
             <% if can? :read, Patient %>
-              <li><%= link_to('Liste des patients', patients_path)  %> </li>
+              <li><%= link_to(t('.patients'), patients_path)  %> </li>
             <% end %>
             <% if can? :read, Therapy %>
-              <li><%= link_to('Liste des therapies', therapies_path)  %> </li>
+              <li><%= link_to(t('.therapies'), therapies_path)  %> </li>
             <% end %>
             <% if can? :read, Session %>
-              <li><%= link_to('Liste des séances', sessions_path)  %> </li>
+              <li><%= link_to(t('.sessions'), sessions_path)  %> </li>
             <% end %>
             <% if can? :read, Act %>
-              <li><%= link_to('Liste d\'attente', waiting_lists_path)  %> </li>
+              <li><%= link_to(t('.waiting_lists'), waiting_lists_path)  %> </li>
             <% end %>
             </ul>
           </li>
@@ -63,8 +63,8 @@
               <span class="caret"></span></a>
               <ul class="dropdown-menu">
               <% if can? :read, User %>
-                <li><%= link_to('Liste des utilisateurs', users_path)  %> </li>
-                <li><%= link_to('Paper trail', paper_trail_versions_path)  %> </li>
+                <li><%= link_to(t('.users'), users_path)  %> </li>
+                <li><%= link_to(t('.paper_trail_versions'), paper_trail_versions_path)  %> </li>
               <% end %>
               </ul>
             </li>

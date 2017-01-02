@@ -31,6 +31,9 @@ fr:
       health_place_type: "Type de centre de santé"
       waiting_list: "Liste d'attente"
     attributes:
+      act:
+        AMO: AMO
+        name: Nom
       health_place:
         health_place_type: 'Type'
         name: Centre de santé
@@ -42,20 +45,50 @@ fr:
         first_name: 'Prénom'
         last_name: 'Nom'
         phone_number: 'Numéro de téléphone'
+      pathology:
+        name: Nom  
+      practitioner:
+        birth_date: Date de naissance
+        birth_place: 'Lieu de naissance'
+        first_name: Prénom
+        last_name: Nom
+        practitioner_profession: Type de professionnel de santé
+      session:
+        act: Acte
+        begin_date: Date de début
+        end_date: Date de fin
+        health_place: Centre de santé
+        practitioner: Professionnel de santé
+        therapy: Rééducation
+      therapy:
+        begin_date: Date de début
+        end_date: Date de fin
+        health_place: Centre de santé
+        patient: Patient
+        practitioner: Professionnel de santé
       waiting_list:
         comments: 'Commentaires'
         office: 'Cabinet'
-        pathology: 'Trouble'
+        pathology: 'Pathologie'
         patient: Patient
   layouts:
     navbar:
       acts: Actes
       health_place_types: 'Types de centres de santé'
       health_places: 'Centres de santé'
-      practitioner_professions: 'Types de professionels de santé'
+      paper_trail_versions: Paper trail
+      patients: Patients
+      practitioner_professions: 'Types de professionnels de santé'
       practitioners: 'Professionnels de santé'
-
-
+      sessions: Séances
+      therapies: Rééducations
+      users: Utilisateurs
+      waiting_lists: Liste d'attente
+  acts:
+    index: 
+      name: Nom
+      new_button: 'Créer un acte'
+      title: "Actes"
   health_place_types:
     index: 
       name: Nom
@@ -66,9 +99,36 @@ fr:
       health_place_type: Type
       name: Nom
       new_button: 'Créer un centre de santé'
-      title: "Centres de santé"
-
-
+      title: "Centres de santé"  
+  pathologies:
+    index: 
+      name: Nom
+      new_button: 'Créer une pathologie'
+      title: "Pathologies"
+  patients:
+    index: 
+      name: Nom
+      new_button: 'Créer un patient'
+      title: "Patients"
+  practitioners:
+    index: 
+      name: Nom
+      new_button: 'Créer un professionnel de santé'
+      title: "Professionnels de santé"
+  practitioner_professions:
+    index: 
+      name: Nom
+      new_button: 'Créer un type de professionnel de santé'
+      title: "Types de professionnels de santé"
+  sessions:
+    index: 
+      new_button: 'Créer une séance'
+      title: "Séances"
+  therapies:  
+    index: 
+      name: Nom
+      new_button: 'Créer une rééducation'
+      title: "Rééducations"
   waiting_lists:
     new:
       title: "Ajouter à la liste d'attente"

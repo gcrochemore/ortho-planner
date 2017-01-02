@@ -21,13 +21,13 @@
 
         <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.session.end_date')} %>
 
-        <%= f.search_field :therapy_cont, {placeholder: t('activerecord.attributes.session.therapy')} %>
+        <%= f.search_field :therapy_patient_first_name_cont, {placeholder: t('activerecord.attributes.session.therapy')} %>
 
-        <%= f.search_field :act_cont, {placeholder: t('activerecord.attributes.session.act')} %>
+        <%= f.search_field :act_name_cont, {placeholder: t('activerecord.attributes.session.act')} %>
 
-        <%= f.search_field :practitioner_cont, {placeholder: t('activerecord.attributes.session.practitioner')} %>
+        <%= f.search_field :practitioner_first_name_cont, {placeholder: t('activerecord.attributes.session.practitioner')} %>
 
-        <%= f.search_field :health_place_cont, {placeholder: t('activerecord.attributes.session.health_place')} %>
+        <%= f.search_field :health_place_name_cont, {placeholder: t('activerecord.attributes.session.health_place')} %>
 
         <br>
         <br>
@@ -44,13 +44,13 @@
     
           <th><%= sort_link(@q, :end_date, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :therapy, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :therapy_patient_first_name, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :act, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :act_name, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :practitioner, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :practitioner_first_name, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :health_place, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :health_place_name, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
