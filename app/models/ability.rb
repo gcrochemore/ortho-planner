@@ -15,8 +15,7 @@ class Ability
     if user.has_role? :repository_manager
       can :manage, :office
       can :manage, :pathology
-      can :manage, :practioner_profession
-      can :manage, :office
+      can :manage, :practitioner_profession
       can :manage, :practitioner
       can :manage, :health_place
       can :manage, :health_place_type
@@ -28,7 +27,6 @@ class Ability
       can :crud, :therapy
       can :crud, :session
       can :crud, :waiting_list
-      can :read, :office
       can :read, :practitioner
       can :read, :health_place
     end  
@@ -38,7 +36,6 @@ class Ability
       can :read, :patient
       can :read, :therapy #si la therapy concerne un medecin du cabinet ou elle est rattachée 
       can :crud, :session #si la session concerne une therapy qui concerne un medecin du cabinet ou elle est rattachée 
-      can :read, :office
       can :read, :practitioner
     end   
     #
