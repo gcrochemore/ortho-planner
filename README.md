@@ -30,12 +30,19 @@ rails generate scaffold Pathology name:string
 
 rails generate scaffold Act name:string AMO:integer
 
-rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references health_place:references
+rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references health_place:references number_of_sessions:integer session_duration:integer
 
 rails generate scaffold session begin_date:datetime end_date:datetime therapy:references act:references practitioner:references health_place:references
 
 rails generate scaffold WaitingList patient:belongs_to office:references start_date:datetime end_date:datetime pathology:references comments:text
 
+rails generate scaffold interaction_type name:string glyphicon:string
+
+rails generate scaffold interaction_object name:string
+
+rails generate scaffold interaction patient:references interaction_type:references interaction_date:datetime comments:text
+
+rails generate scaffold absence patient:references begin_date:datetime end_date:datetime
 
 
 

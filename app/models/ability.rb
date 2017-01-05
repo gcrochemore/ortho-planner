@@ -19,6 +19,8 @@ class Ability
       can :manage, :practitioner
       can :manage, :health_place
       can :manage, :health_place_type
+      can :manage, :interaction_object
+      can :manage, :interaction_type
     end
 
     if user.has_role? :practitioner
@@ -26,6 +28,8 @@ class Ability
       can :crud, :patient
       can :crud, :therapy
       can :crud, :session
+      can :crud, :absence
+      can :crud, :interaction
       can :crud, :waiting_list
       can :read, :practitioner
       can :read, :health_place
@@ -37,7 +41,7 @@ class Ability
       can :read, :therapy #si la therapy concerne un medecin du cabinet ou elle est rattachée 
       can :crud, :session #si la session concerne une therapy qui concerne un medecin du cabinet ou elle est rattachée 
       can :read, :practitioner
-    end   
+    end 
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

@@ -27,6 +27,12 @@
             <% if can? :read, :act %>
               <li><%= link_to(t('.waiting_lists'), waiting_lists_path)  %> </li>
             <% end %>
+            <% if can? :read, :absence %>
+              <li><%= link_to(t('.absences'), absences_path)  %> </li>
+            <% end %>
+            <% if can? :read, :interaction %>
+              <li><%= link_to(t('.interactions'), interactions_path)  %> </li>
+            <% end %>
             </ul>
           </li>
         </ul>
@@ -52,6 +58,12 @@
             <% end %>
             <% if can? :read, :act %>
               <li><%= link_to(t('.acts'), acts_path)  %> </li>
+            <% end %>
+            <% if can? :read, :interaction_type %>
+              <li><%= link_to(t('.interaction_types'), interaction_types_path)  %> </li>
+            <% end %>
+            <% if can? :read, :interaction_object %>
+              <li><%= link_to(t('.interaction_objects'), interaction_objects_path)  %> </li>
             <% end %>
             </ul>
           </li>

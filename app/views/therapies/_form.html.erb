@@ -28,6 +28,16 @@
       <%= f.association :health_place, label: false, input_html: { class: "form-control" } %>
     </div>
 
+    <div class="form-group">
+      <label for="number_of_sessions"><%= f.label :number_of_sessions %></label>
+      <%= f.input :number_of_sessions, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="session_duration"><%= f.label :session_duration %></label>
+      <%= f.input :session_duration, label: false, input_html: { class: "form-control" } %>
+    </div>
+
   </div>
 
   <div class="form-actions">

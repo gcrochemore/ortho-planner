@@ -51,7 +51,7 @@ class TherapiesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def therapy_params
 
-      params.require(:therapy).permit(:practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id)
+      params.require(:therapy).permit(:practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id, :number_of_sessions, :session_duration)
 
     end
 end

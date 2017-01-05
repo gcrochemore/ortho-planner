@@ -1,5 +1,3 @@
-
-
 class HealthPlacesController < ApplicationController
   before_action :set_health_place, only: [:show, :edit, :update, :destroy]
   # GET /health_places

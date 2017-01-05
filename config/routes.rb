@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
   resources :patients, :offices, :practitioners, :practitioner_professions, 
             :users, :sessions, :therapies, :acts, :pathologies, :waiting_lists, 
-            :health_places, :health_place_types
+            :health_places, :health_place_types, :absences, :interactions, 
+            :interaction_objects, :interaction_types
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

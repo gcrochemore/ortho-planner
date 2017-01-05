@@ -1,0 +1,1 @@
+json.partial! "interaction_objects/interaction_object", interaction_object: @interaction_object

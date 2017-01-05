@@ -1,0 +1,77 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('.title') %><span class="badge"><%= @interactions.count %></span></h1>
+
+<div class="row">
+  <div class="col-md-2">
+    <legend class="filter-title"><%= t :filter_title %></legend>
+  </div>
+  <div class="col-md-3 btn-new-top">
+    <% if can? :create, Interaction %>
+      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :patient_cont, {placeholder: t('activerecord.attributes.interaction.patient')} %>
+
+        <%= f.search_field :interaction_type_cont, {placeholder: t('activerecord.attributes.interaction.interaction_type')} %>
+
+        <%= f.search_field :interaction_date_cont, {placeholder: t('activerecord.attributes.interaction.interaction_date')} %>
+
+        <%= f.search_field :comments_cont, {placeholder: t('activerecord.attributes.interaction.comments')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :patient, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :interaction_type, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :interaction_date, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :comments, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @interactions.each do |interaction| %>
+          <tr>
+    
+            <td><%= interaction.patient %></td>
+    
+            <td><%= interaction.interaction_type %></td>
+    
+            <td><%= interaction.interaction_date %></td>
+    
+            <td><%= interaction.comments %></td>
+    
+            <td>
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, interaction %>
+              <% if can? :edit, interaction %>
+                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_interaction_path(interaction) %>
+              <% end %>
+              <% if can? :destroy, interaction %>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, interaction, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

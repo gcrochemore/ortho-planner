@@ -25,5 +25,15 @@
   <%= @therapy.health_place %>
 </p>
 
+<p>
+  <strong>Number of sessions:</strong>
+  <%= @therapy.number_of_sessions %>
+</p>
+
+<p>
+  <strong>Session duration:</strong>
+  <%= @therapy.session_duration %>
+</p>
+
 <%= link_to 'Edit', edit_therapy_path(@therapy) %> |
 <%= link_to 'Back', therapies_path %>

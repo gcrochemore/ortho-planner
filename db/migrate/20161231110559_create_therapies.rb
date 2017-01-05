@@ -6,6 +6,8 @@ class CreateTherapies < ActiveRecord::Migration
       t.datetime :end_date
       t.references :patient, index: true, foreign_key: true
       t.references :health_place, index: true, foreign_key: true
+      t.integer :number_of_sessions
+      t.integer :session_duration
 
       t.timestamps null: false
     end

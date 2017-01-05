@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161231110559) do
+ActiveRecord::Schema.define(version: 20170105120206) do
+
+  create_table "absences", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.datetime "begin_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "absences", ["patient_id"], name: "index_absences_on_patient_id"
 
   create_table "acts", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +44,31 @@ ActiveRecord::Schema.define(version: 20161231110559) do
   end
 
   add_index "health_places", ["health_place_type_id"], name: "index_health_places_on_health_place_type_id"
+
+  create_table "interaction_objects", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "interaction_types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "glyphicon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "interactions", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "interaction_type_id"
+    t.datetime "interaction_date"
+    t.text     "comments"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "interactions", ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
+  add_index "interactions", ["patient_id"], name: "index_interactions_on_patient_id"
 
   create_table "offices", force: :cascade do |t|
     t.string   "name"
