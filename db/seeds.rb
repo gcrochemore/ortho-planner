@@ -121,6 +121,16 @@ act.save
 act = Act.create(name: "Séance de groupe (consulter la nomenclature pour détail)", AMO: 5)
 act.save
 
+health_place_type = HealthPlaceType.create(name: "Institut médico-éducatif")
+health_place_type.save
+health_place = HealthPlace.create(name: "IME de Arques-la-bataille", health_place_type: health_place_type)
+health_place.save
+
+health_place_type = HealthPlaceType.create(name: "Centre médico-psychologique")
+health_place_type.save
+health_place = HealthPlace.create(name: "CMP de Dieppe", health_place_type: health_place_type)
+health_place.save
+
 health_place_type = HealthPlaceType.create(name: "Cabinet d'orthophonie")
 health_place_type.save
 
@@ -138,3 +148,29 @@ practitioner_profession.save
 
 practitioner = Practitioner.create(first_name: "Perrine", last_name: "Clatz", health_place: health_place, practitioner_profession: practitioner_profession);
 practitioner.save 
+practitioner = Practitioner.create(first_name: "Jeanne", last_name: "Gazan", health_place: health_place, practitioner_profession: practitioner_profession);
+practitioner.save 
+practitioner = Practitioner.create(first_name: "Louise", last_name: "Leporcq", health_place: health_place, practitioner_profession: practitioner_profession);
+practitioner.save 
+practitioner = Practitioner.create(first_name: "Anaëlle", last_name: "Etienne", health_place: health_place, practitioner_profession: practitioner_profession);
+practitioner.save 
+practitioner = Practitioner.create(first_name: "Monique", last_name: "Briand", health_place: health_place, practitioner_profession: practitioner_profession);
+practitioner.save 
+practitioner = Practitioner.create(first_name: "Emmanuelle", last_name: "Laville", health_place: health_place, practitioner_profession: practitioner_profession);
+practitioner.save 
+
+interaction_type = InteractionType.create(name: "Appel téléphonique", glyphicon: "glyphicon glyphicon-earphone")
+interaction_type.save
+interaction_type = InteractionType.create(name: "Message vocal", glyphicon: "")
+interaction_type.save
+interaction_type = InteractionType.create(name: "E-mail", glyphicon: "")
+interaction_type.save
+interaction_type = InteractionType.create(name: "Sms", glyphicon: "glyphicon glyphicon-phone")
+interaction_type.save
+interaction_type = InteractionType.create(name: "Courier", glyphicon: "glyphicon glyphicon-envelope")
+interaction_type.save
+
+interaction_object = InteractionObject.create(name: "Inscrire sur la liste d'attente")
+interaction_type.save
+interaction_object = InteractionObject.create(name: "Relance inscription sur liste d'attente")
+interaction_type.save
