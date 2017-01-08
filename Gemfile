@@ -84,3 +84,5 @@ gem 'ransack'
 gem 'will_paginate'
 
 gem "select2-rails"
+
+gem "rails-erd"

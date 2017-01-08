@@ -81,3 +81,6 @@ heroku run rails console --app ortho-planner
 rake db:reset RAILS_ENV=development
 rake db:seed RAILS_ENV=development
 
+===== ERD
+
+bundle exec erd --filetype=dot

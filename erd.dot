@@ -1,0 +1,212 @@
+digraph OrthoPlanner {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial Bold";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "Arial" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "Arial" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+rankdir = "TB";
+label = "OrthoPlanner domain model\n\n";
+m_Absence [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Absence</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="begin_date">begin_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="end_date">end_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+</table>
+>];
+m_Act [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Act</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="AMO">AMO <font face="Arial Italic" color="grey60">float</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_HealthPlace [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">HealthPlace</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_HealthPlaceType [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">HealthPlaceType</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Interaction [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Interaction</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="comments">comments <font face="Arial Italic" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="interaction_date">interaction_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+</table>
+>];
+m_InteractionObject [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">InteractionObject</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_InteractionType [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">InteractionType</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="glyphicon">glyphicon <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Pathology [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Pathology</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Patient [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Patient</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="birth_date">birth_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="birth_place">birth_place <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="first_name">first_name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="last_name">last_name <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="phone_number">phone_number <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+</table>
+>];
+m_PatientsAct [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">PatientsAct</font></td></tr>
+</table>
+>];
+m_Practitioner [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Practitioner</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="birth_date">birth_date <font face="Arial Italic" color="grey60">date</font></td></tr>
+  <tr><td align="left" width="130" port="birth_place">birth_place <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="first_name">first_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="last_name">last_name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_PractitionerProfession [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">PractitionerProfession</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Role [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Role</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="resource_type">resource_type <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_Session [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Session</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="begin_date">begin_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="end_date">end_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+</table>
+>];
+m_Therapy [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">Therapy</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="begin_date">begin_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="end_date">end_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="number_of_sessions">number_of_sessions <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="session_duration">session_duration <font face="Arial Italic" color="grey60">integer</font></td></tr>
+</table>
+>];
+m_User [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="confirmation_sent_at">confirmation_sent_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="confirmation_token">confirmation_token <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="confirmed_at">confirmed_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="current_sign_in_at">current_sign_in_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="current_sign_in_ip">current_sign_in_ip <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial Italic" color="grey60">string ∗ U</font></td></tr>
+  <tr><td align="left" width="130" port="encrypted_password">encrypted_password <font face="Arial Italic" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_at">last_sign_in_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_ip">last_sign_in_ip <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="remember_created_at">remember_created_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_sent_at">reset_password_sent_at <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_token">reset_password_token <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="sign_in_count">sign_in_count <font face="Arial Italic" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="unconfirmed_email">unconfirmed_email <font face="Arial Italic" color="grey60">string</font></td></tr>
+</table>
+>];
+m_WaitingList [label = <<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial Bold" point-size="11">WaitingList</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="comments">comments <font face="Arial Italic" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="end_date">end_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="office_id">office_id <font face="Arial Italic" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="start_date">start_date <font face="Arial Italic" color="grey60">datetime</font></td></tr>
+</table>
+>];
+  m_Role -> m_User [arrowhead = "normal", arrowtail = "normal", weight = "2"];
+  m_Absence -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Act -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Interaction -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_InteractionObject -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_InteractionType -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Pathology -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Patient -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Practitioner -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_PractitionerProfession -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Session -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Therapy -> m_Role [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Patient -> m_Absence [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Act -> m_Patient [arrowhead = "normal", arrowtail = "normal", weight = "1"];
+  m_HealthPlaceType -> m_HealthPlace [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Patient -> m_Interaction [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_InteractionObject -> m_Interaction [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_InteractionType -> m_Interaction [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Pathology -> m_Patient [arrowhead = "normal", arrowtail = "normal", weight = "1"];
+  m_Patient -> m_Act [arrowhead = "normal", arrowtail = "normal", weight = "1"];
+  m_Patient -> m_Therapy [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Patient -> m_PatientsAct [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Act -> m_PatientsAct [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_PractitionerProfession -> m_Practitioner [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_HealthPlace -> m_Practitioner [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Practitioner -> m_Session [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Therapy -> m_Session [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Act -> m_Session [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_HealthPlace -> m_Session [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Practitioner -> m_Therapy [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_HealthPlace -> m_Therapy [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Patient -> m_WaitingList [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Pathology -> m_WaitingList [arrowhead = "normal", arrowtail = "none", weight = "1"];
+}
