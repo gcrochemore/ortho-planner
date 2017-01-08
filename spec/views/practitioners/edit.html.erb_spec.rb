@@ -6,7 +6,8 @@ RSpec.describe "practitioners/edit", type: :view do
       :first_name => "MyString",
       :last_name => "MyString",
       :birth_place => "MyString",
-      :practitioner_profession => nil
+      :practitioner_profession => nil,
+      :health_place => nil
     ))
   end
 
@@ -22,6 +23,8 @@ RSpec.describe "practitioners/edit", type: :view do
       assert_select "input#practitioner_birth_place[name=?]", "practitioner[birth_place]"
 
       assert_select "input#practitioner_practitioner_profession_id[name=?]", "practitioner[practitioner_profession_id]"
+
+      assert_select "input#practitioner_health_place_id[name=?]", "practitioner[health_place_id]"
     end
   end
 end

@@ -7,13 +7,15 @@ RSpec.describe "practitioners/index", type: :view do
         :first_name => "First Name",
         :last_name => "Last Name",
         :birth_place => "Birth Place",
-        :practitioner_profession => nil
+        :practitioner_profession => nil,
+        :health_place => nil
       ),
       Practitioner.create!(
         :first_name => "First Name",
         :last_name => "Last Name",
         :birth_place => "Birth Place",
-        :practitioner_profession => nil
+        :practitioner_profession => nil,
+        :health_place => nil
       )
     ])
   end
@@ -23,6 +25,7 @@ RSpec.describe "practitioners/index", type: :view do
     assert_select "tr>td", :text => "First Name".to_s, :count => 2
     assert_select "tr>td", :text => "Last Name".to_s, :count => 2
     assert_select "tr>td", :text => "Birth Place".to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
   end
 end

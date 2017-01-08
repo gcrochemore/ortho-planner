@@ -24,7 +24,7 @@ rails generate scaffold Patient last_name:string first_name:string birth_date:da
 
 rails generate scaffold PractitionerProfession name:string
 
-rails generate scaffold Practitioner first_name:string last_name:string birth_date:date birth_place:string practitioner_profession:references
+rails generate scaffold Practitioner first_name:string last_name:string birth_date:date birth_place:string practitioner_profession:references health_place:references
 
 rails generate scaffold Pathology name:string
 
@@ -69,6 +69,7 @@ heroku apps -> liste des apps
 heroku run rake db:migrate --app ortho-planner
 heroku logs --tail --app ortho-planner
 
+heroku run rake db:reset --app ortho-planner
 
 
 heroku run rails console --app ortho-planner
