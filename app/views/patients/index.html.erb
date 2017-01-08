@@ -78,6 +78,8 @@
               %>
             </td>
     
+            <td><%= patient.interactions.count %> interaction(s)</td>
+    
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, patient %>
               <% if can? :edit, patient %>

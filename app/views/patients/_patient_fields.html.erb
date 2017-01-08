@@ -3,19 +3,16 @@
     <div class="form-group col-xs-6">
       <label for="last_name"><%= form_patient.label :last_name %></label>
       <%= form_patient.input :last_name, label: false, input_html: { class: "form-control" } %>
-      <small id="last_nameHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group col-xs-6">
       <label for="first_name"><%= form_patient.label :first_name %></label>
       <%= form_patient.input :first_name, label: false, input_html: { class: "form-control" } %>
-      <small id="first_nameHelp" class="form-text text-muted"></small>
     </div>
   </div>
   <div class="row">
     <div class="field form-group col-xs-6">
       <label for="birth_date"><%= form_patient.label :birth_date %></label>
-      <%= form_patient.input :birth_date, label: false, input_html: { class: "datepicker" }, as: :string %>
-      <small id="birth_dateHelp" class="form-text text-muted"></small>
+      <%= form_patient.input :birth_date, label: false, as: :text, input_html: { class: "datepicker" } %>
     </div>
     <div class="form-group col-xs-6">
       <label for="birth_place"><%= form_patient.label :birth_place %></label>

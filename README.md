@@ -40,11 +40,11 @@ rails generate scaffold interaction_type name:string glyphicon:string
 
 rails generate scaffold interaction_object name:string
 
-rails generate scaffold interaction patient:references interaction_type:references interaction_date:datetime comments:text
+rails generate scaffold interaction patient:references interaction_object:references interaction_type:references interaction_date:datetime comments:text
 
 rails generate scaffold absence patient:references begin_date:datetime end_date:datetime
 
-rails generate scaffold patients_pathologies patient:references pathology:references 
+rails generate scaffold patients_acts patient:references act:references
 
 
 
