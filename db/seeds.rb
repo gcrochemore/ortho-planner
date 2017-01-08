@@ -120,3 +120,21 @@ act = Act.create(name: "Rééducation ou conservation du langage oral et de la p
 act.save
 act = Act.create(name: "Séance de groupe (consulter la nomenclature pour détail)", AMO: 5)
 act.save
+
+health_place_type = HealthPlaceType.create(name: "Cabinet d'orthophonie")
+health_place_type.save
+
+health_place = HealthPlace.create(name: "Cabinet de Tôtes", health_place_type: health_place_type)
+health_place.save
+
+practitioner_profession = PractitionerProfession.create(name: "Psychologue")
+practitioner_profession.save
+practitioner_profession = PractitionerProfession.create(name: "Médecin")
+practitioner_profession.save
+practitioner_profession = PractitionerProfession.create(name: "Infirmière")
+practitioner_profession.save
+practitioner_profession = PractitionerProfession.create(name: "Orthophoniste")
+practitioner_profession.save
+
+practitioner = Practitioner.create(first_name: "Perrine", last_name: "Clatz", health_place: health_place, practitioner_profession: practitioner_profession);
+practitioner.save 

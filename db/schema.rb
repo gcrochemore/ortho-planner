@@ -70,12 +70,6 @@ ActiveRecord::Schema.define(version: 20170105120206) do
   add_index "interactions", ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
   add_index "interactions", ["patient_id"], name: "index_interactions_on_patient_id"
 
-  create_table "offices", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "pathologies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -104,10 +98,12 @@ ActiveRecord::Schema.define(version: 20170105120206) do
     t.date     "birth_date"
     t.string   "birth_place"
     t.integer  "practitioner_profession_id"
+    t.integer  "health_place_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "practitioners", ["health_place_id"], name: "index_practitioners_on_health_place_id"
   add_index "practitioners", ["practitioner_profession_id"], name: "index_practitioners_on_practitioner_profession_id"
 
   create_table "roles", force: :cascade do |t|
@@ -143,8 +139,10 @@ ActiveRecord::Schema.define(version: 20170105120206) do
     t.datetime "end_date"
     t.integer  "patient_id"
     t.integer  "health_place_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "number_of_sessions"
+    t.integer  "session_duration"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "therapies", ["health_place_id"], name: "index_therapies_on_health_place_id"
