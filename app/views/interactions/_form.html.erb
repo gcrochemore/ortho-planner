@@ -9,6 +9,11 @@
     </div>
 
     <div class="form-group">
+      <label for="interaction_object"><%= f.label :interaction_object %></label>
+      <%= f.association :interaction_object, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
       <label for="interaction_type"><%= f.label :interaction_type %></label>
       <%= f.association :interaction_type, label: false, input_html: { class: "form-control" } %>
     </div>

@@ -19,6 +19,8 @@
 
         <%= f.search_field :patient_first_name_cont, {placeholder: t('activerecord.attributes.interaction.patient')} %>
 
+        <%= f.search_field :interaction_object_name_cont, {placeholder: t('activerecord.attributes.interaction.interaction_type')} %>
+
         <%= f.search_field :interaction_type_name_cont, {placeholder: t('activerecord.attributes.interaction.interaction_type')} %>
 
         <%= f.search_field :interaction_date_cont, {placeholder: t('activerecord.attributes.interaction.interaction_date')} %>
@@ -38,6 +40,8 @@
     
           <th><%= sort_link(@q, :patient_first_name, default_order: :asc) %></th>
     
+          <th><%= sort_link(@q, :interaction_object_name, default_order: :asc) %></th>
+    
           <th><%= sort_link(@q, :interaction_type_name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :interaction_date, default_order: :asc) %></th>
@@ -53,6 +57,8 @@
           <tr>
     
             <td><%= interaction.patient %></td>
+    
+            <td><%= interaction.interaction_object %></td>
     
             <td><%= interaction.interaction_type %></td>
     
@@ -73,5 +79,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= will_paginate @interactions %>
   </div>
 </div>

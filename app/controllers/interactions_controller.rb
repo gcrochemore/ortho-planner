@@ -4,7 +4,7 @@ class InteractionsController < ApplicationController
   # GET /interactions
   def index
     @q = Interaction.ransack(params[:q])
-    @interactions = @q.result
+    @interactions = @q.result.page(params[:page])
   end
   # GET /interactions/1
   def show
@@ -51,7 +51,7 @@ class InteractionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def interaction_params
 
-      params.require(:interaction).permit(:patient_id, :interaction_type_id, :interaction_date, :comments)
+      params.require(:interaction).permit(:patient_id, :interaction_object_id, :interaction_type_id, :interaction_date, :comments)
 
     end
 end

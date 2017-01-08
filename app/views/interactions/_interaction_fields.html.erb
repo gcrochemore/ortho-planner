@@ -1,0 +1,34 @@
+ <div class="nested-fields row">
+  <%= f.association :patient, label: false, input_html: { class: "form-control" }, as: :hidden %>
+
+  <div class="form-group col-xs-3">
+    <label for="interaction_type"><%= f.label :interaction_type %></label>
+    <%= f.association :interaction_type, label: false, input_html: { class: "form-control" } %>
+  </div>
+
+  <div class="form-group col-xs-3">
+    <label for="interaction_object"><%= f.label :interaction_object %></label>
+    <%= f.association :interaction_object, label: false, input_html: { class: "form-control" } %>
+  </div>
+
+  <div class="form-group col-xs-3">
+    <label for="interaction_date"><%= f.label :interaction_date %></label>
+    <%= f.text_field :interaction_date, label: false, class: "datepicker" %>
+  </div>
+
+  <div class="form-group col-xs-2">
+    <label for="comments"><%= f.label :comments %></label>
+    <%= f.input :comments, label: false, input_html: { class: "form-control" } %>
+  </div>
+
+  <div class="form-group col-xs-1">
+    <%= link_to_remove_association '<i class="glyphicon glyphicon-remove"></i>'.html_safe, f %>
+  </div>
+</div>
+<script type="text/javascript">
+  $('select').select2();
+  $('.datepicker').datepicker({
+    format: "dd/mm/yyyy",
+    autoclose: true
+  });
+</script>
