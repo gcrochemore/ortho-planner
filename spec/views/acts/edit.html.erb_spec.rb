@@ -4,7 +4,7 @@ RSpec.describe "acts/edit", type: :view do
   before(:each) do
     @act = assign(:act, Act.create!(
       :name => "MyString",
-      :AMO => 1
+      :AMO => 1.5
     ))
   end
 

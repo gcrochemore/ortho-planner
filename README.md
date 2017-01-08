@@ -28,7 +28,7 @@ rails generate scaffold Practitioner first_name:string last_name:string birth_da
 
 rails generate scaffold Pathology name:string
 
-rails generate scaffold Act name:string AMO:integer
+rails generate scaffold Act name:string AMO:float
 
 rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references health_place:references number_of_sessions:integer session_duration:integer
 

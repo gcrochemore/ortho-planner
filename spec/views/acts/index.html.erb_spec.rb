@@ -5,11 +5,11 @@ RSpec.describe "acts/index", type: :view do
     assign(:acts, [
       Act.create!(
         :name => "Name",
-        :AMO => 2
+        :AMO => 2.5
       ),
       Act.create!(
         :name => "Name",
-        :AMO => 2
+        :AMO => 2.5
       )
     ])
   end
@@ -17,6 +17,6 @@ RSpec.describe "acts/index", type: :view do
   it "renders a list of acts" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
+    assert_select "tr>td", :text => 2.5.to_s, :count => 2
   end
 end

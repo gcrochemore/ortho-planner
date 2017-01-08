@@ -80,3 +80,5 @@ gem 'rolify'
 gem 'cocoon' #nested form
 
 gem 'ransack'
+
+gem 'will_paginate'

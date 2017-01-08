@@ -8,7 +8,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>
   def index
     @q = <%= class_name %>.ransack(params[:q])
-    @<%= plural_table_name %> = @q.result
+    @<%= plural_table_name %> = @q.result.page(params[:page])
   end
   # GET <%= route_url %>/1
   def show

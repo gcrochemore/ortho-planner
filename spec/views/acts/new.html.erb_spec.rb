@@ -4,7 +4,7 @@ RSpec.describe "acts/new", type: :view do
   before(:each) do
     assign(:act, Act.new(
       :name => "MyString",
-      :AMO => 1
+      :AMO => 1.5
     ))
   end
 

@@ -4,7 +4,7 @@ class ActsController < ApplicationController
   # GET /acts
   def index
     @q = Act.ransack(params[:q])
-    @acts = @q.result
+    @acts = @q.result.page(params[:page])
   end
   # GET /acts/1
   def show
