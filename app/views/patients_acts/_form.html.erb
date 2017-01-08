@@ -1,0 +1,21 @@
+<%= simple_form_for(@patients_act) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <div class="form-group">
+      <label for="patient"><%= f.label :patient %></label>
+      <%= f.association :patient, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="act"><%= f.label :act %></label>
+      <%= f.association :act, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

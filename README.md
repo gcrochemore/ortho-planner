@@ -44,6 +44,7 @@ rails generate scaffold interaction patient:references interaction_type:referenc
 
 rails generate scaffold absence patient:references begin_date:datetime end_date:datetime
 
+rails generate scaffold patients_pathologies patient:references pathology:references 
 
 
 
