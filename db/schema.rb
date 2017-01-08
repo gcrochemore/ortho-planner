@@ -60,13 +60,15 @@ ActiveRecord::Schema.define(version: 20170108174519) do
 
   create_table "interactions", force: :cascade do |t|
     t.integer  "patient_id"
+    t.integer  "interaction_object_id"
     t.integer  "interaction_type_id"
     t.datetime "interaction_date"
     t.text     "comments"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
+  add_index "interactions", ["interaction_object_id"], name: "index_interactions_on_interaction_object_id"
   add_index "interactions", ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
   add_index "interactions", ["patient_id"], name: "index_interactions_on_patient_id"
 
