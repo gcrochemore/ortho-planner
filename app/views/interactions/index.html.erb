@@ -17,9 +17,9 @@
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
-        <%= f.search_field :patient_cont, {placeholder: t('activerecord.attributes.interaction.patient')} %>
+        <%= f.search_field :patient_first_name_cont, {placeholder: t('activerecord.attributes.interaction.patient')} %>
 
-        <%= f.search_field :interaction_type_cont, {placeholder: t('activerecord.attributes.interaction.interaction_type')} %>
+        <%= f.search_field :interaction_type_name_cont, {placeholder: t('activerecord.attributes.interaction.interaction_type')} %>
 
         <%= f.search_field :interaction_date_cont, {placeholder: t('activerecord.attributes.interaction.interaction_date')} %>
 
@@ -36,9 +36,9 @@
       <thead>
         <tr>
     
-          <th><%= sort_link(@q, :patient, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :patient_first_name, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :interaction_type, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :interaction_type_name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :interaction_date, default_order: :asc) %></th>
     

@@ -7,4 +7,8 @@ class Patient < ActiveRecord::Base
   def to_label
     "#{self.first_name} #{self.last_name}"
   end  
+
+  def to_s
+  	self.to_label
+  end	
 end
