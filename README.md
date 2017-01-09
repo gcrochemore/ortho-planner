@@ -83,6 +83,34 @@ Supprimer Gemfile.lock
 	rake db:reset RAILS_ENV=development
 	rake db:seed RAILS_ENV=development
 
+	rake db:seed:dump FILE=db/seeds/db_prod.rb
+
 ===== ERD
 
 	bundle exec erd --filetype=dot
+
+===== TODO
+
+* Créer table année_scolaire
+
+	rails generate scaffold school_year begin_date:date end_date:date
+
+* Créer table niveau_scolaire
+
+	rails generate scaffold school_level name:string
+
+* Créer table type_etablissement_scolaire
+
+	rails generate scaffold school_type name:string
+
+* Créer table établissement_scolaire
+
+	rails generate scaffold school name:string school_type:references
+
+* Créer table parcours_scolaire (année_scolaire, niveau_scolaire, etablissement_scolaire, patient)
+
+	rails generate scaffold schooling patient:references school:references school_level:references school_year:references
+
+* Ajouter boolean prioritaire sur patient
+
+	rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string priority:boolean
