@@ -1,0 +1,1 @@
+json.array! @school_levels, partial: 'school_levels/school_level', as: :school_level

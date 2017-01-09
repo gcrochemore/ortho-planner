@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @schooling.patient %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= @schooling.school %>
+</p>
+
+<p>
+  <strong>School level:</strong>
+  <%= @schooling.school_level %>
+</p>
+
+<p>
+  <strong>School year:</strong>
+  <%= @schooling.school_year %>
+</p>
+
+<%= link_to 'Edit', edit_schooling_path(@schooling) %> |
+<%= link_to 'Back', schoolings_path %>

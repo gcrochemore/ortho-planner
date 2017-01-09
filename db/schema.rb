@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170108174519) do
+ActiveRecord::Schema.define(version: 20170108174526) do
 
   create_table "absences", force: :cascade do |t|
     t.integer  "patient_id"
@@ -29,6 +29,22 @@ ActiveRecord::Schema.define(version: 20170108174519) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "street_number"
+    t.string   "street_name"
+    t.string   "postal_code"
+    t.string   "city"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
 
   create_table "health_place_types", force: :cascade do |t|
     t.string   "name"
@@ -128,6 +144,48 @@ ActiveRecord::Schema.define(version: 20170108174519) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "school_levels", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "school_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "school_years", force: :cascade do |t|
+    t.date     "begin_date"
+    t.date     "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schoolings", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "school_id"
+    t.integer  "school_level_id"
+    t.integer  "school_year_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "schoolings", ["patient_id"], name: "index_schoolings_on_patient_id"
+  add_index "schoolings", ["school_id"], name: "index_schoolings_on_school_id"
+  add_index "schoolings", ["school_level_id"], name: "index_schoolings_on_school_level_id"
+  add_index "schoolings", ["school_year_id"], name: "index_schoolings_on_school_year_id"
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "school_type_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "schools", ["school_type_id"], name: "index_schools_on_school_type_id"
 
   create_table "sessions", force: :cascade do |t|
     t.datetime "begin_date"

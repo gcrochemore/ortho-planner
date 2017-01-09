@@ -1,0 +1,21 @@
+<%= simple_form_for(@school_year) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <div class="form-group">
+      <label for="begin_date"><%= f.label :begin_date %></label>
+      <%= f.input :begin_date, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="end_date"><%= f.label :end_date %></label>
+      <%= f.input :end_date, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

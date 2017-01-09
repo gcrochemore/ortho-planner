@@ -1,0 +1,1 @@
+json.partial! "school_levels/school_level", school_level: @school_level

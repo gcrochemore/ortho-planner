@@ -1,0 +1,52 @@
+ <div class="nested-fields row">
+
+    <div class="form-group col-xs-12">
+      <label for="name"><%= f.label :name %></label>
+      <%= f.input :name, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group col-xs-3">
+      <label for="street_number"><%= f.label :street_number %></label>
+      <%= f.input :street_number, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group col-xs-9">
+      <label for="street_name"><%= f.label :street_name %></label>
+      <%= f.input :street_name, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group col-xs-4">
+      <label for="postal_code"><%= f.label :postal_code %></label>
+      <%= f.input :postal_code, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group col-xs-8">
+      <label for="city"><%= f.label :city %></label>
+      <%= f.input :city, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group col-xs-6">
+      <label for="latitude"><%= f.label :latitude %></label>
+      <%= f.input :latitude, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group col-xs-6">
+      <label for="longitude"><%= f.label :longitude %></label>
+      <%= f.input :longitude, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <% if 1==0 %>
+
+      <div class="form-group">
+        <label for="addressable"><%= f.label :addressable %></label>
+        <%= f.association :addressable, label: false, input_html: { class: "form-control" }, collection: Patient.all %>
+      </div>
+
+    <% end %>
+  </div>
+
+<%#
+  <div class="form-group col-xs-1">
+    <%= link_to_remove_association '<i class="glyphicon glyphicon-remove"></i>'.html_safe, f %>
+  <%# </div> %>
+ 
