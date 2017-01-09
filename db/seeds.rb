@@ -136,6 +136,8 @@ health_place_type.save
 
 health_place = HealthPlace.create(name: "Cabinet de Tôtes", health_place_type: health_place_type)
 health_place.save
+address = Address.create(name: "Cabinet de Tôtes", addressable: health_place)
+address.save
 
 practitioner_profession = PractitionerProfession.create(name: "Psychologue")
 practitioner_profession.save
@@ -174,3 +176,90 @@ interaction_object = InteractionObject.create(name: "Inscrire sur la liste d'att
 interaction_type.save
 interaction_object = InteractionObject.create(name: "Relance inscription sur liste d'attente")
 interaction_type.save
+
+
+school_level = SchoolLevel.create(name: "PS")
+school_level.save
+school_level = SchoolLevel.create(name: "MS")
+school_level.save
+school_level = SchoolLevel.create(name: "GS")
+school_level.save
+school_level = SchoolLevel.create(name: "CP")
+school_level.save
+school_level = SchoolLevel.create(name: "CE1")
+school_level.save
+school_level = SchoolLevel.create(name: "CE2")
+school_level.save
+school_level = SchoolLevel.create(name: "CM1")
+school_level.save
+school_level = SchoolLevel.create(name: "CM2")
+school_level.save
+school_level = SchoolLevel.create(name: "6ième")
+school_level.save
+school_level = SchoolLevel.create(name: "5ième")
+school_level.save
+school_level = SchoolLevel.create(name: "4ième")
+school_level.save
+school_level = SchoolLevel.create(name: "3ième")
+school_level.save
+school_level = SchoolLevel.create(name: "2nd")
+school_level.save
+school_level = SchoolLevel.create(name: "1ière")
+school_level.save
+school_level = SchoolLevel.create(name: "Terminale")
+school_level.save
+ 
+school_type = SchoolType.create(name: "Ecole maternelle")
+school_type.save
+school_type = SchoolType.create(name: "Ecole élémentaire")
+school_type.save
+school_type = SchoolType.create(name: "Collège")
+school_type.save
+
+school = School.create(name: "Collège de Luneray", school_type: school_type)
+school.save
+
+school_type = SchoolType.create(name: "Lycée")
+school_type.save
+school_type = SchoolType.create(name: "Centre de fomation d'apprentis")
+school_type.save
+school_type = SchoolType.create(name: "Université")
+school_type.save
+school_type = SchoolType.create(name: "Institut universitaire")
+school_type.save
+school_type = SchoolType.create(name: "Ecole d'Ingénieur")
+school_type.save
+school_type = SchoolType.create(name: "Ecole de Gestion et de Commerce")
+school_type.save
+school_type = SchoolType.create(name: "Ecole d'art")
+school_type.save
+school_type = SchoolType.create(name: "Formation continue")
+school_type.save
+school_type = SchoolType.create(name: "Autre établissement d'enseignement supérieur")
+school_type.save
+school_type = SchoolType.create(name: "Ecole sanitaire et sociale")
+school_type.save
+school_type = SchoolType.create(name: "Enseignement adapté")
+school_type.save
+school_type = SchoolType.create(name: "Ecole maritime")
+school_type.save
+school_type = SchoolType.create(name: "Enseignement à distance")
+school_type.save
+
+school_year = SchoolYear.create(begin_date: "01/09/2016", end_date: "01/07/2017")
+school_year.save
+school_year = SchoolYear.create(begin_date: "01/09/2015", end_date: "01/07/2016")
+school_year.save
+school_year = SchoolYear.create(begin_date: "01/09/2014", end_date: "01/07/2015")
+school_year.save
+school_year = SchoolYear.create(begin_date: "01/09/2013", end_date: "01/07/2014")
+school_year.save
+school_year = SchoolYear.create(begin_date: "01/09/2012", end_date: "01/07/2013")
+school_year.save
+school_year = SchoolYear.create(begin_date: "01/09/2011", end_date: "01/07/2012")
+school_year.save
+school_year = SchoolYear.create(begin_date: "01/09/2010", end_date: "01/07/2011")
+school_year.save
+school_year = SchoolYear.create(begin_date: "01/09/2009", end_date: "01/07/2010")
+school_year.save
+
