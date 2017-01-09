@@ -49,6 +49,17 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold patients_acts patient:references act:references
 
+	rails generate scaffold school_year begin_date:date end_date:date
+
+	rails generate scaffold school_level name:string
+
+	rails generate scaffold school_type name:string
+
+	rails generate scaffold school name:string school_type:references
+
+	rails generate scaffold schooling patient:references school:references school_level:references school_year:references
+
+	rails generate scaffold address name:string street_number:integer street_name:string postal_code:string city:string latitude:float longitude:float addressable:references{polymorphic}
 
 
 	rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime
@@ -65,6 +76,9 @@ Supprimer Gemfile.lock
 	docker-compose up -d
 	docker exec orthoplanner_ortho-planner_1 rake db:migrate
 
+	docker logs -f orthoplanner_ortho-planner_1
+
+	docker exec -it orthoplanner_ortho-planner_1 rails c
 
 ===== heroku
 
@@ -91,26 +105,22 @@ Supprimer Gemfile.lock
 
 ===== TODO
 
-* Créer table année_scolaire
-
-	rails generate scaffold school_year begin_date:date end_date:date
-
-* Créer table niveau_scolaire
-
-	rails generate scaffold school_level name:string
-
-* Créer table type_etablissement_scolaire
-
-	rails generate scaffold school_type name:string
-
-* Créer table établissement_scolaire
-
-	rails generate scaffold school name:string school_type:references
-
-* Créer table parcours_scolaire (année_scolaire, niveau_scolaire, etablissement_scolaire, patient)
-
-	rails generate scaffold schooling patient:references school:references school_level:references school_year:references
-
 * Ajouter boolean prioritaire sur patient
 
 	rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string priority:boolean
+
+* Ajouter un type d'adresse
+
+	rails generate scaffold address_type name:string
+
+* Ajouter un type d'adresse sur une adresse
+
+	rails generate scaffold address name:string street_number:integer street_name:string postal_code:string city:string latitude:float longitude:float addressable:references{polymorphic} address_type:references
+
+* Ajouter un type de numéro de téléphone
+
+	rails generate scaffold phone_number_type name:string
+
+* Ajouter un numéro de téléphone
+
+	rails generate scaffold phone_number phonable:references{polymorphic} phone_number_type:references
