@@ -3,57 +3,62 @@
 
   <div class="form-inputs row">
 
-    <div class="form-group col-xs-4">
-      <%= f.input :last_name, label: false, input_html: { class: "form-control" }, placeholder: t('.last_name.placeholder') %>
-    </div>
+    <div class="patient col-xs-6 row">
+      <div class="form-group col-xs-12">
+        <%= f.input :last_name, label: false, input_html: { class: "form-control-sm" }, placeholder: t('.last_name.placeholder') %>
+      </div>
 
-    <div class="form-group col-xs-4">
-      <%= f.input :first_name, label: false, input_html: { class: "form-control" }, placeholder: t('.first_name.placeholder') %>
-    </div>
+      <div class="form-group col-xs-12">
+        <%= f.input :first_name, label: false, input_html: { class: "form-control-sm" }, placeholder: t('.first_name.placeholder') %>
+      </div>
 
-    <div class="form-group col-xs-4">
-      <label for="birth_date"><%= f.label :birth_date %></label>
-      <%= f.text_field :birth_date, label: false, label: false, class: "datepicker" %>
-    </div>
+      <div class="form-group col-xs-12">
+        <label for="phone_number"><%= f.label :phone_number %></label>
+        <%= f.input :phone_number, label: false, input_html: { class: "form-control" } %>
+      </div>
 
-    <div class="form-group col-xs-4">
-      <label for="birth_place"><%= f.label :birth_place %></label>
-      <%= f.input :birth_place, label: false, input_html: { class: "form-control" } %>
-    </div>
+      <div class="form-group col-xs-6">
+        <label for="birth_date"><%= f.label :birth_date %></label>
+        <%= f.text_field :birth_date, label: false, class: "datepicker" %>
+      </div>
 
-    <div class="form-group col-xs-4">
-      <label for="phone_number"><%= f.label :phone_number %></label>
-      <%= f.input :phone_number, label: false, input_html: { class: "form-control" } %>
-    </div>
-
-    <div class="form-group">
-      <label for="acts"><%= f.label :acts %></label>
-      <%= f.association :acts, label: false, input_html: { class: "form-control" } %>
-    </div>
-
-    <div class="form-group">
-      <label for="interactions"><%= f.label :interactions %></label>      
-      <div id='interactions'>
-        <%= f.simple_fields_for :interactions, @patient.interactions.each do |interaction| %>
-          <%= render 'interactions/interaction_fields', f: interaction %>
-        <% end %> 
-        <div class='links'>
-          <%= link_to_add_association t(:add_interaction), f, :interactions, partial: 'interactions/interaction_fields' %>
-        </div>
+      <div class="form-group col-xs-6">
+        <label for="birth_place"><%= f.label :birth_place %></label>
+        <%= f.input :birth_place, label: false, input_html: { class: "form-control" } %>
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="therapies"><%= f.label :therapies %></label>      
-      <div id='interactions'>
-        <%= f.simple_fields_for :therapies do |therapy| %>
-          <%= render 'therapies/therapy_fields', f: therapy %>
-        <% end %> 
-        <div class='links'>
-          <%= link_to_add_association t(:add_therapy), f, :therapies, partial: 'therapies/therapy_fields' %>
+    <div class="patient_informations col-xs-6 row">
+
+      <div class="form-group col-xs-12">
+        <label for="acts"><%= f.label :acts %></label>
+        <%= f.association :acts, label: false, input_html: { class: "form-control", witdh: "100%" } %>
+      </div>
+
+      <div class="form-group col-xs-12">
+        <label for="interactions"><%= f.label :interactions %></label>      
+        <div id='interactions'>
+          <%= f.simple_fields_for :interactions, @patient.interactions.each do |interaction| %>
+            <%= render 'interactions/interaction_fields', f: interaction %>
+          <% end %> 
+          <div class='links'>
+            <%= link_to_add_association t(:add_interaction), f, :interactions, partial: 'interactions/interaction_fields' %>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div class="form-group col-xs-12">
+        <label for="therapies"><%= f.label :therapies %></label>      
+        <div id='interactions'>
+          <%= f.simple_fields_for :therapies do |therapy| %>
+            <%= render 'therapies/therapy_fields', f: therapy %>
+          <% end %> 
+          <div class='links'>
+            <%= link_to_add_association t(:add_therapy), f, :therapies, partial: 'therapies/therapy_fields' %>
+          </div>
+        </div>
+      </div>
+    </div>  
   </div>  
 
   <div class="form-actions">

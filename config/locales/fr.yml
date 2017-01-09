@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  add_interaction: Ajouter un contact
+  add_therapy: Ajouter une rééducation
   filter_title: Filtres
   hello: "Hello world"
   new: Nouveau
@@ -40,11 +42,14 @@ fr:
       health_place_type:
         name: Type
       patient:
+        acts: Troubles
         birth_date: 'Date de naissance'
         birth_place: 'Lieu de naissance'
         first_name: 'Prénom'
+        interactions: Contacts
         last_name: 'Nom'
         phone_number: 'Numéro de téléphone'
+        therapies: Rééducations
       pathology:
         name: Nom  
       practitioner:
@@ -53,13 +58,13 @@ fr:
         first_name: Prénom
         last_name: Nom
         practitioner_profession: Type de professionnel de santé
+        therapies: Rééducations
       session:
         act: Acte
         begin_date: Date de début
         end_date: Date de fin
         health_place: Centre de santé
         practitioner: Professionnel de santé
-        therapy: Rééducation
       therapy:
         begin_date: Date de début
         end_date: Date de fin
@@ -106,11 +111,15 @@ fr:
       new_button: 'Créer une pathologie'
       title: "Pathologies"
   patients:
+    edit:
+      title: Modifier un patient
     form:
       first_name:
         placeholder: Prénom
       last_name:
         placeholder: Nom
+    new:
+      title: Créer un patient
     index: 
       name: Nom
       new_button: 'Créer un patient'
