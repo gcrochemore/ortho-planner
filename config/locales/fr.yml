@@ -41,6 +41,11 @@ fr:
         name: Centre de santé
       health_place_type:
         name: Type
+      interaction:
+        comments: Commentaires
+        interaction_date: "Date" 
+        interaction_object: "Objet" 
+        interaction_type: "Type"  
       patient:
         acts: Troubles
         birth_date: 'Date de naissance'
@@ -114,8 +119,10 @@ fr:
     edit:
       title: Modifier un patient
     form:
+      coordonnees: Coordonnées
       first_name:
         placeholder: Prénom
+      informations: Informations
       last_name:
         placeholder: Nom
     new:

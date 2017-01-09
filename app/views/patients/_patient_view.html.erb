@@ -1,0 +1,12 @@
+<div>
+  <%= patient.last_name %> <%= patient.first_name %> né le <%= patient.birth_date %> à <%= patient.birth_place %><br>
+  <%= patient.phone_number %><br>
+  <h3>Troubles</h3>
+  <% 
+    patient.acts.each do |act| %>
+      <%= act.to_s %><br>
+    <% end
+  %>
+  <h3>Interactions</h3>
+  <%= patient.interactions.count %> interaction(s)
+</div>

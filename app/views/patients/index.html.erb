@@ -60,25 +60,9 @@
         <% @patients.each do |patient| %>
           <tr>
     
-            <td><%= patient.last_name %></td>
-    
-            <td><%= patient.first_name %></td>
-    
-            <td><%= patient.birth_date %></td>
-    
-            <td><%= patient.birth_place %></td>
-    
-            <td><%= patient.phone_number %></td>
-    
-            <td>
-              <% 
-                patient.acts.each do |act| %>
-                  <%= act.to_s %><br>
-                <% end
-              %>
+            <td colspan="6">
+            <%= render 'patient_view', patient: patient %>
             </td>
-    
-            <td><%= patient.interactions.count %> interaction(s)</td>
     
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, patient %>
