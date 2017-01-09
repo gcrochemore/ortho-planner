@@ -8,6 +8,15 @@
           <h3 class="panel-title"><%= t('.coordonnees') %></h3>
         </div>
         <div class="panel-body">
+
+          <div class="form-group">
+            <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !@patient.is_male %>
+            <label for="is_male"><%= t(:female) %></label>
+            
+            <%= f.radio_button :is_male, "1", input_html: { class: "form-control" }, checked: @patient.is_male %>
+            <label for="is_male"><%= t(:male) %></label>
+          </div>
+
           <div class="form-group col-xs-12">
             <%= f.input :last_name, label: false, input_html: { class: "form-control-sm" }, placeholder: t('.last_name.placeholder') %>
           </div>
@@ -30,6 +39,19 @@
             <label for="birth_place"><%= f.label :birth_place %></label>
             <%= f.input :birth_place, label: false, input_html: { class: "form-control" } %>
           </div>
+
+          <div class="form-group col-xs-12">
+            <label for="addresses"><%= f.label :addresses %></label>      
+            <div id='addresses'>
+              <%= f.simple_fields_for :addresses do |f| %>
+                <%= render 'addresses/address_fields', f: f %>
+              <% end %> 
+              <div class='links'>
+                <%= link_to_add_association t(:add_address), f, :addresses, partial: 'addresses/address_fields' %>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>  
@@ -44,10 +66,15 @@
             <%= f.association :acts, label: false, input_html: { class: "form-control", witdh: "100%" } %>
           </div>
 
+          <div class="form-group">
+            <label for="comments"><%= f.label :comments %></label>
+            <%= f.input :comments, label: false, input_html: { class: "form-control" } %>
+          </div>
+
           <div class="form-group col-xs-12">
             <label for="interactions"><%= f.label :interactions %></label>      
             <div id='interactions'>
-              <%= f.simple_fields_for :interactions, @patient.interactions.each do |interaction| %>
+              <%= f.simple_fields_for :interactions do |interaction| %>
                 <%= render 'interactions/interaction_fields', f: interaction %>
               <% end %> 
               <div class='links'>
@@ -67,21 +94,23 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="form-group col-xs-12">
-          <label for="addresses"><%= f.label :addresses %></label>      
-          <div id='addresses'>
-            <%= f.simple_fields_for :addresses do |f| %>
-              <%= render 'addresses/address_fields', f: f %>
-            <% end %> 
-            <div class='links'>
-              <%= link_to_add_association t(:add_address), f, :addresses, partial: 'addresses/address_fields' %>
+          <div class="form-group col-xs-12">
+            <label for="schoolings"><%= f.label :schoolings %></label>      
+            <div id='schoolings'>
+              <%= f.simple_fields_for :schoolings do |schooling| %>
+                <%= render 'schoolings/schooling_fields', f: schooling %>
+              <% end %> 
+              <div class='links'>
+                <%= link_to_add_association t(:add_schooling), f, :schoolings, partial: 'schoolings/schooling_fields' %>
+              </div>
             </div>
           </div>
+
         </div>
+
       </div>
     </div> 
+  </div> 
 
   <div class="form-actions row">
     <%= f.button :submit %>

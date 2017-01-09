@@ -5,8 +5,11 @@ RSpec.describe "patients/show", type: :view do
     @patient = assign(:patient, Patient.create!(
       :last_name => "Last Name",
       :first_name => "First Name",
+      :is_male => false,
       :birth_place => "Birth Place",
-      :phone_number => "Phone Number"
+      :phone_number => "Phone Number",
+      :priority => false,
+      :comments => "MyText"
     ))
   end
 
@@ -14,7 +17,10 @@ RSpec.describe "patients/show", type: :view do
     render
     expect(rendered).to match(/Last Name/)
     expect(rendered).to match(/First Name/)
+    expect(rendered).to match(/false/)
     expect(rendered).to match(/Birth Place/)
     expect(rendered).to match(/Phone Number/)
+    expect(rendered).to match(/false/)
+    expect(rendered).to match(/MyText/)
   end
 end

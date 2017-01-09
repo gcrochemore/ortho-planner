@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Is male:</strong>
+  <%= @patient.is_male %>
+</p>
+
+<p>
   <strong>Birth date:</strong>
   <%= @patient.birth_date %>
 </p>
@@ -23,6 +28,16 @@
 <p>
   <strong>Phone number:</strong>
   <%= @patient.phone_number %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @patient.priority %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @patient.comments %>
 </p>
 
 <%= link_to 'Edit', edit_patient_path(@patient) %> |

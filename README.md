@@ -107,7 +107,7 @@ Supprimer Gemfile.lock
 
 * Ajouter boolean prioritaire sur patient
 
-	rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string priority:boolean
+	rails generate scaffold Patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string phone_number:string priority:boolean comments:text
 
 * Ajouter un type d'adresse
 

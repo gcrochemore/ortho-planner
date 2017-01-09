@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
   # GET /patients
   def index
     @q = Patient.ransack(params[:q])
-    @patients = @q.result
+    @patients = @q.result.page(params[:page])
   end
   # GET /patients/1
   def show
@@ -45,13 +45,19 @@ class PatientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_patient
-      @patient = Patient.includes(:interactions).find(params[:id])
+      @patient = Patient.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def patient_params
 
-      params.require(:patient).permit(:last_name, :first_name, :birth_date, :birth_place, :phone_number, :act_ids => [], interactions_attributes: [:id, :patient_id, :interaction_type_id, :interaction_date, :comments, :_destroy], therapies_attributes: [:id, :practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id, :_destroy], addresses_attributes: [:id, :name, :street_number, :street_name, :postal_code, :city, :latitude, :longitude, :addressable_id, :addressable_type, :_destroy])
+      params.require(:patient).permit(:last_name, :first_name, :is_male, :birth_date, :birth_place, :phone_number, :priority, :comments, 
+                                      :act_ids => [], 
+                                      interactions_attributes: [:id, :patient_id, :interaction_type_id, :interaction_date, :comments, :_destroy], 
+                                      therapies_attributes: [:id, :practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id, :_destroy], 
+                                      addresses_attributes: [:id, :name, :street_number, :street_name, :postal_code, :city, :latitude, :longitude, :addressable_id, :addressable_type, :_destroy],
+                                      schoolings_attributes: [:id, :patient_id, :school_id, :school_level_id, :school_year_id, :_destroy]
+                                      )
 
     end
 end

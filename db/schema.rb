@@ -97,9 +97,12 @@ ActiveRecord::Schema.define(version: 20170108174526) do
   create_table "patients", force: :cascade do |t|
     t.string   "last_name"
     t.string   "first_name"
+    t.boolean  "is_male"
     t.date     "birth_date"
     t.string   "birth_place"
     t.string   "phone_number"
+    t.boolean  "priority"
+    t.text     "comments"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

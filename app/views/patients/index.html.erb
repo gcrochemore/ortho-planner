@@ -21,13 +21,17 @@
 
         <%= f.search_field :first_name_cont, {placeholder: t('activerecord.attributes.patient.first_name')} %>
 
+        <%= f.search_field :is_male_cont, {placeholder: t('activerecord.attributes.patient.is_male')} %>
+
         <%= f.search_field :birth_date_cont, {placeholder: t('activerecord.attributes.patient.birth_date')} %>
 
         <%= f.search_field :birth_place_cont, {placeholder: t('activerecord.attributes.patient.birth_place')} %>
 
         <%= f.search_field :phone_number_cont, {placeholder: t('activerecord.attributes.patient.phone_number')} %>
 
-        <%= f.search_field :acts_name_cont, {placeholder: t('activerecord.attributes.patient.phone_number')} %>
+        <%= f.search_field :priority_cont, {placeholder: t('activerecord.attributes.patient.priority')} %>
+
+        <%= f.search_field :comments_cont, {placeholder: t('activerecord.attributes.patient.comments')} %>
 
         <br>
         <br>
@@ -44,13 +48,17 @@
     
           <th><%= sort_link(@q, :first_name, default_order: :asc) %></th>
     
+          <th><%= sort_link(@q, :is_male, default_order: :asc) %></th>
+    
           <th><%= sort_link(@q, :birth_date, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :birth_place, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :phone_number, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :acts, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :priority, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :comments, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -60,8 +68,8 @@
         <% @patients.each do |patient| %>
           <tr>
     
-            <td colspan="6">
-            <%= render 'patient_view', patient: patient %>
+            <td colspan="7">
+              <%= render 'patient_view', patient: patient %>
             </td>
     
             <td>
@@ -77,5 +85,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= will_paginate @patients %>
   </div>
 </div>

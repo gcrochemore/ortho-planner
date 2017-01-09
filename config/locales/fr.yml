@@ -21,9 +21,12 @@
 
 fr:
   add_interaction: Ajouter un contact
+  add_schooling: Renseigner le parcours scolaire
   add_therapy: Ajouter une rééducation
+  female: "Fille"
   filter_title: Filtres
   hello: "Hello world"
+  male: "Garçon"
   new: Nouveau
 
 
@@ -48,12 +51,15 @@ fr:
         interaction_type: "Type"  
       patient:
         acts: Troubles
+        addresses: Adresses
         birth_date: 'Date de naissance'
         birth_place: 'Lieu de naissance'
+        comments: Commentaires
         first_name: 'Prénom'
         interactions: Contacts
         last_name: 'Nom'
         phone_number: 'Numéro de téléphone'
+        schoolings: Parcours scolaire
         therapies: Rééducations
       pathology:
         name: Nom  
