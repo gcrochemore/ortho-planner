@@ -17,6 +17,13 @@ class Patient < ActiveRecord::Base
     self.is_male ? "Male" : "Female"
   end
 
+  def age
+    if self.birth_date
+      now = Time.now.utc.to_date
+      now.year - self.birth_date.year - (self.birth_date.to_date.change(year: now.year) > now ? 1 : 0)
+    end
+  end
+
   def to_label
     "#{self.first_name} #{self.last_name}"
   end  

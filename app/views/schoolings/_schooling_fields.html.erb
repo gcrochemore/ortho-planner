@@ -1,26 +1,18 @@
-<div class="form-inputs">
+<%= f.association :patient, label: false, input_html: { class: "form-control" }, as: :hidden %>
+<%= f.association :school, label: false, input_html: { class: "form-control" }, as: :hidden %>
 
-    <div class="form-group">
-      <label for="patient"><%= f.label :patient %></label>
-      <%= f.association :patient, label: false, input_html: { class: "form-control" } %>
-    </div>
+<div class="form-inputs row">
 
-    <div class="form-group">
-      <label for="school"><%= f.label :school %></label>
-      <%= f.association :school, label: false, input_html: { class: "form-control" } %>
-    </div>
+  <div class="form-group col-xs-5">
+    <label for="school_level"><%= f.label :school_level %></label>
+    <%= f.association :school_level, label: false, input_html: { class: "form-control" } %>
+  </div>
 
-    <div class="form-group">
-      <label for="school_level"><%= f.label :school_level %></label>
-      <%= f.association :school_level, label: false, input_html: { class: "form-control" } %>
-    </div>
-
-    <div class="form-group">
-      <label for="school_year"><%= f.label :school_year %></label>
-      <%= f.association :school_year, label: false, input_html: { class: "form-control" } %>
-    </div>
-
+  <div class="form-group col-xs-5">
+    <label for="school_year"><%= f.label :school_year %></label>
+    <%= f.association :school_year, label: false, input_html: { class: "form-control" } %>
   </div>
   <div class="form-group col-xs-1">
     <%= link_to_remove_association '<i class="glyphicon glyphicon-remove"></i>'.html_safe, f %>
   </div>
+</div>

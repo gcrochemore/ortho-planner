@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  add_address: Ajouter une adresse
   add_interaction: Ajouter un contact
   add_schooling: Renseigner le parcours scolaire
   add_therapy: Ajouter une rééducation
@@ -59,6 +60,7 @@ fr:
         interactions: Contacts
         last_name: 'Nom'
         phone_number: 'Numéro de téléphone'
+        priority: Prioritaire
         schoolings: Parcours scolaire
         therapies: Rééducations
       pathology:
@@ -76,6 +78,9 @@ fr:
         end_date: Date de fin
         health_place: Centre de santé
         practitioner: Professionnel de santé
+      schooling:
+        school_level: Classe
+        school_year: Année scolaire
       therapy:
         begin_date: Date de début
         end_date: Date de fin
