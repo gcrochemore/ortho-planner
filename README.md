@@ -124,3 +124,7 @@ Supprimer Gemfile.lock
 * Ajouter un numéro de téléphone
 
 	rails generate scaffold phone_number phonable:references{polymorphic} phone_number_type:references
+
+* Ajouter un practitioner à un user (non obligatoire)
+
+* Modifier le profil practitioner pour n'avoir accès qu'a la liste des patients et à la liste d'attente
