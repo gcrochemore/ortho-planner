@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('.title') %><span class="badge"><%= @contact_informations.count %></span></h1>
+
+<div class="row">
+  <div class="col-md-2">
+    <legend class="filter-title"><%= t :filter_title %></legend>
+  </div>
+  <div class="col-md-3 btn-new-top">
+    <% if can? :create, ContactInformation %>
+      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :contactable_cont, {placeholder: t('activerecord.attributes.contact_information.contactable')} %>
+
+        <%= f.search_field :contact_information_type_cont, {placeholder: t('activerecord.attributes.contact_information.contact_information_type')} %>
+
+        <%= f.search_field :value_cont, {placeholder: t('activerecord.attributes.contact_information.value')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :contactable, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :contact_information_type, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :value, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @contact_informations.each do |contact_information| %>
+          <tr>
+    
+            <td><%= contact_information.contactable %></td>
+    
+            <td><%= contact_information.contact_information_type %></td>
+    
+            <td><%= contact_information.value %></td>
+    
+            <td>
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, contact_information %>
+              <% if can? :edit, contact_information %>
+                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_contact_information_path(contact_information) %>
+              <% end %>
+              <% if can? :destroy, contact_information %>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, contact_information, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @contact_informations %>
+  </div>
+</div>

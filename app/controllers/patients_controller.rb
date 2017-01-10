@@ -56,7 +56,8 @@ class PatientsController < ApplicationController
                                       interactions_attributes: [:id, :patient_id, :interaction_type_id, :interaction_date, :comments, :_destroy], 
                                       therapies_attributes: [:id, :practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id, :_destroy], 
                                       addresses_attributes: [:id, :name, :street_number, :street_name, :postal_code, :city, :latitude, :longitude, :addressable_id, :addressable_type, :_destroy],
-                                      schoolings_attributes: [:id, :patient_id, :school_id, :school_level_id, :school_year_id, :_destroy]
+                                      schoolings_attributes: [:id, :patient_id, :school_id, :school_level_id, :school_year_id, :_destroy],
+                                      contact_information_attributes: [:id, :contactable_id, :contactable_type, :contact_information_type_id, :value, :_destroy]
                                       )
 
     end

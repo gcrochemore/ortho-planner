@@ -21,7 +21,8 @@
 
 fr:
   add_address: Ajouter une adresse
-  add_interaction: Ajouter un contact
+  add_contact_information: Ajouter un numéro
+  add_interaction: Ajouter un appel/email
   add_schooling: Renseigner le parcours scolaire
   add_therapy: Ajouter une rééducation
   female: "Fille"
@@ -69,9 +70,10 @@ fr:
         addresses: Adresses
         birth_date: 'Date de naissance'
         birth_place: 'Lieu de naissance'
+        contact_informations: Numéros de téléphone/email
         comments: Commentaires
         first_name: 'Prénom'
-        interactions: Contacts
+        interactions: Appels/Emails
         is_male: Garçon ?
         job: Emploi
         last_name: 'Nom'

@@ -11,6 +11,8 @@ class Patient < ActiveRecord::Base
   accepts_nested_attributes_for :therapies, allow_destroy: true
   has_many :addresses, as: :addressable
   accepts_nested_attributes_for :addresses, allow_destroy: true
+  has_many :contact_informations, as: :contactable
+  accepts_nested_attributes_for :contact_informations, allow_destroy: true
   has_many :schoolings
   accepts_nested_attributes_for :schoolings, allow_destroy: true
 

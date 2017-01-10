@@ -1,0 +1,26 @@
+<%= simple_form_for(@contact_information) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+
+    <div class="form-group">
+      <label for="contactable"><%= f.label :contactable %></label>
+      <%= f.association :contactable, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="contact_information_type"><%= f.label :contact_information_type %></label>
+      <%= f.association :contact_information_type, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="value"><%= f.label :value %></label>
+      <%= f.input :value, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

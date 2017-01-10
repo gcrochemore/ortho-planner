@@ -65,6 +65,9 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold patients_pathologies patient:references pathology:references
 
+	rails generate scaffold contact_information_type name:string
+
+	rails generate scaffold contact_information contactable:references{polymorphic} contact_information_type:references value:string
 
 
 	rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime
@@ -124,7 +127,15 @@ Supprimer Gemfile.lock
 
 * Créer la table association patient/pathology
 
-	rails generate scaffold patients_pathologies patient:references pathology:references	
+	rails generate scaffold patients_pathologies patient:references pathology:references
+
+* Ajouter un type de coordonnées
+
+	rails generate scaffold contact_information_type name:string
+
+* Ajouter une coordonnée
+
+	rails generate scaffold contact_information contactable:references{polymorphic} contact_information_type:references value:string	
 
 ===== TODO
 
@@ -133,11 +144,3 @@ Supprimer Gemfile.lock
 * Modifier le profil practitioner pour n'avoir accès qu'a la liste des patients et à la liste d'attente
 
 * Ajouter un numéro d'établissement, un secteur (public/privé -> boolean is_public) sur un établissement scolaire (lié ensuite avec coordonnées pour ajouter site_web/uméro de téléphone/fax/adresse mail)
-
-* Ajouter un type de coordonnées
-
-	rails generate scaffold contact_information_type name:string
-
-* Ajouter une coordonnée
-
-	rails generate scaffold contact_information contactable:references{polymorphic} contact_information_type:references value:string

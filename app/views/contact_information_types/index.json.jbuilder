@@ -1,0 +1,1 @@
+json.array! @contact_information_types, partial: 'contact_information_types/contact_information_type', as: :contact_information_type
