@@ -22,6 +22,14 @@ user = User.create( email: "admin@ortho-planner.com", password: "ortho-planner",
 user.save
 user.add_role :admin
 
+pathology = Pathology.create(name: "Pathologie de la parole")
+pathology.save
+pathology = Pathology.create(name: "Pathologie de la voix")
+pathology.save
+pathology = Pathology.create(name: "Pathologie du langage écrit")
+pathology.save
+pathology = Pathology.create(name: "Pathologie du langage oral")
+pathology.save
 
 act = Act.create(name: "Bilan de la déglutition et des fonctions oro-myo fonctionnelles.", AMO: 16)
 act.save
@@ -213,11 +221,18 @@ school_type = SchoolType.create(name: "Ecole maternelle")
 school_type.save
 school_type = SchoolType.create(name: "Ecole élémentaire")
 school_type.save
+
+school = School.create(name: "Ecole elementaire publique d'Ambrumesnil", school_type: school_type)
+school.save
+address = Adress.create(name: "Ecole elementaire publique d'Ambrumesnil", street_name: "Rue de l'ancienne mare", postal_code: "76550", city: "Ambrumesnil", addressable: school)
+address.save
+
 school_type = SchoolType.create(name: "Collège")
 school_type.save
 
 school = School.create(name: "Collège de Luneray", school_type: school_type)
 school.save
+
 
 school_type = SchoolType.create(name: "Lycée")
 school_type.save
