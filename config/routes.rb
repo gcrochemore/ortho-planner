@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :contact_informations
-  resources :contact_information_types
-  resources :patients_pathologies
   root to: "application#index"
   devise_for :users, controllers: { confirmations: 'confirmations' }
   resources :paper_trail_versions, controller: 'versions'
@@ -13,7 +10,8 @@ Rails.application.routes.draw do
             :health_places, :health_place_types, :absences, :interactions, 
             :interaction_objects, :interaction_types, :patients_acts, :schoolings, 
             :schools, :school_types, :school_levels, :school_years, :addresses,
-            :address_types
+            :address_types, :contact_informations, :contact_information_types, 
+            :patients_pathologies
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

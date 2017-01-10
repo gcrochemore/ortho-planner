@@ -27,8 +27,6 @@
 
         <%= f.search_field :birth_place_cont, {placeholder: t('activerecord.attributes.patient.birth_place')} %>
 
-        <%= f.search_field :phone_number_cont, {placeholder: t('activerecord.attributes.patient.phone_number')} %>
-
         <%= f.search_field :priority_cont, {placeholder: t('activerecord.attributes.patient.priority')} %>
 
         <%= f.search_field :comments_cont, {placeholder: t('activerecord.attributes.patient.comments')} %>
@@ -56,8 +54,6 @@
     
           <th><%= sort_link(@q, :birth_place, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :phone_number, default_order: :asc) %></th>
-    
           <th><%= sort_link(@q, :priority, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :comments, default_order: :asc) %></th>
@@ -72,9 +68,9 @@
         <% @patients.each do |patient| %>
           <tr>
     
-            <td colspan="8">
-              <%= render 'patient_view', patient: patient %>
-            </td>
+            <td colspan="7"> 
+              <%= render 'patient_view', patient: patient %> 
+            </td> 
     
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, patient %>

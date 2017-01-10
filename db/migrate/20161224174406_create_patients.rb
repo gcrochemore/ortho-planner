@@ -6,7 +6,6 @@ class CreatePatients < ActiveRecord::Migration
       t.boolean :is_male
       t.date :birth_date
       t.string :birth_place
-      t.string :phone_number
       t.boolean :priority
       t.text :comments
       t.string :job

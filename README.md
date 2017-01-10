@@ -23,7 +23,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold HealthPlace name:string health_place_type:references
 
-	rails generate scaffold Patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string phone_number:string priority:boolean comments:text job:string
+	rails generate scaffold patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string priority:boolean comments:text job:string
 
 	rails generate scaffold PractitionerProfession name:string
 
@@ -115,27 +115,17 @@ Supprimer Gemfile.lock
 
 * Ajouter une profession sur patient
 
-	rails generate scaffold Patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string phone_number:string priority:boolean comments:text job:string
-
 * Ajouter un type d'adresse
-
-	rails generate scaffold address_type name:string
 
 * Ajouter un type d'adresse sur une adresse
 
-	rails generate scaffold address name:string street_number:integer street_name:string postal_code:string city:string latitude:float longitude:float addressable:references{polymorphic} address_type:references
-
 * Créer la table association patient/pathology
-
-	rails generate scaffold patients_pathologies patient:references pathology:references
 
 * Ajouter un type de coordonnées
 
-	rails generate scaffold contact_information_type name:string
-
 * Ajouter une coordonnée
 
-	rails generate scaffold contact_information contactable:references{polymorphic} contact_information_type:references value:string	
+* Supprimer le numéro de téléphone sur le patient
 
 ===== TODO
 
