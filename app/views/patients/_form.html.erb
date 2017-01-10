@@ -100,6 +100,10 @@
                   </div>
                 </div>
                 <div class="form-group col-xs-12">
+                  <label for="job"><%= f.label :job %></label>
+                  <%= f.input :job, label: false, input_html: { class: "form-control" } %>
+                </div>
+                <div class="form-group col-xs-12">
                   <label for="schoolings"><%= f.label :schoolings %></label>      
                   <div class='links'>
                     <%= link_to_add_association t(:add_schooling), f, :schoolings, partial: 'schoolings/schooling_fields', :data => {"association-insertion-method" => "after"} %>

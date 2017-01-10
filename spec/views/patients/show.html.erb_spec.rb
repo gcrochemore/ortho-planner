@@ -9,7 +9,8 @@ RSpec.describe "patients/show", type: :view do
       :birth_place => "Birth Place",
       :phone_number => "Phone Number",
       :priority => false,
-      :comments => "MyText"
+      :comments => "MyText",
+      :job => "Job"
     ))
   end
 
@@ -22,5 +23,6 @@ RSpec.describe "patients/show", type: :view do
     expect(rendered).to match(/Phone Number/)
     expect(rendered).to match(/false/)
     expect(rendered).to match(/MyText/)
+    expect(rendered).to match(/Job/)
   end
 end

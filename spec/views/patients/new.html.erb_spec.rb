@@ -9,7 +9,8 @@ RSpec.describe "patients/new", type: :view do
       :birth_place => "MyString",
       :phone_number => "MyString",
       :priority => false,
-      :comments => "MyText"
+      :comments => "MyText",
+      :job => "MyString"
     ))
   end
 
@@ -31,6 +32,8 @@ RSpec.describe "patients/new", type: :view do
       assert_select "input#patient_priority[name=?]", "patient[priority]"
 
       assert_select "textarea#patient_comments[name=?]", "patient[comments]"
+
+      assert_select "input#patient_job[name=?]", "patient[job]"
     end
   end
 end

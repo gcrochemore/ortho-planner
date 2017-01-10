@@ -10,7 +10,8 @@ RSpec.describe "patients/index", type: :view do
         :birth_place => "Birth Place",
         :phone_number => "Phone Number",
         :priority => false,
-        :comments => "MyText"
+        :comments => "MyText",
+        :job => "Job"
       ),
       Patient.create!(
         :last_name => "Last Name",
@@ -19,7 +20,8 @@ RSpec.describe "patients/index", type: :view do
         :birth_place => "Birth Place",
         :phone_number => "Phone Number",
         :priority => false,
-        :comments => "MyText"
+        :comments => "MyText",
+        :job => "Job"
       )
     ])
   end
@@ -33,5 +35,6 @@ RSpec.describe "patients/index", type: :view do
     assert_select "tr>td", :text => "Phone Number".to_s, :count => 2
     assert_select "tr>td", :text => false.to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
+    assert_select "tr>td", :text => "Job".to_s, :count => 2
   end
 end
