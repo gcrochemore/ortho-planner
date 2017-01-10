@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110115455) do
+ActiveRecord::Schema.define(version: 20170110120708) do
 
   create_table "absences", force: :cascade do |t|
     t.integer  "patient_id"
@@ -125,6 +125,16 @@ ActiveRecord::Schema.define(version: 20170110115455) do
 
   add_index "patients_acts", ["act_id"], name: "index_patients_acts_on_act_id"
   add_index "patients_acts", ["patient_id"], name: "index_patients_acts_on_patient_id"
+
+  create_table "patients_pathologies", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "pathology_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "patients_pathologies", ["pathology_id"], name: "index_patients_pathologies_on_pathology_id"
+  add_index "patients_pathologies", ["patient_id"], name: "index_patients_pathologies_on_patient_id"
 
   create_table "practitioner_professions", force: :cascade do |t|
     t.string   "name"

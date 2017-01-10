@@ -23,7 +23,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold HealthPlace name:string health_place_type:references
 
-	rails generate scaffold Patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string phone_number:string priority:boolean comments:text 
+	rails generate scaffold Patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string phone_number:string priority:boolean comments:text job:string
 
 	rails generate scaffold PractitionerProfession name:string
 
@@ -59,7 +59,12 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold schooling patient:references school:references school_level:references school_year:references
 
-	rails generate scaffold address name:string street_number:integer street_name:string postal_code:string city:string latitude:float longitude:float addressable:references{polymorphic}
+	rails generate scaffold address_type name:string
+
+	rails generate scaffold address name:string street_number:integer street_name:string postal_code:string city:string latitude:float longitude:float addressable:references{polymorphic} address_type:references
+
+	rails generate scaffold patients_pathologies patient:references pathology:references
+
 
 
 	rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime
@@ -117,15 +122,15 @@ Supprimer Gemfile.lock
 
 	rails generate scaffold address name:string street_number:integer street_name:string postal_code:string city:string latitude:float longitude:float addressable:references{polymorphic} address_type:references
 
+* Créer la table association patient/pathology
+
+	rails generate scaffold patients_pathologies patient:references pathology:references	
+
 ===== TODO
 
 * Ajouter un practitioner à un user (non obligatoire)
 
 * Modifier le profil practitioner pour n'avoir accès qu'a la liste des patients et à la liste d'attente
-
-* Créer la table association patient/pathology
-
-	rails generate scaffold patients_pathologies patient:references pathology:references	
 
 * Ajouter un numéro d'établissement, un secteur (public/privé -> boolean is_public) sur un établissement scolaire (lié ensuite avec coordonnées pour ajouter site_web/uméro de téléphone/fax/adresse mail)
 

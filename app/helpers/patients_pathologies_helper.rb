@@ -1,0 +1,2 @@
+module PatientsPathologiesHelper
+end

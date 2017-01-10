@@ -4,6 +4,7 @@ class Patient < ActiveRecord::Base
 
   validates :first_name, :last_name, :phone_number, presence: true
   has_and_belongs_to_many :acts, join_table: "patients_acts"
+  has_and_belongs_to_many :pathologies, join_table: "patients_pathologies"
   has_many :interactions
   accepts_nested_attributes_for :interactions, allow_destroy: true
   has_many :therapies

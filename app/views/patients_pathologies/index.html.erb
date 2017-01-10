@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('.title') %><span class="badge"><%= @patients_pathologies.count %></span></h1>
+
+<div class="row">
+  <div class="col-md-2">
+    <legend class="filter-title"><%= t :filter_title %></legend>
+  </div>
+  <div class="col-md-3 btn-new-top">
+    <% if can? :create, PatientsPathology %>
+      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :patient_cont, {placeholder: t('activerecord.attributes.patients_pathology.patient')} %>
+
+        <%= f.search_field :pathology_cont, {placeholder: t('activerecord.attributes.patients_pathology.pathology')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :patient, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :pathology, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @patients_pathologies.each do |patients_pathology| %>
+          <tr>
+    
+            <td><%= patients_pathology.patient %></td>
+    
+            <td><%= patients_pathology.pathology %></td>
+    
+            <td>
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, patients_pathology %>
+              <% if can? :edit, patients_pathology %>
+                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_patients_pathology_path(patients_pathology) %>
+              <% end %>
+              <% if can? :destroy, patients_pathology %>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, patients_pathology, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @patients_pathologies %>
+  </div>
+</div>

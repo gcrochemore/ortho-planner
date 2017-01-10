@@ -1,0 +1,16 @@
+<div class="form-inputs">
+
+    <div class="form-group col-xs-5">
+      <label for="patient"><%= f.label :patient %></label>
+      <%= f.association :patient, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group col-xs-6">
+      <label for="pathology"><%= f.label :pathology %></label>
+      <%= f.association :pathology, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+  <div class="form-group col-xs-1">
+    <%= link_to_remove_association '<i class="glyphicon glyphicon-remove"></i>'.html_safe, f %>
+  </div>
+  </div>

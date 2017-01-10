@@ -73,6 +73,7 @@ fr:
         first_name: 'Prénom'
         interactions: Contacts
         is_male: Garçon ?
+        job: Emploi
         last_name: 'Nom'
         phone_number: 'Numéro de téléphone'
         priority: Prioritaire
