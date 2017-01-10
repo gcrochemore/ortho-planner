@@ -224,7 +224,7 @@ school_type.save
 
 school = School.create(name: "Ecole elementaire publique d'Ambrumesnil", school_type: school_type)
 school.save
-address = Adress.create(name: "Ecole elementaire publique d'Ambrumesnil", street_name: "Rue de l'ancienne mare", postal_code: "76550", city: "Ambrumesnil", addressable: school)
+address = Address.create(name: "Ecole elementaire publique d'Ambrumesnil", street_name: "Rue de l'ancienne mare", postal_code: "76550", city: "Ambrumesnil", addressable: school)
 address.save
 
 school_type = SchoolType.create(name: "Collège")

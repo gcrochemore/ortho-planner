@@ -10,7 +10,8 @@ RSpec.describe "addresses/new", type: :view do
       :city => "MyString",
       :latitude => 1.5,
       :longitude => 1.5,
-      :addressable => nil
+      :addressable => nil,
+      :address_type => nil
     ))
   end
 
@@ -34,6 +35,8 @@ RSpec.describe "addresses/new", type: :view do
       assert_select "input#address_longitude[name=?]", "address[longitude]"
 
       assert_select "input#address_addressable_id[name=?]", "address[addressable_id]"
+
+      assert_select "input#address_address_type_id[name=?]", "address[address_type_id]"
     end
   end
 end

@@ -10,7 +10,8 @@ RSpec.describe "addresses/show", type: :view do
       :city => "City",
       :latitude => 3.5,
       :longitude => 4.5,
-      :addressable => nil
+      :addressable => nil,
+      :address_type => nil
     ))
   end
 
@@ -23,6 +24,7 @@ RSpec.describe "addresses/show", type: :view do
     expect(rendered).to match(/City/)
     expect(rendered).to match(/3.5/)
     expect(rendered).to match(/4.5/)
+    expect(rendered).to match(//)
     expect(rendered).to match(//)
   end
 end

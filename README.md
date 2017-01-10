@@ -103,7 +103,7 @@ Supprimer Gemfile.lock
 
 	bundle exec erd --filetype=dot
 
-===== TODO
+===== DO
 
 * Ajouter une profession sur patient
 
@@ -116,6 +116,8 @@ Supprimer Gemfile.lock
 * Ajouter un type d'adresse sur une adresse
 
 	rails generate scaffold address name:string street_number:integer street_name:string postal_code:string city:string latitude:float longitude:float addressable:references{polymorphic} address_type:references
+
+===== TODO
 
 * Ajouter un practitioner à un user (non obligatoire)
 

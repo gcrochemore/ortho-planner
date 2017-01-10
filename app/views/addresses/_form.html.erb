@@ -43,6 +43,11 @@
       <%= f.association :addressable, label: false, input_html: { class: "form-control" }, collection: Patient.all %>
     </div>
 
+    <div class="form-group">
+      <label for="address_type"><%= f.label :address_type %></label>
+      <%= f.association :address_type, label: false, input_html: { class: "form-control" } %>
+    </div>
+
   </div>
 
   <div class="form-actions">

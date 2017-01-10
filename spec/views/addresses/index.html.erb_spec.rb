@@ -11,7 +11,8 @@ RSpec.describe "addresses/index", type: :view do
         :city => "City",
         :latitude => 3.5,
         :longitude => 4.5,
-        :addressable => nil
+        :addressable => nil,
+        :address_type => nil
       ),
       Address.create!(
         :name => "Name",
@@ -21,7 +22,8 @@ RSpec.describe "addresses/index", type: :view do
         :city => "City",
         :latitude => 3.5,
         :longitude => 4.5,
-        :addressable => nil
+        :addressable => nil,
+        :address_type => nil
       )
     ])
   end
@@ -35,6 +37,7 @@ RSpec.describe "addresses/index", type: :view do
     assert_select "tr>td", :text => "City".to_s, :count => 2
     assert_select "tr>td", :text => 3.5.to_s, :count => 2
     assert_select "tr>td", :text => 4.5.to_s, :count => 2
+    assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
   end
 end
