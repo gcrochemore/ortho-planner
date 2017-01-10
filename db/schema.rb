@@ -125,12 +125,11 @@ ActiveRecord::Schema.define(version: 20170110122437) do
     t.boolean  "is_male"
     t.date     "birth_date"
     t.string   "birth_place"
-    t.string   "phone_number"
     t.boolean  "priority"
     t.text     "comments"
     t.string   "job"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "patients_acts", force: :cascade do |t|
