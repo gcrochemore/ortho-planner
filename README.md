@@ -23,7 +23,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold HealthPlace name:string health_place_type:references
 
-	rails generate scaffold Patient last_name:string first_name:string birth_date:date birth_place:string phone_number:string
+	rails generate scaffold Patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string phone_number:string priority:boolean comments:text 
 
 	rails generate scaffold PractitionerProfession name:string
 
@@ -105,9 +105,9 @@ Supprimer Gemfile.lock
 
 ===== TODO
 
-* Ajouter boolean prioritaire sur patient
+* Ajouter une profession sur patient
 
-	rails generate scaffold Patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string phone_number:string priority:boolean comments:text
+	rails generate scaffold Patient last_name:string first_name:string is_male:boolean birth_date:date birth_place:string phone_number:string priority:boolean comments:text job:string
 
 * Ajouter un type d'adresse
 
@@ -117,14 +117,20 @@ Supprimer Gemfile.lock
 
 	rails generate scaffold address name:string street_number:integer street_name:string postal_code:string city:string latitude:float longitude:float addressable:references{polymorphic} address_type:references
 
-* Ajouter un type de numéro de téléphone
-
-	rails generate scaffold phone_number_type name:string
-
-* Ajouter un numéro de téléphone
-
-	rails generate scaffold phone_number phonable:references{polymorphic} phone_number_type:references
-
 * Ajouter un practitioner à un user (non obligatoire)
 
 * Modifier le profil practitioner pour n'avoir accès qu'a la liste des patients et à la liste d'attente
+
+* Créer la table association patient/pathology
+
+	rails generate scaffold patients_pathologies patient:references pathology:references	
+
+* Ajouter un numéro d'établissement, un secteur (public/privé -> boolean is_public) sur un établissement scolaire (lié ensuite avec coordonnées pour ajouter site_web/uméro de téléphone/fax/adresse mail)
+
+* Ajouter un type de coordonnées
+
+	rails generate scaffold contact_information_type name:string
+
+* Ajouter une coordonnée
+
+	rails generate scaffold contact_information contactable:references{polymorphic} contact_information_type:references value:string
