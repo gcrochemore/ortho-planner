@@ -40,6 +40,14 @@ fr:
       act:
         AMO: AMO
         name: Nom
+      address:
+        city: Ville
+        latitude: Latitude
+        longitude: Longitude
+        name: Nom
+        postal_code: Code postal
+        street_name: Nom de la voie
+        street_number: N°
       health_place:
         health_place_type: 'Type'
         name: Centre de santé
@@ -49,15 +57,22 @@ fr:
         comments: Commentaires
         interaction_date: "Date" 
         interaction_object: "Objet" 
-        interaction_type: "Type"  
+        interaction_type: "Type"
+        patient: Patient
+      interaction_object:
+        name: Nom
+      interaction_type:
+        glyphicon: Icone
+        name: Type d'intéraction
       patient:
-        acts: Troubles
+        acts: Actes nécessaires
         addresses: Adresses
         birth_date: 'Date de naissance'
         birth_place: 'Lieu de naissance'
         comments: Commentaires
         first_name: 'Prénom'
         interactions: Contacts
+        is_male: Garçon ?
         last_name: 'Nom'
         phone_number: 'Numéro de téléphone'
         priority: Prioritaire
@@ -69,6 +84,7 @@ fr:
         birth_date: Date de naissance
         birth_place: 'Lieu de naissance'
         first_name: Prénom
+        health_place: Cabinet médical
         last_name: Nom
         practitioner_profession: Type de professionnel de santé
         therapies: Rééducations
@@ -78,15 +94,24 @@ fr:
         end_date: Date de fin
         health_place: Centre de santé
         practitioner: Professionnel de santé
+        therapy: Rééducation
+      school:
+        name: Nom
+        school_type: Type
       schooling:
         school_level: Classe
         school_year: Année scolaire
+      school_year:
+        begin_date: Date de début
+        end_date: Date de fin
       therapy:
         begin_date: Date de début
         end_date: Date de fin
         health_place: Centre de santé
+        number_of_sessions: Nombre de séances
         patient: Patient
         practitioner: Professionnel de santé
+        session_duration: Durée des séances (min)
       waiting_list:
         comments: 'Commentaires'
         office: 'Cabinet'
@@ -94,13 +119,24 @@ fr:
         patient: Patient
   layouts:
     navbar:
+      absences: Absences
       acts: Actes
+      addresses: Adresses
       health_place_types: 'Types de centres de santé'
       health_places: 'Centres de santé'
+      interaction_objects: Raisons des intercations
+      interaction_types: Types d'interactions
+      interactions: Intéractions
       paper_trail_versions: Paper trail
+      pathologies: Pathologies
       patients: Patients
       practitioner_professions: 'Types de professionnels de santé'
       practitioners: 'Professionnels de santé'
+      school_levels: Niveau scolaire
+      school_types: Types d'établissement scolaire
+      school_years: Années scolaires
+      schoolings: Parcours scolaire
+      schools: Etablissement scolaire
       sessions: Séances
       therapies: Rééducations
       users: Utilisateurs
@@ -110,6 +146,10 @@ fr:
       name: Nom
       new_button: 'Créer un acte'
       title: "Actes"
+  addresses:
+    index:
+      title: Adresses
+      new_button: Créer une adresse
   health_place_types:
     index: 
       name: Nom
@@ -120,7 +160,19 @@ fr:
       health_place_type: Type
       name: Nom
       new_button: 'Créer un centre de santé'
-      title: "Centres de santé"  
+      title: "Centres de santé"
+  interaction_objects:
+    index:
+      new_button: Créer une raison d'intéraction
+      title: Raisons d'intéractions
+  interaction_types:
+    index:
+      new_button: Créer un type d'intéractions
+      title: Types d'intéractions
+  interactions:
+    index:
+      new_button: Créer une intéraction
+      title: "Intéractions"   
   pathologies:
     index: 
       name: Nom
@@ -152,6 +204,24 @@ fr:
       name: Nom
       new_button: 'Créer un type de professionnel de santé'
       title: "Types de professionnels de santé"
+  school_levels:
+    index: 
+      name: Nom
+      new_button: 'Créer un niveau scolaire'
+      title: "Niveaux scolaires"
+  school_types:
+    index:
+      name: Nom
+      new_button: Créer un type d'établissement scolaire
+      title: Types d'établissements scolaires
+  school_years:
+    index:
+      new_button: Créer une année scolaire
+      title: Années scolaires
+  schools:
+    index:
+      new_button: Créer un établissement scolaire
+      title: Etablissements scolaires
   sessions:
     index: 
       new_button: 'Créer une séance'
