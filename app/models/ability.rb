@@ -13,34 +13,39 @@ class Ability
     end
 
     if user.has_role? :repository_manager
-      can :manage, :office
-      can :manage, :pathology
-      can :manage, :practitioner_profession
-      can :manage, :practitioner
-      can :manage, :health_place
-      can :manage, :health_place_type
-      can :manage, :interaction_object
-      can :manage, :interaction_type
+      can :manage, Office
+      can :manage, Pathology
+      can :manage, PractitionerProfession
+      can :manage, Practitioner
+      can :manage, HealthPlace
+      can :manage, HealthPlaceType
+      can :manage, InteractionObject
+      can :manage, IinteractionType
+    end
+
+    if user.has_role? :waiting_list_manager
+      can :manage, Patient
+      can :manage, WaitingList
     end
 
     if user.has_role? :practitioner
       #can :read, Project, active: true, :user_id user.id
-      can :crud, :patient
-      can :crud, :therapy
-      can :crud, :session
-      can :crud, :absence
-      can :crud, :interaction
-      can :crud, :waiting_list
-      can :read, :practitioner
-      can :read, :health_place
+      can :crud, Patient
+      can :crud, Therapy
+      can :crud, Session
+      can :crud, Absence
+      can :crud, Interaction
+      can :crud, WaitingList
+      can :read, Practitioner
+      can :read, HealthPlace
     end  
 
     if user.has_role? :secretary
       #can :read, Project, active: true, :user_id user.id
-      can :read, :patient
-      can :read, :therapy #si la therapy concerne un medecin du cabinet ou elle est rattachée 
-      can :crud, :session #si la session concerne une therapy qui concerne un medecin du cabinet ou elle est rattachée 
-      can :read, :practitioner
+      can :read, Patient
+      can :read, Therapy #si la therapy concerne un medecin du cabinet ou elle est rattachée 
+      can :crud, Session #si la session concerne une therapy qui concerne un medecin du cabinet ou elle est rattachée 
+      can :read, Practitioner
     end 
     #
     # The first argument to `can` is the action you are giving the user

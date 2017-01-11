@@ -15,25 +15,25 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">MyOrthoPlanner
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <% if can? :read, :patient %>
+            <% if can? :read, Patient %>
               <li><%= link_to(t('.patients'), patients_path)  %> </li>
             <% end %>
-            <% if can? :read, :therapy %>
+            <% if can? :read, Therapy %>
               <li><%= link_to(t('.therapies'), therapies_path)  %> </li>
             <% end %>
-            <% if can? :read, :session %>
+            <% if can? :read, Session %>
               <li><%= link_to(t('.sessions'), sessions_path)  %> </li>
             <% end %>
-            <% if can? :read, :act %>
+            <% if can? :read, WaitingList %>
               <li><%= link_to(t('.waiting_lists'), waiting_lists_path)  %> </li>
             <% end %>
-            <% if can? :read, :absence %>
+            <% if can? :read, Absence %>
               <li><%= link_to(t('.absences'), absences_path)  %> </li>
             <% end %>
-            <% if can? :read, :interaction %>
+            <% if can? :read, Interaction %>
               <li><%= link_to(t('.interactions'), interactions_path)  %> </li>
             <% end %>
-            <% if can? :read, :schooling %>
+            <% if can? :read, Schooling %>
               <li><%= link_to(t('.schoolings'), schoolings_path)  %> </li>
             <% end %>
             </ul>
@@ -44,43 +44,43 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dictionnaires
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <% if can? :read, :practitioner %>
+            <% if can? :read, Practitioner %>
               <li><%= link_to(t('.practitioners'), practitioners_path)  %></li>
             <% end %>
-            <% if can? :read, :practitioner_profession %>
+            <% if can? :read, PractitionerProfession %>
               <li><%= link_to(t('.practitioner_professions'), practitioner_professions_path)  %></li>
             <% end %>
-            <% if can? :read, :health_place %>
+            <% if can? :read, HealthPlace %>
               <li><%= link_to(t('.health_places'), health_places_path)  %> </li>
             <% end %>
-            <% if can? :read, :health_place_type %>
+            <% if can? :read, HealthPlaceType %>
               <li><%= link_to(t('.health_place_types'), health_place_types_path)  %> </li>
             <% end %>
-            <% if can? :read, :pathology %>
+            <% if can? :read, Pathology %>
               <li><%= link_to(t('.pathologies'), pathologies_path)  %> </li>
             <% end %>
-            <% if can? :read, :act %>
+            <% if can? :read, Act %>
               <li><%= link_to(t('.acts'), acts_path)  %> </li>
             <% end %>
-            <% if can? :read, :interaction_type %>
+            <% if can? :read, InteractionType %>
               <li><%= link_to(t('.interaction_types'), interaction_types_path)  %> </li>
             <% end %>
-            <% if can? :read, :interaction_object %>
+            <% if can? :read, InteractionObject %>
               <li><%= link_to(t('.interaction_objects'), interaction_objects_path)  %> </li>
             <% end %>
-            <% if can? :read, :school %>
+            <% if can? :read, School %>
               <li><%= link_to(t('.schools'), schools_path)  %> </li>
             <% end %>
-            <% if can? :read, :interaction %>
+            <% if can? :read, SchoolLevel %>
               <li><%= link_to(t('.school_levels'), school_levels_path)  %> </li>
             <% end %>
-            <% if can? :read, :interaction %>
+            <% if can? :read, SchoolType %>
               <li><%= link_to(t('.school_types'), school_types_path)  %> </li>
             <% end %>
-            <% if can? :read, :interaction %>
+            <% if can? :read, SchoolYear %>
               <li><%= link_to(t('.school_years'), school_years_path)  %> </li>
             <% end %>
-            <% if can? :read, :address %>
+            <% if can? :read, Address %>
               <li><%= link_to(t('.addresses'), addresses_path)  %> </li>
             <% end %>
             </ul>
