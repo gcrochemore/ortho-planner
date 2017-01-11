@@ -52,13 +52,14 @@ class PatientsController < ApplicationController
     def patient_params
 
       params.require(:patient).permit(:last_name, :first_name, :is_male, :birth_date, :birth_place, :priority, :comments, :job,
-                                      :act_ids => [], 
-                                      interactions_attributes: [:id, :patient_id, :interaction_type_id, :interaction_date, :comments, :_destroy], 
+                                      :act_ids => [],
+                                      :pathology_ids => [], 
+                                      interactions_attributes: [:id, :patient_id, :interaction_type_id, :interaction_object_id, :interaction_date, :comments, :_destroy], 
                                       therapies_attributes: [:id, :practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id, :_destroy], 
                                       addresses_attributes: [:id, :name, :street_number, :street_name, :postal_code, :city, :latitude, :longitude, :addressable_id, :addressable_type, :_destroy],
                                       schoolings_attributes: [:id, :patient_id, :school_id, :school_level_id, :school_year_id, :_destroy],
-                                      contact_information_attributes: [:id, :contactable_id, :contactable_type, :contact_information_type_id, :value, :_destroy],
-                                      waiting_list_attributes: [:id, :patient_id, :office_id, :start_date, :end_date, :pathology_id, :comments, :_destroy],
+                                      contact_informations_attributes: [:id, :contactable_id, :contactable_type, :contact_information_type_id, :value, :_destroy],
+                                      waiting_lists_attributes: [:id, :patient_id, :health_place_id, :start_date, :end_date, :pathology_id, :comments, :_destroy],
                                       patient_availability_attributes: [:id, :patient_id, :day, :period, :_destroy]
                                       )
 

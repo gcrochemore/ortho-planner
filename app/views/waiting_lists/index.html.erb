@@ -17,15 +17,15 @@
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
-        <%= f.search_field :patient_cont, {placeholder: t('activerecord.attributes.waiting_list.patient')} %>
+        <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.waiting_list.patient')} %>
 
-        <%= f.search_field :health_place_cont, {placeholder: t('activerecord.attributes.waiting_list.health_place')} %>
+        <%= f.search_field :health_place_name_cont, {placeholder: t('activerecord.attributes.waiting_list.health_place')} %>
 
         <%= f.search_field :start_date_cont, {placeholder: t('activerecord.attributes.waiting_list.start_date')} %>
 
         <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.waiting_list.end_date')} %>
 
-        <%= f.search_field :pathology_cont, {placeholder: t('activerecord.attributes.waiting_list.pathology')} %>
+        <%= f.search_field :pathology_name_cont, {placeholder: t('activerecord.attributes.waiting_list.pathology')} %>
 
         <%= f.search_field :comments_cont, {placeholder: t('activerecord.attributes.waiting_list.comments')} %>
 
@@ -40,17 +40,9 @@
       <thead>
         <tr>
     
-          <th><%= sort_link(@q, :patient, default_order: :asc) %></th>
-    
-          <th><%= sort_link(@q, :health_place, default_order: :asc) %></th>
+          <th colspan="5"><%= sort_link(@q, :patient, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :start_date, default_order: :asc) %></th>
-    
-          <th><%= sort_link(@q, :end_date, default_order: :asc) %></th>
-    
-          <th><%= sort_link(@q, :pathology, default_order: :asc) %></th>
-    
-          <th><%= sort_link(@q, :comments, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -60,17 +52,12 @@
         <% @waiting_lists.each do |waiting_list| %>
           <tr>
     
-            <td><%= waiting_list.patient %></td>
-    
-            <td><%= waiting_list.health_place %></td>
-    
-            <td><%= waiting_list.start_date %></td>
-    
-            <td><%= waiting_list.end_date %></td>
-    
-            <td><%= waiting_list.pathology %></td>
-    
-            <td><%= waiting_list.comments %></td>
+            <td colspan="5"> 
+              <%= render 'patients/patient_view', patient: waiting_list.patient %> 
+            </td> 
+            <td>
+              <%= waiting_list.start_date.andand.strftime("%d/%m/%Y") %>
+            </td>
     
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>

@@ -7,5 +7,5 @@ class WaitingList < ActiveRecord::Base
   belongs_to :pathology
   accepts_nested_attributes_for :patient
 
-  validates :pathology, presence: true
+  default_scope { order('start_date ASC') }
 end

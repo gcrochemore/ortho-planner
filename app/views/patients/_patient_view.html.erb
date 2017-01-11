@@ -1,13 +1,34 @@
-<div>
-  <%= patient.last_name %> <%= patient.first_name %> <%= patient.age ? "("+patient.age.to_s+" ans)".html_safe : "" %><br>
-  <%= patient.gender %>
-  <%= patient.phone_number %><br>
-  <h3>Troubles</h3>
-  <% 
-    patient.acts.each do |act| %>
-      <%= act.to_s %><br>
-    <% end
-  %>
-  <h3>Interactions</h3>
-  <%= patient.interactions.count %> interaction(s)
+<div class="row col-xs-12">
+  <div class="row col-xs-12">
+    <div class="col-xs-11">
+      <%= patient.is_male ? (image_tag "male.png", width: 18) : (image_tag "female.png", width: 18) %> 
+  <%= patient.last_name %> <%= patient.first_name %> <%= patient.age ? "("+patient.age.to_s+" ans)".html_safe : "" %> - 
+  <i><%= patient.schoolings.currents.first.andand.school_level.andand.name  || patient.job || "Classe/métier non défini" %></i> - 
+  <strong>Contact(s) : </strong>
+  <% patient.contact_informations.each do |contact_information| %>
+   <%= contact_information.value %> - 
+  <% end %>
+    </div>
+    <div class="col-xs-1">
+      <%= patient.priority ? (image_tag "star.png", width: 18) : "" %>
+    </div>
+  </div> 
+  
+  <div class="row col-xs-12">
+    <i>
+      <% 
+        patient.pathologies.each do |pathology| %>
+          <%= pathology.name %> - 
+        <% end
+      %>
+    </i>
+   
+    <br><%= patient.interactions.count %> appel(s) 
+
+    <br><strong>Commentaires :</strong><br> 
+    <i><%= patient.comments || 'Aucun commentaire' %></i>
+  </div>
+
+
+  
 </div>
