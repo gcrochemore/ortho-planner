@@ -6,5 +6,5 @@ class Schooling < ActiveRecord::Base
 
   default_scope { includes(:school_year).order('school_years.begin_date DESC') }
 
-  scope :currents, -> { where('school_years.begin_date > "01/01/2016"') }
+  scope :currents, -> { where('school_years.begin_date > ?', "01/01/2016") }
 end
