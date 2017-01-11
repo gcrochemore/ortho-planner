@@ -69,6 +69,10 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold contact_information contactable:references{polymorphic} contact_information_type:references value:string
 
+	rails generate scaffold patient_availability patient:references day:integer period:integer
+
+
+
 
 	rails generate scaffold_controller Version item_type:string item_id:integer event:string whodunnit:string object:text created_at:datetime
 
@@ -114,18 +118,15 @@ Supprimer Gemfile.lock
 ===== DO
 
 * Ajouter une profession sur patient
-
 * Ajouter un type d'adresse
-
 * Ajouter un type d'adresse sur une adresse
-
 * Créer la table association patient/pathology
-
 * Ajouter un type de coordonnées
-
 * Ajouter une coordonnée
-
 * Supprimer le numéro de téléphone sur le patient
+* Créer availability
+
+availability
 
 ===== TODO
 
@@ -134,3 +135,8 @@ Supprimer Gemfile.lock
 * Modifier le profil practitioner pour n'avoir accès qu'a la liste des patients et à la liste d'attente
 
 * Ajouter un numéro d'établissement, un secteur (public/privé -> boolean is_public) sur un établissement scolaire (lié ensuite avec coordonnées pour ajouter site_web/uméro de téléphone/fax/adresse mail)
+
+
+====== WIKI
+
+Une période (table availability) correspond à 15 min. Ainsi la période 10 correspond à 2h30-2h45 (10*15min=150min=2h30min), 50 à 12h30-13h (50*15min=750min=12h30min)

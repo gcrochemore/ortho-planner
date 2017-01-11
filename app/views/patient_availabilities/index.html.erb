@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('.title') %><span class="badge"><%= @patient_availabilities.count %></span></h1>
+
+<div class="row">
+  <div class="col-md-2">
+    <legend class="filter-title"><%= t :filter_title %></legend>
+  </div>
+  <div class="col-md-3 btn-new-top">
+    <% if can? :create, PatientAvailability %>
+      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
+
+        <%= f.search_field :patient_cont, {placeholder: t('activerecord.attributes.patient_availability.patient')} %>
+
+        <%= f.search_field :day_cont, {placeholder: t('activerecord.attributes.patient_availability.day')} %>
+
+        <%= f.search_field :period_cont, {placeholder: t('activerecord.attributes.patient_availability.period')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :patient, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :day, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :period, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @patient_availabilities.each do |patient_availability| %>
+          <tr>
+    
+            <td><%= patient_availability.patient %></td>
+    
+            <td><%= patient_availability.day %></td>
+    
+            <td><%= patient_availability.period %></td>
+    
+            <td>
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, patient_availability %>
+              <% if can? :edit, patient_availability %>
+                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_patient_availability_path(patient_availability) %>
+              <% end %>
+              <% if can? :destroy, patient_availability %>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, patient_availability, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @patient_availabilities %>
+  </div>
+</div>

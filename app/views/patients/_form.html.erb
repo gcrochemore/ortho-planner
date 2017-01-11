@@ -87,6 +87,17 @@
                 </div>
               </div>
               <div class="col-xs-6">
+                <div class="form-group col-xs-12">
+                  <label for="interactions"><%= f.label :patient_availabilities %></label>   
+                  <div class='links'>
+                    <%= link_to_add_association t(:add_patient_availability), f, :patient_availabilities, partial: 'patient_availabilities/patient_availability_fields', :data => {"association-insertion-method" => "after"} %>
+                  </div>   
+                  <div id='interactions'>
+                    <%= f.simple_fields_for :patient_availabilities do |patient_availability| %>
+                      <%= render 'patient_availabilities/patient_availability_fields', f: patient_availability %>
+                    <% end %> 
+                  </div>
+                </div>
 
                 <div class="form-group col-xs-12">
                   <label for="interactions"><%= f.label :interactions %></label>   

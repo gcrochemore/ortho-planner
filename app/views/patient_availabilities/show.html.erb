@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @patient_availability.patient %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @patient_availability.day %>
+</p>
+
+<p>
+  <strong>Period:</strong>
+  <%= @patient_availability.period %>
+</p>
+
+<%= link_to 'Edit', edit_patient_availability_path(@patient_availability) %> |
+<%= link_to 'Back', patient_availabilities_path %>

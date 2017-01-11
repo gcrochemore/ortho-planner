@@ -11,7 +11,7 @@ Rails.application.routes.draw do
             :interaction_objects, :interaction_types, :patients_acts, :schoolings, 
             :schools, :school_types, :school_levels, :school_years, :addresses,
             :address_types, :contact_informations, :contact_information_types, 
-            :patients_pathologies
+            :patients_pathologies, :patient_availabilities
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

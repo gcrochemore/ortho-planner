@@ -23,6 +23,7 @@ fr:
   add_address: Ajouter une adresse
   add_contact_information: Ajouter un numéro
   add_interaction: Ajouter un appel/email
+  add_patient_availability: Ajouter une disponibilité
   add_schooling: Renseigner le parcours scolaire
   add_therapy: Ajouter une rééducation
   add_waiting_list: Inscription sur la liste d'attente
@@ -78,6 +79,7 @@ fr:
         is_male: Garçon ?
         job: Emploi
         last_name: 'Nom'
+        patient_availabilities: Disponibilités
         phone_number: 'Numéro de téléphone'
         priority: Prioritaire
         schoolings: Parcours scolaire
