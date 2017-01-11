@@ -15,6 +15,8 @@ class Patient < ActiveRecord::Base
   accepts_nested_attributes_for :contact_informations, allow_destroy: true
   has_many :schoolings
   accepts_nested_attributes_for :schoolings, allow_destroy: true
+  has_many :waiting_lists
+  accepts_nested_attributes_for :waiting_lists, allow_destroy: true
 
   def gender
     self.is_male ? "Male" : "Female"

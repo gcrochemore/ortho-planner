@@ -4,9 +4,9 @@ RSpec.describe "waiting_lists/new", type: :view do
   before(:each) do
     assign(:waiting_list, WaitingList.new(
       :patient => nil,
-      :office => nil,
+      :health_place => nil,
       :pathology => nil,
-      :comments => "MyString"
+      :comments => "MyText"
     ))
   end
 
@@ -17,11 +17,11 @@ RSpec.describe "waiting_lists/new", type: :view do
 
       assert_select "input#waiting_list_patient_id[name=?]", "waiting_list[patient_id]"
 
-      assert_select "input#waiting_list_office_id[name=?]", "waiting_list[office_id]"
+      assert_select "input#waiting_list_health_place_id[name=?]", "waiting_list[health_place_id]"
 
       assert_select "input#waiting_list_pathology_id[name=?]", "waiting_list[pathology_id]"
 
-      assert_select "input#waiting_list_comments[name=?]", "waiting_list[comments]"
+      assert_select "textarea#waiting_list_comments[name=?]", "waiting_list[comments]"
     end
   end
 end

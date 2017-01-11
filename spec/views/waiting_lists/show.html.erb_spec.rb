@@ -4,9 +4,9 @@ RSpec.describe "waiting_lists/show", type: :view do
   before(:each) do
     @waiting_list = assign(:waiting_list, WaitingList.create!(
       :patient => nil,
-      :office => nil,
+      :health_place => nil,
       :pathology => nil,
-      :comments => "Comments"
+      :comments => "MyText"
     ))
   end
 
@@ -15,6 +15,6 @@ RSpec.describe "waiting_lists/show", type: :view do
     expect(rendered).to match(//)
     expect(rendered).to match(//)
     expect(rendered).to match(//)
-    expect(rendered).to match(/Comments/)
+    expect(rendered).to match(/MyText/)
   end
 end

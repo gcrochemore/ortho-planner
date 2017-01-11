@@ -1,83 +1,57 @@
 class WaitingListsController < ApplicationController
   authorize_resource
   before_action :set_waiting_list, only: [:show, :edit, :update, :destroy]
-
   # GET /waiting_lists
-  # GET /waiting_lists.json
   def index
-    @waiting_lists = WaitingList.all
+    @q = WaitingList.ransack(params[:q])
+    @waiting_lists = @q.result.page(params[:page])
   end
-
   # GET /waiting_lists/1
-  # GET /waiting_lists/1.json
   def show
   end
 
   # GET /waiting_lists/new
   def new
     @waiting_list = WaitingList.new
-    @patient = Patient.new
   end
 
   # GET /waiting_lists/1/edit
   def edit
-    @patient = Patient.new
   end
 
   # POST /waiting_lists
-  # POST /waiting_lists.json
   def create
-    #@patient = Patient.new(params["patient"])
-    #@patient.save
-    @patient = waiting_list_params
     @waiting_list = WaitingList.new(waiting_list_params)
-    @waiting_list.end_date = nil
-    @patient = Patient.new
-    #@waiting_list.patient = @patient
 
-    respond_to do |format|
-      if @waiting_list.save
-        format.html { redirect_to @waiting_list, notice: 'Waiting list was successfully created.' }
-        format.json { render :show, status: :created, location: @waiting_list }
-      else
-        format.html { render :new }
-        format.json { render json: @waiting_list.errors, status: :unprocessable_entity }
-      end
+    if @waiting_list.save
+      redirect_to @waiting_list, notice: 'Waiting list was successfully created.'
+    else
+      render :new
     end
   end
-
   # PATCH/PUT /waiting_lists/1
-  # PATCH/PUT /waiting_lists/1.json
   def update
-    respond_to do |format|
-      if @waiting_list.update(waiting_list_params)
-        format.html { redirect_to @waiting_list, notice: 'Waiting list was successfully updated.' }
-        format.json { render :show, status: :ok, location: @waiting_list }
-      else
-        format.html { render :edit }
-        format.json { render json: @waiting_list.errors, status: :unprocessable_entity }
-      end
+    if @waiting_list.update(waiting_list_params)
+      redirect_to @waiting_list, notice: 'Waiting list was successfully updated.'
+    else
+      render :edit
     end
   end
-
   # DELETE /waiting_lists/1
-  # DELETE /waiting_lists/1.json
   def destroy
     @waiting_list.destroy
-    respond_to do |format|
-      format.html { redirect_to waiting_lists_url, notice: 'Waiting list was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to waiting_lists_url, notice: 'Waiting list was successfully destroyed.'
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_waiting_list
       @waiting_list = WaitingList.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Only allow a trusted parameter "white list" through.
     def waiting_list_params
-      params.require(:waiting_list).permit(:patient_id, :office_id, :start_date, :end_date, :pathology_id, :comments, patient: [:last_name, :first_name, :birth_date, :birth_place, :phone_number])
+
+      params.require(:waiting_list).permit(:patient_id, :health_place_id, :start_date, :end_date, :pathology_id, :comments)
+
     end
 end

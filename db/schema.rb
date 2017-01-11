@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110122437) do
+ActiveRecord::Schema.define(version: 20170110122438) do
 
   create_table "absences", force: :cascade do |t|
     t.integer  "patient_id"
@@ -299,16 +299,16 @@ ActiveRecord::Schema.define(version: 20170110122437) do
 
   create_table "waiting_lists", force: :cascade do |t|
     t.integer  "patient_id"
-    t.integer  "office_id"
+    t.integer  "health_place_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "pathology_id"
-    t.string   "comments"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.text     "comments"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "waiting_lists", ["office_id"], name: "index_waiting_lists_on_office_id"
+  add_index "waiting_lists", ["health_place_id"], name: "index_waiting_lists_on_health_place_id"
   add_index "waiting_lists", ["pathology_id"], name: "index_waiting_lists_on_pathology_id"
   add_index "waiting_lists", ["patient_id"], name: "index_waiting_lists_on_patient_id"
 

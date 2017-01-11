@@ -1,59 +1,90 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Waiting Lists</h1>
+<h1><%= t('.title') %><span class="badge"><%= @waiting_lists.count %></span></h1>
 
-<table class="table table-hover table-condensed table-bordered">
-  <thead>
-    <tr>
-
-      <th>Patient</th>
-
-      <th>Office</th>
-
-      <th>Pathology</th>
-
-      <th>Comments</th>
-
-      <th>Start date</th>
-
-      <th>End date</th>
-
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @waiting_lists.each do |waiting_list| %>
-      <tr>
-
-        <td><%= waiting_list.patient.andand.to_label %></td>
-
-        <td><%= waiting_list.office %></td>
-
-        <td><%= waiting_list.pathology %></td>
-
-        <td><%= waiting_list.comments %></td>
-
-        <td><%= waiting_list.start_date %></td>
-
-        <td><%= waiting_list.end_date %></td>
-
-        <td>
-          <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
-          <% if can? :edit, waiting_list %>
-            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_waiting_list_path(waiting_list) %>
-          <% end %>
-          <% if can? :destroy, waiting_list %>
-            <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, waiting_list, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </td>
-      </tr>
+<div class="row">
+  <div class="col-md-2">
+    <legend class="filter-title"><%= t :filter_title %></legend>
+  </div>
+  <div class="col-md-3 btn-new-top">
+    <% if can? :create, WaitingList %>
+      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <fieldset class="filter-panel">
+      <%= search_form_for @q do |f| %>
 
-<br>
+        <%= f.search_field :patient_cont, {placeholder: t('activerecord.attributes.waiting_list.patient')} %>
 
-<% if can? :create, WaitingList %>
-  <%= link_to '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Waiting List'.html_safe, new_waiting_list_path, class: "btn" %>
-<% end %>
+        <%= f.search_field :health_place_cont, {placeholder: t('activerecord.attributes.waiting_list.health_place')} %>
+
+        <%= f.search_field :start_date_cont, {placeholder: t('activerecord.attributes.waiting_list.start_date')} %>
+
+        <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.waiting_list.end_date')} %>
+
+        <%= f.search_field :pathology_cont, {placeholder: t('activerecord.attributes.waiting_list.pathology')} %>
+
+        <%= f.search_field :comments_cont, {placeholder: t('activerecord.attributes.waiting_list.comments')} %>
+
+        <br>
+        <br>
+        <%= f.submit class: 'btn btn-default btn-search-filter' %>
+      <% end %>
+    </fieldset>
+  </div>
+  <div class="col-md-10">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+        <tr>
+    
+          <th><%= sort_link(@q, :patient, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :health_place, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :start_date, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :end_date, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :pathology, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :comments, default_order: :asc) %></th>
+    
+          <th class="col-xs-1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @waiting_lists.each do |waiting_list| %>
+          <tr>
+    
+            <td><%= waiting_list.patient %></td>
+    
+            <td><%= waiting_list.health_place %></td>
+    
+            <td><%= waiting_list.start_date %></td>
+    
+            <td><%= waiting_list.end_date %></td>
+    
+            <td><%= waiting_list.pathology %></td>
+    
+            <td><%= waiting_list.comments %></td>
+    
+            <td>
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
+              <% if can? :edit, waiting_list %>
+                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_waiting_list_path(waiting_list) %>
+              <% end %>
+              <% if can? :destroy, waiting_list %>
+                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, waiting_list, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @waiting_lists %>
+  </div>
+</div>

@@ -25,6 +25,7 @@ fr:
   add_interaction: Ajouter un appel/email
   add_schooling: Renseigner le parcours scolaire
   add_therapy: Ajouter une rééducation
+  add_waiting_list: Inscription sur la liste d'attente
   female: "Fille"
   filter_title: Filtres
   hello: "Hello world"
@@ -81,6 +82,7 @@ fr:
         priority: Prioritaire
         schoolings: Parcours scolaire
         therapies: Rééducations
+        waiting_lists: Inscription sur liste d'attente
       pathology:
         name: Nom  
       practitioner:

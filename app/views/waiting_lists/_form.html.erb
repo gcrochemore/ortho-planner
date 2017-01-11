@@ -1,49 +1,41 @@
 <%= simple_form_for(@waiting_list) do |f| %>
   <%= f.error_notification %>
 
-  <div class="row">
-    <div class="col-xs-6">
+  <div class="form-inputs">
 
-      <div class="panel panel-primary">
-        <div class="panel-heading"><%= f.label :patient %></div>
-        <div class="panel-body">
-          <%= f.association :patient, label: false, input_html: { class: "form-control" } %>
-            <%= simple_fields_for(@patient, html: { class: 'form-horizontal' }) do |form_patient| %>
-              <%= render partial: "patients/patient_fields", locals: {form_patient: form_patient} %>
-            <% end %>
-        </div>
-      </div>
-    </div>  
-    <div class="col-xs-6">
-
-      <div class="form-group">
-        <label for="pathology"><%= f.label :pathology %></label>
-        <%= f.association :pathology, label: false %>
-      </div>
-
-      <div class="form-group">
-        <label for="comments"><%= f.label :comments %></label>
-        <%= f.input :comments, label: false, input_html: { class: "form-control" } %>
-      </div>
+    <div class="form-group">
+      <label for="patient"><%= f.label :patient %></label>
+      <%= f.association :patient, label: false, input_html: { class: "form-control" } %>
     </div>
-  </div>
-  <div class="form-group hidden">
-    <label for="office"><%= f.label :office %></label>
-    <%= f.association :office, label: false, input_html: { class: "form-control" } %>
-  </div>
 
-  <div class="form-group hidden">
-    <label for="start_date"><%= f.label :start_date %></label>
-    <%= f.input :start_date, label: false, input_html: { class: "form-control" } %>
-  </div>
+    <div class="form-group">
+      <label for="health_place"><%= f.label :health_place %></label>
+      <%= f.association :health_place, label: false, input_html: { class: "form-control" } %>
+    </div>
 
-  <div class="form-group hidden">
-    <label for="end_date"><%= f.label :end_date %></label>
-    <%= f.input :end_date, label: false, input_html: { class: "form-control" } %>
+    <div class="form-group">
+      <label for="start_date"><%= f.label :start_date %></label>
+      <%= f.input :start_date, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="end_date"><%= f.label :end_date %></label>
+      <%= f.input :end_date, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="pathology"><%= f.label :pathology %></label>
+      <%= f.association :pathology, label: false, input_html: { class: "form-control" } %>
+    </div>
+
+    <div class="form-group">
+      <label for="comments"><%= f.label :comments %></label>
+      <%= f.input :comments, label: false, input_html: { class: "form-control" } %>
+    </div>
+
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, t('.submit'), input_html: { class: "form-control btn-primary" } %>
+    <%= f.button :submit %>
   </div>
-
 <% end %>

@@ -5,15 +5,15 @@ RSpec.describe "waiting_lists/index", type: :view do
     assign(:waiting_lists, [
       WaitingList.create!(
         :patient => nil,
-        :office => nil,
+        :health_place => nil,
         :pathology => nil,
-        :comments => "Comments"
+        :comments => "MyText"
       ),
       WaitingList.create!(
         :patient => nil,
-        :office => nil,
+        :health_place => nil,
         :pathology => nil,
-        :comments => "Comments"
+        :comments => "MyText"
       )
     ])
   end
@@ -23,6 +23,6 @@ RSpec.describe "waiting_lists/index", type: :view do
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
-    assert_select "tr>td", :text => "Comments".to_s, :count => 2
+    assert_select "tr>td", :text => "MyText".to_s, :count => 2
   end
 end

@@ -126,6 +126,18 @@
                     <% end %> 
                   </div>
                 </div>
+
+                <div class="form-group col-xs-12">
+                  <label for="waiting_lists"><%= f.label :waiting_lists %></label>      
+                  <div class='links'>
+                    <%= link_to_add_association t(:add_waiting_list), f, :waiting_lists, partial: 'waiting_lists/waiting_list_fields', :data => {"association-insertion-method" => "after"} %>
+                  </div>
+                  <div id='schoolings' class="waiting_lists">
+                    <%= f.simple_fields_for :waiting_lists do |waiting_list| %>
+                      <%= render 'waiting_lists/waiting_list_fields', f: waiting_list %>
+                    <% end %> 
+                  </div>
+                </div>
               </div>
 
 
