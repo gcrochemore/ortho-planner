@@ -10,6 +10,10 @@ user = User.create( email: "secretaire@ortho-planner.com", password: "ortho-plan
 user.save
 user.add_role :secretary
 
+user = User.create( email: "waiting-list-manager@ortho-planner.com", password: "ortho-planner", password_confirmation: "ortho-planner")
+user.save
+user.add_role :waiting_list_manager
+
 user = User.create( email: "orthophoniste@ortho-planner.com", password: "ortho-planner", password_confirmation: "ortho-planner")
 user.save
 user.add_role :practitioner
@@ -278,3 +282,27 @@ school_year.save
 school_year = SchoolYear.create(begin_date: "01/09/2009", end_date: "01/07/2010")
 school_year.save
 
+patient = Patient.create(last_name: "Dupond",  first_name: "Ludovic", is_male: true, birth_date: "01/01/2010", priority: false, comments: "J'ai demandé un bilan ORL. Difficultés en lecture, ne comprend pas les consignes")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060606")
+contact_information.save
+schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year)
+schooling.save
+
+patient = Patient.create(last_name: "Castafiore",  first_name: "Bianca", is_male: false, birth_date: "01/01/1978", priority: true, job: "Chanteuse", comments: "Bilan fait par le 10/12/2016 par Jean-Michel L'Orthophoniste")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060607")
+contact_information.save
+
+patient = Patient.create(last_name: "Brin d'acier",  first_name: "Fifi", is_male: false, birth_date: "01/01/2008", priority: false, comments: "Difficulté avec l'orthographe")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
+contact_information.save
+schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year)
+schooling.save
