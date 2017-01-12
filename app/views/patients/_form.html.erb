@@ -25,11 +25,11 @@
 
             <div class="form-group col-xs-12">
               <label for="last_name"><%= f.label :last_name %></label>
-              <%= f.input :last_name, label: false, input_html: { class: "form-control" }, placeholder: t('.last_name.placeholder') %>
+              <%= f.input :last_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.last_name') %>
             </div>
             <div class="form-group col-xs-12">
               <label for="first_name"><%= f.label :first_name %></label>
-              <%= f.input :first_name, label: false, input_html: { class: "form-control" }, placeholder: t('.first_name.placeholder') %>
+              <%= f.input :first_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient..first_name') %>
             </div>
 
             <div class="form-group col-xs-12">
@@ -41,10 +41,10 @@
               <label for="contact_informations"><%= f.label :contact_informations %></label>      
               <div id='contact_informations'>
                 <%= f.simple_fields_for :contact_informations do |f| %>
-                  <%= render 'contact_informations/contact_information_fields', f: f %>
+                  <%= render 'contact_informations/contact_information_value_field', f: f %>
                 <% end %> 
                 <div class='links'>
-                  <%= link_to_add_association t(:add_contact_information), f, :contact_informations, partial: 'contact_informations/contact_information_fields' %>
+                  <%= link_to_add_association t(:add_contact_information), f, :contact_informations, partial: 'contact_informations/contact_information_value_field' %>
                 </div>
               </div>
             </div>

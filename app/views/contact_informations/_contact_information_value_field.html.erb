@@ -1,0 +1,8 @@
+<div class="nested-fields row">
+  <div class="form-group col-xs-10">
+    <%= f.input :value, label: false, input_html: { class: "form-control" }, placeholder: "Téléphone/Email" %>
+  </div>
+  <div class="form-group col-xs-1">
+    <%= link_to_remove_association '<i class="glyphicon glyphicon-remove"></i>'.html_safe, f %>
+  </div>
+</div>

@@ -3,6 +3,7 @@ class Patient < ActiveRecord::Base
   resourcify
 
   validates :first_name, :last_name, presence: true
+  
   has_and_belongs_to_many :acts, join_table: "patients_acts"
   has_and_belongs_to_many :pathologies, join_table: "patients_pathologies"
   has_many :interactions

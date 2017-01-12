@@ -1,6 +1,8 @@
 class WaitingList < ActiveRecord::Base
   has_paper_trail
   resourcify
+  
+  validates :start_date, presence: true
 
   belongs_to :patient
   belongs_to :health_place

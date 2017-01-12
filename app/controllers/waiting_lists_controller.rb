@@ -14,6 +14,7 @@ class WaitingListsController < ApplicationController
   def new
     @waiting_list = WaitingList.new
     @waiting_list.patient = Patient.new
+    @waiting_list.patient.addresses << Address.new
   end
 
   # GET /waiting_lists/1/edit

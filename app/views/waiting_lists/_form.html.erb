@@ -5,14 +5,14 @@
   <%= f.association :pathology, label: false, input_html: { class: "form-control" }, as: :hidden %>
   <%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>
 
-  <div class="form-inputs">
+  <div class="form-inputs row">
 
-    <div class="form-group">
+    <div class="form-group col-xs-6">
       <label for="health_place"><%= f.label :health_place %></label>
       <%= f.association :health_place, label: false, input_html: { class: "form-control" } %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group col-xs-6">
       <label for="start_date"><%= f.label :start_date %></label>
       <%= f.input :start_date, label: false, input_html: { class: "datepicker"}, as: :string %>
     </div>
