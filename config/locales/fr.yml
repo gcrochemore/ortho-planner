@@ -254,3 +254,9 @@ fr:
 
 
 
+  patients:
+    patient_registration_on_waiting_list_fields:
+      last_name:
+        placeholder: Last name
+      first_name:
+        placeholder: First name

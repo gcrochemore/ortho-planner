@@ -13,6 +13,7 @@ class WaitingListsController < ApplicationController
   # GET /waiting_lists/new
   def new
     @waiting_list = WaitingList.new
+    @waiting_list.patient = Patient.new
   end
 
   # GET /waiting_lists/1/edit
@@ -51,7 +52,9 @@ class WaitingListsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def waiting_list_params
 
-      params.require(:waiting_list).permit(:patient_id, :health_place_id, :start_date, :end_date, :pathology_id, :comments)
+      params.require(:waiting_list).permit(:patient_id, :health_place_id, :start_date, :end_date, :pathology_id, :comments,
+                                          patient_attributes: [:id, :last_name, :first_name, :is_male, :birth_date, :birth_place, :priority, :comments, :job]
+                                          )
 
     end
 end
