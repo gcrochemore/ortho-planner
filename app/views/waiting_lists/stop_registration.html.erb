@@ -1,4 +1,4 @@
-Formulaire pour prendre en charge un patient (terminer l'enregistrement + créer un thérapie)
+Formulaire pour terminer l'inscription sur la liste d'attente
 
 <%= simple_form_for(@waiting_list) do |f| %>
   <%= f.error_notification %>
@@ -26,7 +26,7 @@ Formulaire pour prendre en charge un patient (terminer l'enregistrement + créer
     <div class="form-group col-xs-12">
       <div id='patient'>
         <%= f.simple_fields_for :patient do |f| %>
-          <%= render 'patients/patient_take_care_on_waiting_list_fields', f: f %>
+          <%= render 'patients/patient_stop_registration_on_waiting_list_fields', f: f %>
         <% end %>
       </div>
     </div>
@@ -37,5 +37,3 @@ Formulaire pour prendre en charge un patient (terminer l'enregistrement + créer
     <%= f.button :submit %>
   </div>
 <% end %>
-
-

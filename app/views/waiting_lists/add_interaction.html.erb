@@ -1,1 +1,39 @@
-Bientot la page pour ajouter un appel
+Formulaire pour ajouter un appel
+
+<%= simple_form_for(@waiting_list) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :end_date, label: false, input_html: { class: "form-control" }, as: :hidden %>
+  <%= f.association :pathology, label: false, input_html: { class: "form-control" }, as: :hidden %>
+  <%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>
+
+  <div class="form-inputs row">
+
+    <div class="form-group col-xs-6 row">
+      <label for="health_place" class="col-xs-2"><%= f.label :health_place %></label>
+      <div class="col-xs-9">
+        <%= f.association :health_place, label: false, input_html: { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group col-xs-6">
+      <label for="start_date" class="col-xs-2"><%= f.label :start_date %></label>
+      <div class="col-xs-9">
+        <%= f.input :start_date, label: false, input_html: { class: "datepicker"}, as: :string, value: f.object.start_date || DateTime.now %>
+      </div>
+    </div>
+
+    <div class="form-group col-xs-12">
+      <div id='patient'>
+        <%= f.simple_fields_for :patient do |f| %>
+          <%= render 'patients/patient_add_interaction_on_waiting_list_fields', f: f %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

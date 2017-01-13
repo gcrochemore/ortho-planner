@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     member do
       get :take_care
       get :add_interaction
+      get :stop_registration
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,6 +1,6 @@
 class WaitingListsController < ApplicationController
   authorize_resource
-  before_action :set_waiting_list, only: [:show, :edit, :update, :destroy, :take_care, :add_interaction]
+  before_action :set_waiting_list, only: [:show, :edit, :update, :destroy, :take_care, :add_interaction, :stop_registration]
   # GET /waiting_lists
   def index
     @q = WaitingList.ransack(params[:q])
