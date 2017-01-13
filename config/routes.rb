@@ -6,12 +6,19 @@ Rails.application.routes.draw do
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
   resources :patients, :offices, :practitioners, :practitioner_professions, 
-            :users, :sessions, :therapies, :acts, :pathologies, :waiting_lists, 
+            :users, :sessions, :therapies, :acts, :pathologies, 
             :health_places, :health_place_types, :absences, :interactions, 
             :interaction_objects, :interaction_types, :patients_acts, :schoolings, 
             :schools, :school_types, :school_levels, :school_years, :addresses,
             :address_types, :contact_informations, :contact_information_types, 
             :patients_pathologies, :patient_availabilities
+
+  resources :waiting_lists do
+    member do
+      get :take_care
+      get :add_interaction
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

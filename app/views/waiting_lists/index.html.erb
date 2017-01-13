@@ -59,14 +59,22 @@
               <%= waiting_list.start_date.andand.strftime("%d/%m/%Y") %>
             </td>
     
-            <td>
+            <td width="100px">
+              <% if can? :take_care, WaitingList %>
+                <%= link_to take_care_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+                  <i class="glyphicon glyphicon-saved"></i> Prendre en charge
+                <% end %>
+              <% end %>
+              <% if can? :add_interaction, WaitingList %>
+                <%= link_to add_interaction_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+                  <i class="glyphicon glyphicon-earphone"></i> Ajouter un appel
+                <% end %>
+              <% end %>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
               <% if can? :edit, waiting_list %>
                 <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_waiting_list_path(waiting_list) %>
               <% end %>
-              <% if can? :destroy, waiting_list %>
-                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, waiting_list, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <% end %>
+              
             </td>
           </tr>
         <% end %>

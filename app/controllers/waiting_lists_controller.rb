@@ -1,6 +1,6 @@
 class WaitingListsController < ApplicationController
   authorize_resource
-  before_action :set_waiting_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_waiting_list, only: [:show, :edit, :update, :destroy, :take_care, :add_interaction]
   # GET /waiting_lists
   def index
     @q = WaitingList.ransack(params[:q])
@@ -15,6 +15,8 @@ class WaitingListsController < ApplicationController
     @waiting_list = WaitingList.new
     @waiting_list.patient = Patient.new
     @waiting_list.patient.addresses << Address.new
+    @waiting_list.patient.schoolings << Schooling.new
+    @waiting_list.patient.contact_informations << ContactInformation.new
   end
 
   # GET /waiting_lists/1/edit
@@ -26,7 +28,7 @@ class WaitingListsController < ApplicationController
     @waiting_list = WaitingList.new(waiting_list_params)
 
     if @waiting_list.save
-      redirect_to @waiting_list, notice: 'Waiting list was successfully created.'
+      redirect_to index, notice: 'Waiting list was successfully created.'
     else
       render :new
     end
@@ -44,6 +46,13 @@ class WaitingListsController < ApplicationController
     @waiting_list.destroy
     redirect_to waiting_lists_url, notice: 'Waiting list was successfully destroyed.'
   end
+
+  def take_care
+  end
+
+  def add_interaction
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_waiting_list
