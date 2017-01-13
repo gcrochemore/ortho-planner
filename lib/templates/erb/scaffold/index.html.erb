@@ -44,10 +44,10 @@
     <% end -%>
             <td>
               <%%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, <%= singular_table_name %> %>
-              <%% if can? :edit, <%= singular_table_name %> %>
+              <%% if can? :edit, <%= plural_table_name.classify  %> %>
                 <%%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
               <%% end %>
-              <%% if can? :destroy, <%= singular_table_name %> %>
+              <%% if can? :destroy, <%= plural_table_name.classify  %> %>
                 <%%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } %>
               <%% end %>
             </td>

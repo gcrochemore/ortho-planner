@@ -20,7 +20,7 @@ class Ability
       can :manage, HealthPlace
       can :manage, HealthPlaceType
       can :manage, InteractionObject
-      can :manage, IinteractionType
+      can :manage, InteractionType
     end
 
     if user.has_role? :waiting_list_manager
