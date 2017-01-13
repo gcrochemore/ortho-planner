@@ -26,13 +26,29 @@ user = User.create( email: "admin@ortho-planner.com", password: "ortho-planner",
 user.save
 user.add_role :admin
 
-pathology = Pathology.create(name: "Pathologie de la parole")
+pathology = Pathology.create(name: "Voix")
 pathology.save
-pathology = Pathology.create(name: "Pathologie de la voix")
+pathology = Pathology.create(name: "Langage écrit")
 pathology.save
-pathology = Pathology.create(name: "Pathologie du langage écrit")
+pathology = Pathology.create(name: "Langage oral")
 pathology.save
-pathology = Pathology.create(name: "Pathologie du langage oral")
+pathology = Pathology.create(name: "Autisme")
+pathology.save
+pathology = Pathology.create(name: "Maladies neurodégénératives")
+pathology.save
+pathology = Pathology.create(name: "Maladies génétiques")
+pathology.save
+pathology = Pathology.create(name: "AVC")
+pathology.save
+pathology = Pathology.create(name: "Déglutition")
+pathology.save
+pathology = Pathology.create(name: "Bégaiement")
+pathology.save
+pathology = Pathology.create(name: "Dysphasie")
+pathology.save
+pathology = Pathology.create(name: "Aphasie")
+pathology.save
+pathology = Pathology.create(name: "Surdité")
 pathology.save
 
 act = Act.create(name: "Bilan de la déglutition et des fonctions oro-myo fonctionnelles.", AMO: 16)
