@@ -1,25 +1,17 @@
 Formulaire pour prendre en charge un patient (terminer l'enregistrement + créer un thérapie)
-
+<br> <br><br><br>
 <%= simple_form_for(@waiting_list) do |f| %>
   <%= f.error_notification %>
-  <%= f.association :health_place, label: false, input_html: { class: "form-control" } %>
-  <%= f.input :end_date, label: false, input_html: { class: "form-control" }, as: :hidden, value: %>
+  <%= f.input :end_date, label: false, input_html: { class: "form-control" }, as: :hidden, value: f.object.start_date.strftime(DATE_FORMAT) %>
 
   <div class="form-inputs row">
 
-    <div class="form-group col-xs-6 row">
-      <label for="health_place" class="col-xs-2"><%= f.label :health_place %></label>
-      <div class="col-xs-9">
-        
-      </div>
-    </div>
+    <%= render 'patients/patient_view', patient: @waiting_list.patient %> 
 
-    <%= render 'patients/patient_view', patient: waiting_list.patient %> 
-
-    <div class="form-group col-xs-6">
-      <label for="start_date" class="col-xs-2"><%= f.label :start_date %></label>
-      <div class="col-xs-9">
-  		<%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>        
+    <div class="form-group">
+      <label for="start_date" class="col-xs-12"><%= f.label :comment %></label>
+      <div class="col-xs-12">
+  		<%= f.input :comments, label: false, input_html: { class: "form-control" } %>        
       </div>
     </div>
 
