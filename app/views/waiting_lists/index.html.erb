@@ -54,7 +54,7 @@
               <%= render 'patients/patient_view', patient: waiting_list.patient %> 
             </td> 
             <td>
-              <%= waiting_list.start_date.andand.strftime("%d/%m/%Y") %>
+              <%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %>
             </td>
     
             <td width="100px">

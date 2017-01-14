@@ -12,7 +12,7 @@ class WaitingListsController < ApplicationController
 
   # GET /waiting_lists/new
   def new
-    @waiting_list = WaitingList.new
+    @waiting_list = WaitingList.new(start_date: DateTime.now)
     @waiting_list.patient = Patient.new
     @waiting_list.patient.addresses << Address.new
     @waiting_list.patient.schoolings << Schooling.new
@@ -28,7 +28,7 @@ class WaitingListsController < ApplicationController
     @waiting_list = WaitingList.new(waiting_list_params)
 
     if @waiting_list.save
-      redirect_to index, notice: 'Waiting list was successfully created.'
+      redirect_to action: :index, notice: 'Waiting list was successfully created.'
     else
       render :new
     end
@@ -63,7 +63,12 @@ class WaitingListsController < ApplicationController
     def waiting_list_params
 
       params.require(:waiting_list).permit(:patient_id, :health_place_id, :start_date, :end_date, :pathology_id, :comments,
-                                          patient_attributes: [:id, :last_name, :first_name, :is_male, :birth_date, :birth_place, :priority, :comments, :job]
+                                          patient_attributes: [:id, :last_name, :first_name, :is_male, :birth_date, :birth_place, :priority, :comments, :job,
+                                                                contact_informations_attributes: [:id,:value],
+                                                                pathology_ids: [], 
+                                                                schoolings_attributes: [:id,:school_level_id],
+                                                                addresses_attributes: [:id, :city]
+                                                              ]
                                           )
 
     end

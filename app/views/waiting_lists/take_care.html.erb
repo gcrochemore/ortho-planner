@@ -2,24 +2,24 @@ Formulaire pour prendre en charge un patient (terminer l'enregistrement + créer
 
 <%= simple_form_for(@waiting_list) do |f| %>
   <%= f.error_notification %>
-
-  <%= f.input :end_date, label: false, input_html: { class: "form-control" }, as: :hidden %>
-  <%= f.association :pathology, label: false, input_html: { class: "form-control" }, as: :hidden %>
-  <%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>
+  <%= f.association :health_place, label: false, input_html: { class: "form-control" } %>
+  <%= f.input :end_date, label: false, input_html: { class: "form-control" }, as: :hidden, value: %>
 
   <div class="form-inputs row">
 
     <div class="form-group col-xs-6 row">
       <label for="health_place" class="col-xs-2"><%= f.label :health_place %></label>
       <div class="col-xs-9">
-        <%= f.association :health_place, label: false, input_html: { class: "form-control" } %>
+        
       </div>
     </div>
+
+    <%= render 'patients/patient_view', patient: waiting_list.patient %> 
 
     <div class="form-group col-xs-6">
       <label for="start_date" class="col-xs-2"><%= f.label :start_date %></label>
       <div class="col-xs-9">
-        <%= f.input :start_date, label: false, input_html: { class: "datepicker"}, as: :string, value: f.object.start_date || DateTime.now %>
+  		<%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>        
       </div>
     </div>
 
