@@ -25,7 +25,14 @@ class Ability
 
     if user.has_role? :waiting_list_manager
       can :manage, Patient
-      can :manage, WaitingList
+
+      can :take_care, WaitingList
+      can :add_interaction, WaitingList
+      can :stop_registration, WaitingList
+      can :create, WaitingList
+      can :index, WaitingList
+      can :update, WaitingList
+      #can :filter, WaitingList
     end
 
     if user.has_role? :practitioner

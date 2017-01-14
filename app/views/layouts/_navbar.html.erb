@@ -24,7 +24,7 @@
             <% if can? :read, Session %>
               <li><%= link_to(t('.sessions'), sessions_path)  %> </li>
             <% end %>
-            <% if can? :read, WaitingList %>
+            <% if can? :index, WaitingList %>
               <li><%= link_to(t('.waiting_lists'), waiting_lists_path)  %> </li>
             <% end %>
             <% if can? :read, Absence %>

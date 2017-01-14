@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<%= render 'layouts/navbar' %>
+<%= render 'layouts/navbar' if user_signed_in? %>
 
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -22,7 +22,7 @@
 <% end %>
 
 <div class="container">
-  <%= breadcrumb %>
+  <%= breadcrumb if user_signed_in? %>
   <%= yield %>
 </div>
 

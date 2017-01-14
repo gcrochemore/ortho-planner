@@ -1,39 +1,39 @@
 <h1><%= t('.title') %><span class="badge"><%= @waiting_lists.count %></span></h1>
-
-<div class="row">
-  <div class="col-md-2">
-    <legend class="filter-title"><%= t :filter_title %></legend>
-  </div>
-  <div class="col-md-3 btn-new-top">
-    <% if can? :create, WaitingList %>
-      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
-    <% end %>
-  </div>
+<div class="col-md-3 btn-new-top">
+  <% if can? :create, WaitingList %>
+    <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+  <% end %>
 </div>
+<div class="clearfix visible-xs visible-md visible-sm visible-lg"></div>
 <div class="row">
-  <div class="col-md-2">
-    <fieldset class="filter-panel">
-      <%= search_form_for @q do |f| %>
+  <% if can? :filter, WaitingList %>
+    <div class="col-md-2">
+      <legend class="filter-title"><%= t :filter_title %></legend>
+      <fieldset class="filter-panel">
+        <%= search_form_for @q do |f| %>
 
-        <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.waiting_list.patient')} %>
+          <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.waiting_list.patient')} %>
 
-        <%= f.search_field :health_place_name_cont, {placeholder: t('activerecord.attributes.waiting_list.health_place')} %>
+          <%= f.search_field :health_place_name_cont, {placeholder: t('activerecord.attributes.waiting_list.health_place')} %>
 
-        <%= f.search_field :start_date_cont, {placeholder: t('activerecord.attributes.waiting_list.start_date')} %>
+          <%= f.search_field :start_date_cont, {placeholder: t('activerecord.attributes.waiting_list.start_date')} %>
 
-        <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.waiting_list.end_date')} %>
+          <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.waiting_list.end_date')} %>
 
-        <%= f.search_field :pathology_name_cont, {placeholder: t('activerecord.attributes.waiting_list.pathology')} %>
+          <%= f.search_field :pathology_name_cont, {placeholder: t('activerecord.attributes.waiting_list.pathology')} %>
 
-        <%= f.search_field :comments_cont, {placeholder: t('activerecord.attributes.waiting_list.comments')} %>
+          <%= f.search_field :comments_cont, {placeholder: t('activerecord.attributes.waiting_list.comments')} %>
 
-        <br>
-        <br>
-        <%= f.submit class: 'btn btn-default btn-search-filter' %>
-      <% end %>
-    </fieldset>
-  </div>
-  <div class="col-md-10">
+          <br>
+          <br>
+          <%= f.submit class: 'btn btn-default btn-search-filter' %>
+        <% end %>
+      </fieldset>
+    </div>
+    <div class="col-md-10">
+  <% else %>
+    <div class="col-md-12">
+  <% end %>
     <table class="table table-hover table-condensed table-bordered">
       <thead>
         <tr>
@@ -73,8 +73,10 @@
                   <i class="glyphicon glyphicon-remove"></i> Supprimer de la liste
                 <% end %>
               <% end %>
-              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
-              <% if can? :edit, waiting_list %>
+              <% if can? :show, waiting_list %>
+                <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
+              <% end %>
+              <% if can? :manage, waiting_list %>
                 <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_waiting_list_path(waiting_list) %>
               <% end %>
               

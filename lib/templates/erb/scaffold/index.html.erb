@@ -3,15 +3,6 @@
 <div class="row">
   <div class="col-md-2">
     <legend class="filter-title"><%%= t :filter_title %></legend>
-  </div>
-  <div class="col-md-3 btn-new-top">
-    <%% if can? :create, <%= plural_table_name.classify  %> %>
-      <%%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
-    <%% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
     <fieldset class="filter-panel">
       <%%= search_form_for @q do |f| %>
 <% attributes.reject {|i| i.name == 'activated' || i.password_digest?}.each do |attribute| -%>
@@ -24,6 +15,11 @@
     </fieldset>
   </div>
   <div class="col-md-10">
+    <div class="col-md-3 btn-new-top">
+      <%% if can? :create, <%= plural_table_name.classify  %> %>
+        <%%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+      <%% end %>
+    </div>
     <table class="table table-hover table-condensed table-bordered">
       <thead>
         <tr>

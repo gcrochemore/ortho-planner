@@ -36,7 +36,7 @@ class WaitingListsController < ApplicationController
   # PATCH/PUT /waiting_lists/1
   def update
     if @waiting_list.update(waiting_list_params)
-      redirect_to @waiting_list, notice: 'Waiting list was successfully updated.'
+      redirect_to action: :index, notice: 'Waiting list was successfully updated.'
     else
       render :edit
     end
@@ -47,10 +47,16 @@ class WaitingListsController < ApplicationController
     redirect_to waiting_lists_url, notice: 'Waiting list was successfully destroyed.'
   end
 
-  def take_care
+  def stop_registration
+    @waiting_list.end_date = DateTime.now
   end
 
-  def add_interaction
+  def take_care
+    @waiting_list.end_date = DateTime.now
+  end
+
+  def add_interaction    
+    @waiting_list.patient.contact_informations << ContactInformation.new
   end
 
   private
