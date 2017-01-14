@@ -33,7 +33,8 @@ fr:
   male: "Garçon"
   new: Nouveau
 
-
+  breadcrumb:
+    waiting_lists: Liste d'attente
 
   activerecord:
     models:
@@ -248,15 +249,3 @@ fr:
     index:
       new_button: Ajouter à la liste d'attente
       title: Liste d'attente
-
-
-
-
-
-
-  patients:
-    patient_registration_on_waiting_list_fields:
-      last_name:
-        placeholder: Last name
-      first_name:
-        placeholder: First name
