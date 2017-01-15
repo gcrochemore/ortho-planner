@@ -70,7 +70,7 @@ class WaitingListsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def waiting_list_params
 
-      params.require(:waiting_list).permit(:patient_id, :health_place_id, :start_date, :end_date, :pathology_id, :comments,
+      params.require(:waiting_list).permit(:patient_id, :health_place_id, :start_date, :end_date, :pathology_id, :comments, :waiting_for_patient_return,
                                           patient_attributes: [:id, :last_name, :first_name, :is_male, :birth_date, :birth_place, :priority, :comments, :job,
                                                                 contact_informations_attributes: [:id,:value],
                                                                 pathology_ids: [], 

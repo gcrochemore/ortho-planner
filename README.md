@@ -37,13 +37,13 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold session begin_date:datetime end_date:datetime therapy:references act:references practitioner:references health_place:references
 
-	rails generate scaffold WaitingList patient:belongs_to health_place:references start_date:datetime end_date:datetime pathology:references comments:text
+	rails generate scaffold WaitingList patient:belongs_to health_place:references start_date:datetime end_date:datetime pathology:references comments:text waiting_for_patient_return:boolean
 
 	rails generate scaffold interaction_type name:string glyphicon:string
 
 	rails generate scaffold interaction_object name:string
 
-	rails generate scaffold interaction patient:references interaction_object:references interaction_type:references interaction_date:datetime comments:text
+	rails generate scaffold interaction patient:references practitioner:references interaction_object:references interaction_type:references interaction_date:datetime comments:text
 
 	rails generate scaffold absence patient:references begin_date:datetime end_date:datetime
 

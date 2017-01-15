@@ -6,7 +6,8 @@ RSpec.describe "waiting_lists/new", type: :view do
       :patient => nil,
       :health_place => nil,
       :pathology => nil,
-      :comments => "MyText"
+      :comments => "MyText",
+      :waiting_for_patient_return => false
     ))
   end
 
@@ -22,6 +23,8 @@ RSpec.describe "waiting_lists/new", type: :view do
       assert_select "input#waiting_list_pathology_id[name=?]", "waiting_list[pathology_id]"
 
       assert_select "textarea#waiting_list_comments[name=?]", "waiting_list[comments]"
+
+      assert_select "input#waiting_list_waiting_for_patient_return[name=?]", "waiting_list[waiting_for_patient_return]"
     end
   end
 end

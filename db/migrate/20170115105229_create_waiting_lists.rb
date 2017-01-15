@@ -7,6 +7,7 @@ class CreateWaitingLists < ActiveRecord::Migration
       t.datetime :end_date
       t.references :pathology, index: true, foreign_key: true
       t.text :comments
+      t.boolean :waiting_for_patient_return
 
       t.timestamps null: false
     end

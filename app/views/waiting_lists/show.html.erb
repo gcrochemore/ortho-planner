@@ -30,5 +30,10 @@
   <%= @waiting_list.comments %>
 </p>
 
+<p>
+  <strong>Waiting for patient return:</strong>
+  <%= @waiting_list.waiting_for_patient_return %>
+</p>
+
 <%= link_to 'Edit', edit_waiting_list_path(@waiting_list) %> |
 <%= link_to 'Back', waiting_lists_path %>

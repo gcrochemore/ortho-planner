@@ -6,7 +6,8 @@ RSpec.describe "waiting_lists/show", type: :view do
       :patient => nil,
       :health_place => nil,
       :pathology => nil,
-      :comments => "MyText"
+      :comments => "MyText",
+      :waiting_for_patient_return => false
     ))
   end
 
@@ -16,5 +17,6 @@ RSpec.describe "waiting_lists/show", type: :view do
     expect(rendered).to match(//)
     expect(rendered).to match(//)
     expect(rendered).to match(/MyText/)
+    expect(rendered).to match(/false/)
   end
 end
