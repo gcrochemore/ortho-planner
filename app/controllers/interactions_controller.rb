@@ -51,7 +51,7 @@ class InteractionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def interaction_params
 
-      params.require(:interaction).permit(:patient_id, :interaction_object_id, :interaction_type_id, :interaction_date, :comments)
+      params.require(:interaction).permit(:patient_id, :practitioner_id, :interaction_object_id, :interaction_type_id, :interaction_date, :comments)
 
     end
 end

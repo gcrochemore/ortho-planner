@@ -4,6 +4,7 @@ RSpec.describe "interactions/new", type: :view do
   before(:each) do
     assign(:interaction, Interaction.new(
       :patient => nil,
+      :practitioner => nil,
       :interaction_object => nil,
       :interaction_type => nil,
       :comments => "MyText"
@@ -16,6 +17,8 @@ RSpec.describe "interactions/new", type: :view do
     assert_select "form[action=?][method=?]", interactions_path, "post" do
 
       assert_select "input#interaction_patient_id[name=?]", "interaction[patient_id]"
+
+      assert_select "input#interaction_practitioner_id[name=?]", "interaction[practitioner_id]"
 
       assert_select "input#interaction_interaction_object_id[name=?]", "interaction[interaction_object_id]"
 

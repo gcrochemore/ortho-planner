@@ -1,25 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= t('.title') %><span class="badge"><%= @interactions.count %></span></h1>
 
 <div class="row">
   <div class="col-md-2">
     <legend class="filter-title"><%= t :filter_title %></legend>
-  </div>
-  <div class="col-md-3 btn-new-top">
-    <% if can? :create, Interaction %>
-      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
         <%= f.search_field :patient_first_name_cont, {placeholder: t('activerecord.attributes.interaction.patient')} %>
 
-        <%= f.search_field :interaction_object_name_cont, {placeholder: t('activerecord.attributes.interaction.interaction_type')} %>
+        <%= f.search_field :practitioner_first_name_cont, {placeholder: t('activerecord.attributes.interaction.practitioner')} %>
+
+        <%= f.search_field :interaction_object_name_cont, {placeholder: t('activerecord.attributes.interaction.interaction_object')} %>
 
         <%= f.search_field :interaction_type_name_cont, {placeholder: t('activerecord.attributes.interaction.interaction_type')} %>
 
@@ -34,11 +25,18 @@
     </fieldset>
   </div>
   <div class="col-md-10">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, Interaction %>
+        <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+      <% end %>
+    </div>
     <table class="table table-hover table-condensed table-bordered">
       <thead>
         <tr>
     
           <th><%= sort_link(@q, :patient_first_name, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :practitioner_first_name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :interaction_object_name, default_order: :asc) %></th>
     
@@ -58,6 +56,8 @@
     
             <td><%= interaction.patient %></td>
     
+            <td><%= interaction.practitioner %></td>
+    
             <td><%= interaction.interaction_object %></td>
     
             <td><%= interaction.interaction_type %></td>
@@ -68,10 +68,10 @@
     
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, interaction %>
-              <% if can? :edit, interaction %>
+              <% if can? :edit, Interaction %>
                 <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_interaction_path(interaction) %>
               <% end %>
-              <% if can? :destroy, interaction %>
+              <% if can? :destroy, Interaction %>
                 <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, interaction, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </td>

@@ -5,12 +5,14 @@ RSpec.describe "interactions/index", type: :view do
     assign(:interactions, [
       Interaction.create!(
         :patient => nil,
+        :practitioner => nil,
         :interaction_object => nil,
         :interaction_type => nil,
         :comments => "MyText"
       ),
       Interaction.create!(
         :patient => nil,
+        :practitioner => nil,
         :interaction_object => nil,
         :interaction_type => nil,
         :comments => "MyText"
@@ -20,6 +22,7 @@ RSpec.describe "interactions/index", type: :view do
 
   it "renders a list of interactions" do
     render
+    assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => nil.to_s, :count => 2
