@@ -32,7 +32,7 @@ class Ability
       can :create, WaitingList
       can :index, WaitingList
       can :update, WaitingList
-      #can :filter, WaitingList
+      can :filter, WaitingList
     end
 
     if user.has_role? :practitioner

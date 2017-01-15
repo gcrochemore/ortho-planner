@@ -16,17 +16,9 @@
       <fieldset class="filter-panel">
         <%= search_form_for @q do |f| %>
 
-          <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.waiting_list.patient')} %>
+          <%= f.search_field :patient_first_name_cont, {placeholder: t('activerecord.attributes.patient.first_name')} %>
 
-          <%= f.search_field :health_place_name_cont, {placeholder: t('activerecord.attributes.waiting_list.health_place')} %>
-
-          <%= f.search_field :start_date_cont, {placeholder: t('activerecord.attributes.waiting_list.start_date')} %>
-
-          <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.waiting_list.end_date')} %>
-
-          <%= f.search_field :pathology_name_cont, {placeholder: t('activerecord.attributes.waiting_list.pathology')} %>
-
-          <%= f.search_field :comments_cont, {placeholder: t('activerecord.attributes.waiting_list.comments')} %>
+          <%= f.search_field :patient_last_name_cont, {placeholder: t('activerecord.attributes.patient.last_name')} %>
 
           <br>
           <br>
@@ -44,7 +36,9 @@
       <li class="active">
         <a  href="#1a" data-toggle="tab">Patients a prendre en charge<span class="badge"><%= @patients_on_waiting_list.count %></span></a>
       </li>
-      <li><a href="#2a" data-toggle="tab">Patients pris en charge<span class="badge"><%= @patients_removed_from_waiting_list.count %></span></a>
+      <li><a href="#2a" data-toggle="tab">Patients supprimés de la liste d'attente<span class="badge"><%= @patients_removed_from_waiting_list.count %></span></a>
+      </li>
+      <li><a href="#3a" data-toggle="tab">Patients devant rappeler<span class="badge"><%= @patients_removed_from_waiting_list.count %></span></a>
       </li>
     </ul>
 
@@ -54,6 +48,10 @@
         <%= render 'waiting_list_list', waiting_lists: @patients_on_waiting_list %>      
       </div>
       <div class="tab-pane" id="2a">
+        <%= render 'waiting_list_list', waiting_lists: @patients_removed_from_waiting_list %>
+      </div>
+      <div class="tab-pane" id="3a">
+        Patient devant rappeler !!
         <%= render 'waiting_list_list', waiting_lists: @patients_removed_from_waiting_list %>
       </div>
     </div>
