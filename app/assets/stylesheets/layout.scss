@@ -10,3 +10,31 @@
 .container {
   background-color: #f8f8f8;
 }
+
+.star {
+  visibility:hidden;
+  font-size:30px;
+  cursor:pointer;
+}
+.star:before {
+  content: "\2606";
+  visibility:visible;
+}
+.star:checked:before {
+  content: "\2605";
+}
+
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.form-group {
+  margin-bottom: 0px !important;
+}
+
+.checkbox {
+  min-height: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}

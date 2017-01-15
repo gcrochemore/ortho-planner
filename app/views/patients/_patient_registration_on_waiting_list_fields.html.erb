@@ -1,72 +1,79 @@
 <div class="row">
-  <div class="form-group col-xs-12 col-sm-1 col-lg-1">
-    <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !@patient.andand.is_male %>
-    <label for="is_male">F</label>
-    
-    <%= f.radio_button :is_male, "1", input_html: { class: "form-control" }, checked: @patient.andand.is_male %>
-    <label for="is_male">M</label>
+  <div class="col-lg-6 row waiting-list-form-patient-informations">
+    <div class="form-group col-xs-12 col-sm-2 col-lg-2">
+      <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !@patient.andand.is_male %>
+      <label for="is_male">F</label>
+      <br>
+      <%= f.radio_button :is_male, "1", input_html: { class: "form-control" }, checked: @patient.andand.is_male %>
+      <label for="is_male">M</label>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-5 col-lg-5">
+      <label for="last_name"><%= f.label :last_name %></label>
+      <%= f.input :last_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.last_name') %>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-5 col-lg-5">
+      <label for="first_name"><%= f.label :first_name %></label>
+      <%= f.input :first_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.first_name') %>
+    </div>
+    <div class="clearfix visible-lg"></div>
+    <div class="form-group col-xs-12 col-sm-5 col-lg-5">
+      <label for="birth_date"><%= f.label :birth_date %></label>
+      <%= f.text_field :birth_date, label: false, class: "datepicker form-control", placeholder: "Date de naissance" %>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-5 col-lg-5">
+      <label for="contact_informations">Numéro(s) :</label>
+      <div id='contact_informations'>
+        <%= f.simple_fields_for :contact_informations do |f| %>
+          <%= render 'contact_informations/contact_information_value_field', f: f %>
+        <% end %> 
+        <div class='links'>
+          <%= link_to_add_association t(:add_contact_information), f, :contact_informations, partial: 'contact_informations/contact_information_value_field' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-2 col-lg-2">
+      <label for="priority"><%= f.label :priority %></label>
+      <%= f.input :priority, label: false, input_html: { class: "star" }, value: f.object.priority || false %>
+    </div>
   </div>
 
-  <div class="form-group col-xs-12 col-sm-6 col-lg-3">
-    <label for="last_name"><%= f.label :last_name %></label>
-    <%= f.input :last_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.last_name') %>
-  </div>
+  <div class="col-lg-6 row waiting-list-form-patient-informations">
+    <div class="form-group col-xs-12">
+      <label for="schoolings">Classe :</label>
+      <div id='schoolings' class="schoolings">
+        <%= f.simple_fields_for :schoolings do |schooling| %>
+          <%= render 'schoolings/schooling_school_level_fields', f: schooling %>
+        <% end %> 
+      </div>
+    </div>
+    <div class="clearfix visible-sm visible-md"></div>
+    <div class="form-group col-xs-12">
+      <label for="job"><%= f.label :job %></label>
+      <%= f.input :job, label: false, input_html: { class: "form-control" }%>
+    </div>
 
-  <div class="form-group col-xs-12 col-sm-5 col-lg-3">
-    <label for="first_name"><%= f.label :first_name %></label>
-    <%= f.input :first_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.first_name') %>
-  </div>
-
-  <div class="form-group col-xs-12 col-sm-6 col-lg-2">
-    <label for="birth_date"><%= f.label :birth_date %></label>
-    <%= f.text_field :birth_date, label: false, class: "datepicker form-control", placeholder: "Date de naissance" %>
-  </div>
-
-  <div class="form-group col-xs-12 col-sm-5 col-lg-2">
-    <label for="contact_informations">Numéro(s) :</label>
-    <div id='contact_informations'>
-      <%= f.simple_fields_for :contact_informations do |f| %>
-        <%= render 'contact_informations/contact_information_value_field', f: f %>
-      <% end %> 
-      <div class='links'>
-        <%= link_to_add_association t(:add_contact_information), f, :contact_informations, partial: 'contact_informations/contact_information_value_field' %>
+    <div class="form-group col-xs-12">
+      <label for="addresses">* Ville :</label>
+      <div id='addresses'>
+        <%= f.simple_fields_for :addresses do |f| %>
+          <%= render 'addresses/address_city_field', f: f %>
+        <% end %>
       </div>
     </div>
   </div>
 
-  <div class="form-group col-xs-12 col-sm-1 col-lg-1">
-    <%= f.input :priority, inline_label: true %>
-  </div>
 </div>
   
 <div class="row">
-  <div class="form-group col-xs-12 col-sm-6 col-lg-3">
+  <div class="form-group col-xs-12">
     <label for="pathologies">Motif : </label>
     <%= f.association :pathologies, label: false, input_html: { class: "form-control", witdh: "100%" } %>
   </div>
-  <div class="form-group col-xs-12 col-sm-3">
-    <label for="schoolings">Classe :</label>
-    <div id='schoolings' class="schoolings">
-      <%= f.simple_fields_for :schoolings do |schooling| %>
-        <%= render 'schoolings/schooling_school_level_fields', f: schooling %>
-      <% end %> 
-    </div>
-  </div>
-  <div class="clearfix visible-sm visible-md"></div>
-  <div class="form-group col-xs-12 col-sm-6 col-lg-3">
-    <label for="job"><%= f.label :job %></label>
-    <%= f.input :job, label: false, input_html: { class: "form-control" }%>
-  </div>
-
-  <div class="form-group col-xs-12 col-sm-6 col-lg-3">
-    <label for="addresses">* Ville :</label>
-    <div id='addresses'>
-      <%= f.simple_fields_for :addresses do |f| %>
-        <%= render 'addresses/address_city_field', f: f %>
-      <% end %>
-    </div>
-  </div>
-</div>
+  
             
 <div class="form-group">
   <label for="comments"><%= f.label :comments %></label>

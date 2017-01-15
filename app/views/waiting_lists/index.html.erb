@@ -12,7 +12,7 @@
 <div class="row">
   <% if can? :filter, WaitingList %>
     <div class="col-md-12 row search-form">
-      <legend class="col-md-2 col-xs-12"><%= t :search_title %></legend>
+      <div class="col-md-2 col-xs-12"><h4><%= t :search_title %></h4></div>
       <fieldset class="col-md-8 col-xs-12">
         <%= search_form_for @q, html: {class: 'form-inline'} do |f| %>
           <div class="form-group">
