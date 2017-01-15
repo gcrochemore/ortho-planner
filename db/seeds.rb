@@ -216,8 +216,8 @@ school_level = SchoolLevel.create(name: "CP")
 school_level.save
 school_level = SchoolLevel.create(name: "CE1")
 school_level.save
-school_year_ce2 = SchoolLevel.create(name: "CE2")
-school_year_ce2.save
+school_level_ce2 = SchoolLevel.create(name: "CE2")
+school_level_ce2.save
 school_level = SchoolLevel.create(name: "CM1")
 school_level.save
 school_level = SchoolLevel.create(name: "CM2")
