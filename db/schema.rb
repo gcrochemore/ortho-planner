@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111120917) do
+ActiveRecord::Schema.define(version: 20170115105824) do
 
   create_table "absences", force: :cascade do |t|
     t.integer  "patient_id"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170111120917) do
 
   create_table "interactions", force: :cascade do |t|
     t.integer  "patient_id"
+    t.integer  "practitioner_id"
     t.integer  "interaction_object_id"
     t.integer  "interaction_type_id"
     t.datetime "interaction_date"
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20170111120917) do
   add_index "interactions", ["interaction_object_id"], name: "index_interactions_on_interaction_object_id"
   add_index "interactions", ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
   add_index "interactions", ["patient_id"], name: "index_interactions_on_patient_id"
+  add_index "interactions", ["practitioner_id"], name: "index_interactions_on_practitioner_id"
 
   create_table "pathologies", force: :cascade do |t|
     t.string   "name"
@@ -314,8 +316,9 @@ ActiveRecord::Schema.define(version: 20170111120917) do
     t.datetime "end_date"
     t.integer  "pathology_id"
     t.text     "comments"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "waiting_for_patient_return"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "waiting_lists", ["health_place_id"], name: "index_waiting_lists_on_health_place_id"

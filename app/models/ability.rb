@@ -29,6 +29,9 @@ class Ability
       can :take_care, WaitingList
       can :add_interaction, WaitingList
       can :stop_registration, WaitingList
+      can :patient_never_return, WaitingList
+      can :care_confirm, WaitingList
+      can :availability_not_compatible, WaitingList
       can :create, WaitingList
       can :index, WaitingList
       can :update, WaitingList

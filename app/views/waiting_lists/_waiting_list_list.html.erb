@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-1">
       <br><br>
-      <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong>
+      <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong><br>(<%= waiting_list.age %> mois)
     </div>
     <div class="col-xs-12 col-md-9">
       <%= render 'patients/patient_view', patient: waiting_list.patient %> 
@@ -26,6 +26,21 @@
           <i class="glyphicon glyphicon-earphone"></i> Ajouter un appel
         <% end %>
       <% end %>
+      <% if (can? :patient_never_return, WaitingList) && waiting_list.waiting_for_patient_return %>
+        <%= link_to patient_never_return_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <i class="glyphicon glyphicon-remove"></i> Le patient n'a jamais rappelé
+        <% end %>
+      <% end %>
+      <% if (can? :care_confirm, WaitingList) && waiting_list.waiting_for_patient_return %>
+        <%= link_to care_confirm_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <i class="glyphicon glyphicon-remove"></i> Prise en charge confirmée
+        <% end %>
+      <% end %>
+      <% if (can? :availability_not_compatible, WaitingList) && waiting_list.waiting_for_patient_return %>
+        <%= link_to availability_not_compatible_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <i class="glyphicon glyphicon-remove"></i> Horaires non compatibles
+        <% end %>
+      <% end %>
       <% if (can? :stop_registration, WaitingList) && !waiting_list.end_date.present? %>
         <%= link_to stop_registration_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
           <i class="glyphicon glyphicon-remove"></i> Supprimer de la liste
@@ -39,4 +54,11 @@
       <% end %>
     </div>
   </div>
+  <% if waiting_list.comments %>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <strong>Commentaire(s) :</strong> <%= waiting_list.comments %>
+      </div>
+    </div>
+  <% end %>
 <% end %>

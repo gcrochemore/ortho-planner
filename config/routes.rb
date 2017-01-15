@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       get :take_care
       get :add_interaction
       get :stop_registration
+      get :patient_never_return
+      get :care_confirm
+      get :availability_not_compatible
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

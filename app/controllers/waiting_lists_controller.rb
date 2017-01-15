@@ -1,11 +1,14 @@
 class WaitingListsController < ApplicationController
   authorize_resource
-  before_action :set_waiting_list, only: [:show, :edit, :update, :destroy, :take_care, :add_interaction, :stop_registration]
+  before_action :set_waiting_list, only: [:show, :edit, :update, :destroy, :take_care, :add_interaction, 
+    :stop_registration, :patient_never_return, :care_confirm, :availability_not_compatible]
+
   # GET /waiting_lists
   def index
     @q = WaitingList.ransack(params[:q])
     @patients_on_waiting_list = @q.result.waiting_list.page(params[:page])
     @patients_removed_from_waiting_list = @q.result.not_waiting_list.page(params[:page])
+    @waiting_for_patient_return = @q.result.waiting_for_patient_return.page(params[:page])
   end
   # GET /waiting_lists/1
   def show
@@ -59,6 +62,39 @@ class WaitingListsController < ApplicationController
 
   def add_interaction    
     @waiting_list.patient.interactions << Interaction.new
+  end
+
+  def patient_never_return
+    @waiting_list.end_date = DateTime.now
+    @waiting_list.waiting_for_patient_return = false
+    @waiting_list.comments = "Le patient n'a jamais rappelé. " + @waiting_list.comments
+    if @waiting_list.save
+      redirect_to action: :index, notice: 'Waiting list was successfully updated.'
+    else
+      render :index
+    end
+  end
+
+  def care_confirm
+    @waiting_list.end_date = DateTime.now
+    @waiting_list.waiting_for_patient_return = false
+    @waiting_list.comments = "Prise en charge confirmée. " + @waiting_list.comments
+    if @waiting_list.save
+      redirect_to action: :index, notice: 'Waiting list was successfully updated.'
+    else
+      render :index
+    end
+  end
+
+  def availability_not_compatible
+    @waiting_list.end_date = nil
+    @waiting_list.waiting_for_patient_return = false
+    @waiting_list.comments = "Horaires non compatibles. " + @waiting_list.comments
+    if @waiting_list.save
+      redirect_to action: :index, notice: 'Waiting list was successfully updated.'
+    else
+      render :index
+    end
   end
 
   private

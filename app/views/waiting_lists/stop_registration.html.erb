@@ -1,5 +1,5 @@
-Formulaire pour terminer l'inscription sur la liste d'attente
-<br> <br><br><br>
+<h3><%= t('.title') %></h3>
+
 <%= simple_form_for(@waiting_list) do |f| %>
   <%= f.error_notification %>
   <%= f.input :end_date, label: false, input_html: { class: "form-control" }, as: :hidden, value: f.object.start_date.strftime(DATE_FORMAT) %>

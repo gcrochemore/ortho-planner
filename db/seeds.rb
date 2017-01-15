@@ -216,8 +216,8 @@ school_level = SchoolLevel.create(name: "CP")
 school_level.save
 school_level = SchoolLevel.create(name: "CE1")
 school_level.save
-school_level = SchoolLevel.create(name: "CE2")
-school_level.save
+school_year_ce2 = SchoolLevel.create(name: "CE2")
+school_year_ce2.save
 school_level = SchoolLevel.create(name: "CM1")
 school_level.save
 school_level = SchoolLevel.create(name: "CM2")
@@ -226,8 +226,8 @@ school_level = SchoolLevel.create(name: "6ième")
 school_level.save
 school_level = SchoolLevel.create(name: "5ième")
 school_level.save
-school_level = SchoolLevel.create(name: "4ième")
-school_level.save
+school_level_4ieme = SchoolLevel.create(name: "4ième")
+school_level_4ieme.save
 school_level = SchoolLevel.create(name: "3ième")
 school_level.save
 school_level = SchoolLevel.create(name: "2nd")
@@ -321,4 +321,50 @@ waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
 schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year)
+schooling.save
+
+patient = Patient.create(last_name: "Boissier",  first_name: "Clem", is_male: false, birth_date: "15/05/1986", priority: false, comments: "Difficulté avec l'orthographe")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "15/06/2016")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
+contact_information.save
+
+patient = Patient.create(last_name: "Duck",  first_name: "Donald", is_male: true, birth_date: "01/01/2008", priority: false, comments: "Difficulté avec l'orthographe")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
+contact_information.save
+
+patient = Patient.create(last_name: "Mouse",  first_name: "Mickey", is_male: true, birth_date: "10/08/1999", priority: false, comments: "Difficulté avec l'orthographe")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
+contact_information.save
+
+patient = Patient.create(last_name: "Pan",  first_name: "Peter", is_male: true, birth_date: "06/03/2004", priority: false, comments: "Difficulté avec l'orthographe")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "20/05/2016")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
+contact_information.save
+schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year_4ieme)
+schooling.save
+
+patient = Patient.create(last_name: "Luke",  first_name: "Lucky", is_male: true, birth_date: "17/09/2013", priority: false, comments: "Difficulté avec l'orthographe")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "24/10/2016")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
+contact_information.save
+
+patient = Patient.create(last_name: "Renault",  first_name: "Lucie", is_male: false, birth_date: "11/08/2009", priority: false, comments: "Difficulté avec l'orthographe")
+patient.save
+waiting_list = WaitingList.create(patient: patient, start_date: "04/03/2016")
+waiting_list.save
+contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
+contact_information.save
+schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year_ce2)
 schooling.save

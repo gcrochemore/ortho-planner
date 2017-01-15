@@ -28,7 +28,7 @@ fr:
   add_therapy: Ajouter une rééducation
   add_waiting_list: Inscription sur la liste d'attente
   female: "Fille"
-  filter_title: Filtres
+  search_title: Rechercher
   hello: "Hello world"
   male: "Garçon"
   new: Nouveau
@@ -245,6 +245,8 @@ fr:
       new_button: 'Créer une rééducation'
       title: "Rééducations"
   waiting_lists:
+    add_interaction:
+      title: Ajouter un appel
     new:
       title: "Ajouter à la liste d'attente"
     form:
@@ -252,3 +254,8 @@ fr:
     index:
       new_button: Ajouter un patient sur la liste d'attente
       title: Liste d'attente
+    stop_registration:
+      title: Supprimer de la liste d'attente
+    take_care:
+      submit: Valider la prise en charge
+      title: Prendre en charge le patient

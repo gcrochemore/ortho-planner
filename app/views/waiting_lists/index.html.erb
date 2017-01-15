@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <h1><%= t('.title') %><span class="badge"><%= @patients_on_waiting_list.count + @patients_removed_from_waiting_list.count %></span></h1>
+    <h1><%= t('.title') %><span class="badge"><%= @patients_on_waiting_list.count + @patients_removed_from_waiting_list.count + @waiting_for_patient_return.count %></span></h1>
   </div>
   <div class="col-md-6">
     <% if can? :create, WaitingList %>
@@ -11,34 +11,34 @@
 <div class="clearfix visible-xs visible-md visible-sm visible-lg"></div>
 <div class="row">
   <% if can? :filter, WaitingList %>
-    <div class="col-md-2">
-      <legend class="filter-title"><%= t :filter_title %></legend>
-      <fieldset class="filter-panel">
-        <%= search_form_for @q do |f| %>
-
-          <%= f.search_field :patient_first_name_cont, {placeholder: t('activerecord.attributes.patient.first_name')} %>
-
-          <%= f.search_field :patient_last_name_cont, {placeholder: t('activerecord.attributes.patient.last_name')} %>
-
-          <br>
-          <br>
-          <%= f.submit class: 'btn btn-default btn-search-filter' %>
+    <div class="col-md-12 row search-form">
+      <legend class="col-md-2 col-xs-12"><%= t :search_title %></legend>
+      <fieldset class="col-md-8 col-xs-12">
+        <%= search_form_for @q, html: {class: 'form-inline'} do |f| %>
+          <div class="form-group">
+            <%= f.search_field :patient_first_name_cont, {placeholder: t('activerecord.attributes.patient.first_name'), class: 'form-control'} %>
+          </div>
+          <div class="form-group">
+            <%= f.search_field :patient_last_name_cont, {placeholder: t('activerecord.attributes.patient.last_name'), class: 'form-control'} %>
+          </div>
+          <%= f.submit class: 'btn btn-default' %>
         <% end %>
       </fieldset>
+      <div class="col-md-2 col-xs-12">
+        <%= search_form_for @q do |f| %>
+          <%= f.submit class: 'btn btn-default', value: "Réinitialiser" %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-md-10">
-  <% else %>
-    <div class="col-md-12">
   <% end %>
-
-  
+  <div class="col-md-12">  
     <ul  class="nav nav-pills">
       <li class="active">
         <a  href="#1a" data-toggle="tab">Patients a prendre en charge<span class="badge"><%= @patients_on_waiting_list.count %></span></a>
       </li>
       <li><a href="#2a" data-toggle="tab">Patients supprimés de la liste d'attente<span class="badge"><%= @patients_removed_from_waiting_list.count %></span></a>
       </li>
-      <li><a href="#3a" data-toggle="tab">Patients devant rappeler<span class="badge"><%= @patients_removed_from_waiting_list.count %></span></a>
+      <li><a href="#3a" data-toggle="tab">Patients qui doivent rappeler<span class="badge"><%= @waiting_for_patient_return.count %></span></a>
       </li>
     </ul>
 
@@ -51,8 +51,7 @@
         <%= render 'waiting_list_list', waiting_lists: @patients_removed_from_waiting_list %>
       </div>
       <div class="tab-pane" id="3a">
-        Patient devant rappeler !!
-        <%= render 'waiting_list_list', waiting_lists: @patients_removed_from_waiting_list %>
+        <%= render 'waiting_list_list', waiting_lists: @waiting_for_patient_return %>
       </div>
     </div>
 </div>
