@@ -350,7 +350,7 @@ waiting_list = WaitingList.create(patient: patient, start_date: "20/05/2016")
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
-schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year_4ieme)
+schooling = Schooling.create(patient: patient, school_level: school_level_4ieme, school_year: school_year)
 schooling.save
 
 patient = Patient.create(last_name: "Luke",  first_name: "Lucky", is_male: true, birth_date: "17/09/2013", priority: false, comments: "Difficulté avec l'orthographe")
@@ -366,5 +366,5 @@ waiting_list = WaitingList.create(patient: patient, start_date: "04/03/2016")
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
-schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year_ce2)
+schooling = Schooling.create(patient: patient, school_level: school_level_ce2, school_year: school_year)
 schooling.save
