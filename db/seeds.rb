@@ -38,8 +38,6 @@ pathology = Pathology.create(name: "Maladies neurodégénératives")
 pathology.save
 pathology = Pathology.create(name: "Maladies génétiques")
 pathology.save
-pathology = Pathology.create(name: "AVC")
-pathology.save
 pathology = Pathology.create(name: "Déglutition")
 pathology.save
 pathology = Pathology.create(name: "Bégaiement")
