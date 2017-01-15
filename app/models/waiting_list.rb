@@ -9,6 +9,8 @@ class WaitingList < ActiveRecord::Base
   belongs_to :pathology
   accepts_nested_attributes_for :patient
 
-  default_scope { includes(:patient).where(end_date: nil).order('patients.priority DESC, start_date DESC') }
+  scope :waiting_list, -> { includes(:patient).where(end_date: nil).order('patients.priority DESC, start_date ASC') }
+
+  scope :not_waiting_list, -> { includes(:patient).where('end_date IS NOT NULL').order('patients.priority DESC, end_date DESC') }
 
 end

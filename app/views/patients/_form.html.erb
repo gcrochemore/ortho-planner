@@ -78,10 +78,10 @@
                   <label for="addresses"><%= f.label :addresses %></label>      
                   <div id='addresses'>
                     <%= f.simple_fields_for :addresses do |f| %>
-                      <%= render 'addresses/address_fields', f: f %>
+                      <%= render 'addresses/address_city_field', f: f %>
                     <% end %> 
                     <div class='links'>
-                      <%= link_to_add_association t(:add_address), f, :addresses, partial: 'addresses/address_fields' %>
+                      <%= link_to_add_association t(:add_address), f, :addresses, partial: 'addresses/address_city_field' %>
                     </div>
                   </div>
                 </div>

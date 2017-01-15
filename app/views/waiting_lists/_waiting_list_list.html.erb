@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-xs-1 text-center">
+    <%= sort_link(@q, :start_date, default_order: :asc) %>
+  </div>
+  <div class="col-xs-9 text-center">
+    <h4><%= sort_link(@q, :patient, default_order: :asc) %></h4>
+  </div>
+</div>
+<% waiting_lists.each do |waiting_list| %>
+  <div class="row">
+    <div class="col-xs-12 col-md-1">
+      <br><br>
+      <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong>
+    </div>
+    <div class="col-xs-12 col-md-9">
+      <%= render 'patients/patient_view', patient: waiting_list.patient %> 
+    </div>
+    <div class="col-xs-12 col-md-2">
+      <% if (can? :take_care, WaitingList) && !waiting_list.end_date.present? %>
+        <%= link_to take_care_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <i class="glyphicon glyphicon-saved"></i> Prendre en charge
+        <% end %>
+      <% end %>
+      <% if can? :add_interaction, WaitingList %>
+        <%= link_to add_interaction_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <i class="glyphicon glyphicon-earphone"></i> Ajouter un appel
+        <% end %>
+      <% end %>
+      <% if (can? :stop_registration, WaitingList) && !waiting_list.end_date.present? %>
+        <%= link_to stop_registration_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <i class="glyphicon glyphicon-remove"></i> Supprimer de la liste
+        <% end %>
+      <% end %>
+      <% if can? :show, waiting_list %>
+        <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
+      <% end %>
+      <% if can? :manage, waiting_list %>
+        <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_waiting_list_path(waiting_list) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

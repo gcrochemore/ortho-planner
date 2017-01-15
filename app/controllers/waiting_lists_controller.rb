@@ -4,7 +4,8 @@ class WaitingListsController < ApplicationController
   # GET /waiting_lists
   def index
     @q = WaitingList.ransack(params[:q])
-    @waiting_lists = @q.result.page(params[:page])
+    @patients_on_waiting_list = @q.result.waiting_list.page(params[:page])
+    @patients_removed_from_waiting_list = @q.result.not_waiting_list.page(params[:page])
   end
   # GET /waiting_lists/1
   def show
@@ -53,10 +54,11 @@ class WaitingListsController < ApplicationController
 
   def take_care
     @waiting_list.end_date = DateTime.now
+    @waiting_list.patient.therapies << Therapy.new(begin_date: DateTime.now)
   end
 
   def add_interaction    
-    @waiting_list.patient.contact_informations << ContactInformation.new
+    @waiting_list.patient.interactions << Interaction.new
   end
 
   private
@@ -73,7 +75,8 @@ class WaitingListsController < ApplicationController
                                                                 contact_informations_attributes: [:id,:value],
                                                                 pathology_ids: [], 
                                                                 schoolings_attributes: [:id,:school_level_id],
-                                                                addresses_attributes: [:id, :city]
+                                                                addresses_attributes: [:id, :city],
+                                                                therapies_attributes: [:id, :begin_date]
                                                               ]
                                           )
 

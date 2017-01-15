@@ -119,6 +119,9 @@ fr:
         patient: Patient
         practitioner: Professionnel de santé
         session_duration: Durée des séances (min)
+      user:
+        email: Adresse mail
+        password: Mot de passe
       waiting_list:
         comments: 'Commentaires'
         end_date: Date de fin
@@ -247,5 +250,5 @@ fr:
     form:
       submit: "Valider l'ajout à la liste d'attente"
     index:
-      new_button: Ajouter à la liste d'attente
+      new_button: Ajouter un patient sur la liste d'attente
       title: Liste d'attente

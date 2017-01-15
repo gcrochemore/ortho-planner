@@ -1,1 +1,11 @@
-patient_take_care_on_waiting_list_fields
+<div class="form-group col-xs-12 hidden">
+  <label for="therapies"><%= f.label :therapies %></label>
+  <div class='links'>
+    <%= link_to_add_association t(:add_therapy), f, :therapies, partial: 'therapies/therapy_fields', :data => {"association-insertion-method" => "after"} %>
+  </div>    
+  <div id='therapies'>
+    <%= f.simple_fields_for :therapies do |therapy| %>
+      <%= render 'therapies/therapy_fields', f: therapy %>
+    <% end %> 
+  </div>
+</div>

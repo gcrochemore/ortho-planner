@@ -1,11 +1,15 @@
 .fil_arianne {
-  padding: 4px 0px;
-  font-size:110%;
-  // padding: 1px 14px;
-  margin: 0 0 2px;
   list-style: none;
   li {
     display: inline-block;
-    padding: 0 5px 0 0;
+    padding: 0 2px 0 0;
   }
+}
+
+.container {
+	background-color: #f8f8f8;
+}
+
+.navbar {
+  margin-bottom: 0px;
 }
