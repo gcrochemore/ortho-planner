@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-2">
-    <legend class="filter-title"><%%= t :filter_title %></legend>
+    <legend class="filter-title"><%%= t :search_title %></legend>
     <fieldset class="filter-panel">
       <%%= search_form_for @q do |f| %>
 <% attributes.reject {|i| i.name == 'activated' || i.password_digest?}.each do |attribute| -%>

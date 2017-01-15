@@ -136,6 +136,15 @@ availability
 
 * Ajouter un numéro d'établissement, un secteur (public/privé -> boolean is_public) sur un établissement scolaire (lié ensuite avec coordonnées pour ajouter site_web/uméro de téléphone/fax/adresse mail)
 
+* Améliorer l'ajout d'un appel
+
+* Voir la détail des appels en passant dessus sur la liste d'attente
+
+* Ajouter le practitioner sur l'intéraction
+
+* Ajouter la date du message sur le répondeur pour take care de waiting list
+
+* Identifier la personne faisant la prise en charge, supprimant le patient de la liste d'attente 
 
 ====== WIKI
 
