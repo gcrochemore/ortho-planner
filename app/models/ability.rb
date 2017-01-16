@@ -24,7 +24,8 @@ class Ability
     end
 
     if user.has_role? :waiting_list_manager
-      can :manage, Patient
+      can :create, Patient
+      can :update, Patient
 
       can :take_care, WaitingList
       can :add_interaction, WaitingList
