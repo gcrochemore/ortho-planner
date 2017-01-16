@@ -18,15 +18,19 @@
         <% end %>
       </div>
     </div>
-    <div class="fixed-bottom row">
-      <div class="col-xs-12 col-sm-6 text-right">
-        <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Annuler l\'ajout à la liste d\'attente'.html_safe, waiting_lists_path, class: "btn btn-lg btn-primary btn-warning" %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= f.button :button, class: "btn-lg btn-primary" do %>
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <%= t('.submit') %>
-        <% end %>        
-      </div>
+  </div>
+
+  <div class="fixed-bottom row">
+    <div class="col-xs-12 col-sm-6 text-right">
+      <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Annuler l\'ajout à la liste d\'attente'.html_safe, waiting_lists_path, class: "btn btn-lg btn-primary btn-warning" %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.button :button, class: "btn-lg btn-primary" do %>
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <%= t('.submit') %>
+      <% end %>        
     </div>
   </div>
 <% end %>
+
+
+

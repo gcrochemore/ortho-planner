@@ -1,10 +1,6 @@
-<div class="form-group col-xs-12">
-  <label for="interactions"><%= f.label :interactions %></label>   
-  <div class='links'>
-    <%= link_to_add_association t(:add_interaction), f, :interactions, partial: 'interactions/interaction_fields', :data => {"association-insertion-method" => "after"} %>
-  </div>   
+<div class="form-group col-xs-12"> 
   <div id='interactions'>
-    <%= f.simple_fields_for :interactions do |interaction| %>
+    <%= f.simple_fields_for new_interaction do |interaction| %>
       <%= render 'interactions/interaction_fields', f: interaction %>
     <% end %> 
   </div>

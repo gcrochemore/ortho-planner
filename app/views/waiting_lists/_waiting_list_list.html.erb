@@ -13,10 +13,10 @@
         <br><br>
         <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong><br>(<%= waiting_list.age %> mois)
       </div>
-      <div class="col-xs-12 col-md-8">
+      <div class="col-xs-12 col-md-9">
         <%= render 'patients/patient_view', patient: waiting_list.patient %> 
       </div>
-      <div class="col-xs-12 col-md-3">
+      <div class="col-xs-12 col-md-2">
         <% if (can? :take_care, WaitingList) && !waiting_list.end_date.present? %>
           <%= link_to take_care_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
             <i class="glyphicon glyphicon-saved"></i> Prendre en charge

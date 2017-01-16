@@ -4,7 +4,7 @@
     <%= link_to_add_association t(:add_therapy), f, :therapies, partial: 'therapies/therapy_fields', :data => {"association-insertion-method" => "after"} %>
   </div>    
   <div id='therapies'>
-    <%= f.simple_fields_for :therapies do |therapy| %>
+    <%= f.simple_fields_for new_therapy do |therapy| %>
       <%= render 'therapies/therapy_fields', f: therapy %>
     <% end %> 
   </div>

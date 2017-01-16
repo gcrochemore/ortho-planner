@@ -6,8 +6,8 @@
   margin-bottom: 5px;
 }
 
-.container {
-  background-color: white;
+.container-fluid {
+  
 }
 
 .star {
@@ -40,8 +40,19 @@
 
 .fixed-bottom {
   position: fixed;
-  bottom: 20px;
+  bottom: 10px;
   right: 0;
   width: 100%;
-  background-color: white;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.margin-bottom-for-fixed-position{
+  margin-bottom: 20px;
 }

@@ -8,14 +8,21 @@
     <div class="form-group col-xs-12">
       <div id='patient'>
         <%= f.simple_fields_for :patient do |f| %>
-          <%= render 'patients/patient_add_interaction_on_waiting_list_fields', f: f %>
+          <%= render 'patients/patient_add_interaction_on_waiting_list_fields', f: f, new_interaction: @new_interaction %>
         <% end %>
       </div>
     </div>
 
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="fixed-bottom row">
+    <div class="col-xs-12 col-sm-6 text-right">
+      <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Annuler l\'ajout de l\'appel'.html_safe, waiting_lists_path, class: "btn btn-lg btn-primary btn-warning" %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.button :button, class: "btn-lg btn-primary" do %>
+        <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <%= t('.submit') %>
+      <% end %>
+    </div>
   </div>
 <% end %>

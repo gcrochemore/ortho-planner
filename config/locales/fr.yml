@@ -246,6 +246,7 @@ fr:
       title: "Rééducations"
   waiting_lists:
     add_interaction:
+      submit: Valider l'ajout d'un appel
       title: Ajouter un appel
     new:
       title: "Ajouter à la liste d'attente"
@@ -255,6 +256,7 @@ fr:
       new_button: Ajouter un patient sur la liste d'attente
       title: Liste d'attente
     stop_registration:
+      submit: Supprimer de la liste d'attente
       title: Supprimer de la liste d'attente
     take_care:
       submit: Valider la prise en charge

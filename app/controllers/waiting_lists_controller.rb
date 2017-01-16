@@ -57,11 +57,11 @@ class WaitingListsController < ApplicationController
 
   def take_care
     @waiting_list.end_date = DateTime.now
-    @waiting_list.patient.therapies << Therapy.new(begin_date: DateTime.now)
+    @new_therapy = Therapy.new(begin_date: DateTime.now, practitioner: current_user.andand.practitioner)
   end
 
-  def add_interaction    
-    @waiting_list.patient.interactions << Interaction.new
+  def add_interaction  
+    @new_interaction = Interaction.new(practitioner: current_user.andand.practitioner)
   end
 
   def patient_never_return
@@ -112,7 +112,8 @@ class WaitingListsController < ApplicationController
                                                                 pathology_ids: [], 
                                                                 schoolings_attributes: [:id,:school_level_id],
                                                                 addresses_attributes: [:id, :city],
-                                                                therapies_attributes: [:id, :begin_date]
+                                                                therapies_attributes: [:id, :begin_date],
+                                                                interactions_attributes: []
                                                               ]
                                           )
 
