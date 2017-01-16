@@ -4,11 +4,10 @@
   border-radius: 10px;
   padding: 20px 20px 20px 20px;
   margin-bottom: 5px;
-  border: 1px solid black;
 }
 
 .container {
-  background-color: #f8f8f8;
+  background-color: white;
 }
 
 .star {
@@ -37,4 +36,12 @@
   min-height: 0px !important;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 20px;
+  right: 0;
+  width: 100%;
+  background-color: white;
 }
