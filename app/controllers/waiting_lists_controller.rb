@@ -58,6 +58,7 @@ class WaitingListsController < ApplicationController
   def take_care
     @waiting_list.end_date = DateTime.now
     @new_therapy = Therapy.new(begin_date: DateTime.now, practitioner: current_user.andand.practitioner)
+    @new_interaction = Interaction.new(practitioner: current_user.andand.practitioner)
   end
 
   def add_interaction  

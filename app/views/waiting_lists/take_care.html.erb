@@ -18,7 +18,7 @@
     <div class="form-group col-xs-12">
       <div id='patient'>
         <%= f.simple_fields_for :patient do |f| %>
-          <%= render 'patients/patient_take_care_on_waiting_list_fields', f: f, new_therapy: @new_therapy %>
+          <%= render 'patients/patient_take_care_on_waiting_list_fields', f: f, new_therapy: @new_therapy, new_interaction: @new_interaction %>
         <% end %>
       </div>
     </div>

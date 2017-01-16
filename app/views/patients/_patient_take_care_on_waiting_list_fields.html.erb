@@ -1,8 +1,11 @@
-<div class="form-group col-xs-12 hidden">
+<div class="form-group col-xs-12">
+  <label for="interactions"><%= f.label :interactions %></label>
+  <div id='interactions'>
+    <%= f.simple_fields_for new_interaction do |interaction| %>
+      <%= render 'interactions/interaction_fields', f: interaction %>
+    <% end %> 
+  </div>  
   <label for="therapies"><%= f.label :therapies %></label>
-  <div class='links'>
-    <%= link_to_add_association t(:add_therapy), f, :therapies, partial: 'therapies/therapy_fields', :data => {"association-insertion-method" => "after"} %>
-  </div>    
   <div id='therapies'>
     <%= f.simple_fields_for new_therapy do |therapy| %>
       <%= render 'therapies/therapy_fields', f: therapy %>
