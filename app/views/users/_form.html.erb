@@ -1,7 +1,7 @@
 <%= simple_form_for(@user, html: { class: 'form-horizontal' }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs row">
     <div class="form-group">
       <label for="email"><%= f.label :email %></label>
       <%= f.input :email, label: false, input_html: { class: "form-control" } %>
@@ -10,6 +10,11 @@
     <div class="form-group">
       <label for="password"><%= f.label :password %></label>
       <%= f.input :password, label: false, input_html: { class: "form-control" } %>
+      <small id="passwordHelp" class="form-text text-muted"></small>
+    </div>
+    <div class="form-group">
+      <label for="password"><%= f.label :practitioner %></label>
+      <%= f.association :practitioner, label: false, input_html: { class: "form-control" }, collection: Practitioner.all %>
       <small id="passwordHelp" class="form-text text-muted"></small>
     </div>
     <div class="form-group">
