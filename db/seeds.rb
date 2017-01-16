@@ -236,6 +236,17 @@ school_year.save
 #
 #
 
+health_place = HealthPlace.create(name: "IME de Arques-la-bataille", health_place_type: health_place_type)
+health_place.save
+health_place = HealthPlace.create(name: "CMP de Dieppe", health_place_type: health_place_type)
+health_place.save
+health_place = HealthPlace.create(name: "Cabinet de Tôtes", health_place_type: health_place_type)
+health_place.save
+address = Address.create(name: "Cabinet de Tôtes", addressable: health_place)
+address.save
+
+practitioner = Practitioner.create(first_name: "Docteur", last_name: "House", health_place: health_place, practitioner_profession: practitioner_profession);
+practitioner.save 
 
 
 user = User.create( email: "secretaire@ortho-planner.com", password: "ortho-planner", password_confirmation: "ortho-planner")
@@ -259,10 +270,9 @@ user.save
 user.add_role :admin
 
 
-
 patient = Patient.create(last_name: "Dupond",  first_name: "Ludovic", is_male: true, birth_date: "01/01/2010", priority: false, comments: "J'ai demandé un bilan ORL. Difficultés en lecture, ne comprend pas les consignes")
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list = WaitingList.create(patient: patient, start_date: "13/01/2016", end_date: "21/05/2016")
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060606")
 contact_information.save
@@ -271,7 +281,7 @@ schooling.save
 
 patient = Patient.create(last_name: "Castafiore",  first_name: "Bianca", is_male: false, birth_date: "01/01/1978", priority: true, job: "Chanteuse", comments: "Bilan fait par le 10/12/2016 par Jean-Michel L'Orthophoniste")
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list = WaitingList.create(patient: patient, start_date: "11/12/2016")
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060607")
 contact_information.save
@@ -301,7 +311,7 @@ contact_information.save
 
 patient = Patient.create(last_name: "Mouse",  first_name: "Mickey", is_male: true, birth_date: "10/08/1999", priority: false, comments: "Difficulté avec l'orthographe")
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017", waiting_for_patient_return: true, end_date: nil)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
@@ -317,14 +327,14 @@ schooling.save
 
 patient = Patient.create(last_name: "Luke",  first_name: "Lucky", is_male: true, birth_date: "17/09/2013", priority: false, comments: "Difficulté avec l'orthographe")
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "24/10/2016")
+waiting_list = WaitingList.create(patient: patient, start_date: "24/10/2016", waiting_for_patient_return: true, end_date: nil)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
 
 patient = Patient.create(last_name: "Renault",  first_name: "Lucie", is_male: false, birth_date: "11/08/2009", priority: false, comments: "Difficulté avec l'orthographe")
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "04/03/2016")
+waiting_list = WaitingList.create(patient: patient, start_date: "04/03/2016", end_date: "15/08/2016")
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
@@ -338,14 +348,4 @@ address = Address.create(name: "Ecole elementaire publique d'Ambrumesnil", stree
 address.save
 school = School.create(name: "Collège de Luneray", school_type: school_type)
 school.save
-
-
-health_place = HealthPlace.create(name: "IME de Arques-la-bataille", health_place_type: health_place_type)
-health_place.save
-health_place = HealthPlace.create(name: "CMP de Dieppe", health_place_type: health_place_type)
-health_place.save
-health_place = HealthPlace.create(name: "Cabinet de Tôtes", health_place_type: health_place_type)
-health_place.save
-address = Address.create(name: "Cabinet de Tôtes", addressable: health_place)
-address.save
 
