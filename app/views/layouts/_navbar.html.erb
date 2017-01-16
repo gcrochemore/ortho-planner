@@ -39,53 +39,57 @@
             </ul>
           </li>
         </ul>
-        <ul class="nav navbar-nav ">        
+
+        <% if (can? :read, Practitioner) || (can? :read, PractitionerProfession) || (can? :read, HealthPlace) || (can? :read, HealthPlaceType) || (can? :read, Pathology) || (can? :read, Act) || (can? :read, InteractionType) || (can? :read, InteractionObject) || (can? :read, School) || (can? :read, SchoolLevel) || (can? :read, SchoolType) || (can? :read, SchoolYear) || (can? :read, Address) %>
+          <ul class="nav navbar-nav ">        
             <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dictionnaires
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-            <% if can? :read, Practitioner %>
-              <li><%= link_to(t('.practitioners'), practitioners_path)  %></li>
-            <% end %>
-            <% if can? :read, PractitionerProfession %>
-              <li><%= link_to(t('.practitioner_professions'), practitioner_professions_path)  %></li>
-            <% end %>
-            <% if can? :read, HealthPlace %>
-              <li><%= link_to(t('.health_places'), health_places_path)  %> </li>
-            <% end %>
-            <% if can? :read, HealthPlaceType %>
-              <li><%= link_to(t('.health_place_types'), health_place_types_path)  %> </li>
-            <% end %>
-            <% if can? :read, Pathology %>
-              <li><%= link_to(t('.pathologies'), pathologies_path)  %> </li>
-            <% end %>
-            <% if can? :read, Act %>
-              <li><%= link_to(t('.acts'), acts_path)  %> </li>
-            <% end %>
-            <% if can? :read, InteractionType %>
-              <li><%= link_to(t('.interaction_types'), interaction_types_path)  %> </li>
-            <% end %>
-            <% if can? :read, InteractionObject %>
-              <li><%= link_to(t('.interaction_objects'), interaction_objects_path)  %> </li>
-            <% end %>
-            <% if can? :read, School %>
-              <li><%= link_to(t('.schools'), schools_path)  %> </li>
-            <% end %>
-            <% if can? :read, SchoolLevel %>
-              <li><%= link_to(t('.school_levels'), school_levels_path)  %> </li>
-            <% end %>
-            <% if can? :read, SchoolType %>
-              <li><%= link_to(t('.school_types'), school_types_path)  %> </li>
-            <% end %>
-            <% if can? :read, SchoolYear %>
-              <li><%= link_to(t('.school_years'), school_years_path)  %> </li>
-            <% end %>
-            <% if can? :read, Address %>
-              <li><%= link_to(t('.addresses'), addresses_path)  %> </li>
-            <% end %>
-            </ul>
-          </li>
-        </ul>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dictionnaires
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+              <% if can? :read, Practitioner %>
+                <li><%= link_to(t('.practitioners'), practitioners_path)  %></li>
+              <% end %>
+              <% if can? :read, PractitionerProfession %>
+                <li><%= link_to(t('.practitioner_professions'), practitioner_professions_path)  %></li>
+              <% end %>
+              <% if can? :read, HealthPlace %>
+                <li><%= link_to(t('.health_places'), health_places_path)  %> </li>
+              <% end %>
+              <% if can? :read, HealthPlaceType %>
+                <li><%= link_to(t('.health_place_types'), health_place_types_path)  %> </li>
+              <% end %>
+              <% if can? :read, Pathology %>
+                <li><%= link_to(t('.pathologies'), pathologies_path)  %> </li>
+              <% end %>
+              <% if can? :read, Act %>
+                <li><%= link_to(t('.acts'), acts_path)  %> </li>
+              <% end %>
+              <% if can? :read, InteractionType %>
+                <li><%= link_to(t('.interaction_types'), interaction_types_path)  %> </li>
+              <% end %>
+              <% if can? :read, InteractionObject %>
+                <li><%= link_to(t('.interaction_objects'), interaction_objects_path)  %> </li>
+              <% end %>
+              <% if can? :read, School %>
+                <li><%= link_to(t('.schools'), schools_path)  %> </li>
+              <% end %>
+              <% if can? :read, SchoolLevel %>
+                <li><%= link_to(t('.school_levels'), school_levels_path)  %> </li>
+              <% end %>
+              <% if can? :read, SchoolType %>
+                <li><%= link_to(t('.school_types'), school_types_path)  %> </li>
+              <% end %>
+              <% if can? :read, SchoolYear %>
+                <li><%= link_to(t('.school_years'), school_years_path)  %> </li>
+              <% end %>
+              <% if can? :read, Address %>
+                <li><%= link_to(t('.addresses'), addresses_path)  %> </li>
+              <% end %>
+              </ul>
+            </li>
+          </ul>
+        <% end %>
         <% if current_user.has_role? :admin %>
           <ul class="nav navbar-nav ">        
               <li class="dropdown">
@@ -106,10 +110,10 @@
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='glyphicon glyphicon-engrenage glyphicon glyphicon-engrenage-white'></i><%= current_user.email %><b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= Time.zone.now.to_s %><br><%= Time.zone.to_s %><bR><%= Time.zone.now.utc_offset.to_s %></li>
+              <li><strong>Professionel lié : </strong><%= current_user.practitioner || "Aucun" %></li>
+              <li><%= link_to('<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Se déconnecter'.html_safe, destroy_user_session_path, method: :delete) %></li>
             </ul>
           </li>
-          <li><%= link_to('Se déconnecter', destroy_user_session_path, method: :delete) %></li>
         <% else %>
           <li><%= link_to('Login', new_user_session_path)  %></li>
         <% end %>
