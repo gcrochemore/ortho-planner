@@ -4,4 +4,6 @@ class Interaction < ActiveRecord::Base
   belongs_to :practitioner
   belongs_to :interaction_object
   belongs_to :interaction_type
+
+  default_scope { order(interaction_date: :desc) }
 end

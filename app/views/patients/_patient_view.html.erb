@@ -26,8 +26,8 @@
     <br><%= patient.interactions.count %> appel(s) 
 
     <% if patient.interactions.count > 0 %>
-      <%= link_to 'Voir le detail', nil,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#myModal'+patient.id.to_s}  %>
-      <div class="modal fade" id="myModal<%= patient.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <%= link_to 'Voir le detail', nil,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#patientInteractionsModal'+patient.id.to_s}  %>
+      <div class="modal fade" id="patientInteractionsModal<%= patient.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -37,9 +37,22 @@
               </button>
             </div>
             <div class="modal-body">
-              <% patient.interactions.each do |interaction| %>
-                <%= interaction.interaction_date %> - <%= interaction.interaction_type %> - <%= interaction.interaction_object %> - 
-              <% end %>
+              <table class="table table-condensed">
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Qui</th>
+                  <th>Pourquoi ?</th>
+                </tr>
+                 <% patient.interactions.each do |interaction| %>
+                  <tr>
+                    <td><%= interaction.interaction_date.andand.strftime(DATE_FORMAT) %></td>
+                    <td><%= interaction.interaction_type %></td>
+                    <td><%= interaction.practitioner %></td>
+                    <td><%= interaction.interaction_object.andand.name %></td>
+                  </tr>
+                <% end %>
+              </table>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -48,6 +61,43 @@
         </div>
       </div>
     <% end %>
+
+    <br><%= patient.therapies.count %> rééducations(s) 
+
+    <% if patient.therapies.count > 0 %>
+      <%= link_to 'Voir le detail', nil,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#patientTherapiesModal'+patient.id.to_s}  %>
+      <div class="modal fade" id="patientTherapiesModal<%= patient.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Thérapies(s) de <%= patient.last_name %> <%= patient.first_name %></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-condensed">
+                <tr>
+                  <th>Quand</th>
+                  <th>Qui</th>
+                </tr>
+                 <% patient.therapies.each do |therapy| %>
+                  <tr>
+                    <td><%= therapy.begin_date.andand.strftime(DATE_FORMAT) %></td>
+                    <td><%= therapy.practitioner %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
 
     <br><strong>Commentaires :</strong><br> 
     <i><%= patient.comments || 'Aucun commentaire' %></i>

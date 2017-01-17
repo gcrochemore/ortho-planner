@@ -1,6 +1,6 @@
 <div class="form-group col-xs-12"> 
   <div id='interactions'>
-    <%= f.simple_fields_for new_interaction do |interaction| %>
+    <%= f.simple_fields_for :interactions, new_interaction do |interaction| %>
       <%= render 'interactions/interaction_fields', f: interaction %>
     <% end %> 
   </div>

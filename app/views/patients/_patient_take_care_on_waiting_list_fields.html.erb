@@ -1,13 +1,13 @@
 <div class="form-group col-xs-12">
   <label for="interactions"><%= f.label :interactions %></label>
   <div id='interactions'>
-    <%= f.simple_fields_for new_interaction do |interaction| %>
+    <%= f.simple_fields_for :interactions, new_interaction do |interaction| %>
       <%= render 'interactions/interaction_fields', f: interaction %>
     <% end %> 
   </div>  
   <label for="therapies"><%= f.label :therapies %></label>
   <div id='therapies'>
-    <%= f.simple_fields_for new_therapy do |therapy| %>
+    <%= f.simple_fields_for :therapies, new_therapy do |therapy| %>
       <%= render 'therapies/therapy_fields', f: therapy %>
     <% end %> 
   </div>
