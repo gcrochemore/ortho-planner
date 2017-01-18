@@ -39,7 +39,11 @@ class WaitingListsController < ApplicationController
   end
   # PATCH/PUT /waiting_lists/1
   def update
-    if @waiting_list.update(waiting_list_params)
+    params = waiting_list_params
+    if params["waiting_for_patient_return"]=="1"
+      params["patient_attributes"].delete("therapies_attributes")
+    end
+    if @waiting_list.update(params)
       redirect_to action: :index, notice: 'Waiting list was successfully updated.'
     else
       render :edit
@@ -58,11 +62,11 @@ class WaitingListsController < ApplicationController
   def take_care
     @waiting_list.end_date = DateTime.now
     @new_therapy = Therapy.new(begin_date: DateTime.now, practitioner: current_user.andand.practitioner)
-    @new_interaction = Interaction.new(practitioner: current_user.andand.practitioner)
+    @new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 3, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
   end
 
   def add_interaction  
-    @new_interaction = Interaction.new(practitioner: current_user.andand.practitioner)
+    @new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 2, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
   end
 
   def patient_never_return
@@ -90,7 +94,7 @@ class WaitingListsController < ApplicationController
   def availability_not_compatible
     @waiting_list.end_date = nil
     @waiting_list.waiting_for_patient_return = false
-    @waiting_list.comments = "Horaires non compatibles. " + @waiting_list.comments
+    @waiting_list.comments = "Horaires non compatibles. " + @waiting_list.comments.to_s
     if @waiting_list.save
       redirect_to action: :index, notice: 'Waiting list was successfully updated.'
     else

@@ -3,24 +3,24 @@
   <%= f.association :patient, label: false, input_html: { class: "form-control" }, as: :hidden %>
 
   <div class="row">
-    <div class="form-group col-xs-6">
+    <div class="form-group col-xs-12 col-md-6">
       <label for="practitioner">Qui ?</label>
       <%= f.association :practitioner, label: false, input_html: { class: "form-control" } %>
     </div>
 
-    <div class="form-group col-xs-6">
+    <div class="form-group col-xs-12 col-md-6">
       <label for="interaction_date">Quand</label>
-      <%= f.text_field :interaction_date, label: false, class: "datepicker" %>
+      <%= f.text_field :interaction_date, label: false, class: "datepicker", value: f.object.interaction_date.strftime(DATE_FORMAT) %>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group col-xs-6">
+    <div class="form-group col-xs-12 col-md-6">
       <label for="interaction_type">Quoi ?</label>
       <%= f.association :interaction_type, label: false, input_html: { class: "form-control" } %>
     </div>
 
-    <div class="form-group col-xs-6">
+    <div class="form-group col-xs-12 col-md-6">
       <label for="interaction_object">Pourquoi ?</label>
       <%= f.association :interaction_object, label: false, input_html: { class: "form-control" } %>
     </div>

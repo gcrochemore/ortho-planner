@@ -4,9 +4,9 @@
     <%= f.simple_fields_for :interactions, new_interaction do |interaction| %>
       <%= render 'interactions/interaction_fields', f: interaction %>
     <% end %> 
-  </div>  
-  <label for="therapies"><%= f.label :therapies %></label>
+  </div>
   <div id='therapies'>
+    <label for="therapies">Créer une prise en charge</label>
     <%= f.simple_fields_for :therapies, new_therapy do |therapy| %>
       <%= render 'therapies/therapy_fields', f: therapy %>
     <% end %> 

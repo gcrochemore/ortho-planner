@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-xs-12 col-md-1">
         <br><br>
-        <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong><br>(<%= waiting_list.age %> mois)
+        <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong><br><i><%= waiting_list.age %> mois</i>
       </div>
       <div class="col-xs-12 col-md-9">
         <%= render 'patients/patient_view', patient: waiting_list.patient %> 

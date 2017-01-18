@@ -28,13 +28,13 @@
     </div>
   <% end %>
   <div class="col-md-12">  
-    <ul  class="nav nav-pills">
+    <ul  class="nav nav-tabs">
       <li class="active">
-        <a  href="#1a" data-toggle="tab">Patients a prendre en charge<span class="badge"><%= @patients_on_waiting_list.count %></span></a>
+        <a  href="#1a" data-toggle="tab">Patients a prendre en charge <span class="badge"><%= @patients_on_waiting_list.count %></span></a>
       </li>
-      <li><a href="#2a" data-toggle="tab">Patients supprimés de la liste d'attente<span class="badge"><%= @patients_removed_from_waiting_list.count %></span></a>
+      <li><a href="#2a" data-toggle="tab">Patients supprimés de la liste d'attente <span class="badge"><%= @patients_removed_from_waiting_list.count %></span></a>
       </li>
-      <li><a href="#3a" data-toggle="tab">Patients qui doivent rappeler<span class="badge"><%= @waiting_for_patient_return.count %></span></a>
+      <li><a href="#3a" data-toggle="tab">Patients qui doivent rappeler <span class="badge"><%= @waiting_for_patient_return.count %></span></a>
       </li>
     </ul>
 

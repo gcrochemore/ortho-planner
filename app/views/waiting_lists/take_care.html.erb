@@ -8,10 +8,12 @@
 
     <%= render 'patients/patient_view', patient: @waiting_list.patient %> 
 
-    <div class="form-group">
-      <label for="comment" class="col-xs-12"><%= f.label :comment %></label>
-      <div class="col-xs-12">
-  		<%= f.input :comments, label: false, input_html: { class: "form-control" } %>        
+    <div class="form-group col-xs-12 row">
+      <label for="waiting_for_patient_return" class="col-xs-12 col-md-6 text-center">
+        Le patient doit rappeler pour confirmer la prise en charge ?
+      </label>
+      <div class="col-xs-12 col-md-6">
+        <%= f.input :waiting_for_patient_return, label: false, input_html: { class: "form-control", onclick: "if(this.checked){ $('#therapies').hide();}else{$('#therapies').show();}" } %>        
       </div>
     </div>
 
@@ -22,16 +24,12 @@
         <% end %>
       </div>
     </div>
-
-    <div class="form-group">
-      <label for="waiting_for_patient_return" class="col-xs-12 col-md-6 text-center">
-        Le patient doit rappeler pour confirmer la prise en charge ?
-      </label>
-      <div class="col-xs-12 col-md-6">
-        <%= f.input :waiting_for_patient_return, label: false, input_html: { class: "form-control" } %>        
-      </div>
-    </div>
   </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
   
   <div class="fixed-bottom row">
     <div class="col-xs-12 col-sm-6 text-right">
@@ -44,5 +42,3 @@
     </div>
   </div>
 <% end %>
-
-
