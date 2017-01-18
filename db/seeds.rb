@@ -278,6 +278,10 @@ contact_information = ContactInformation.create(contactable: patient, value: "+3
 contact_information.save
 schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year)
 schooling.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 2, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
 patient = Patient.create(last_name: "Castafiore",  first_name: "Bianca", is_male: false, birth_date: "01/01/1978", priority: true, job: "Chanteuse", comments: "Bilan fait par le 10/12/2016 par Jean-Michel L'Orthophoniste", pathologies: [pathology_autisme])
 patient.save
@@ -285,6 +289,8 @@ waiting_list = WaitingList.create(patient: patient, start_date: "11/12/2016")
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060607")
 contact_information.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
 patient = Patient.create(last_name: "Brin d'acier",  first_name: "Fifi", is_male: false, birth_date: "01/01/2008", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_lo])
 patient.save
@@ -294,6 +300,8 @@ contact_information = ContactInformation.create(contactable: patient, value: "+3
 contact_information.save
 schooling = Schooling.create(patient: patient, school_level: school_level, school_year: school_year)
 schooling.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
 patient = Patient.create(last_name: "Boissier",  first_name: "Clem", is_male: false, birth_date: "15/05/1986", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_autisme])
 patient.save
@@ -301,6 +309,8 @@ waiting_list = WaitingList.create(patient: patient, start_date: "15/06/2016")
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
 patient = Patient.create(last_name: "Duck",  first_name: "Donald", is_male: true, birth_date: "01/01/2008", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_lo])
 patient.save
@@ -308,6 +318,8 @@ waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
 patient = Patient.create(last_name: "Mouse",  first_name: "Mickey", is_male: true, birth_date: "10/08/1999", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_le])
 patient.save
@@ -315,6 +327,8 @@ waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017", wa
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
 patient = Patient.create(last_name: "Pan",  first_name: "Peter", is_male: true, birth_date: "06/03/2004", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_autisme])
 patient.save
@@ -324,6 +338,8 @@ contact_information = ContactInformation.create(contactable: patient, value: "+3
 contact_information.save
 schooling = Schooling.create(patient: patient, school_level: school_level_4ieme, school_year: school_year)
 schooling.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
 patient = Patient.create(last_name: "Luke",  first_name: "Lucky", is_male: true, birth_date: "17/09/2013", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_lo])
 patient.save
@@ -331,8 +347,10 @@ waiting_list = WaitingList.create(patient: patient, start_date: "24/10/2016", wa
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
-patient = Patient.create(last_name: "Renault",  first_name: "Lucie", is_male: false, birth_date: "11/08/2009", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_autisme])
+patient = Patient.create(last_name: "Renault",  first_name: "Mégane", is_male: false, birth_date: "11/08/2009", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_autisme])
 patient.save
 waiting_list = WaitingList.create(patient: patient, start_date: "04/03/2016", end_date: "15/08/2016")
 waiting_list.save
@@ -340,12 +358,14 @@ contact_information = ContactInformation.create(contactable: patient, value: "+3
 contact_information.save
 schooling = Schooling.create(patient: patient, school_level: school_level_ce2, school_year: school_year)
 schooling.save
+interaction = Interaction.create(patient: patient, practitioner: practitioner, interaction_object_id: 1, interaction_type_id: 1, interaction_date: "21/05/2016", comments: "")
+interaction.save
 
 
-school = School.create(name: "Ecole elementaire publique d'Ambrumesnil", school_type: school_type)
+school = School.create(name: "Ecole elementaire publique de Rouen", school_type: school_type)
 school.save
-address = Address.create(name: "Ecole elementaire publique d'Ambrumesnil", street_name: "Rue de l'ancienne mare", postal_code: "76550", city: "Ambrumesnil", addressable: school)
+address = Address.create(name: "Ecole elementaire publique du Havre", street_name: "Rue de l'ancienne mare", postal_code: "76550", city: "Ambrumesnil", addressable: school)
 address.save
-school = School.create(name: "Collège de Luneray", school_type: school_type)
+school = School.create(name: "Collège de Dieppe", school_type: school_type)
 school.save
 
