@@ -72,23 +72,17 @@ class WaitingListsController < ApplicationController
   def patient_never_return
     @waiting_list.end_date = DateTime.now
     @waiting_list.waiting_for_patient_return = false
-    @waiting_list.comments = "Le patient n'a jamais rappelé. " + @waiting_list.comments
-    if @waiting_list.save
-      redirect_to action: :index, notice: 'Waiting list was successfully updated.'
-    else
-      render :index
-    end
+    @waiting_list.comments = "Le patient n'a jamais rappelé. " + @waiting_list.comments.to_s
+    render :stop_registration
   end
 
   def care_confirm
     @waiting_list.end_date = DateTime.now
     @waiting_list.waiting_for_patient_return = false
-    @waiting_list.comments = "Prise en charge confirmée. " + @waiting_list.comments
-    if @waiting_list.save
-      redirect_to action: :index, notice: 'Waiting list was successfully updated.'
-    else
-      render :index
-    end
+    @waiting_list.comments = "Prise en charge confirmée. " + @waiting_list.comments.to_s
+    @new_therapy = Therapy.new(begin_date: DateTime.now, practitioner: current_user.andand.practitioner)
+    @new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 3, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
+    render :take_care
   end
 
   def availability_not_compatible

@@ -10,7 +10,7 @@
 
     <div class="form-group col-xs-12 col-md-6">
       <label for="interaction_date">Quand</label>
-      <%= f.text_field :interaction_date, label: false, class: "datepicker", value: f.object.interaction_date.strftime(DATE_FORMAT) %>
+      <%= f.text_field :interaction_date, label: false, class: "datepicker", value: f.object.interaction_date.andand.strftime(DATE_FORMAT) %>
     </div>
   </div>
 

@@ -1,13 +1,10 @@
+<%= f.association :school, label: false, input_html: { class: "form-control" }, as: :hidden %>
 <div class="form-inputs row">
-  <div class="form-group col-xs-3">
+  <div class="form-group col-xs-5">
     <%= f.association :school_level, label: false, input_html: { class: "form-control" } %>
   </div>
 
   <div class="form-group col-xs-5">
-    <%= f.association :school, label: false, input_html: { class: "form-control" } %>
-  </div>
-
-  <div class="form-group col-xs-3">
     <%= f.association :school_year, label: false, input_html: { class: "form-control" } %>
   </div>
   <div class="form-group col-xs-1">

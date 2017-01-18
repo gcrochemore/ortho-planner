@@ -5,6 +5,8 @@
 
   <div class="form-inputs row">
 
+    <%= render 'patients/patient_view', patient: @waiting_list.patient %> 
+
     <div class="form-group col-xs-12">
       <div id='patient'>
         <%= f.simple_fields_for :patient do |f| %>
