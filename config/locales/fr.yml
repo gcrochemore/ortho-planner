@@ -255,6 +255,9 @@ fr:
     index:
       new_button: Ajouter un patient sur la liste d'attente
       title: Liste d'attente
+    reregister_on_waiting_list:
+      submit: Réinscrire sur la liste d'attente
+      title: Réinscrire sur la liste d'attente
     stop_registration:
       submit: Supprimer de la liste d'attente
       title: Supprimer de la liste d'attente

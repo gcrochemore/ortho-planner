@@ -141,12 +141,13 @@ interaction_type = InteractionType.create(name: "Courier", glyphicon: "glyphicon
 interaction_type.save
 
 interaction_object = InteractionObject.create(name: "Inscrire sur la liste d'attente")
-interaction_type.save
+interaction_object.save
 interaction_object = InteractionObject.create(name: "Relance inscription sur liste d'attente")
-interaction_type.save
+interaction_object.save
 interaction_object = InteractionObject.create(name: "Proposition de prise en charge")
-interaction_type.save
-
+interaction_object.save
+interaction_object = InteractionObject.create(name: "Confirmation de prise en charge")
+interaction_object.save
 
 school_level = SchoolLevel.create(name: "PS")
 school_level.save

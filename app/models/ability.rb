@@ -37,6 +37,7 @@ class Ability
       can :index, WaitingList
       can :update, WaitingList
       can :filter, WaitingList
+      can :reregister_on_waiting_list, WaitingList
     end
 
     if user.has_role? :practitioner

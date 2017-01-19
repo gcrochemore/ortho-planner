@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get :patient_never_return
       get :care_confirm
       get :availability_not_compatible
+      get :reregister_on_waiting_list
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

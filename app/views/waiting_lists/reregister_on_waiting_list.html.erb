@@ -1,0 +1,38 @@
+<h3><%= t('.title') %></h3>
+
+<%= simple_form_for(@waiting_list) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :end_date, label: false, input_html: { class: "form-control" }, as: :hidden %>
+  <%= f.association :pathology, label: false, input_html: { class: "form-control" }, as: :hidden %>
+  <%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>
+  <%= f.association :health_place, label: false, input_html: { class: "form-control" }, as: :hidden %>
+
+  <div class="form-inputs row">
+    <label for="start_date" class="col-sm-2 col-xs-12"><%= f.label :start_date %></label>
+    <div class="col-sm-3 col-xs-12">
+      <%= f.input :start_date, label: false, input_html: { class: "datepicker", value: f.object.start_date.strftime(DATE_FORMAT)}, as: :string %>
+    </div>
+    <%= render 'patients/patient_view', patient: @waiting_list.patient %> 
+
+    <div class="form-group">
+      <label for="start_date" class="col-xs-12"><%= f.label :comment %></label>
+      <div class="col-xs-12">
+      <%= f.input :comments, label: false, input_html: { class: "form-control" } %>        
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="fixed-bottom row">
+    <div class="col-xs-12 col-sm-6 text-right">
+      <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Annuler l\'ajout à la liste d\'attente'.html_safe, waiting_lists_path, class: "btn btn-lg btn-primary btn-warning" %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.button :button, class: "btn-lg btn-primary" do %>
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <%= t('.submit') %>
+      <% end %>        
+    </div>
+  </div>
+<% end %>

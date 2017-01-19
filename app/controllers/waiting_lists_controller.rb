@@ -1,7 +1,7 @@
 class WaitingListsController < ApplicationController
   authorize_resource
   before_action :set_waiting_list, only: [:show, :edit, :update, :destroy, :take_care, :add_interaction, 
-    :stop_registration, :patient_never_return, :care_confirm, :availability_not_compatible]
+    :stop_registration, :patient_never_return, :care_confirm, :availability_not_compatible, :reregister_on_waiting_list]
 
   # GET /waiting_lists
   def index
@@ -81,19 +81,19 @@ class WaitingListsController < ApplicationController
     @waiting_list.waiting_for_patient_return = false
     @waiting_list.comments = "Prise en charge confirmée. " + @waiting_list.comments.to_s
     @new_therapy = Therapy.new(begin_date: DateTime.now, practitioner: current_user.andand.practitioner)
-    @new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 3, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
+    @new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 4, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
     render :take_care
+  end
+
+  def reregister_on_waiting_list
+
   end
 
   def availability_not_compatible
     @waiting_list.end_date = nil
     @waiting_list.waiting_for_patient_return = false
     @waiting_list.comments = "Horaires non compatibles. " + @waiting_list.comments.to_s
-    if @waiting_list.save
-      redirect_to action: :index, notice: 'Waiting list was successfully updated.'
-    else
-      render :index
-    end
+    render :reregister_on_waiting_list
   end
 
   private
@@ -111,7 +111,7 @@ class WaitingListsController < ApplicationController
                                                                 pathology_ids: [], 
                                                                 schoolings_attributes: [:id,:school_level_id],
                                                                 addresses_attributes: [:id, :city],
-                                                                therapies_attributes: [:id, :practitioner_id, :begin_date],
+                                                                therapies_attributes: [:id, :practitioner_id, :begin_date, :number_of_sessions],
                                                                 interactions_attributes: [:id, :practitioner_id, :interaction_date, :interaction_type_id, :interaction_object_id, :comments]
                                                               ]
                                           )
