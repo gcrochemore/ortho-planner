@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-6 row waiting-list-form-patient-informations">
+  <div class="col-lg-6 row custom-panel">
     <div class="form-group col-xs-12 col-sm-2 col-lg-2">
       <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !@patient.andand.is_male %>
       <label for="is_male">F</label>
@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div class="col-lg-6 row waiting-list-form-patient-informations">
+  <div class="col-lg-6 row custom-panel">
     <div class="form-group col-xs-12">
       <label for="schoolings">Classe :</label>
       <div id='schoolings' class="schoolings">
@@ -68,20 +68,20 @@
 
 </div>
   
-<div class="row">
+<div class="row custom-panel">
   <div class="form-group col-xs-12">
     <label for="pathologies">Motif : </label>
     <%= f.association :pathologies, label: false, input_html: { class: "form-control", witdh: "100%" } %>
   </div>
   
             
-<div class="form-group">
-  <label for="comments"><%= f.label :comments %></label>
-  <%= f.input :comments, label: false, input_html: { class: "form-control", rows: 6, value: f.object.comments || 
+  <div class="form-group col-xs-12">
+    <label for="comments"><%= f.label :comments %></label>
+    <%= f.input :comments, label: false, input_html: { class: "form-control", rows: 6, value: f.object.comments || 
 "Bilan fait le  /  /   par
 Suivi orthophonique antérieur :
 Suivi en institution :
 " } %>
+  </div>
 </div>
-
 
