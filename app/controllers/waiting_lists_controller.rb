@@ -21,6 +21,7 @@ class WaitingListsController < ApplicationController
     @waiting_list.patient.addresses << Address.new
     @waiting_list.patient.schoolings << Schooling.new
     @waiting_list.patient.contact_informations << ContactInformation.new
+    @new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 1, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
   end
 
   # GET /waiting_lists/1/edit

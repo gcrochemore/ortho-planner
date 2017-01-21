@@ -14,11 +14,16 @@
     <div class="form-group col-xs-12">
       <div class='patient'>
         <%= f.simple_fields_for :patient do |f| %>
-          <%= render 'patients/patient_registration_on_waiting_list_fields', f: f %>
+          <%= render 'patients/patient_registration_on_waiting_list_fields', f: f, new_interaction: @new_interaction %>
         <% end %>
       </div>
     </div>
   </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  
 
   <div class="fixed-bottom row">
     <div class="col-xs-12 col-sm-6 text-right">
