@@ -1,35 +1,26 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= t('.title') %><span class="badge"><%= @therapies.count %></span></h1>
 
 <div class="row">
   <div class="col-md-2">
-    <legend class="filter-title"><%= t :filter_title %></legend>
-  </div>
-  <div class="col-md-3 btn-new-top">
-    <% if can? :create, Therapy %>
-      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
-        <%= f.search_field :practitioner_first_name_cont, {placeholder: t('activerecord.attributes.therapy.practitioner')} %>
+        <%= f.search_field :practitioner_first_name_or_practitioner_last_name_cont, {placeholder: t('activerecord.attributes.therapy.practitioner')} %>
 
         <%= f.search_field :begin_date_cont, {placeholder: t('activerecord.attributes.therapy.begin_date')} %>
 
         <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.therapy.end_date')} %>
 
-        <%= f.search_field :patient_first_name_cont, {placeholder: t('activerecord.attributes.therapy.patient')} %>
+        <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.therapy.patient')} %>
 
         <%= f.search_field :health_place_name_cont, {placeholder: t('activerecord.attributes.therapy.health_place')} %>
 
         <%= f.search_field :number_of_sessions_cont, {placeholder: t('activerecord.attributes.therapy.number_of_sessions')} %>
 
         <%= f.search_field :session_duration_cont, {placeholder: t('activerecord.attributes.therapy.session_duration')} %>
+
+        <%= f.search_field :act_name_cont, {placeholder: t('activerecord.attributes.therapy.act')} %>
 
         <br>
         <br>
@@ -38,6 +29,11 @@
     </fieldset>
   </div>
   <div class="col-md-10">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, Therapy %>
+        <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+      <% end %>
+    </div>
     <table class="table table-hover table-condensed table-bordered">
       <thead>
         <tr>
@@ -55,6 +51,8 @@
           <th><%= sort_link(@q, :number_of_sessions, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :session_duration, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :act_name, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -78,12 +76,14 @@
     
             <td><%= therapy.session_duration %></td>
     
+            <td><%= therapy.act %></td>
+    
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, therapy %>
-              <% if can? :edit, therapy %>
+              <% if can? :edit, Therapy %>
                 <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_therapy_path(therapy) %>
               <% end %>
-              <% if can? :destroy, therapy %>
+              <% if can? :destroy, Therapy %>
                 <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, therapy, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </td>
@@ -91,5 +91,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= will_paginate @therapies %>
   </div>
 </div>

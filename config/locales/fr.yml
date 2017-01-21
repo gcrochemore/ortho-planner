@@ -112,6 +112,7 @@ fr:
         begin_date: Date de début
         end_date: Date de fin
       therapy:
+        act: Nomenclature
         begin_date: Date de début
         end_date: Date de fin
         health_place: Centre de santé

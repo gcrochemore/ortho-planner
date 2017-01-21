@@ -8,6 +8,7 @@ class CreateTherapies < ActiveRecord::Migration
       t.references :health_place, index: true, foreign_key: true
       t.integer :number_of_sessions
       t.integer :session_duration
+      t.references :act, index: true, foreign_key: true
 
       t.timestamps null: false
     end

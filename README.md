@@ -33,7 +33,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold Act name:string AMO:float
 
-	rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references health_place:references number_of_sessions:integer session_duration:integer
+	rails generate scaffold therapy practitioner:references begin_date:datetime end_date:datetime patient:references health_place:references number_of_sessions:integer session_duration:integer act:references
 
 	rails generate scaffold session begin_date:datetime end_date:datetime therapy:references act:references practitioner:references health_place:references
 

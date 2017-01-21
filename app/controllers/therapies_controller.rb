@@ -1,10 +1,12 @@
+
+
 class TherapiesController < ApplicationController
   authorize_resource
   before_action :set_therapy, only: [:show, :edit, :update, :destroy]
   # GET /therapies
   def index
     @q = Therapy.ransack(params[:q])
-    @therapies = @q.result
+    @therapies = @q.result.page(params[:page])
   end
   # GET /therapies/1
   def show
@@ -51,7 +53,7 @@ class TherapiesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def therapy_params
 
-      params.require(:therapy).permit(:practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id, :number_of_sessions, :session_duration)
+      params.require(:therapy).permit(:practitioner_id, :begin_date, :end_date, :patient_id, :health_place_id, :number_of_sessions, :session_duration, :act_id)
 
     end
 end

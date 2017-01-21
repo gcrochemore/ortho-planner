@@ -7,7 +7,8 @@ RSpec.describe "therapies/edit", type: :view do
       :patient => nil,
       :health_place => nil,
       :number_of_sessions => 1,
-      :session_duration => 1
+      :session_duration => 1,
+      :act => nil
     ))
   end
 
@@ -25,6 +26,8 @@ RSpec.describe "therapies/edit", type: :view do
       assert_select "input#therapy_number_of_sessions[name=?]", "therapy[number_of_sessions]"
 
       assert_select "input#therapy_session_duration[name=?]", "therapy[session_duration]"
+
+      assert_select "input#therapy_act_id[name=?]", "therapy[act_id]"
     end
   end
 end

@@ -261,10 +261,12 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "health_place_id"
     t.integer  "number_of_sessions"
     t.integer  "session_duration"
+    t.integer  "act_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
+  add_index "therapies", ["act_id"], name: "index_therapies_on_act_id"
   add_index "therapies", ["health_place_id"], name: "index_therapies_on_health_place_id"
   add_index "therapies", ["patient_id"], name: "index_therapies_on_patient_id"
   add_index "therapies", ["practitioner_id"], name: "index_therapies_on_practitioner_id"

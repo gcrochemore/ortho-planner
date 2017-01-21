@@ -7,7 +7,8 @@ RSpec.describe "therapies/show", type: :view do
       :patient => nil,
       :health_place => nil,
       :number_of_sessions => 2,
-      :session_duration => 3
+      :session_duration => 3,
+      :act => nil
     ))
   end
 
@@ -18,5 +19,6 @@ RSpec.describe "therapies/show", type: :view do
     expect(rendered).to match(//)
     expect(rendered).to match(/2/)
     expect(rendered).to match(/3/)
+    expect(rendered).to match(//)
   end
 end

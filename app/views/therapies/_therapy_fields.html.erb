@@ -1,17 +1,25 @@
 <%= f.association :patient, label: false, input_html: { class: "form-control" }, as: :hidden %>
-<%= f.input :session_duration, label: false, input_html: { class: "form-control" }, as: :hidden %>
 <%= f.association :health_place, label: false, input_html: { class: "form-control" }, as: :hidden %>
 <%= f.input :begin_date, label: false, as: :text, input_html: { class: "datepicker" }, as: :hidden %>
 <%= f.input :end_date, label: false, as: :text, input_html: { class: "datepicker" }, as: :hidden %>
 <div class="nested-fields row">
-  <div class="form-group col-xs-12 col-md-8">
+  <div class="form-group col-xs-12 col-md-4">
     <label for="practitioner"><%= f.label :practitioner %></label>
     <%= f.association :practitioner, label: false, input_html: { class: "form-control" } %>
   </div>
-
   <div class="form-group col-xs-12 col-md-4">
+    <label for="act"><%= f.label :act %></label>
+    <%= f.association :act, label: false, input_html: { class: "form-control" } %>
+  </div>
+
+  <div class="form-group col-xs-12 col-md-2">
     <label for="number_of_sessions"><%= f.label :number_of_sessions %></label>
     <%= f.input :number_of_sessions, label: false, input_html: { class: "form-control" } %>    
+  </div>
+
+  <div class="form-group col-xs-12 col-md-2">
+    <label for="session_duration"><%= f.label :session_duration %></label>
+    <%= f.input :session_duration, label: false, input_html: { class: "form-control" } %>    
   </div>
 </div>
 
