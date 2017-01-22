@@ -245,6 +245,10 @@ health_place = HealthPlace.create(name: "Cabinet de Tôtes", health_place_type: 
 health_place.save
 address = Address.create(name: "Cabinet de Tôtes", addressable: health_place)
 address.save
+health_place = HealthPlace.create(name: "Cabinet du docteur House", health_place_type: health_place_type)
+health_place.save
+address = Address.create(name: "Cabinet du docteur House", addressable: health_place)
+address.save
 
 practitioner = Practitioner.create(first_name: "Docteur", last_name: "House", health_place: health_place, practitioner_profession: practitioner_profession);
 practitioner.save 
@@ -273,7 +277,7 @@ user.add_role :admin
 
 patient = Patient.create(last_name: "Dupond",  first_name: "Ludovic", is_male: true, birth_date: "01/01/2010", priority: false, comments: "J'ai demandé un bilan ORL. Difficultés en lecture, ne comprend pas les consignes", pathologies: [pathology_le])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "13/01/2016", end_date: "21/05/2016")
+waiting_list = WaitingList.create(patient: patient, start_date: "13/01/2016", end_date: "21/05/2016", health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060606")
 contact_information.save
@@ -286,7 +290,7 @@ interaction.save
 
 patient = Patient.create(last_name: "Castafiore",  first_name: "Bianca", is_male: false, birth_date: "01/01/1978", priority: true, job: "Chanteuse", comments: "Bilan fait par le 10/12/2016 par Jean-Michel L'Orthophoniste", pathologies: [pathology_autisme])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "11/12/2016")
+waiting_list = WaitingList.create(patient: patient, start_date: "11/12/2016", health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060607")
 contact_information.save
@@ -295,7 +299,7 @@ interaction.save
 
 patient = Patient.create(last_name: "Brin d'acier",  first_name: "Fifi", is_male: false, birth_date: "01/01/2008", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_lo])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017", health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
@@ -306,7 +310,7 @@ interaction.save
 
 patient = Patient.create(last_name: "Boissier",  first_name: "Clem", is_male: false, birth_date: "15/05/1986", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_autisme])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "15/06/2016")
+waiting_list = WaitingList.create(patient: patient, start_date: "15/06/2016", health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
@@ -315,7 +319,7 @@ interaction.save
 
 patient = Patient.create(last_name: "Duck",  first_name: "Donald", is_male: true, birth_date: "01/01/2008", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_lo])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017")
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017", health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
@@ -324,7 +328,7 @@ interaction.save
 
 patient = Patient.create(last_name: "Mouse",  first_name: "Mickey", is_male: true, birth_date: "10/08/1999", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_le])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017", waiting_for_patient_return: true, end_date: nil)
+waiting_list = WaitingList.create(patient: patient, start_date: "01/01/2017", waiting_for_patient_return: true, end_date: nil, health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
@@ -333,7 +337,7 @@ interaction.save
 
 patient = Patient.create(last_name: "Pan",  first_name: "Peter", is_male: true, birth_date: "06/03/2004", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_autisme])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "20/05/2016")
+waiting_list = WaitingList.create(patient: patient, start_date: "20/05/2016", health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
@@ -344,7 +348,7 @@ interaction.save
 
 patient = Patient.create(last_name: "Luke",  first_name: "Lucky", is_male: true, birth_date: "17/09/2013", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_lo])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "24/10/2016", waiting_for_patient_return: true, end_date: nil)
+waiting_list = WaitingList.create(patient: patient, start_date: "24/10/2016", waiting_for_patient_return: true, end_date: nil, health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save
@@ -353,7 +357,7 @@ interaction.save
 
 patient = Patient.create(last_name: "Renault",  first_name: "Mégane", is_male: false, birth_date: "11/08/2009", priority: false, comments: "Difficulté avec l'orthographe", pathologies: [pathology_autisme])
 patient.save
-waiting_list = WaitingList.create(patient: patient, start_date: "04/03/2016", end_date: "15/08/2016")
+waiting_list = WaitingList.create(patient: patient, start_date: "04/03/2016", end_date: "15/08/2016", health_place: health_place)
 waiting_list.save
 contact_information = ContactInformation.create(contactable: patient, value: "+33606060609")
 contact_information.save

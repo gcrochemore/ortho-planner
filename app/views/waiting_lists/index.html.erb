@@ -16,6 +16,7 @@
         <%= search_form_for @q, html: {class: 'form-inline'} do |f| %>
           <div class="form-group">
             <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.patient.last_name') + " ou " + t('activerecord.attributes.patient.first_name'), class: 'form-control'} %>
+            <%= f.select :health_place_id_eq, options_from_collection_for_select(@health_places, "id", "name", @q.health_place_id_eq) %>
           </div>
           <%= f.submit class: 'btn btn-default' %>
         <% end %>

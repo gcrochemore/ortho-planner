@@ -1,8 +1,9 @@
 class HealthPlacesController < ApplicationController
+  authorize_resource
   before_action :set_health_place, only: [:show, :edit, :update, :destroy]
   # GET /health_places
   def index
-    @q = HealthPlace.ransack(params[:q])
+    @q = HealthPlace.accessible_by(current_ability, :read).ransack(params[:q])
     @health_places = @q.result
   end
   # GET /health_places/1

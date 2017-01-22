@@ -5,7 +5,11 @@ class WaitingListsController < ApplicationController
 
   # GET /waiting_lists
   def index
+    @health_places = HealthPlace.accessible_by(current_ability, :read) 
     @q = WaitingList.ransack(params[:q])
+    if @q.health_place_id_eq == nil
+      @q.health_place_id_eq = @health_places.first.id
+    end
     @patients_on_waiting_list = @q.result.waiting_list.page(params[:page])
     @patients_removed_from_waiting_list = @q.result.not_waiting_list.page(params[:page])
     @waiting_for_patient_return = @q.result.waiting_for_patient_return.page(params[:page])
@@ -16,6 +20,7 @@ class WaitingListsController < ApplicationController
 
   # GET /waiting_lists/new
   def new
+    @health_places = HealthPlace.accessible_by(current_ability, :read)
     @waiting_list = WaitingList.new(start_date: DateTime.now)
     @waiting_list.patient = Patient.new
     @waiting_list.patient.addresses << Address.new
@@ -35,6 +40,7 @@ class WaitingListsController < ApplicationController
     if @waiting_list.save
       redirect_to action: :index, notice: 'Waiting list was successfully created.'
     else
+      @health_places = HealthPlace.accessible_by(current_ability, :read)
       render :new
     end
   end

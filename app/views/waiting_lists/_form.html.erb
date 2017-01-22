@@ -4,9 +4,18 @@
   <%= f.input :end_date, label: false, input_html: { class: "form-control" }, as: :hidden %>
   <%= f.association :pathology, label: false, input_html: { class: "form-control" }, as: :hidden %>
   <%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>
-  <%= f.association :health_place, label: false, input_html: { class: "form-control" }, as: :hidden %>
+
+
 
   <div class="form-inputs row">
+    <% if @health_places.count == 1 %>
+      <%= f.input :health_place_id, label: false, input_html: { class: "form-control", value: @health_places.first.id }, as: :hidden %>
+    <% else %>
+      <label for="health_place" class="col-sm-2 col-xs-12"><%= f.label :health_place %></label>
+      <div class="col-sm-3 col-xs-12">
+        <%= f.association :health_place, label: false, input_html: { class: "form-control" }, collection: @health_places %>
+      </div>
+    <% end %>
     <label for="start_date" class="col-sm-2 col-xs-12"><%= f.label :start_date %></label>
     <div class="col-sm-3 col-xs-12">
       <%= f.input :start_date, label: false, input_html: { class: "datepicker", value: f.object.start_date.strftime(DATE_FORMAT)}, as: :string %>
