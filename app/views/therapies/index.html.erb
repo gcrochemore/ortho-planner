@@ -64,9 +64,9 @@
     
             <td><%= therapy.practitioner %></td>
     
-            <td><%= therapy.begin_date %></td>
+            <td><%= therapy.begin_date.strftime(DATE_FORMAT) %></td>
     
-            <td><%= therapy.end_date %></td>
+            <td><%= therapy.end_date.andand.strftime(DATE_FORMAT) %></td>
     
             <td><%= therapy.patient %></td>
     

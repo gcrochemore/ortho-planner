@@ -1,19 +1,8 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= t('.title') %><span class="badge"><%= @sessions.count %></span></h1>
 
 <div class="row">
   <div class="col-md-2">
-    <legend class="filter-title"><%= t :filter_title %></legend>
-  </div>
-  <div class="col-md-3 btn-new-top">
-    <% if can? :create, Session %>
-      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
@@ -21,11 +10,11 @@
 
         <%= f.search_field :end_date_cont, {placeholder: t('activerecord.attributes.session.end_date')} %>
 
-        <%= f.search_field :therapy_patient_first_name_cont, {placeholder: t('activerecord.attributes.session.therapy')} %>
+        <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.session.patient')} %>
 
         <%= f.search_field :act_name_cont, {placeholder: t('activerecord.attributes.session.act')} %>
 
-        <%= f.search_field :practitioner_first_name_cont, {placeholder: t('activerecord.attributes.session.practitioner')} %>
+        <%= f.search_field :practitioner_first_name_or_practitioner_last_name_cont, {placeholder: t('activerecord.attributes.session.practitioner')} %>
 
         <%= f.search_field :health_place_name_cont, {placeholder: t('activerecord.attributes.session.health_place')} %>
 
@@ -36,6 +25,11 @@
     </fieldset>
   </div>
   <div class="col-md-10">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, Session %>
+        <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+      <% end %>
+    </div>
     <table class="table table-hover table-condensed table-bordered">
       <thead>
         <tr>
@@ -44,7 +38,9 @@
     
           <th><%= sort_link(@q, :end_date, default_order: :asc) %></th>
     
-          <th><%= sort_link(@q, :therapy_patient_first_name, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :therapy, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :patient_first_name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :act_name, default_order: :asc) %></th>
     
@@ -64,7 +60,9 @@
     
             <td><%= session.end_date.strftime(TIME_FORMAT) %></td>
     
-            <td><%= session.therapy.patient %></td>
+            <td><%= session.therapy %></td>
+    
+            <td><%= session.patient %></td>
     
             <td><%= session.act %></td>
     
@@ -74,10 +72,10 @@
     
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, session %>
-              <% if can? :edit, session %>
+              <% if can? :edit, Session %>
                 <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_session_path(session) %>
               <% end %>
-              <% if can? :destroy, session %>
+              <% if can? :destroy, Session %>
                 <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, session, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </td>
@@ -85,5 +83,6 @@
         <% end %>
       </tbody>
     </table>
+    <%= will_paginate @sessions %>
   </div>
 </div>

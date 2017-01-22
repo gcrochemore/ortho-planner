@@ -4,6 +4,7 @@ RSpec.describe "sessions/new", type: :view do
   before(:each) do
     assign(:session, Session.new(
       :therapy => nil,
+      :patient => nil,
       :act => nil,
       :practitioner => nil,
       :health_place => nil
@@ -16,6 +17,8 @@ RSpec.describe "sessions/new", type: :view do
     assert_select "form[action=?][method=?]", sessions_path, "post" do
 
       assert_select "input#session_therapy_id[name=?]", "session[therapy_id]"
+
+      assert_select "input#session_patient_id[name=?]", "session[patient_id]"
 
       assert_select "input#session_act_id[name=?]", "session[act_id]"
 

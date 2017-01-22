@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   # GET /sessions
   def index
     @q = Session.ransack(params[:q])
-    @sessions = @q.result
+    @sessions = @q.result.page(params[:page])
   end
   # GET /sessions/1
   def show
@@ -51,7 +51,7 @@ class SessionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def session_params
 
-      params.require(:session).permit(:begin_date, :end_date, :therapy_id, :act_id, :practitioner_id, :health_place_id)
+      params.require(:session).permit(:begin_date, :end_date, :therapy_id, :patient_id, :act_id, :practitioner_id, :health_place_id)
 
     end
 end

@@ -241,6 +241,7 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.datetime "begin_date"
     t.datetime "end_date"
     t.integer  "therapy_id"
+    t.integer  "patient_id"
     t.integer  "act_id"
     t.integer  "practitioner_id"
     t.integer  "health_place_id"
@@ -250,6 +251,7 @@ ActiveRecord::Schema.define(version: 20170116180640) do
 
   add_index "sessions", ["act_id"], name: "index_sessions_on_act_id"
   add_index "sessions", ["health_place_id"], name: "index_sessions_on_health_place_id"
+  add_index "sessions", ["patient_id"], name: "index_sessions_on_patient_id"
   add_index "sessions", ["practitioner_id"], name: "index_sessions_on_practitioner_id"
   add_index "sessions", ["therapy_id"], name: "index_sessions_on_therapy_id"
 
