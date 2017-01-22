@@ -60,11 +60,11 @@
         <% @sessions.each do |session| %>
           <tr>
     
-            <td><%= session.begin_date %></td>
+            <td><%= session.begin_date.strftime(DATETIME_FORMAT) %></td>
     
-            <td><%= session.end_date %></td>
+            <td><%= session.end_date.strftime(TIME_FORMAT) %></td>
     
-            <td><%= session.therapy %></td>
+            <td><%= session.therapy.patient %></td>
     
             <td><%= session.act %></td>
     
