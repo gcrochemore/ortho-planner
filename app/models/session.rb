@@ -7,4 +7,8 @@ class Session < ActiveRecord::Base
   belongs_to :health_place
 
   default_scope { order(:begin_date) }
+
+  def start_time
+  	self.begin_date
+  end
 end

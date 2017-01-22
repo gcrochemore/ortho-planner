@@ -1,21 +1,17 @@
-== Ortho-planner [ ![Codeship Status for gcrochemore/ortho-planner](https://app.codeship.com/projects/864f9480-ac05-0134-ca14-2656ee888b62/status?branch=master)](https://app.codeship.com/projects/192362)
+## Ortho-planner [ ![Codeship Status for gcrochemore/ortho-planner](https://app.codeship.com/projects/864f9480-ac05-0134-ca14-2656ee888b62/status?branch=master)](https://app.codeship.com/projects/192362)
 
-##TODO : Lancer automatique rake db:migrate
-
-##TODO : Patient ajouter année scolaire
-
-===== Schéma BDD
+##### Schéma BDD
 
 ![Schéma BDD](https://github.com/gcrochemore/ortho-planner/blob/develop/erd.png "Schéma BDD")
 
 
 https://github.com/gcrochemore/ortho-planner/blob/develop/erd.dot
 
-===== Lancer les tests
+##### Lancer les tests
 	
 	bundle exec rake
 
-===== Generate entity
+##### Generate entity
 
 Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
@@ -79,7 +75,7 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 	rails generate scaffold_controller User email:string password:string sign_in_count:integer
 
 
-===== Docker
+##### Docker
 
 	docker-compose build --no-cache
 
@@ -92,7 +88,7 @@ Supprimer Gemfile.lock
 
 	docker exec -it orthoplanner_ortho-planner_1 rails c
 
-===== heroku
+##### heroku
 
 	heroku login
 	heroku apps -> liste des apps
@@ -104,48 +100,21 @@ Supprimer Gemfile.lock
 	heroku run rails console --app ortho-planner
 
 
-===== Database 
+##### Database 
 
 	rake db:reset RAILS_ENV=development
 	rake db:seed RAILS_ENV=development
 
 	rake db:seed:dump FILE=db/seeds/db_prod.rb
 
-===== ERD
+##### ERD
 
 	bundle exec erd --filetype=dot
 
-===== DO
+##### DO / TODO
 
-* Ajouter une profession sur patient
-* Ajouter un type d'adresse
-* Ajouter un type d'adresse sur une adresse
-* Créer la table association patient/pathology
-* Ajouter un type de coordonnées
-* Ajouter une coordonnée
-* Supprimer le numéro de téléphone sur le patient
-* Créer availability
+cf. trello
 
-availability
-
-===== TODO
-
-* Ajouter un practitioner à un user (non obligatoire)
-
-* Modifier le profil practitioner pour n'avoir accès qu'a la liste des patients et à la liste d'attente
-
-* Ajouter un numéro d'établissement, un secteur (public/privé -> boolean is_public) sur un établissement scolaire (lié ensuite avec coordonnées pour ajouter site_web/uméro de téléphone/fax/adresse mail)
-
-* Améliorer l'ajout d'un appel
-
-* Voir la détail des appels en passant dessus sur la liste d'attente
-
-* Ajouter le practitioner sur l'intéraction
-
-* Ajouter la date du message sur le répondeur pour take care de waiting list
-
-* Identifier la personne faisant la prise en charge, supprimant le patient de la liste d'attente 
-
-====== WIKI
+##### WIKI
 
 Une période (table availability) correspond à 15 min. Ainsi la période 10 correspond à 2h30-2h45 (10*15min=150min=2h30min), 50 à 12h30-13h (50*15min=750min=12h30min)

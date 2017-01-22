@@ -88,3 +88,5 @@ gem "select2-rails"
 gem "rails-erd"
 
 gem 'seed_dump'
+
+gem "simple_calendar", "~> 2.0"

@@ -8,6 +8,7 @@ class PractitionersController < ApplicationController
   end
   # GET /practitioners/1
   def show
+    @events
   end
 
   # GET /practitioners/new
