@@ -27,9 +27,9 @@ class Ability
       can :create, Patient
       can :update, Patient
 
-      can :read, WaitingList, health_place: user.practitioner.health_place
-      can :read, HealthPlace, id: user.practitioner.health_place.id
-      
+      can :nested_entity, WaitingList, health_place: user.practitioner.health_place
+      can :nested_entity, HealthPlace, id: user.practitioner.health_place.id
+
       can :take_care, WaitingList
       can :add_interaction, WaitingList
       can :stop_registration, WaitingList
