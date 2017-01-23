@@ -8,18 +8,23 @@
     </div>
   </div>
   <% waiting_lists.each do |waiting_list| %>
-    <div class="row">
+    <div class="row waiting-list-row">
       <div class="col-xs-12 col-md-1">
-        <br><br>
+        <br>
         <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong><br><i><%= waiting_list.age %> mois</i>
       </div>
       <div class="col-xs-12 col-md-9">
         <%= render 'patients/patient_view', patient: waiting_list.patient %> 
       </div>
-      <div class="col-xs-12 col-md-2">
+      <div class="col-xs-12 col-md-2 waiting-list-row-action">
         <% if (can? :take_care, WaitingList) && !waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return %>
-          <%= link_to take_care_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <%= link_to take_care_waiting_list_path(waiting_list), class: "btn btn-success btn-sm btn-block" do %>
             <i class="glyphicon glyphicon-saved"></i> Prendre en charge
+          <% end %>
+        <% end %>
+        <% if (can? :care_confirm, WaitingList) && waiting_list.waiting_for_patient_return %>
+          <%= link_to care_confirm_waiting_list_path(waiting_list), class: "btn btn-success btn-sm btn-block" do %>
+            <i class="glyphicon glyphicon-ok"></i> Prise en charge confirmée
           <% end %>
         <% end %>
         <% if can? :add_interaction, WaitingList %>
@@ -27,29 +32,24 @@
             <i class="glyphicon glyphicon-earphone"></i> Ajouter un appel
           <% end %>
         <% end %>
-        <% if (can? :patient_never_return, WaitingList) && waiting_list.waiting_for_patient_return %>
-          <%= link_to patient_never_return_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
-            <i class="glyphicon glyphicon-remove"></i> Le patient n'a jamais rappelé
-          <% end %>
-        <% end %>
-        <% if (can? :care_confirm, WaitingList) && waiting_list.waiting_for_patient_return %>
-          <%= link_to care_confirm_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
-            <i class="glyphicon glyphicon-ok"></i> Prise en charge confirmée
-          <% end %>
-        <% end %>
         <% if (can? :availability_not_compatible, WaitingList) && waiting_list.waiting_for_patient_return %>
-          <%= link_to availability_not_compatible_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <%= link_to availability_not_compatible_waiting_list_path(waiting_list), class: "btn btn-warning btn-sm btn-block" do %>
             <i class="glyphicon glyphicon-time"></i> Horaires non compatibles
           <% end %>
         <% end %>
         <% if (can? :reregister_on_waiting_list, WaitingList) && waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return %>
-          <%= link_to reregister_on_waiting_list_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
-            <i class="glyphicon glyphicon-remove"></i> Réinscrire sur la liste
+          <%= link_to reregister_on_waiting_list_waiting_list_path(waiting_list), class: "btn btn-success btn-sm btn-block" do %>
+            <i class="glyphicon glyphicon-repeat"></i> Réinscrire sur la liste
           <% end %>
         <% end %>
         <% if (can? :stop_registration, WaitingList) && !waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return%>
-          <%= link_to stop_registration_waiting_list_path(waiting_list), class: "btn btn-info btn-sm btn-block" do %>
+          <%= link_to stop_registration_waiting_list_path(waiting_list), class: "btn btn-danger btn-sm btn-block" do %>
             <i class="glyphicon glyphicon-remove"></i> Supprimer de la liste
+          <% end %>
+        <% end %>
+        <% if (can? :patient_never_return, WaitingList) && waiting_list.waiting_for_patient_return %>
+          <%= link_to patient_never_return_waiting_list_path(waiting_list), class: "btn btn-danger btn-sm btn-block" do %>
+            <i class="glyphicon glyphicon-remove"></i> Le patient n'a jamais rappelé
           <% end %>
         <% end %>
         <% if can? :show, waiting_list %>

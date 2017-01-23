@@ -2,8 +2,13 @@
   <div class="row col-xs-12">
     <div class="col-xs-11">
       <%= patient.is_male ? (image_tag "male.png", width: 18) : (image_tag "female.png", width: 18) %> 
-  <%= patient.last_name %> <%= patient.first_name %> <%= patient.age ? "("+patient.age.to_s+" ans)".html_safe : "" %> - 
+      <label class="patient-name">
+        <%= patient.last_name %> <%= patient.first_name %> <%= patient.age ? "("+patient.age.to_s+" ans)".html_safe : "" %>
+      </label> 
   <i><%= patient.schoolings.currents.first.andand.school_level.andand.name  || patient.job || "Classe/métier non défini" %></i> - 
+  <% patient.pathologies.each do |pathology| %>
+    <%= pathology.name %> - 
+  <% end %>
   <strong>Contact(s) : </strong>
   <% patient.contact_informations.each do |contact_information| %>
    <%= contact_information.value %> - 
@@ -14,92 +19,87 @@
     </div>
   </div> 
   
-  <div class="row col-xs-12">
-    <i>
-      <% 
-        patient.pathologies.each do |pathology| %>
-          <%= pathology.name %> - 
-        <% end
-      %>
-    </i>
-   
-    <br><%= patient.interactions.count %> appel(s) 
+  <% if patient.interactions.count > 1 && patient.therapies.count > 0 %>
+    <div class="row col-xs-12">   
+      <% if patient.interactions.count > 1 %>
+        <%= patient.interactions.count %> appel(s) 
 
-    <% if patient.interactions.count > 0 %>
-      <%= link_to 'Voir le detail', nil,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#patientInteractionsModal'+patient.id.to_s}  %>
-      <div class="modal fade" id="patientInteractionsModal<%= patient.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Appel(s) de <%= patient.last_name %> <%= patient.first_name %></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <table class="table table-condensed">
-                <tr>
-                  <th>Date</th>
-                  <th>Type</th>
-                  <th>Qui</th>
-                  <th>Pourquoi ?</th>
-                </tr>
-                 <% patient.interactions.each do |interaction| %>
-                  <tr>
-                    <td><%= interaction.interaction_date.andand.strftime(DATE_FORMAT) %></td>
-                    <td><%= interaction.interaction_type %></td>
-                    <td><%= interaction.practitioner %></td>
-                    <td><%= interaction.interaction_object.andand.name %></td>
-                  </tr>
-                <% end %>
-              </table>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <% if patient.interactions.count > 0 %>
+          <%= link_to 'Voir le detail', nil,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#patientInteractionsModal'+patient.id.to_s}  %>
+          <div class="modal fade" id="patientInteractionsModal<%= patient.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Appel(s) de <%= patient.last_name %> <%= patient.first_name %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-condensed">
+                    <tr>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Qui</th>
+                      <th>Pourquoi ?</th>
+                    </tr>
+                     <% patient.interactions.each do |interaction| %>
+                      <tr>
+                        <td><%= interaction.interaction_date.andand.strftime(DATE_FORMAT) %></td>
+                        <td><%= interaction.interaction_type %></td>
+                        <td><%= interaction.practitioner %></td>
+                        <td><%= interaction.interaction_object.andand.name %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
+      <% end %>
 
-    <br><%= patient.therapies.count %> rééducations(s) 
+      <% if patient.therapies.count > 0 %>
+        <%= patient.therapies.count %> rééducations(s) 
 
-    <% if patient.therapies.count > 0 %>
-      <%= link_to 'Voir le detail', nil,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#patientTherapiesModal'+patient.id.to_s}  %>
-      <div class="modal fade" id="patientTherapiesModal<%= patient.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Rééducation(s) de <%= patient.last_name %> <%= patient.first_name %></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <table class="table table-condensed">
-                <tr>
-                  <th>Quand</th>
-                  <th>Qui</th>
-                </tr>
-                 <% patient.therapies.each do |therapy| %>
-                  <tr>
-                    <td><%= therapy.begin_date.andand.strftime(DATE_FORMAT) %></td>
-                    <td><%= therapy.practitioner %></td>
-                  </tr>
-                <% end %>
-              </table>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <% if patient.therapies.count > 0 %>
+          <%= link_to 'Voir le detail', nil,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#patientTherapiesModal'+patient.id.to_s}  %>
+          <div class="modal fade" id="patientTherapiesModal<%= patient.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Rééducation(s) de <%= patient.last_name %> <%= patient.first_name %></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-condensed">
+                    <tr>
+                      <th>Quand</th>
+                      <th>Qui</th>
+                    </tr>
+                     <% patient.therapies.each do |therapy| %>
+                      <tr>
+                        <td><%= therapy.begin_date.andand.strftime(DATE_FORMAT) %></td>
+                        <td><%= therapy.practitioner %></td>
+                      </tr>
+                    <% end %>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 
-
-
-    <br><strong>Commentaires :</strong><br> 
-    <i><%= patient.comments || 'Aucun commentaire' %></i>
-  </div>  
+  <br><strong>Commentaires :</strong> <i><%= patient.comments || 'Aucun commentaire' %></i>
 </div>
