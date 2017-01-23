@@ -10,9 +10,9 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th class="hour"></th>
+          <th class="table-head"></th>
           <% date_range.slice(0, 7).each do |day| %>
-            <th><%= t('date.abbr_day_names')[day.wday] %> <%= day.strftime(DATE_FORMAT) %></th>
+            <th><%= t('date.abbr_day_names')[day.wday] %> <%= day.strftime("%e") %></th>
           <% end %>
         </tr>
       </thead>
@@ -22,9 +22,12 @@
           <tr>
             <th>
               <div>
-                <% (0..24).each do |h| %>
-                  <div class="hour-row">
-                    <%= h %>
+                <% (7..20).each do |h| %>
+                  <div class="half-hour-row">
+                    <%= h %> h 00
+                  </div>
+                  <div class="half-hour-row">
+                    30
                   </div>
                 <% end %>
               </div>

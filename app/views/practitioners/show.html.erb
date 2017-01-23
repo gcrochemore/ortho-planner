@@ -1,31 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>First name:</strong>
+  <strong>Professionnel de santé:</strong>
   <%= @practitioner.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
   <%= @practitioner.last_name %>
-</p>
-
-<p>
-  <strong>Birth date:</strong>
   <%= @practitioner.birth_date %>
-</p>
-
-<p>
-  <strong>Birth place:</strong>
-  <%= @practitioner.birth_place %>
-</p>
-
-<p>
+  (<%= @practitioner.birth_place %>)
   <strong>Practitioner profession:</strong>
   <%= @practitioner.practitioner_profession %>
-</p>
-
-<p>
   <strong>Health place:</strong>
   <%= @practitioner.health_place %>
 </p>

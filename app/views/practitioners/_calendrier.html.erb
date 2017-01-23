@@ -1,8 +1,8 @@
 <%= week_calendar number_of_weeks: 1, events: sessions do |date, events| %>
   <div style="position: relative;">
     <% events.each do |event| %>
-      <div class="event" style="position:absolute; top:<%= (((event.begin_date - event.begin_date.beginning_of_day)/(60*30))).to_i*20 %>px">
-        <%= event.begin_date.strftime(TIME_FORMAT) %> - <%= event.end_date.strftime(TIME_FORMAT) %> : <%= event.patient %>
+      <div class="event" style="position:absolute; top:<%= (((event.begin_date - event.begin_date.beginning_of_day)/(60*30))-(2*7)).to_i*40 %>px">
+        <%= event.patient %>
         <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, event %>
             <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_polymorphic_path(event) %>
             <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, event, method: :delete, data: { confirm: 'Are you sure?' } %>
