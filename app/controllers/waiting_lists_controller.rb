@@ -9,7 +9,8 @@ class WaitingListsController < ApplicationController
     @health_places = HealthPlace.all
     @q = WaitingList.ransack(params[:q])
     if @q.health_place_id_eq == nil
-      @q.health_place_id_eq = @health_places.first.id
+      #@q.health_place_id_eq = @health_places.first.id
+      @q.health_place_id_eq = 7
     end
     @patients_on_waiting_list = @q.result.waiting_list.page(params[:page])
     @patients_removed_from_waiting_list = @q.result.not_waiting_list.page(params[:page])
