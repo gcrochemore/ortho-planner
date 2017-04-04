@@ -5,7 +5,8 @@ class WaitingListsController < ApplicationController
 
   # GET /waiting_lists
   def index
-    @health_places = HealthPlace.accessible_by(current_ability, :nested_entity) 
+    #@health_places = HealthPlace.accessible_by(current_ability, :nested_entity) 
+    @health_places = HealthPlace.all
     @q = WaitingList.ransack(params[:q])
     if @q.health_place_id_eq == nil
       @q.health_place_id_eq = @health_places.first.id

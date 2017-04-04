@@ -241,9 +241,9 @@ health_place = HealthPlace.create(name: "IME de Arques-la-bataille", health_plac
 health_place.save
 health_place = HealthPlace.create(name: "CMP de Dieppe", health_place_type: health_place_type)
 health_place.save
-health_place = HealthPlace.create(name: "Cabinet de Tôtes", health_place_type: health_place_type)
+health_place = HealthPlace.create(name: "Cabinet de Totes", health_place_type: health_place_type)
 health_place.save
-address = Address.create(name: "Cabinet de Tôtes", addressable: health_place)
+address = Address.create(name: "Cabinet de Totes", addressable: health_place)
 address.save
 health_place = HealthPlace.create(name: "Cabinet du docteur House", health_place_type: health_place_type)
 health_place.save
