@@ -52,7 +52,7 @@ class Ability
       #can :crud, Interaction
       can :crud, WaitingList
       #can :read, Practitioner
-      #can :read, HealthPlace
+      can :read, HealthPlace
     end  
 
     if user.has_role? :secretary
