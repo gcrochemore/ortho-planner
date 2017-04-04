@@ -53,6 +53,8 @@ class Ability
       can :crud, WaitingList
       #can :read, Practitioner
       can :read, HealthPlace
+      can :nested_entity, WaitingList, health_place: user.practitioner.health_place
+      can :nested_entity, HealthPlace, id: user.practitioner.health_place.id
     end  
 
     if user.has_role? :secretary

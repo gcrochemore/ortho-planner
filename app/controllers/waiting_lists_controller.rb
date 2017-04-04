@@ -5,12 +5,12 @@ class WaitingListsController < ApplicationController
 
   # GET /waiting_lists
   def index
-    #@health_places = HealthPlace.accessible_by(current_ability, :nested_entity) 
-    @health_places = HealthPlace.all
+    @health_places = HealthPlace.accessible_by(current_ability, :nested_entity) 
+    #@health_places = HealthPlace.all
     @q = WaitingList.ransack(params[:q])
     if @q.health_place_id_eq == nil
-      #@q.health_place_id_eq = @health_places.first.id
-      @q.health_place_id_eq = 7
+      @q.health_place_id_eq = @health_places.first.id
+      #@q.health_place_id_eq = 7
     end
     @patients_on_waiting_list = @q.result.waiting_list.page(params[:page])
     @patients_removed_from_waiting_list = @q.result.not_waiting_list.page(params[:page])
