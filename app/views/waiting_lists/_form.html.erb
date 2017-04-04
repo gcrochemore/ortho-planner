@@ -6,44 +6,45 @@
   <%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>
 
 
-
-  <div class="form-inputs row">
-    <% if @health_places.count == 1 %>
-      <%= f.input :health_place_id, label: false, input_html: { class: "form-control", value: @health_places.first.id }, as: :hidden %>
-    <% else %>
-      <label for="health_place" class="col-sm-2 col-xs-12"><%= f.label :health_place %></label>
+  <div class="custom-panel"> 
+    <div class="form-inputs row">
+      <% if @health_places.count == 1 %>
+        <%= f.input :health_place_id, label: false, input_html: { class: "form-control", value: @health_places.first.id }, as: :hidden %>
+      <% else %>
+        <label for="health_place" class="col-sm-2 col-xs-12"><%= f.label :health_place %></label>
+        <div class="col-sm-3 col-xs-12">
+          <%= f.association :health_place, label: false, input_html: { class: "form-control" }, collection: @health_places %>
+        </div>
+      <% end %>
+      <label for="start_date" class="col-sm-2 col-xs-12"><%= f.label :start_date %></label>
       <div class="col-sm-3 col-xs-12">
-        <%= f.association :health_place, label: false, input_html: { class: "form-control" }, collection: @health_places %>
+        <%= f.input :start_date, label: false, input_html: { class: "datepicker", value: f.object.start_date.strftime(DATE_FORMAT)}, as: :string %>
       </div>
-    <% end %>
-    <label for="start_date" class="col-sm-2 col-xs-12"><%= f.label :start_date %></label>
-    <div class="col-sm-3 col-xs-12">
-      <%= f.input :start_date, label: false, input_html: { class: "datepicker", value: f.object.start_date.strftime(DATE_FORMAT)}, as: :string %>
-    </div>
-    <div class="form-group col-xs-12">
-      <div class='patient'>
-        <%= f.simple_fields_for :patient do |f| %>
-          <%= render 'patients/patient_registration_on_waiting_list_fields', f: f, new_interaction: @new_interaction %>
-        <% end %>
+      <div class="form-group col-xs-12">
+        <div class='patient'>
+          <%= f.simple_fields_for :patient do |f| %>
+            <%= render 'patients/patient_registration_on_waiting_list_fields', f: f, new_interaction: @new_interaction %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  
+    <br>
+    <br>
+    <br>
+    <br>
+    
 
-  <div class="fixed-bottom row">
-    <div class="col-xs-12 col-sm-6 text-right">
-      <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Annuler l\'ajout à la liste d\'attente'.html_safe, waiting_lists_path, class: "btn btn-lg btn-primary btn-warning" %>
+    <div class="fixed-bottom row">
+      <div class="col-xs-12 col-sm-6 text-right">
+        <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Annuler l\'ajout à la liste d\'attente'.html_safe, waiting_lists_path, class: "btn btn-lg btn-primary btn-warning" %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= f.button :button, class: "btn-lg btn-primary" do %>
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <%= t('.submit') %>
+        <% end %>        
+      </div>
     </div>
-    <div class="col-xs-12 col-sm-6">
-      <%= f.button :button, class: "btn-lg btn-primary" do %>
-        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> <%= t('.submit') %>
-      <% end %>        
-    </div>
-  </div>
+  </div>  
 <% end %>
 
 

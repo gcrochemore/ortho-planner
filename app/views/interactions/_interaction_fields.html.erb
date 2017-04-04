@@ -1,11 +1,12 @@
  <div class="nested-fields row">
 
   <%= f.association :patient, label: false, input_html: { class: "form-control" }, as: :hidden %>
+  <%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>
 
   <div class="row">
     <div class="form-group col-xs-12 col-md-6 row">
       <div class="col-xs-4">
-        <label for="practitioner">Qui ?</label>
+        <label for="practitioner">Qui à reçu l'appel ?</label>
       </div>
       <div class="col-xs-8">
         <%= f.association :practitioner, label: false, input_html: { class: "form-control" } %>
@@ -41,10 +42,6 @@
       </div>
     </div>
 
-  </div>
-  <div class="form-group col-xs-12">
-      <label for="comments"><%= f.label :comments %></label>
-    <%= f.input :comments, label: false, input_html: { class: "form-control" } %>
   </div>
 </div>
 

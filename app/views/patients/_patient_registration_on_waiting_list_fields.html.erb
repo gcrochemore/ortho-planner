@@ -1,6 +1,7 @@
 <div class="row">
-  <div class="col-lg-6 row custom-panel">
-    <div class="form-group col-xs-12 col-sm-2 col-lg-2">
+  <div class="col-xs-12 row">
+
+    <div class="form-group col-xs-12 col-sm-1 col-lg-1">
       <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !@patient.andand.is_male %>
       <label for="is_male">F</label>
       <br>
@@ -8,20 +9,48 @@
       <label for="is_male">M</label>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-5 col-lg-5">
+    <div class="form-group col-xs-6 col-sm-3">
       <label for="last_name"><%= f.label :last_name %></label>
       <%= f.input :last_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.last_name') %>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-5 col-lg-5">
+    <div class="form-group col-xs-6 col-sm-3">
       <label for="first_name"><%= f.label :first_name %></label>
       <%= f.input :first_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.first_name') %>
     </div>
-    <div class="clearfix visible-lg"></div>
-    <div class="form-group col-xs-12 col-sm-5 col-lg-5">
+
+    <div class="form-group col-xs-6 col-sm-2">
       <label for="birth_date"><%= f.label :birth_date %></label>
-      <%= f.input :birth_date, label: false, class: "form-control", placeholder: "Date de naissance", start_year: Date.today.year - 110, end_year: Date.today.year %>
+      <%= f.input :birth_date, label: false, input_html: { class: "datepicker", value: f.object.birth_date.andand.strftime(DATE_FORMAT)}, as: :string, start_year: Date.today.year - 110, end_year: Date.today.year %>
     </div>
+
+    <div class="form-group col-xs-6 col-sm-3">
+      <label for="schoolings">Classe :</label>
+      <div id='schoolings' class="schoolings">
+        <%= f.simple_fields_for :schoolings do |schooling| %>
+          <%= render 'schoolings/schooling_school_level_fields', f: schooling %>
+        <% end %> 
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-xs-12 row">
+
+    <div class="form-group col-xs-3">
+      <label for="job"><%= f.label :job %></label>
+      <%= f.input :job, label: false, input_html: { class: "form-control" }%>
+    </div>
+
+    <div class="form-group col-xs-3">
+      <label for="addresses">* Ville :</label>
+      <div id='addresses'>
+        <%= f.simple_fields_for :addresses do |f| %>
+          <%= render 'addresses/address_city_field', f: f %>
+        <% end %>
+      </div>
+    </div>
+
 
     <div class="form-group col-xs-12 col-sm-5 col-lg-5">
       <label for="contact_informations">Numéro(s) :</label>
@@ -35,40 +64,20 @@
       </div>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-2 col-lg-2">
+    <div class="form-group col-xs-12 col-sm-1 col-lg-1">
       <label for="priority"><%= f.label :priority %></label>
       <%= f.input :priority, label: false, input_html: { class: "star" }, value: f.object.priority || false %>
     </div>
   </div>
 
-  <div class="col-lg-6 row custom-panel">
-    <div class="form-group col-xs-12">
-      <label for="schoolings">Classe :</label>
-      <div id='schoolings' class="schoolings">
-        <%= f.simple_fields_for :schoolings do |schooling| %>
-          <%= render 'schoolings/schooling_school_level_fields', f: schooling %>
-        <% end %> 
-      </div>
-    </div>
+    
     <div class="clearfix visible-sm visible-md"></div>
-    <div class="form-group col-xs-12">
-      <label for="job"><%= f.label :job %></label>
-      <%= f.input :job, label: false, input_html: { class: "form-control" }%>
-    </div>
-
-    <div class="form-group col-xs-12">
-      <label for="addresses">* Ville :</label>
-      <div id='addresses'>
-        <%= f.simple_fields_for :addresses do |f| %>
-          <%= render 'addresses/address_city_field', f: f %>
-        <% end %>
-      </div>
-    </div>
+    
   </div>
 
 </div>
   
-<div class="row custom-panel">
+<div class="row">
   <div class="form-group col-xs-12">
     <label for="pathologies">Motif : </label>
     <%= f.association :pathologies, label: false, input_html: { class: "form-control", witdh: "100%" } %>
@@ -77,15 +86,11 @@
             
   <div class="form-group col-xs-12">
     <label for="comments"><%= f.label :comments %></label>
-    <%= f.input :comments, label: false, input_html: { class: "form-control", rows: 6, value: f.object.comments || 
-"Bilan fait le  /  /   par
-Suivi orthophonique antérieur :
-Suivi en institution :
-" } %>
+    <%= f.input :comments, label: false, input_html: { class: "form-control", rows: 6, value: f.object.comments } %>
   </div>
 </div>
 <div class="form-group col-xs-12">  
-  <div id='interactions' class="custom-panel">
+  <div id='interactions'>
     <label for="interactions">Ajouter un appel</label>
     <%= f.simple_fields_for :interactions, new_interaction do |interaction| %>
       <%= render 'interactions/interaction_fields', f: interaction %>

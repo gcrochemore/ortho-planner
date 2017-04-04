@@ -45,14 +45,14 @@ class Ability
 
     if user.has_role? :practitioner
       #can :read, Project, active: true, :user_id user.id
-      can :crud, Patient
-      can :crud, Therapy
-      can :crud, Session
-      can :crud, Absence
-      can :crud, Interaction
+      #can :crud, Patient
+      #can :crud, Therapy
+      #can :crud, Session
+      #can :crud, Absence
+      #can :crud, Interaction
       can :crud, WaitingList
-      can :read, Practitioner
-      can :read, HealthPlace
+      #can :read, Practitioner
+      #can :read, HealthPlace
     end  
 
     if user.has_role? :secretary

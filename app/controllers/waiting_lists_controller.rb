@@ -31,6 +31,7 @@ class WaitingListsController < ApplicationController
 
   # GET /waiting_lists/1/edit
   def edit
+    @health_places = HealthPlace.accessible_by(current_ability, :nested_entity)
   end
 
   # POST /waiting_lists

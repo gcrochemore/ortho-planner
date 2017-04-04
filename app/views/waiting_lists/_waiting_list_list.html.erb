@@ -52,11 +52,13 @@
             <i class="glyphicon glyphicon-remove"></i> Le patient n'a jamais rappelé
           <% end %>
         <% end %>
-        <% if can? :show, waiting_list %>
+        <!--<% if can? :show, waiting_list %>
           <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
-        <% end %>
-        <% if can? :manage, waiting_list %>
-          <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_waiting_list_path(waiting_list) %>
+        <% end %>-->
+        <% if can? :edit, waiting_list %>
+          <%= link_to edit_waiting_list_path(waiting_list), class: "btn btn-default btn-sm btn-block" do %>
+            <i class="glyphicon glyphicon-pencil"></i> Modifier
+          <% end %>
         <% end %>
       </div>
     </div>
