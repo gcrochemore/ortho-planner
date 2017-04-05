@@ -73,3 +73,11 @@
 .custom-panel label{
   color: #424242;
 } 
+
+.navbar {
+  z-index: 9998 !important; 
+} 
+
+.datepicker {
+  z-index: 9999 !important;
+}
