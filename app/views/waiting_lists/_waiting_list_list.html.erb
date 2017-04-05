@@ -62,7 +62,8 @@
         <% end %>
       </div>
     </div>
-    <% if waiting_list.comments %>
+    <!-- FIXME : vérifier si commentaire vide ne marche pas. Je désactive-->
+    <% if waiting_list.comments != "" && waiting_list.comments == "" %>
       <div class="row custom-panel">
         <div class="col-xs-12">
           <strong>Commentaire(s) :</strong> <%= waiting_list.comments %>
