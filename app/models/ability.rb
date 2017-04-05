@@ -51,6 +51,14 @@ class Ability
       #can :crud, Absence
       #can :crud, Interaction
       can :crud, WaitingList
+      can :filter, WaitingList
+      can :take_care, WaitingList
+      can :add_interaction, WaitingList
+      can :stop_registration, WaitingList
+      can :patient_never_return, WaitingList
+      can :care_confirm, WaitingList
+      can :availability_not_compatible, WaitingList
+      
       can :read, Practitioner
       can :read, HealthPlace
       can :nested_entity, WaitingList, health_place: user.practitioner.health_place
