@@ -102,17 +102,18 @@
       <% end %>
     </div>
   <% end %>
-
-<i class="glyphicon glyphicon-comment"></i> 
-<i>
-  <% if patient.comments.length > 100 %>
-    <span class="label-tooltip drop-menu"><%= patient.comments[0..100] %>...
-      <span class="label-tooltiptext  label-tooltip-bottom"><%= patient.comments %></span>
-    </span>
-  <% else %>
-    <%= patient.comments || 'Aucun commentaire' %></i>
-  <% end %>
-</i>
+<% if patient.comments.length > 0 %>
+  <i class="glyphicon glyphicon-comment"></i> 
+  <i>
+    <% if patient.comments.length > 100 %>
+      <span class="label-tooltip drop-menu"><%= patient.comments[0..100] %>...
+        <span class="label-tooltiptext  label-tooltip-bottom"><%= patient.comments %></span>
+      </span>
+    <% else %>
+      <%= patient.comments || 'Aucun commentaire' %></i>
+    <% end %>
+  </i>
+<% end %>  
     
 
     
