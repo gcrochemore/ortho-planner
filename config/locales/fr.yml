@@ -255,7 +255,7 @@ fr:
     form:
       submit: "Valider l'ajout à la liste d'attente"
     index:
-      new_button: Ajouter un patient sur la liste d'attente
+      new_button: Inscrire un patient
       title: Liste d'attente
     reregister_on_waiting_list:
       submit: Réinscrire sur la liste d'attente

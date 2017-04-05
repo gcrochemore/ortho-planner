@@ -1,23 +1,25 @@
-<div class="row col-xs-12 patient_view">
-  <div class="row col-xs-12">
-    <div class="col-xs-11">
+    
+    <div class="patient-etat-civil">
+      <%= patient.priority ? (image_tag "star.png", width: 18) : "" %>
       <%= patient.is_male ? (image_tag "male.png", width: 18) : (image_tag "female.png", width: 18) %> 
       <label class="patient-name">
         <%= patient.last_name %> <%= patient.first_name %> <%= patient.age ? "("+patient.age.to_s+" ans)".html_safe : "" %>
       </label> 
-  <i><%= patient.schoolings.currents.first.andand.school_level.andand.name  || patient.job || "Classe/métier non défini" %></i> - 
-  <% patient.pathologies.each do |pathology| %>
-    <%= pathology.name %> - 
-  <% end %>
-  <strong>Contact(s) : </strong>
-  <% patient.contact_informations.each do |contact_information| %>
-   <%= contact_information.value %> - 
-  <% end %>
+      <i><%= patient.schoolings.currents.first.andand.school_level.andand.name  || patient.job || "Classe/métier non défini" %></i>
     </div>
-    <div class="col-xs-1">
-      <%= patient.priority ? (image_tag "star.png", width: 18) : "" %>
+    <div>  
+      <i class="glyphicon glyphicon-earphone"></i>
+      <% patient.contact_informations.each_with_index do |contact_information, index| %>
+       <%= index > 0 ? " - " : "" %><%= contact_information.value %>
+      <% end %>
     </div>
-  </div> 
+
+    <div>
+      <% patient.pathologies.each_with_index do |pathology, index| %>
+        <%= index == 0 ? '<i class="glyphicon glyphicon-info-sign"></i>'.html_safe : "" %>
+        <%= index > 0 ? " - " : "" %><%= pathology.name %> 
+      <% end %>
+    </div>
   
   <% if patient.interactions.count > 1 && patient.therapies.count > 0 %>
     <div class="row col-xs-12">   
@@ -101,5 +103,4 @@
     </div>
   <% end %>
 
-  <br><strong>Commentaires :</strong> <i><%= patient.comments || 'Aucun commentaire' %></i>
-</div>
+<i class="glyphicon glyphicon-comment"></i> <i><%= patient.comments || 'Aucun commentaire' %></i>

@@ -8,9 +8,41 @@
   background-color: #FEDE93;
   border-radius: 10px;
   padding: 2px;
-  margin-bottom: 5px;
+  border: 1px solid #FE9A2E;
 }
 
 .waiting-list-row-action{
   padding: 0px !important;
+}
+
+.add-button{
+  position: fixed;
+  top: 60px;
+
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+
+  z-index: 1000;
+}
+
+.search-form{
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.inscription_number{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 200%;
+}
+
+#waiting_list_search{
+  float: left;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #FEDE93;
 }
