@@ -2,10 +2,10 @@
   <div class="col-xs-12 row">
 
     <div class="form-group col-xs-12 col-sm-1 col-lg-1">
-      <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !@patient.andand.is_male %>
+      <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !f.object.is_male %>
       <label for="is_male">F</label>
       <br>
-      <%= f.radio_button :is_male, "1", input_html: { class: "form-control" }, checked: @patient.andand.is_male %>
+      <%= f.radio_button :is_male, "1", input_html: { class: "form-control" }, checked: f.object.is_male %>
       <label for="is_male">M</label>
     </div>
 
