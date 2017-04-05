@@ -12,6 +12,7 @@
 /db/*.sqlite3-journal
 /db/seeds/*
 /db/production_seeds.rb
+/db/demo_seeds.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*
