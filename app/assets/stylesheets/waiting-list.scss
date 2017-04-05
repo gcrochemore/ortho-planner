@@ -9,10 +9,13 @@
   border-radius: 10px;
   padding: 2px;
   border: 1px solid #FE9A2E;
+  min-height: 300px !important;
 }
 
 .waiting-list-row-action{
-  padding: 0px !important;
+  position:absolute !important;
+  bottom:5px !important;
+  right:4px !important;
 }
 
 .add-button{
@@ -45,4 +48,48 @@
   border-radius: 5px;
   padding: 5px;
   background-color: #FEDE93;
+}
+
+
+  /* Tooltip container */
+.label-tooltip {
+  position: relative;
+  display: inline-block;
+  /*border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+/* Tooltip text */
+.label-tooltip .label-tooltiptext {
+  visibility: hidden;
+  width: auto;
+  overflow-wrap: break-word;
+  background-color: white;
+    max-width: 400px;
+    padding: 5px 2px 0 2px;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    &:before {
+        top: -12px;
+        right: auto;
+        left:15px;
+    }
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.label-tooltip:hover .label-tooltiptext {
+  visibility: visible;
+}
+.label-tooltip-bottom {
+  top: 135%;
+  left: 0%;
+  margin-left: -60px;
 }
