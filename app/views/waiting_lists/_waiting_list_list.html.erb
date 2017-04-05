@@ -3,7 +3,7 @@
     <% waiting_lists.each_with_index do |waiting_list, index| %>
       <div class="col-xs-12 col-sm-6 col-md-3 waiting-list-row">
         <div class="inscription_date">
-          <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong> <i><%= waiting_list.age %> mois</i>
+          <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong> <i>Inscrit il y a <%= show_waiting_list_age(waiting_list.age).html_safe %></i>
         </div>
         <div class="inscription_number">
           <%= index+1 %>

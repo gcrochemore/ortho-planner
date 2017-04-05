@@ -17,8 +17,9 @@ class WaitingList < ActiveRecord::Base
 
   def age
     if self.start_date
-      now = Time.now.utc.to_date
-      (now.year * 12 + now.month) - (self.start_date.year * 12 + self.start_date.month)
+      return Time.now - self.start_date
+    else
+      return nil
     end
   end
 
