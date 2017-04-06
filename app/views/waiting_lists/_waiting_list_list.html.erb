@@ -1,7 +1,7 @@
 <% if waiting_lists.count > 0 %>
   <div class="row">
     <% waiting_lists.each_with_index do |waiting_list, index| %>
-      <div class="col-xs-12 col-sm-6 col-md-3 waiting-list-row">
+      <div class="col-xs-12 col-sm-6 col-md-3 waiting-list-row <%= waiting_list.patient.priority ? "waiting-list-row-priority" : "waiting-list-row-not-priority" %>">
         <div class="inscription_date">
           <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong> <i>Inscrit il y a <%= show_waiting_list_age(waiting_list.age).html_safe %></i>
         </div>
