@@ -14,18 +14,21 @@
       </i>
     </div>
     <div>  
-      <i class="glyphicon glyphicon-earphone"></i>
+      <%= icon('phone') %>
       <% patient.contact_informations.each_with_index do |contact_information, index| %>
        <%= index > 0 ? " - " : "" %><%= contact_information.value %>
       <% end %>
     </div>
 
-    <div>
-      <% patient.pathologies.each_with_index do |pathology, index| %>
-        <%= index == 0 ? '<i class="glyphicon glyphicon-info-sign"></i>'.html_safe : "" %>
-        <%= index > 0 ? " - " : "" %><%= pathology.name %> 
-      <% end %>
-    </div>
+    <% if patient.pathologies.length > 0 %>
+      <div>
+        <%= icon('book') %>
+        <% patient.pathologies.each_with_index do |pathology, index| %>
+          <%= index == 0 ? '<i class="glyphicon glyphicon-info-sign"></i>'.html_safe : "" %>
+          <%= index > 0 ? " - " : "" %><%= pathology.name %> 
+        <% end %>
+      </div>
+    <% end %>
   
   <% if patient.interactions.count > 1 && patient.therapies.count > 0 %>
     <div class="row col-xs-12">   

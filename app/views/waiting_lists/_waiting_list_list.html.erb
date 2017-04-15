@@ -1,58 +1,62 @@
 <% if waiting_lists.count > 0 %>
   <div class="row">
     <% waiting_lists.each_with_index do |waiting_list, index| %>
-      <div class="col-xs-12 col-sm-6 col-md-3 waiting-list-row <%= waiting_list.patient.priority ? "waiting-list-row-priority" : "waiting-list-row-not-priority" %>">
-        <div class="inscription_date">
-          <strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong> <i>Inscrit il y a <%= show_waiting_list_age(waiting_list.age).html_safe %></i>
-        </div>
-        <div class="inscription_number">
-          <%= index+1 %>
-        </div>
-        <%= render 'patients/patient_view', patient: waiting_list.patient %> 
-        <div class="col-xs-12 waiting-list-row-action">        
-          <% if (can? :take_care, WaitingList) && !waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return %>
-            <%= link_to take_care_waiting_list_path(waiting_list), class: "btn btn-success btn-sm col-xs-12 col-sm-6 col-md-12" do %>
-              <i class="glyphicon glyphicon-saved"></i> Prendre en charge
+      <div class="waiting-list-row-container col-xs-12 col-sm-6 col-md-2">
+        <div class="waiting-list-row <%= waiting_list.patient.priority ? "waiting-list-row-priority" : "waiting-list-row-not-priority" %>">
+          <div class="inscription_date">
+            <span class="label-tooltip drop-menu"><strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong> <i>Inscrit il y a <%= show_waiting_list_age(waiting_list.age).html_safe %></i>
+              <span class="label-tooltiptext  label-tooltip-bottom">Inscrit par <%= User.find(waiting_list.versions.first.whodunnit).practitioner %></span>
+            </span>
+          </div>
+          <div class="inscription_number">
+            <%= index+1 %>
+          </div>
+          <%= render 'patients/patient_view', patient: waiting_list.patient %> 
+          <div class="col-xs-12 waiting-list-row-action">        
+            <% if (can? :take_care, WaitingList) && !waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return %>
+              <%= link_to take_care_waiting_list_path(waiting_list), class: "btn btn-success btn-sm col-xs-12 col-sm-6 col-md-12" do %>
+                <i class="glyphicon glyphicon-saved"></i> Prendre en charge
+              <% end %>
             <% end %>
-          <% end %>
-          <% if (can? :care_confirm, WaitingList) && waiting_list.waiting_for_patient_return %>
-            <%= link_to care_confirm_waiting_list_path(waiting_list), class: "btn btn-success btn-sm col-xs-12 col-sm-6 col-md-12" do %>
-              <i class="glyphicon glyphicon-ok"></i> Prise en charge confirmée
+            <% if (can? :care_confirm, WaitingList) && waiting_list.waiting_for_patient_return %>
+              <%= link_to care_confirm_waiting_list_path(waiting_list), class: "btn btn-success btn-sm col-xs-12 col-sm-6 col-md-12" do %>
+                <i class="glyphicon glyphicon-ok"></i> Prise en charge confirmée
+              <% end %>
             <% end %>
-          <% end %>
-          <% if can? :add_interaction, WaitingList %>
-            <%= link_to add_interaction_waiting_list_path(waiting_list), class: "btn btn-info btn-sm col-xs-12 col-sm-6 col-md-12" do %>
-              <i class="glyphicon glyphicon-earphone"></i> Ajouter un appel
+            <% if can? :add_interaction, WaitingList %>
+              <%= link_to add_interaction_waiting_list_path(waiting_list), class: "btn btn-info btn-sm col-xs-12 col-sm-6 col-md-12" do %>
+                <i class="glyphicon glyphicon-earphone"></i> Ajouter un appel
+              <% end %>
             <% end %>
-          <% end %>
-          <% if (can? :availability_not_compatible, WaitingList) && waiting_list.waiting_for_patient_return %>
-            <%= link_to availability_not_compatible_waiting_list_path(waiting_list), class: "btn btn-warning btn-sm col-xs-12 col-sm-6 col-md-12" do %>
-              <i class="glyphicon glyphicon-time"></i> Horaires non compatibles
+            <% if (can? :availability_not_compatible, WaitingList) && waiting_list.waiting_for_patient_return %>
+              <%= link_to availability_not_compatible_waiting_list_path(waiting_list), class: "btn btn-warning btn-sm col-xs-12 col-sm-6 col-md-12" do %>
+                <i class="glyphicon glyphicon-time"></i> Horaires non compatibles
+              <% end %>
             <% end %>
-          <% end %>
-          <% if (can? :reregister_on_waiting_list, WaitingList) && waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return %>
-            <%= link_to reregister_on_waiting_list_waiting_list_path(waiting_list), class: "btn btn-success btn-sm col-xs-12 col-sm-6 col-md-12" do %>
-              <i class="glyphicon glyphicon-repeat"></i> Réinscrire sur la liste
+            <% if (can? :reregister_on_waiting_list, WaitingList) && waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return %>
+              <%= link_to reregister_on_waiting_list_waiting_list_path(waiting_list), class: "btn btn-success btn-sm col-xs-12 col-sm-6 col-md-12" do %>
+                <i class="glyphicon glyphicon-repeat"></i> Réinscrire sur la liste
+              <% end %>
             <% end %>
-          <% end %>
-          <% if (can? :stop_registration, WaitingList) && !waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return%>
-            <%= link_to stop_registration_waiting_list_path(waiting_list), class: "btn btn-danger btn-sm col-xs-12 col-sm-6 col-md-12" do %>
-              <i class="glyphicon glyphicon-remove"></i> Supprimer de la liste
+            <% if (can? :stop_registration, WaitingList) && !waiting_list.end_date.present? && !waiting_list.waiting_for_patient_return%>
+              <%= link_to stop_registration_waiting_list_path(waiting_list), class: "btn btn-danger btn-sm col-xs-12 col-sm-6 col-md-12" do %>
+                <i class="glyphicon glyphicon-remove"></i> Supprimer de la liste
+              <% end %>
             <% end %>
-          <% end %>
-          <% if (can? :patient_never_return, WaitingList) && waiting_list.waiting_for_patient_return %>
-            <%= link_to patient_never_return_waiting_list_path(waiting_list), class: "btn btn-danger btn-sm col-xs-12 col-sm-6 col-md-12" do %>
-              <i class="glyphicon glyphicon-remove"></i> Le patient n'a jamais rappelé
+            <% if (can? :patient_never_return, WaitingList) && waiting_list.waiting_for_patient_return %>
+              <%= link_to patient_never_return_waiting_list_path(waiting_list), class: "btn btn-danger btn-sm col-xs-12 col-sm-6 col-md-12" do %>
+                <i class="glyphicon glyphicon-remove"></i> Le patient n'a jamais rappelé
+              <% end %>
             <% end %>
-          <% end %>
-          <!--<% if can? :show, waiting_list %>
-            <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
-          <% end %>-->
-          <% if can? :edit, waiting_list %>
-            <%= link_to edit_waiting_list_path(waiting_list), class: "btn btn-default btn-sm col-xs-12 col-sm-6 col-md-12" do %>
-              <i class="glyphicon glyphicon-pencil"></i> Modifier
+            <!--<% if can? :show, waiting_list %>
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, waiting_list %>
+            <% end %>-->
+            <% if can? :edit, waiting_list %>
+              <%= link_to edit_waiting_list_path(waiting_list), class: "btn btn-default btn-sm col-xs-12 col-sm-6 col-md-12" do %>
+                <i class="glyphicon glyphicon-pencil"></i> Modifier
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
       <!-- FIXME : vérifier si commentaire vide ne marche pas. Je désactive-->
