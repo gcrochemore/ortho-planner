@@ -6,9 +6,9 @@
         <%= patient.last_name %> <%= patient.first_name %> <%= patient.age ? "("+patient.age.to_s+" ans)".html_safe : "" %>
       </label> 
       <i>
-        <% if !patient.schoolings.first.school_level.andand.name.nil? && patient.schoolings.first.school_level.andand.name.length > 0 %>
+        <% if !patient.schoolings.first.andand.school_level.andand.name.nil? && patient.schoolings.first.andand.school_level.andand.name.length > 0 %>
           <%= patient.schoolings.first.school_level.andand.name %>
-        <% elsif patient.job.andand.length > 0 %>
+        <% elsif !patient.andand.job.andand.length.nil? && patient.andand.job.andand.length > 0 %>
           <%= patient.job %>
         <% end %>
       </i>
@@ -111,7 +111,7 @@
       <% end %>
     </div>
   <% end %>
-<% if patient.comments.length > 0 %>
+<% if !patient.comments.nil? &&  patient.comments.length > 0 %>
   <i class="glyphicon glyphicon-comment"></i> 
   <i>
     <% if patient.comments.length > 100 %>
@@ -123,6 +123,15 @@
     <% end %>
   </i>
 <% end %>  
+
+
+<% @patient = patient %>
+<span class="label-tooltip drop-menu">Voir les disponibilités
+  <span class="label-tooltiptext  label-tooltip-bottom"><%= week_calendar partial: 'patient_availabilities/patient_availability_calendar_display' do |date| %>
+  
+<% end %></span>
+</span>
+
     
 
     

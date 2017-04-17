@@ -45,14 +45,17 @@ h1{
 }
 
 .add-button{
-  position: fixed;
   top: 10px;
+  right: 10px;
+}
 
-  left: 50%;
-  width: 200px;
-  margin-left: -100px;
+.form-waiting-list-container{
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
+}
 
-  z-index: 1000;
+.form-waiting-list-footer{
+  height: 60px;
 }
 
 .search-form{

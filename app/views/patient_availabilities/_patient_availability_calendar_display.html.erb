@@ -1,0 +1,52 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+  </div>
+
+  <div class="calendar-content">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="table-head"></th>
+          <% date_range.slice(0, 7).each do |day| %>
+            <th class="wday"><%= t('date.abbr_day_names')[day.wday] %></th>
+          <% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% date_range.each_slice(7) do |week| %>
+          <tr>
+            <th>
+              <div>
+                <% (8..19).each do |h| %>
+                  <div class="half-hour-row">
+                    <%= h %> h 00
+                  </div>
+                  <div class="half-hour-row">
+                    30
+                  </div>
+                <% end %>
+              </div>
+            </th>
+            <% week.each do |day| %>
+              <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+                <% (8..19).each do |h| %>
+                  <% (0..3).each do |q| %>
+
+                    <% div_id = "calendar_#{day}_#{h}_#{q}" %>
+                    <% availability = @patient.calendar_availability.days[day.wday][h*4+q] %>
+                    <div class="quarter-hour-row <%= availability.available ? "quarter-hour-row-selected" : "" %>" id="<%= div_id %>"> 
+
+                    </div>
+                  <% end %>
+
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

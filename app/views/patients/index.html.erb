@@ -71,12 +71,12 @@
             </td> 
     
             <td>
-              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, patient %>
+              <%= link_to icon('eye').html_safe, patient %>
               <% if can? :edit, patient %>
-                <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_patient_path(patient) %>
+                <%= link_to icon('pencil').html_safe, edit_patient_path(patient) %>
               <% end %>
               <% if can? :destroy, patient %>
-                <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, patient, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to icon('times').html_safe, patient, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </td>
           </tr>

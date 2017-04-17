@@ -32,6 +32,10 @@ class Patient < ActiveRecord::Base
     end
   end
 
+  def calendar_availability
+    WeekPatientAvailabilities.new(self)
+  end
+
   def to_label
     "#{self.first_name} #{self.last_name}"
   end  

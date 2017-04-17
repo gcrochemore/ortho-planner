@@ -1,0 +1,86 @@
+<div class="form-group col-xs-12">
+                  <label for="interactions"><label class="string optional" for="patient_patient_availabilities">Disponibilités</label></label>   
+                  <div class="links">
+                    <a data-association-insertion-method="after" class="add_fields" data-association="patient_availability" data-associations="patient_availabilities" data-association-insertion-template="<div class=&quot;form-group&quot;>
+      <label for=&quot;day&quot;><label class=&quot;integer optional&quot; for=&quot;patient_patient_availabilities_attributes_new_patient_availabilities_day&quot;>Day</label></label>
+      <div class=&quot;form-group integer optional patient_patient_availabilities_day&quot;><input class=&quot;form-control numeric integer optional form-control&quot; type=&quot;number&quot; step=&quot;1&quot; name=&quot;patient[patient_availabilities_attributes][new_patient_availabilities][day]&quot; id=&quot;patient_patient_availabilities_attributes_new_patient_availabilities_day&quot; /></div>
+    </div>
+
+    <div class=&quot;form-group&quot;>
+      <label for=&quot;period&quot;><label class=&quot;integer optional&quot; for=&quot;patient_patient_availabilities_attributes_new_patient_availabilities_period&quot;>Period</label></label>
+      <div class=&quot;form-group integer optional patient_patient_availabilities_period&quot;><input class=&quot;form-control numeric integer optional form-control&quot; type=&quot;number&quot; step=&quot;1&quot; name=&quot;patient[patient_availabilities_attributes][new_patient_availabilities][period]&quot; id=&quot;patient_patient_availabilities_attributes_new_patient_availabilities_period&quot; /></div>
+    </div>" href="#">Ajouter une disponibilité</a>
+                  </div><div class="form-group">
+      <label for="day"><label class="integer optional" for="patient_patient_availabilities_attributes_1492383656351_day">Day</label></label>
+      <div class="form-group integer optional patient_patient_availabilities_day"><input class="form-control numeric integer optional form-control" type="number" step="1" name="patient[patient_availabilities_attributes][1492383656351][day]" id="patient_patient_availabilities_attributes_1492383656351_day"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="period"><label class="integer optional" for="patient_patient_availabilities_attributes_1492383656351_period">Period</label></label>
+      <div class="form-group integer optional patient_patient_availabilities_period"><input class="form-control numeric integer optional form-control" type="number" step="1" name="patient[patient_availabilities_attributes][1492383656351][period]" id="patient_patient_availabilities_attributes_1492383656351_period"></div>
+    </div>   
+                  <div id="interactions">
+                    
+                      <div class="form-group">
+      <label for="day"><label class="integer optional" for="patient_patient_availabilities_attributes_0_day">Day</label></label>
+      <div class="form-group integer optional patient_patient_availabilities_day"><input class="form-control numeric integer optional form-control" type="number" step="1" value="1" name="patient[patient_availabilities_attributes][0][day]" id="patient_patient_availabilities_attributes_0_day"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="period"><label class="integer optional" for="patient_patient_availabilities_attributes_0_period">Period</label></label>
+      <div class="form-group integer optional patient_patient_availabilities_period"><input class="form-control numeric integer optional form-control" type="number" step="1" value="1" name="patient[patient_availabilities_attributes][0][period]" id="patient_patient_availabilities_attributes_0_period"></div>
+    </div>
+<input type="hidden" value="1" name="patient[patient_availabilities_attributes][0][id]" id="patient_patient_availabilities_attributes_0_id">
+                      <div class="form-group">
+      <label for="day"><label class="integer optional" for="patient_patient_availabilities_attributes_1_day">Day</label></label>
+      <div class="form-group integer optional patient_patient_availabilities_day"><input class="form-control numeric integer optional form-control" type="number" step="1" value="1" name="patient[patient_availabilities_attributes][1][day]" id="patient_patient_availabilities_attributes_1_day"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="period"><label class="integer optional" for="patient_patient_availabilities_attributes_1_period">Period</label></label>
+      <div class="form-group integer optional patient_patient_availabilities_period"><input class="form-control numeric integer optional form-control" type="number" step="1" value="2" name="patient[patient_availabilities_attributes][1][period]" id="patient_patient_availabilities_attributes_1_period"></div>
+    </div>
+<input type="hidden" value="2" name="patient[patient_availabilities_attributes][1][id]" id="patient_patient_availabilities_attributes_1_id">                  </div>
+                </div>
+
+
+
+
+
+                <input type="hidden" value="1" name="patient[patient_availabilities_attributes][1][day]" id="patient_patient_availabilities_attributes_1_day">
+                <input type="hidden" value="2" name="patient[patient_availabilities_attributes][1][period]" id="patient_patient_availabilities_attributes_1_period">
+                <input type="hidden" value="2" name="patient[patient_availabilities_attributes][1][id]" id="patient_patient_availabilities_attributes_1_id"> 
+
+
+
+
+
+
+
+                
+                  <% id = "calendar_#{day}_#{h}_15" %>
+                  <div class="quarter-hour-row" id="<%= id %>" onmouseover="mouseOver('<%= id %>');" onclick="changeClass('<%= id %>');">
+                    <%= @f.simple_fields_for @f.object.patient.calendar_availability.days[day.wday][h*4 + 1] do |patient_availability| %>
+                      <%= patient_availability.input :day, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                      <%= patient_availability.input :period, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                      <%= patient_availability.input :available, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                    <% end %> 
+                  </div>
+
+                  <% id = "calendar_#{day}_#{h}_30" %>
+                  <div class="quarter-hour-row" id="<%= id %>" onmouseover="mouseOver('<%= id %>');" onclick="changeClass('<%= id %>');">
+                    <%= @f.simple_fields_for @f.object.patient.calendar_availability.days[day.wday][h*4 + 2] do |patient_availability| %>
+                      <%= patient_availability.input :day, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                      <%= patient_availability.input :period, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                      <%= patient_availability.input :available, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                    <% end %> 
+                  </div>
+                  
+                  <% id = "calendar_#{day}_#{h}_45" %>
+                  <div class="quarter-hour-row" id="<%= id %>" onmouseover="mouseOver('<%= id %>');" onclick="changeClass('<%= id %>');">
+                    <%= @f.simple_fields_for @f.object.patient.calendar_availability.days[day.wday][h*4 + 3] do |patient_availability| %>
+                      <%= patient_availability.input :day, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                      <%= patient_availability.input :period, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                      <%= patient_availability.input :available, label: false, input_html: { class: "form-control" }, as: :hidden %>
+                    <% end %> 
+                  </div>

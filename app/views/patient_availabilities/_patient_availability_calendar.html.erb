@@ -1,0 +1,90 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+  </div>
+
+  <div class="calendar-content">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="table-head"></th>
+          <% date_range.slice(0, 7).each do |day| %>
+            <th class="wday"><%= t('date.abbr_day_names')[day.wday] %></th>
+          <% end %>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% date_range.each_slice(7) do |week| %>
+          <tr>
+            <th>
+              <div>
+                <% (8..19).each do |h| %>
+                  <div class="half-hour-row">
+                    <%= h %> h 00
+                  </div>
+                  <div class="half-hour-row">
+                    30
+                  </div>
+                <% end %>
+              </div>
+            </th>
+            <% id = 0 %>
+            <% week.each do |day| %>
+              <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+                <% (8..19).each do |h| %>
+                  <% (0..3).each do |q| %>
+
+                    <% div_id = "calendar_#{day}_#{h}_#{q}" %>
+                    <% availability = @waiting_list.patient.calendar_availability.days[day.wday][h*4+q] %>
+                    <% input_name = "waiting_list[patient_attributes][patient_availabilities_attributes][" + id.to_s + "]" %>
+                    <% input_id = "waiting_list_patient_attributes_patient_availabilities_attributes_" + id.to_s %> 
+                    <% id = id + 1 %> 
+                    <div class="quarter-hour-row <%= availability.available ? "quarter-hour-row-selected" : "" %>" id="<%= div_id %>" onmouseover="mouseOver('<%= div_id %>', '<%= input_id %>');" onclick="changeClass('<%= div_id %>', '<%= input_id %>');">          
+
+                      <input type="hidden" value="<%= availability.day %>" name="<%= input_name %>[day]" id="<%= input_id %>_day">
+                      <input type="hidden" value="<%= availability.period %>" name="<%= input_name %>[period]" id="<%= input_id %>_period">
+                      <input type="hidden" value="<%= availability.available %>" name="<%= input_name %>[available]" id="<%= input_id %>_available">
+                      <% if availability.id.nil? %>
+                        <input type="hidden" value="<%= availability.id %>" name="<%= input_name %>[id]" id="<%= input_id %>_id">
+                      <% end %> 
+                    </div>
+                  <% end %>
+
+                <% end %>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  var mouseDown = 0;
+  document.body.onmousedown = function() { 
+      mouseDown = 1;
+  }
+  document.body.onmouseup = function() {
+      mouseDown = 0;
+  }
+
+  
+  function changeClass(id, input_id){
+    if($("#" + id).attr('class') == "quarter-hour-row quarter-hour-row-selected"){
+      $("#" + id).attr("class", "quarter-hour-row");
+      $("#" + id + " #" + input_id + "_available").attr("value", false);
+    }else{
+      $("#" + id).attr("class", "quarter-hour-row quarter-hour-row-selected");
+      $("#" + id + " #" + input_id + "_available").attr("value", true);
+    }    
+
+    
+  }
+  function mouseOver(id, input_id){
+    if (mouseDown == 1) {
+      changeClass(id, input_id);
+    }
+  }
+</script>

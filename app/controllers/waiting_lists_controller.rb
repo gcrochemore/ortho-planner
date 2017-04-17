@@ -130,7 +130,8 @@ class WaitingListsController < ApplicationController
                                                                 schoolings_attributes: [:id,:school_level_id],
                                                                 addresses_attributes: [:id, :city],
                                                                 therapies_attributes: [:id, :practitioner_id, :begin_date, :number_of_sessions],
-                                                                interactions_attributes: [:id, :practitioner_id, :interaction_date, :interaction_type_id, :interaction_object_id, :comments]
+                                                                interactions_attributes: [:id, :practitioner_id, :interaction_date, :interaction_type_id, :interaction_object_id, :comments],
+                                                                patient_availabilities_attributes: [:id, :patient_id, :day, :period, :available, :_destroy]
                                                               ]
                                           )
 

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116180640) do
+ActiveRecord::Schema.define(version: 20170416150200) do
 
   create_table "absences", force: :cascade do |t|
     t.integer  "patient_id"
@@ -19,9 +18,8 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_absences_on_patient_id"
   end
-
-  add_index "absences", ["patient_id"], name: "index_absences_on_patient_id"
 
   create_table "acts", force: :cascade do |t|
     t.string   "name"
@@ -49,10 +47,9 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "address_type_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["address_type_id"], name: "index_addresses_on_address_type_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
-
-  add_index "addresses", ["address_type_id"], name: "index_addresses_on_address_type_id"
-  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
 
   create_table "contact_information_types", force: :cascade do |t|
     t.string   "name"
@@ -67,9 +64,8 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.string   "value"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.index ["contactable_type", "contactable_id"], name: "index_contact_information_on_contactable"
   end
-
-  add_index "contact_informations", ["contactable_type", "contactable_id"], name: "index_contact_information_on_contactable"
 
   create_table "health_place_types", force: :cascade do |t|
     t.string   "name"
@@ -82,9 +78,8 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "health_place_type_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.index ["health_place_type_id"], name: "index_health_places_on_health_place_type_id"
   end
-
-  add_index "health_places", ["health_place_type_id"], name: "index_health_places_on_health_place_type_id"
 
   create_table "interaction_objects", force: :cascade do |t|
     t.string   "name"
@@ -108,12 +103,11 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.text     "comments"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.index ["interaction_object_id"], name: "index_interactions_on_interaction_object_id"
+    t.index ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
+    t.index ["patient_id"], name: "index_interactions_on_patient_id"
+    t.index ["practitioner_id"], name: "index_interactions_on_practitioner_id"
   end
-
-  add_index "interactions", ["interaction_object_id"], name: "index_interactions_on_interaction_object_id"
-  add_index "interactions", ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
-  add_index "interactions", ["patient_id"], name: "index_interactions_on_patient_id"
-  add_index "interactions", ["practitioner_id"], name: "index_interactions_on_practitioner_id"
 
   create_table "pathologies", force: :cascade do |t|
     t.string   "name"
@@ -127,9 +121,9 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "available"
+    t.index ["patient_id"], name: "index_patient_availabilities_on_patient_id"
   end
-
-  add_index "patient_availabilities", ["patient_id"], name: "index_patient_availabilities_on_patient_id"
 
   create_table "patients", force: :cascade do |t|
     t.string   "last_name"
@@ -149,20 +143,18 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "act_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["act_id"], name: "index_patients_acts_on_act_id"
+    t.index ["patient_id"], name: "index_patients_acts_on_patient_id"
   end
-
-  add_index "patients_acts", ["act_id"], name: "index_patients_acts_on_act_id"
-  add_index "patients_acts", ["patient_id"], name: "index_patients_acts_on_patient_id"
 
   create_table "patients_pathologies", force: :cascade do |t|
     t.integer  "patient_id"
     t.integer  "pathology_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["pathology_id"], name: "index_patients_pathologies_on_pathology_id"
+    t.index ["patient_id"], name: "index_patients_pathologies_on_patient_id"
   end
-
-  add_index "patients_pathologies", ["pathology_id"], name: "index_patients_pathologies_on_pathology_id"
-  add_index "patients_pathologies", ["patient_id"], name: "index_patients_pathologies_on_patient_id"
 
   create_table "practitioner_professions", force: :cascade do |t|
     t.string   "name"
@@ -179,10 +171,9 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "health_place_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["health_place_id"], name: "index_practitioners_on_health_place_id"
+    t.index ["practitioner_profession_id"], name: "index_practitioners_on_practitioner_profession_id"
   end
-
-  add_index "practitioners", ["health_place_id"], name: "index_practitioners_on_health_place_id"
-  add_index "practitioners", ["practitioner_profession_id"], name: "index_practitioners_on_practitioner_profession_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -190,10 +181,9 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.string   "resource_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["name"], name: "index_roles_on_name"
   end
-
-  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-  add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "school_levels", force: :cascade do |t|
     t.string   "name"
@@ -221,21 +211,19 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "school_year_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["patient_id"], name: "index_schoolings_on_patient_id"
+    t.index ["school_id"], name: "index_schoolings_on_school_id"
+    t.index ["school_level_id"], name: "index_schoolings_on_school_level_id"
+    t.index ["school_year_id"], name: "index_schoolings_on_school_year_id"
   end
-
-  add_index "schoolings", ["patient_id"], name: "index_schoolings_on_patient_id"
-  add_index "schoolings", ["school_id"], name: "index_schoolings_on_school_id"
-  add_index "schoolings", ["school_level_id"], name: "index_schoolings_on_school_level_id"
-  add_index "schoolings", ["school_year_id"], name: "index_schoolings_on_school_year_id"
 
   create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.integer  "school_type_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["school_type_id"], name: "index_schools_on_school_type_id"
   end
-
-  add_index "schools", ["school_type_id"], name: "index_schools_on_school_type_id"
 
   create_table "sessions", force: :cascade do |t|
     t.datetime "begin_date"
@@ -247,13 +235,12 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "health_place_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["act_id"], name: "index_sessions_on_act_id"
+    t.index ["health_place_id"], name: "index_sessions_on_health_place_id"
+    t.index ["patient_id"], name: "index_sessions_on_patient_id"
+    t.index ["practitioner_id"], name: "index_sessions_on_practitioner_id"
+    t.index ["therapy_id"], name: "index_sessions_on_therapy_id"
   end
-
-  add_index "sessions", ["act_id"], name: "index_sessions_on_act_id"
-  add_index "sessions", ["health_place_id"], name: "index_sessions_on_health_place_id"
-  add_index "sessions", ["patient_id"], name: "index_sessions_on_patient_id"
-  add_index "sessions", ["practitioner_id"], name: "index_sessions_on_practitioner_id"
-  add_index "sessions", ["therapy_id"], name: "index_sessions_on_therapy_id"
 
   create_table "therapies", force: :cascade do |t|
     t.integer  "practitioner_id"
@@ -266,12 +253,11 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.integer  "act_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["act_id"], name: "index_therapies_on_act_id"
+    t.index ["health_place_id"], name: "index_therapies_on_health_place_id"
+    t.index ["patient_id"], name: "index_therapies_on_patient_id"
+    t.index ["practitioner_id"], name: "index_therapies_on_practitioner_id"
   end
-
-  add_index "therapies", ["act_id"], name: "index_therapies_on_act_id"
-  add_index "therapies", ["health_place_id"], name: "index_therapies_on_health_place_id"
-  add_index "therapies", ["patient_id"], name: "index_therapies_on_patient_id"
-  add_index "therapies", ["practitioner_id"], name: "index_therapies_on_practitioner_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -291,18 +277,16 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "practitioner_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["practitioner_id"], name: "index_users_on_practitioner_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["practitioner_id"], name: "index_users_on_practitioner_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
   end
-
-  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
 
   create_table "versions", force: :cascade do |t|
     t.string   "item_type",                     null: false
@@ -311,9 +295,8 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.string   "whodunnit"
     t.text     "object",     limit: 1073741823
     t.datetime "created_at"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
-
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
 
   create_table "waiting_lists", force: :cascade do |t|
     t.integer  "patient_id"
@@ -325,10 +308,9 @@ ActiveRecord::Schema.define(version: 20170116180640) do
     t.boolean  "waiting_for_patient_return"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["health_place_id"], name: "index_waiting_lists_on_health_place_id"
+    t.index ["pathology_id"], name: "index_waiting_lists_on_pathology_id"
+    t.index ["patient_id"], name: "index_waiting_lists_on_patient_id"
   end
-
-  add_index "waiting_lists", ["health_place_id"], name: "index_waiting_lists_on_health_place_id"
-  add_index "waiting_lists", ["pathology_id"], name: "index_waiting_lists_on_pathology_id"
-  add_index "waiting_lists", ["patient_id"], name: "index_waiting_lists_on_patient_id"
 
 end

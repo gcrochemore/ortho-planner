@@ -85,6 +85,11 @@
 </div>
 
 
+    <label for="patient_availabilities">Disponibilités</label>
+<% @f = f %>
+<%= week_calendar partial: 'patient_availabilities/patient_availability_calendar' do |date| %>
+  
+<% end %>
 
 
 <div class="form-group col-xs-12">  

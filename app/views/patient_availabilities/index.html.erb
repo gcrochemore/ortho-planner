@@ -1,27 +1,18 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= t('.title') %><span class="badge"><%= @patient_availabilities.count %></span></h1>
 
 <div class="row">
   <div class="col-md-2">
-    <legend class="filter-title"><%= t :filter_title %></legend>
-  </div>
-  <div class="col-md-3 btn-new-top">
-    <% if can? :create, PatientAvailability %>
-      <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-2">
+    <legend class="filter-title"><%= t :search_title %></legend>
     <fieldset class="filter-panel">
       <%= search_form_for @q do |f| %>
 
-        <%= f.search_field :patient_cont, {placeholder: t('activerecord.attributes.patient_availability.patient')} %>
+        <%= f.search_field :patient_first_name_cont, {placeholder: t('activerecord.attributes.patient_availability.patient')} %>
 
         <%= f.search_field :day_cont, {placeholder: t('activerecord.attributes.patient_availability.day')} %>
 
         <%= f.search_field :period_cont, {placeholder: t('activerecord.attributes.patient_availability.period')} %>
+
+        <%= f.search_field :available_cont, {placeholder: t('activerecord.attributes.patient_availability.available')} %>
 
         <br>
         <br>
@@ -30,15 +21,22 @@
     </fieldset>
   </div>
   <div class="col-md-10">
+    <div class="col-md-3 btn-new-top">
+      <% if can? :create, PatientAvailability %>
+        <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-default" %>
+      <% end %>
+    </div>
     <table class="table table-hover table-condensed table-bordered">
       <thead>
         <tr>
     
-          <th><%= sort_link(@q, :patient, default_order: :asc) %></th>
+          <th><%= sort_link(@q, :patient_first_name, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :day, default_order: :asc) %></th>
     
           <th><%= sort_link(@q, :period, default_order: :asc) %></th>
+    
+          <th><%= sort_link(@q, :available, default_order: :asc) %></th>
     
           <th class="col-xs-1"></th>
         </tr>
@@ -54,12 +52,14 @@
     
             <td><%= patient_availability.period %></td>
     
+            <td><%= patient_availability.available %></td>
+    
             <td>
               <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, patient_availability %>
-              <% if can? :edit, patient_availability %>
+              <% if can? :edit, PatientAvailability %>
                 <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_patient_availability_path(patient_availability) %>
               <% end %>
-              <% if can? :destroy, patient_availability %>
+              <% if can? :destroy, PatientAvailability %>
                 <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, patient_availability, method: :delete, data: { confirm: 'Are you sure?' } %>
               <% end %>
             </td>

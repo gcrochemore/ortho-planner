@@ -5,7 +5,8 @@ RSpec.describe "patient_availabilities/show", type: :view do
     @patient_availability = assign(:patient_availability, PatientAvailability.create!(
       :patient => nil,
       :day => 2,
-      :period => 3
+      :period => 3,
+      :available => false
     ))
   end
 
@@ -14,5 +15,6 @@ RSpec.describe "patient_availabilities/show", type: :view do
     expect(rendered).to match(//)
     expect(rendered).to match(/2/)
     expect(rendered).to match(/3/)
+    expect(rendered).to match(/false/)
   end
 end

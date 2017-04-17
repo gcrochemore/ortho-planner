@@ -15,5 +15,10 @@
   <%= @patient_availability.period %>
 </p>
 
+<p>
+  <strong>Available:</strong>
+  <%= @patient_availability.available %>
+</p>
+
 <%= link_to 'Edit', edit_patient_availability_path(@patient_availability) %> |
 <%= link_to 'Back', patient_availabilities_path %>

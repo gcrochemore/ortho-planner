@@ -7,6 +7,8 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     alias_action :create, :read, :update, to: :crud
+    
+    can :manage, :all
 
     if user.has_role? :admin
       can :manage, :all
