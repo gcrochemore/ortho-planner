@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-default navbar-collapse">
+<!--<nav class="navbar navbar-fixed-top navbar-default navbar-collapse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
@@ -118,10 +118,41 @@
           <li><%= link_to('Login', new_user_session_path)  %></li>
         <% end %>
       </ul>
-    </div><!-- /.navbar-collapse -->
-
+    </div>
     
 
 
   </div>
-</nav>
+</nav>-->
+
+
+
+
+
+<% if can? :read, Patient %>
+  <div class="menu-item"><%= link_to(t('.patients'), patients_path) %></div>
+<% end %>
+<% if can? :read, Therapy %>
+ <div class="menu-item"><%= link_to(t('.therapies'), therapies_path) %></div>
+<% end %>
+<% if can? :read, Session %>
+  <div class="menu-item"><%= link_to(t('.sessions'), sessions_path) %></div>
+<% end %>
+<% if can? :index, WaitingList %>
+  <div class="menu-item"><%= link_to(t('.waiting_lists'), waiting_lists_path) %><br><%= icon('list-ol') %></div>
+<% end %>
+<% if can? :read, Absence %>
+  <div class="menu-item"><%= link_to(t('.absences'), absences_path) %></div>
+<% end %>
+<% if can? :read, Interaction %>
+  <div class="menu-item"><%= link_to(t('.interactions'), interactions_path) %></div>
+<% end %>
+<% if can? :read, Schooling %>
+  <div class="menu-item"><%= link_to(t('.schoolings'), schoolings_path) %></div>
+<% end %>
+
+<% if user_signed_in? %>
+  <div class="menu-item menu-item-bottom">
+    <%= link_to(('Quitter<br>' + icon('sign-out')).html_safe, destroy_user_session_path, method: :delete) %>
+  </div>
+<% end %>

@@ -65,7 +65,8 @@ Supprimer les fichiers a recréer puis : (en ajoutant --skip à la fin)
 
 	rails generate scaffold contact_information contactable:references{polymorphic} contact_information_type:references value:string
 
-	rails generate scaffold patient_availability patient:references day:integer period:integer
+	rails generate scaffold patient_availability patient:references day:integer period:integer available:boolean
+	rails generate scaffold_controller patient_availability patient:references day:integer period:integer available:boolean
 
 
 

@@ -1,47 +1,36 @@
- <div class="nested-fields row">
+ <div class="nested-fields">
 
   <%= f.association :patient, label: false, input_html: { class: "form-control" }, as: :hidden %>
   <%= f.input :comments, label: false, input_html: { class: "form-control" }, as: :hidden %>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-md-6 row">
-      <div class="col-xs-4">
-        <label for="practitioner">Qui à reçu l'appel ?</label>
-      </div>
-      <div class="col-xs-8">
-        <%= f.association :practitioner, label: false, input_html: { class: "form-control" } %>
-      </div>
+    <div class="col-1">
+      <label for="practitioner"><%= icon('user') %></label>
     </div>
-
-    <div class="form-group col-xs-12 col-md-6 row">
-      <div class="col-xs-4">
-        <label for="interaction_date">Quand</label>
-      </div>
-      <div class="col-xs-8">
-        <%= f.text_field :interaction_date, label: false, class: "datepicker", value: f.object.interaction_date.andand.strftime(DATE_FORMAT) %>
-      </div>
+    <div class="col">
+      <%= f.association :practitioner, label: false, input_html: { class: "form-control" } %>
+    </div>
+    <div class="col-1">
+      <label for="interaction_date"><%= icon('clock-o') %></label>
+    </div>
+    <div class="col">
+      <%= f.text_field :interaction_date, label: false, class: "datepicker", value: f.object.interaction_date.andand.strftime(DATE_FORMAT) %>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-md-6 row">
-      <div class="col-xs-4">
-        <label for="interaction_type">Quoi ?</label>
-      </div>
-      <div class="col-xs-8">
-        <%= f.association :interaction_type, label: false, input_html: { class: "form-control" } %>
-      </div>
+    <div class="col-1">
+      <label for="interaction_type"><%= icon('question') %></label>
     </div>
-
-    <div class="form-group col-xs-12 col-md-6 row">
-      <div class="col-xs-4">
-        <label for="interaction_object">Pourquoi ?</label>
-      </div>
-      <div class="col-xs-8">
-        <%= f.association :interaction_object, label: false, input_html: { class: "form-control" } %>
-      </div>
+    <div class="col">
+      <%= f.association :interaction_type, label: false, input_html: { class: "form-control" } %>
     </div>
-
+    <div class="col-1">
+      <label for="interaction_object"><%= icon('comments-o') %></label>
+    </div>
+    <div class="col">
+      <%= f.association :interaction_object, label: false, input_html: { class: "form-control" } %>
+    </div>
   </div>
 </div>
 

@@ -1,54 +1,72 @@
-<% if can? :create, WaitingList %>
-  <div class="add-button">
-    <%= link_to ('<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> '+t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-lg btn-primary" %>
-  </div>
-<% end %>
-<% if can? :filter, WaitingList %>
-  <div class="search-form">
-    <%= search_form_for @q, html: {class: 'form-inline'} do |f| %>
-      <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.patient.last_name') + " ou " + t('activerecord.attributes.patient.first_name'), class: 'form-control'} %>
-        <!--<%= f.select :health_place_id_eq, options_from_collection_for_select(@health_places, "id", "name", @q.health_place_id_eq) %>-->
-      <%= f.hidden_field :health_place_id_eq, value: @health_places.first.id %>
-      <%= button_tag(type: "submit", class: "btn btn-default") do %>
-        <i class="glyphicon glyphicon-search"></i>
-      <% end %>
-    <% end %>
-    <%= search_form_for @q do |f| %>
-      <%= button_tag(type: "submit", class: "btn btn-default") do %>
-        <i class="glyphicon glyphicon-remove"></i>
-      <% end %>
-    <% end %>
-  </div>  
-<% end %>
-
-<h1><%= t('.title') %><span class="badge"><%= @patients_on_waiting_list.count + @patients_removed_from_waiting_list.count + @waiting_for_patient_return.count %></span>
-</h1>
-
-<div class="clearfix visible-xs visible-md visible-sm visible-lg"></div>
-<div class="row">
-  
-  <div class="col-md-12">  
-    <ul  class="nav nav-tabs">
-      <li class="active">
-        <a  href="#1a" data-toggle="tab">Patients a prendre en charge <span class="badge"><%= @patients_on_waiting_list.count %></span></a>
-      </li>
-      <li><a href="#2a" data-toggle="tab">Patients supprimés de la liste d'attente <span class="badge"><%= @patients_removed_from_waiting_list.count %></span></a>
-      </li>
-      <li><a href="#3a" data-toggle="tab">Patients qui doivent rappeler <span class="badge"><%= @waiting_for_patient_return.count %></span></a>
-      </li>
-    </ul>
-    <br>
-    <div class="tab-content clearfix">
-      <div class="tab-pane active" id="1a">
-
-        <%= render 'waiting_list_list', waiting_lists: @patients_on_waiting_list %>      
-      </div>
-      <div class="tab-pane" id="2a">
-        <%= render 'waiting_list_list', waiting_lists: @patients_removed_from_waiting_list %>
-      </div>
-      <div class="tab-pane" id="3a">
-        <%= render 'waiting_list_list', waiting_lists: @waiting_for_patient_return %>
-      </div>
+<div class="waiting-list-header">
+  <div class="row">
+    <div class="col">
+      <h1>
+        <%= t('.title') %><span class="badge"><%= @patients_on_waiting_list.count + @patients_removed_from_waiting_list.count + @waiting_for_patient_return.count %></span>
+      </h1>
     </div>
+    <div class="col">
+      <% if can? :filter, WaitingList %>
+        <div class="">
+          <%= search_form_for @q, html: {class: 'form-inline'} do |f| %>
+            <%= f.search_field :patient_first_name_or_patient_last_name_cont, {placeholder: t('activerecord.attributes.patient.last_name') + " ou " + t('activerecord.attributes.patient.first_name'), class: 'form-control'} %>
+              <!--<%= f.select :health_place_id_eq, options_from_collection_for_select(@health_places, "id", "name", @q.health_place_id_eq) %>-->
+            <%= f.hidden_field :health_place_id_eq, value: @health_places.first.id %>
+            <%= button_tag(type: "submit", class: "btn btn-default") do %>
+              <%= icon('search') %>
+            <% end %>
+          <% end %>
+          <%= search_form_for @q do |f| %>
+            <%= button_tag(type: "submit", class: "btn btn-default") do %>
+              <%= icon('times') %>
+            <% end %>
+          <% end %>
+        </div>  
+      <% end %>
+    </div>
+    <div class="col">
+      <% if can? :create, WaitingList %>
+        <div class="add-button">
+          <%= link_to (icon('user-plus') + ' ' + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-lg btn-primary" %>
+
+          <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <%= (icon('user-plus') + ' ' + t('.new_button')).html_safe %>
+          </button>-->
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="clearfix visible-xs visible-md visible-sm visible-lg"></div>
+
+  <ul class="nav nav-tabs" role="tablist" id="waitingListTab">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#patients_on_waiting_list" role="patients_on_waiting_list" aria-controls="patients_on_waiting_list">
+        Patients a prendre en charge <span class="badge"><%= @patients_on_waiting_list.count %></span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#patients_removed_from_waiting_list" role="patients_removed_from_waiting_list" aria-controls="patients_removed_from_waiting_list">
+        Patients supprimés de la liste d'attente <span class="badge"><%= @patients_removed_from_waiting_list.count %></span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#waiting_for_patient_return" role="waiting_for_patient_return" aria-controls="waiting_for_patient_return">
+        Patients qui doivent rappeler <span class="badge"><%= @waiting_for_patient_return.count %></span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="waiting-list-container tab-content">
+  <div class="tab-pane active" id="patients_on_waiting_list" role="tabpanel">
+    <%= render 'waiting_list_list', waiting_lists: @patients_on_waiting_list %>      
+  </div>
+  <div class="tab-pane" id="patients_removed_from_waiting_list" role="tabpanel">
+    <%= render 'waiting_list_list', waiting_lists: @patients_removed_from_waiting_list %>
+  </div>
+  <div class="tab-pane" id="waiting_for_patient_return" role="tabpanel">
+    <%= render 'waiting_list_list', waiting_lists: @waiting_for_patient_return %>
   </div>
 </div>

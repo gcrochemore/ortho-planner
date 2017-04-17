@@ -1,3 +1,5 @@
+
+
 class PatientAvailabilitiesController < ApplicationController
   authorize_resource
   before_action :set_patient_availability, only: [:show, :edit, :update, :destroy]
@@ -51,7 +53,7 @@ class PatientAvailabilitiesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def patient_availability_params
 
-      params.require(:patient_availability).permit(:patient_id, :day, :period)
+      params.require(:patient_availability).permit(:patient_id, :day, :period, :available)
 
     end
 end

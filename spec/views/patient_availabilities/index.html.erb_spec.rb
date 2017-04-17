@@ -6,12 +6,14 @@ RSpec.describe "patient_availabilities/index", type: :view do
       PatientAvailability.create!(
         :patient => nil,
         :day => 2,
-        :period => 3
+        :period => 3,
+        :available => false
       ),
       PatientAvailability.create!(
         :patient => nil,
         :day => 2,
-        :period => 3
+        :period => 3,
+        :available => false
       )
     ])
   end
@@ -21,5 +23,6 @@ RSpec.describe "patient_availabilities/index", type: :view do
     assert_select "tr>td", :text => nil.to_s, :count => 2
     assert_select "tr>td", :text => 2.to_s, :count => 2
     assert_select "tr>td", :text => 3.to_s, :count => 2
+    assert_select "tr>td", :text => false.to_s, :count => 2
   end
 end

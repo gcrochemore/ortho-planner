@@ -1,4 +1,6 @@
 .simple-calendar {
+  font-size: 80%;
+  width: 100%;
   th{
     padding: 0px !important;
   }
@@ -12,11 +14,23 @@
     text-align: center;
   }
   .hour-row{
-    height: 80px;
+    height: 20px;
+  }
+  .quarter-hour-row{
+    height: 5px;
+    font-size: 60%;
+    text-align: right;
+  }
+  .quarter-hour-row-selected{
+    background-color: #088A29;
   }
   .half-hour-row{
-    height: 40px;
+    height: 10px;
+    font-size: 60%;
     text-align: right;
+  }
+  .half-hour-row-selected{
+    background-color: #088A29;
   }
   .event{
     height: 38px;
@@ -33,7 +47,7 @@
     border-left: 1px solid rgb(221,221,221) !important;
     border-right: 1px solid rgb(221,221,221) !important;
     font-family: "Trebuchet MS", "Times", serif !important;
-    background-image:image-url("calendar_cell.gif") !important;
+    /*background-image:image-url("calendar_cell.gif") !important;*/
     background-repeat:repeat !important;
     background-position:top right !important;
     border-width:1px !important;
@@ -41,26 +55,37 @@
     border-style:solid !important;
   }
 
+  .wday {
+    width: 13%;
+  }
+
   .wday-0 {
-    width: 5%;
+    width: 13%;
+    background-color: grey;
   }
   .wday-1 {
-    width: 17%;
+    width: 13%;
+    background-color: white;
   }
   .wday-2 {
-    width: 17%;
+    width: 13%;
+    background-color: white;
   }
   .wday-3 {
-    width: 17%;
+    width: 13%;
+    background-color: white;
   }
   .wday-4 {
-    width: 17%;
+    width: 13%;
+    background-color: white;
   }
   .wday-5 {
-    width: 17%;
+    width: 13%;
+    background-color: white;
   }
   .wday-6 {
-    width: 5%;
+    width: 12%;
+    background-color: grey;
   }
 
   .today {}

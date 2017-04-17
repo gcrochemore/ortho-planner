@@ -1,0 +1,2 @@
+module PatientAvailabilitiesHelper
+end

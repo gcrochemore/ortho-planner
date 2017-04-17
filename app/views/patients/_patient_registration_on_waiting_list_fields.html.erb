@@ -1,49 +1,58 @@
 <div class="row">
-  <div class="col-xs-12 row">
-
-    <div class="form-group col-xs-12 col-sm-1 col-lg-1">
-      <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !f.object.is_male %>
-      <label for="is_male">F</label>
-      <br>
-      <%= f.radio_button :is_male, "1", input_html: { class: "form-control" }, checked: f.object.is_male %>
-      <label for="is_male">M</label>
+  <div class="col col-sm-12 col-md-6 row">
+    <div class="col">
+      <div class="gender">
+        <%= f.radio_button :is_male, "0", input_html: { class: "form-control" }, checked: !f.object.is_male %>
+        <label for="is_male"><%= image_tag "female.png", width: 18 %></label>
+      </div>
+      <div class="gender">
+        <%= f.radio_button :is_male, "1", input_html: { class: "form-control" }, checked: f.object.is_male %>
+        <label for="is_male"><%= image_tag "male.png", width: 18 %></label>
+      </div>
+    </div>
+    <div class="col">
+      <%= f.input :priority, label: false, input_html: { class: "star" }, value: f.object.priority || false %>
     </div>
 
-    <div class="form-group col-xs-6 col-sm-3">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="first_name"><%= f.label :first_name %></label>
+        <%= f.input :first_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.first_name') %>
+      </div>
+    </div>
+
+    <div class="col-12 form-group">
       <label for="last_name"><%= f.label :last_name %></label>
       <%= f.input :last_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.last_name') %>
     </div>
 
-    <div class="form-group col-xs-6 col-sm-3">
-      <label for="first_name"><%= f.label :first_name %></label>
-      <%= f.input :first_name, label: false, input_html: { class: "form-control" }, placeholder: t('activerecord.attributes.patient.first_name') %>
-    </div>
-
-    <div class="form-group col-xs-6 col-sm-2">
+    <div class="col-12 form-group">
       <label for="birth_date"><%= f.label :birth_date %></label>
       <%= f.input :birth_date, label: false, input_html: { class: "datepicker", value: f.object.birth_date.andand.strftime(DATE_FORMAT)}, as: :string, start_year: Date.today.year - 110, end_year: Date.today.year %>
     </div>
 
-    <div class="form-group col-xs-6 col-sm-3">
-      <label for="schoolings">Classe :</label>
-      <div id='schoolings' class="schoolings">
-        <%= f.simple_fields_for :schoolings do |schooling| %>
-          <%= render 'schoolings/schooling_school_level_fields', f: schooling %>
-        <% end %> 
+    <div class="col-12">
+      <label for="schooling_job">Classe ou Métier</label>      
+    </div>
+
+    <div class="col-12 row">
+      <div class="col row">
+        <div class="col form-group">
+          <div id='schoolings' class="schoolings">
+            <%= f.simple_fields_for :schoolings do |schooling| %>
+              <%= render 'schoolings/schooling_school_level_fields', f: schooling %>
+            <% end %> 
+          </div> 
+        </div>
+        <div class="col-2"> OU </div>
+        <div class="col">
+          <%= f.input :job, label: false, input_html: { class: "form-control" } %>
+        </div>
       </div>
-    </div>
+    </div>    
 
-  </div>
-
-  <div class="col-xs-12 row">
-
-    <div class="form-group col-xs-3">
-      <label for="job"><%= f.label :job %></label>
-      <%= f.input :job, label: false, input_html: { class: "form-control" }%>
-    </div>
-
-    <div class="form-group col-xs-3">
-      <label for="addresses">* Ville :</label>
+    <div class="col-12 form-group">
+      <label for="addresses">Ville</label>
       <div id='addresses'>
         <%= f.simple_fields_for :addresses do |f| %>
           <%= render 'addresses/address_city_field', f: f %>
@@ -51,8 +60,27 @@
       </div>
     </div>
 
+  </div>
 
-    <div class="form-group col-xs-12 col-sm-5 col-lg-5">
+  <div class="col col-sm-12 col-md-6 row">
+
+    <div class="col-12 row">
+      <label for="pathologies">Motif : (Plusieurs choix possibles)</label>
+    </div>   
+
+    <div class="col-12 row form-group">
+      <%= f.association :pathologies, label: false, input_html: { class: "form-control" } %>
+    </div>   
+
+    <div class="col-12 row">
+      <label for="comments"><%= f.label :comments %></label>
+    </div>   
+
+    <div class="col-12 row form-group">
+      <%= f.input :comments, label: false, input_html: { class: "form-control", rows: 6, value: f.object.comments } %>
+    </div>
+
+    <div class="col-12 row">
       <label for="contact_informations">Numéro(s) :</label>
       <div id='contact_informations'>
         <%= f.simple_fields_for :contact_informations do |f| %>
@@ -64,31 +92,19 @@
       </div>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-1 col-lg-1">
-      <label for="priority"><%= f.label :priority %></label>
-      <%= f.input :priority, label: false, input_html: { class: "star" }, value: f.object.priority || false %>
-    </div>
-  </div>
-
-    
-    <div class="clearfix visible-sm visible-md"></div>
-    
   </div>
 
 </div>
-  
+
 <div class="row">
-  <div class="form-group col-xs-12">
-    <label for="pathologies">Motif : (Plusieurs choix possibles)</label>
-    <%= f.association :pathologies, label: false, input_html: { class: "form-control", witdh: "100%" } %>
-  </div>
-  
-            
-  <div class="form-group col-xs-12">
-    <label for="comments"><%= f.label :comments %></label>
-    <%= f.input :comments, label: false, input_html: { class: "form-control", rows: 6, value: f.object.comments } %>
-  </div>
+  <label for="patient_availabilities">Disponibilités</label>
+  <% @f = f %>
+  <%= week_calendar partial: 'patient_availabilities/patient_availability_calendar' do |date| %>
+    
+  <% end %>
+
 </div>
+
 <div class="form-group col-xs-12">  
   <div id='interactions'>
     <label for="interactions">Ajouter un appel</label>

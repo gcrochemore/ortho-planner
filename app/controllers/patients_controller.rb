@@ -60,7 +60,7 @@ class PatientsController < ApplicationController
                                       schoolings_attributes: [:id, :patient_id, :school_id, :school_level_id, :school_year_id, :_destroy],
                                       contact_informations_attributes: [:id, :contactable_id, :contactable_type, :contact_information_type_id, :value, :_destroy],
                                       waiting_lists_attributes: [:id, :patient_id, :health_place_id, :start_date, :end_date, :pathology_id, :comments, :_destroy],
-                                      patient_availability_attributes: [:id, :patient_id, :day, :period, :_destroy]
+                                      patient_availabilities_attributes: [:id, :patient_id, :day, :period, :_destroy]
                                       )
 
     end

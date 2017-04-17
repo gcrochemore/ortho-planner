@@ -11,21 +11,24 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap-sprockets
+//= require bootstrap/util
+//= require bootstrap/alert
+//= require bootstrap/button
+//= require bootstrap/carousel
+//= require bootstrap/collapse
+//= require bootstrap/dropdown
+//= require bootstrap/modal
+//= require bootstrap/scrollspy
+//= require bootstrap/tab
+//# require bootstrap/tooltip   # not required
+//# require bootstrap/popover  # not required
 //= require bootstrap-datepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
+//= require jquery_ujs
+//= require turbolinks
 //= require cocoon
 //= require select2
 //= require_tree .
 
-$(document).ready(function(){
-  $('.datepicker').datepicker({
-    format: "dd/mm/yyyy",
-    autoclose: true
-  });
-  $('select').select2();
-});

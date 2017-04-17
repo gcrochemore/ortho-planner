@@ -15,6 +15,14 @@ class WaitingListsController < ApplicationController
     @patients_on_waiting_list = @q.result.waiting_list.page(params[:page])
     @patients_removed_from_waiting_list = @q.result.not_waiting_list.page(params[:page])
     @waiting_for_patient_return = @q.result.waiting_for_patient_return.page(params[:page])
+
+    #@health_places = HealthPlace.accessible_by(current_ability, :nested_entity)
+    #@waiting_list = WaitingList.new(start_date: DateTime.now)
+    #@waiting_list.patient = Patient.new
+    #@waiting_list.patient.addresses << Address.new
+    #@waiting_list.patient.schoolings << Schooling.new
+    #@waiting_list.patient.contact_informations << ContactInformation.new
+    #@new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 1, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
   end
   # GET /waiting_lists/1
   def show
@@ -122,7 +130,8 @@ class WaitingListsController < ApplicationController
                                                                 schoolings_attributes: [:id,:school_level_id],
                                                                 addresses_attributes: [:id, :city],
                                                                 therapies_attributes: [:id, :practitioner_id, :begin_date, :number_of_sessions],
-                                                                interactions_attributes: [:id, :practitioner_id, :interaction_date, :interaction_type_id, :interaction_object_id, :comments]
+                                                                interactions_attributes: [:id, :practitioner_id, :interaction_date, :interaction_type_id, :interaction_object_id, :comments],
+                                                                patient_availabilities_attributes: [:id, :patient_id, :day, :period, :available, :_destroy]
                                                               ]
                                           )
 
