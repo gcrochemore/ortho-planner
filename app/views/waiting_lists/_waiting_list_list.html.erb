@@ -5,7 +5,7 @@
         <div class="waiting-list-row <%= waiting_list.patient.priority ? "waiting-list-row-priority" : "waiting-list-row-not-priority" %>">
           <div class="inscription_date">
             <span class="label-tooltip drop-menu"><strong><%= waiting_list.start_date.andand.strftime(DATE_FORMAT) %></strong> <i>Inscrit il y a <%= show_waiting_list_age(waiting_list.age).html_safe %></i>
-              <span class="label-tooltiptext  label-tooltip-bottom">Inscrit par <%= User.find(waiting_list.versions.first.whodunnit).practitioner %></span>
+              <span class="label-tooltiptext  label-tooltip-bottom">Inscrit par <%= waiting_list.versions.first.whodunnit.nil? ? "Inconnu" : User.find(waiting_list.versions.first.whodunnit).practitioner %></span>
             </span>
           </div>
           <div class="inscription_number">
