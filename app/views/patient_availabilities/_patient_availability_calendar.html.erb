@@ -1,9 +1,29 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
-    <a onclick="unselectAll();" >Deselectionner tout</a> | 
-    <a onclick="selectAll();" >Disponible tout le temps</a> | 
-    <a onclick="selectEvening();" >Disponible Uniquement le soir</a> | 
-    <a onclick="selectWednesday();" >Disponible uniquement le mercredi</a>
+    <strong>Disponible : </strong>
+    <a onclick="selectAll();">Tout le temps</a> | 
+    <a onclick="selectPartOfDay(8, 11);">Le matin</a> | 
+    <a onclick="selectPartOfDay(12, 13);">Le midi</a> | 
+    <a onclick="selectPartOfDay(14, 16);">L'après-midi</a> | 
+    <a onclick="selectPartOfDay(17, 19);">Le soir</a> | 
+    <a onclick="selectAllDay(1);">Lundi</a> | 
+    <a onclick="selectAllDay(2);">Mardi</a> | 
+    <a onclick="selectAllDay(3);">Mercredi</a> | 
+    <a onclick="selectAllDay(4);">Jeudi</a> | 
+    <a onclick="selectAllDay(5);">Vendredi</a>
+    <br>
+
+    <strong>Indisponible : </strong>
+    <a onclick="unselectAll();">Tout le temps</a> | 
+    <a onclick="unselectPartOfDay(8, 11);">Le matin</a> | 
+    <a onclick="unselectPartOfDay(12, 13);">Le midi</a> | 
+    <a onclick="unselectPartOfDay(14, 16);">L'après-midi</a> | 
+    <a onclick="unselectPartOfDay(17, 19);">Le soir</a> | 
+    <a onclick="unselectAllDay(1);">Lundi</a> | 
+    <a onclick="unselectAllDay(2);">Mardi</a> | 
+    <a onclick="unselectAllDay(3);">Mercredi</a> | 
+    <a onclick="unselectAllDay(4);">Jeudi</a> | 
+    <a onclick="unselectAllDay(5);">Vendredi</a>
   </div>
 
   <div class="calendar-content">
@@ -40,7 +60,7 @@
                 <% (8..19).each do |h| %>
                   <% (0..3).each do |q| %>
 
-                    <% div_id = "calendar_#{day}_#{h}_#{q}" %>
+                    <% div_id = "calendar_#{day.wday}_#{h}_#{q}" %>
                     <% availability = calendar_availability.days[day.wday][h*4+q] %>
                     <% input_name = "waiting_list[patient_attributes][patient_availabilities_attributes][" + id.to_s + "]" %>
                     <% input_id = "waiting_list_patient_attributes_patient_availabilities_attributes_" + id.to_s %> 
@@ -94,12 +114,17 @@
   }
 
   function selectAllDay(day){
-    console.log("JE selectionne : ", day);
     $( ".wday-" + day + " .quarter-hour-row" ).each(function( index ) {
-      console.log( index); //
-      console.log($( this ).find( "input[name*='[available]']" ))
       $( this ).find( "input[name*='[available]']" ).attr("value", true);
       $( this ).attr("class", "quarter-hour-row quarter-hour-row-selected");
+    });
+    
+  }
+
+  function unselectAllDay(day){
+    $( ".wday-" + day + " .quarter-hour-row" ).each(function( index ) {
+      $( this ).find( "input[name*='[available]']" ).attr("value", false);
+      $( this ).attr("class", "quarter-hour-row");
     });
     
   }
@@ -112,19 +137,35 @@
     
   }
 
-  function selectWednesday(){
-    selectAllDay(3)
-  }
-
-  function selectEvening(){
-
-  }
-
   function selectAll(){
     var id = [1, 2, 3, 4, 5];
 
     id.forEach(function(element) {
       selectAllDay(element)
     });
+  }
+
+  function unselectPartOfDay(begin_hour, end_hour){
+    for (pas = begin_hour; pas <= end_hour; pas++) {
+      for (day = 1; day <= 5; day++) {
+        $( "div[id*='calendar_" + day + "_" + pas + "_']" ).each(function( index ) {
+          $( this ).attr("class", "quarter-hour-row");
+          $( this ).find( "input[name*='[available]']" ).attr("value", false);
+        });
+    
+      }
+    }
+  }
+
+  function selectPartOfDay(begin_hour, end_hour){
+    for (pas = begin_hour; pas <= end_hour; pas++) {
+      for (day = 1; day <= 5; day++) {
+        $( "div[id*='calendar_" + day + "_" + pas + "_']" ).each(function( index ) {
+          $( this ).attr("class", "quarter-hour-row quarter-hour-row-selected");
+          $( this ).find( "input[name*='[available]']" ).attr("value", true);
+        });
+    
+      }
+    }
   }
 </script>
