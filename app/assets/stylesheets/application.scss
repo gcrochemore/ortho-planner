@@ -100,3 +100,13 @@ label{
   padding: 2px !important;
   width: 100%;
 }
+
+.calendar-heading{
+  a{
+    color: blue !important;
+  }
+  a:hover, a:active {
+    cursor: pointer;
+    text-decoration: underline !important;
+  }
+}
