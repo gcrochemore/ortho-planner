@@ -29,13 +29,14 @@
                 <% end %>
               </div>
             </th>
+            <% calendar_availability = @patient.calendar_availability %>
             <% week.each do |day| %>
               <%= content_tag :td, class: calendar.td_classes_for(day) do %>
                 <% (8..19).each do |h| %>
                   <% (0..3).each do |q| %>
 
                     <% div_id = "calendar_#{day}_#{h}_#{q}" %>
-                    <% availability = @patient.calendar_availability.days[day.wday][h*4+q] %>
+                    <% availability = calendar_availability.days[day.wday][h*4+q] %>
                     <div class="quarter-hour-row <%= availability.available ? "quarter-hour-row-selected" : "" %>" id="<%= div_id %>"> 
 
                     </div>

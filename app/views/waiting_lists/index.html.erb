@@ -27,14 +27,13 @@
     <div class="col">
       <% if can? :create, WaitingList %>
         <div class="add-button">
-          <!--<%= link_to (icon('plus') + ' ' + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-lg btn-primary" %>-->
+          <%= link_to (icon('user-plus') + ' ' + t('.new_button')).html_safe, url_for(action: :new), class: "btn btn-lg btn-primary" %>
 
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             <%= (icon('user-plus') + ' ' + t('.new_button')).html_safe %>
-          </button>
+          </button>-->
         </div>
 
-      <%= render 'form_modal' %>
       <% end %>
     </div>
   </div>

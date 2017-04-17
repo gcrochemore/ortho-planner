@@ -15,7 +15,7 @@ class WeekPatientAvailabilities
         if day == 0 || day == 6
           patient_availability.available = false
         else
-          patient_availability.available = true
+          patient_availability.available = false
         end
 
         self.days[day][period] = patient_availability

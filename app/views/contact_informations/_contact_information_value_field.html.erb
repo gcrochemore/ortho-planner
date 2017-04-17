@@ -1,8 +1,11 @@
 <div class="nested-fields row">
+  <div class="col-1">
+    <%= icon('phone') %>
+  </div>
   <div class="col">
     <%= f.input :value, label: false, input_html: { class: "form-inline" }, placeholder: "Téléphone ou email" %>
   </div>
-  <div class="col-2">
-    <%= link_to_remove_association "X", f %>
+  <div class="col-1">
+    <%= link_to_remove_association icon('times').html_safe, f %>
   </div>
 </div>

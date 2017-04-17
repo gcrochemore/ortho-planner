@@ -1,5 +1,9 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
+    <a onclick="unselectAll();" >Deselectionner tout</a> | 
+    <a onclick="selectAll();" >Disponible tout le temps</a> | 
+    <a onclick="selectEvening();" >Disponible Uniquement le soir</a> | 
+    <a onclick="selectWednesday();" >Disponible uniquement le mercredi</a>
   </div>
 
   <div class="calendar-content">
@@ -30,13 +34,14 @@
               </div>
             </th>
             <% id = 0 %>
+            <% calendar_availability = @waiting_list.patient.calendar_availability %>
             <% week.each do |day| %>
               <%= content_tag :td, class: calendar.td_classes_for(day) do %>
                 <% (8..19).each do |h| %>
                   <% (0..3).each do |q| %>
 
                     <% div_id = "calendar_#{day}_#{h}_#{q}" %>
-                    <% availability = @waiting_list.patient.calendar_availability.days[day.wday][h*4+q] %>
+                    <% availability = calendar_availability.days[day.wday][h*4+q] %>
                     <% input_name = "waiting_list[patient_attributes][patient_availabilities_attributes][" + id.to_s + "]" %>
                     <% input_id = "waiting_list_patient_attributes_patient_availabilities_attributes_" + id.to_s %> 
                     <% id = id + 1 %> 
@@ -86,5 +91,40 @@
     if (mouseDown == 1) {
       changeClass(id, input_id);
     }
+  }
+
+  function selectAllDay(day){
+    console.log("JE selectionne : ", day);
+    $( ".wday-" + day + " .quarter-hour-row" ).each(function( index ) {
+      console.log( index); //
+      console.log($( this ).find( "input[name*='[available]']" ))
+      $( this ).find( "input[name*='[available]']" ).attr("value", true);
+      $( this ).attr("class", "quarter-hour-row quarter-hour-row-selected");
+    });
+    
+  }
+
+  function unselectAll(){
+    $( ".quarter-hour-row" ).each(function( index ) {
+      $( this ).find( "input[name*='[available]']" ).attr("value", false);
+      $( this ).attr("class", "quarter-hour-row");
+    });
+    
+  }
+
+  function selectWednesday(){
+    selectAllDay(3)
+  }
+
+  function selectEvening(){
+
+  }
+
+  function selectAll(){
+    var id = [1, 2, 3, 4, 5];
+
+    id.forEach(function(element) {
+      selectAllDay(element)
+    });
   }
 </script>

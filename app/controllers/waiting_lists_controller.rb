@@ -16,13 +16,13 @@ class WaitingListsController < ApplicationController
     @patients_removed_from_waiting_list = @q.result.not_waiting_list.page(params[:page])
     @waiting_for_patient_return = @q.result.waiting_for_patient_return.page(params[:page])
 
-    @health_places = HealthPlace.accessible_by(current_ability, :nested_entity)
-    @waiting_list = WaitingList.new(start_date: DateTime.now)
-    @waiting_list.patient = Patient.new
-    @waiting_list.patient.addresses << Address.new
-    @waiting_list.patient.schoolings << Schooling.new
-    @waiting_list.patient.contact_informations << ContactInformation.new
-    @new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 1, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
+    #@health_places = HealthPlace.accessible_by(current_ability, :nested_entity)
+    #@waiting_list = WaitingList.new(start_date: DateTime.now)
+    #@waiting_list.patient = Patient.new
+    #@waiting_list.patient.addresses << Address.new
+    #@waiting_list.patient.schoolings << Schooling.new
+    #@waiting_list.patient.contact_informations << ContactInformation.new
+    #@new_interaction = Interaction.new(interaction_type_id: 1, interaction_object_id: 1, interaction_date: DateTime.now, practitioner: current_user.andand.practitioner)
   end
   # GET /waiting_lists/1
   def show

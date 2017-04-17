@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="form-group col-xs-12 patient">
+        <div class="col">
           <%= f.simple_fields_for :patient do |f| %>
             <%= render 'patients/patient_registration_on_waiting_list_fields', f: f, new_interaction: @new_interaction %>
           <% end %>
