@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.string   "city"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "addressable_id"
     t.string   "addressable_type"
+    t.integer  "addressable_id"
     t.integer  "address_type_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20170416150200) do
   end
 
   create_table "contact_informations", force: :cascade do |t|
-    t.integer  "contactable_id"
     t.string   "contactable_type"
+    t.integer  "contactable_id"
     t.integer  "contact_information_type_id"
     t.string   "value"
     t.datetime "created_at",                  null: false
@@ -177,8 +177,8 @@ ActiveRecord::Schema.define(version: 20170416150200) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
-    t.integer  "resource_id"
     t.string   "resource_type"
+    t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
