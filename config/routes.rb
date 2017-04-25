@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       get :reregister_on_waiting_list
     end
   end
+
+  get '/export_db', to: 'admin#export_db_view'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
