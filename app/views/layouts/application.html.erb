@@ -44,14 +44,15 @@
 </div>
 
 <script type="text/javascript">
+
   $(document).ready(function(){
-    /*$('.datepicker').datepicker({
-      format: "yyyy-mm-dd",
-      weekStart: 1,
-      todayBtn: "linked",
-      language: "fr",
-    daysOfWeekHighlighted: "0,6"
-    });*/
+    $('select').select2();
+    $('.datepicker').datepicker({
+      language: 'fr',
+      startView: '-1y',
+      format: "dd/mm/yyyy",
+      autoclose: true
+    });
   });
 
 </script>

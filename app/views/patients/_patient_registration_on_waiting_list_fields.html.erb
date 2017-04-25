@@ -1,3 +1,4 @@
+<h2>Patient</h2>
 <div class="row">
   <div class="col col-sm-12 col-md-6 row">
     <div class="col">
@@ -97,7 +98,7 @@
 </div>
 
 <div class="row">
-  <label for="patient_availabilities">Disponibilités</label>
+  <label for="patient_availabilities"><h2>Disponibilités</h2></label>
   <% @f = f %>
   <%= week_calendar partial: 'patient_availabilities/patient_availability_calendar' do |date| %>
     
@@ -107,7 +108,7 @@
 
 <div class="form-group col-xs-12">  
   <div id='interactions'>
-    <label for="interactions">Ajouter un appel</label>
+    <label for="interactions"><h2>Contact</h2></label>
     <%= f.simple_fields_for :interactions, new_interaction do |interaction| %>
       <%= render 'interactions/interaction_fields', f: interaction %>
     <% end %> 

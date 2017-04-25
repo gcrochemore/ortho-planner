@@ -6,12 +6,15 @@
     <a onclick="selectPartOfDay(12, 13);">Le midi</a> | 
     <a onclick="selectPartOfDay(14, 16);">L'après-midi</a> | 
     <a onclick="selectPartOfDay(17, 19);">Le soir</a> | 
-    <a onclick="selectAllDay(1);">Lundi</a> | 
-    <a onclick="selectAllDay(2);">Mardi</a> | 
-    <a onclick="selectAllDay(3);">Mercredi</a> | 
-    <a onclick="selectAllDay(4);">Jeudi</a> | 
-    <a onclick="selectAllDay(5);">Vendredi</a>
+    <a onclick="selectAllDay(1);">Lundi</a> ( <a onclick="selectPartOfOneDay(8, 11, 1);">M</a> <a onclick="selectPartOfOneDay(12, 13, 1);">M</a> <a onclick="selectPartOfOneDay(14, 16, 1);">A</a> <a onclick="selectPartOfOneDay(17, 19, 1);">S</a> ) | 
+    <a onclick="selectAllDay(2);">Mardi</a> ( <a onclick="selectPartOfOneDay(8, 11, 2);">M</a> <a onclick="selectPartOfOneDay(12, 13, 2);">M</a> <a onclick="selectPartOfOneDay(14, 16, 2);">A</a> <a onclick="selectPartOfOneDay(17, 19, 2);">S</a> ) | 
+    <a onclick="selectAllDay(3);">Mercredi</a> ( <a onclick="selectPartOfOneDay(8, 11, 3);">M</a> <a onclick="selectPartOfOneDay(12, 13, 3);">M</a> <a onclick="selectPartOfOneDay(14, 16, 3);">A</a> <a onclick="selectPartOfOneDay(17, 19, 3);">S</a> ) | 
+    <a onclick="selectAllDay(4);">Jeudi</a> ( <a onclick="selectPartOfOneDay(8, 11, 4);">M</a> <a onclick="selectPartOfOneDay(12, 13, 4);">M</a> <a onclick="selectPartOfOneDay(14, 16, 4);">A</a> <a onclick="selectPartOfOneDay(17, 19, 4);">S</a> ) | 
+    <a onclick="selectAllDay(5);">Vendredi</a> ( <a onclick="selectPartOfOneDay(8, 11, 5);">M</a> <a onclick="selectPartOfOneDay(12, 13, 5);">M</a> <a onclick="selectPartOfOneDay(14, 16, 5);">A</a> <a onclick="selectPartOfOneDay(17, 19, 5);">S</a> ) 
     <br>
+
+    
+    
 
     <strong>Indisponible : </strong>
     <a onclick="unselectAll();">Tout le temps</a> | 
@@ -19,11 +22,11 @@
     <a onclick="unselectPartOfDay(12, 13);">Le midi</a> | 
     <a onclick="unselectPartOfDay(14, 16);">L'après-midi</a> | 
     <a onclick="unselectPartOfDay(17, 19);">Le soir</a> | 
-    <a onclick="unselectAllDay(1);">Lundi</a> | 
-    <a onclick="unselectAllDay(2);">Mardi</a> | 
-    <a onclick="unselectAllDay(3);">Mercredi</a> | 
-    <a onclick="unselectAllDay(4);">Jeudi</a> | 
-    <a onclick="unselectAllDay(5);">Vendredi</a>
+    <a onclick="unselectAllDay(1);">Lundi</a> ( <a onclick="unselectPartOfOneDay(8, 11, 1);">M</a> <a onclick="unselectPartOfOneDay(12, 13, 1);">M</a> <a onclick="unselectPartOfOneDay(14, 16, 1);">A</a> <a onclick="unselectPartOfOneDay(17, 19, 1);">S</a> ) | 
+    <a onclick="unselectAllDay(2);">Mardi</a> ( <a onclick="unselectPartOfOneDay(8, 11, 2);">M</a> <a onclick="unselectPartOfOneDay(12, 13, 2);">M</a> <a onclick="unselectPartOfOneDay(14, 16, 2);">A</a> <a onclick="unselectPartOfOneDay(17, 19, 2);">S</a> ) | 
+    <a onclick="unselectAllDay(3);">Mercredi</a> ( <a onclick="unselectPartOfOneDay(8, 11, 3);">M</a> <a onclick="unselectPartOfOneDay(12, 13, 3);">M</a> <a onclick="unselectPartOfOneDay(14, 16, 3);">A</a> <a onclick="unselectPartOfOneDay(17, 19, 3);">S</a> ) | 
+    <a onclick="unselectAllDay(4);">Jeudi</a> ( <a onclick="unselectPartOfOneDay(8, 11, 4);">M</a> <a onclick="unselectPartOfOneDay(12, 13, 4);">M</a> <a onclick="unselectPartOfOneDay(14, 16, 4);">A</a> <a onclick="unselectPartOfOneDay(17, 19, 4);">S</a> ) | 
+    <a onclick="unselectAllDay(5);">Vendredi</a> ( <a onclick="unselectPartOfOneDay(8, 11, 5);">M</a> <a onclick="unselectPartOfOneDay(12, 13, 5);">M</a> <a onclick="unselectPartOfOneDay(14, 16, 5);">A</a> <a onclick="unselectPartOfOneDay(17, 19, 5);">S</a> ) 
   </div>
 
   <div class="calendar-content">
@@ -166,6 +169,24 @@
         });
     
       }
+    }
+  }
+
+  function unselectPartOfOneDay(begin_hour, end_hour, day){
+    for (pas = begin_hour; pas <= end_hour; pas++) {
+      $( "div[id*='calendar_" + day + "_" + pas + "_']" ).each(function( index ) {
+        $( this ).attr("class", "quarter-hour-row");
+        $( this ).find( "input[name*='[available]']" ).attr("value", false);
+      });
+    }
+  }
+
+  function selectPartOfOneDay(begin_hour, end_hour, day){
+    for (pas = begin_hour; pas <= end_hour; pas++) {
+      $( "div[id*='calendar_" + day + "_" + pas + "_']" ).each(function( index ) {
+        $( this ).attr("class", "quarter-hour-row quarter-hour-row-selected");
+        $( this ).find( "input[name*='[available]']" ).attr("value", true);
+      });
     }
   }
 </script>
