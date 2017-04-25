@@ -153,6 +153,6 @@
 
 <% if user_signed_in? %>
   <div class="menu-item menu-item-bottom">
-    <%= link_to(('Quitter<br>' + icon('sign-out')).html_safe, destroy_user_session_path, method: :delete) %>
+    <%= link_to(('Quitter<br>' + icon('sign-out')).html_safe, destroy_user_session_path) %>
   </div>
 <% end %>
