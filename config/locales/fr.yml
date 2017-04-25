@@ -266,3 +266,6 @@ fr:
     take_care:
       submit: Valider la prise en charge
       title: Prendre en charge le patient
+  will_paginate:
+    next_label: Suivant >>
+    previous_label: << Précédant

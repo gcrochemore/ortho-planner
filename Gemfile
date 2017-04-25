@@ -93,5 +93,3 @@ gem 'seed_dump'
 gem "simple_calendar", "~> 2.0"
 
 gem 'font-awesome-sass', '~> 4.7.0'
-
-gem "simple_calendar", "~> 2.0"

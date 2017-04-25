@@ -61,12 +61,15 @@
 
 <div class="waiting-list-container tab-content">
   <div class="tab-pane active" id="patients_on_waiting_list" role="tabpanel">
-    <%= render 'waiting_list_list', waiting_lists: @patients_on_waiting_list %>      
+    <%= render 'waiting_list_list', waiting_lists: @patients_on_waiting_list %>
+    <%= will_paginate @patients_on_waiting_list %>      
   </div>
   <div class="tab-pane" id="patients_removed_from_waiting_list" role="tabpanel">
     <%= render 'waiting_list_list', waiting_lists: @patients_removed_from_waiting_list %>
+    <%= will_paginate @patients_removed_from_waiting_list %>
   </div>
   <div class="tab-pane" id="waiting_for_patient_return" role="tabpanel">
     <%= render 'waiting_list_list', waiting_lists: @waiting_for_patient_return %>
+    <%= will_paginate @waiting_for_patient_return %>
   </div>
 </div>
