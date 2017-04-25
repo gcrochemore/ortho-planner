@@ -151,6 +151,13 @@
   <div class="menu-item"><%= link_to(t('.schoolings'), schoolings_path) %></div>
 <% end %>
 
+<% if current_user.has_role? :admin %>
+  <div class="menu-item menu-item-bottom"><%= link_to('Export DB', export_db_path) %></div>
+<% end %>
+<% if current_user.has_role? :admin %>
+  <div class="menu-item menu-item-bottom"><%= link_to('Voir DB', show_db_path) %></div>
+<% end %>
+
 <% if user_signed_in? %>
   <div class="menu-item menu-item-bottom">
     <%= link_to(('Quitter<br>' + icon('sign-out')).html_safe, destroy_user_session_path) %>

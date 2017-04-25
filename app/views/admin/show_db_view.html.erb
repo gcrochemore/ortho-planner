@@ -7,9 +7,10 @@
               model.exists?
            end
 
+  export = ""
   models.each do |model| 
-%>
-<%= SeedDump.dump(model, exclude: []) %>
-<% 
+    export = export + SeedDump.dump(model, exclude: [])
   end
 %>
+
+<%= export %>

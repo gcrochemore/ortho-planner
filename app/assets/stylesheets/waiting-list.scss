@@ -40,8 +40,9 @@ h1{
 
 .waiting-list-row-action{
   position:absolute !important;
-  bottom:5px !important;
-  right:4px !important;
+  bottom:0px !important;
+  right:0px !important;
+  padding: 5px;
 }
 
 .add-button{
@@ -83,6 +84,7 @@ h1{
 
   /* Tooltip container */
 .label-tooltip {
+  cursor: pointer;
   position: relative;
   display: inline-block;
   /*border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
@@ -119,7 +121,14 @@ h1{
   visibility: visible;
 }
 .label-tooltip-bottom {
-  top: 135%;
   left: 0%;
   margin-left: -60px;
+}
+
+.waiting-list-availability-link{
+  text-align: center;
+  cursor: pointer;
+  background-color: #F3E2A9;
+  width: 100%;
+  padding: 2px;
 }
