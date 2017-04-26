@@ -28,8 +28,17 @@
     </div>
 
     <div class="col-12 form-group">
-      <label for="birth_date"><%= f.label :birth_date %></label>
-      <%= f.input :birth_date, label: false, input_html: { class: "datepicker", value: f.object.birth_date.andand.strftime(DATE_FORMAT)}, as: :string, start_year: Date.today.year - 110, end_year: Date.today.year %>
+      <label for="birth_date"><%= f.label :birth_date %> / Age</label>
+      <div class="col row">
+        <div class="col">
+          <%= f.input :birth_date, label: false, input_html: { class: "datepicker", value: f.object.birth_date.andand.strftime(DATE_FORMAT)}, as: :string, start_year: Date.today.year - 110, end_year: Date.today.year %>
+        </div>
+        <div class="col-2"> / </div>
+        <div class="col">
+          <input type="number" id="input_age" style="width: 100%;" onchange="document.getElementById('waiting_list_patient_attributes_birth_date').value = getDateYearsAgo(this.value);" value="<%= f.object.age %>" />
+        </div>
+        <div class="col-2"> ans </div>
+      </div>
     </div>
 
     <div class="col-12">
@@ -115,3 +124,17 @@
   </div>
 </div>
 
+
+<script>
+  function getDateYearsAgo(years) {
+    let d = new Date();
+    let month = String(d.getMonth() + 1);
+    let day = String(d.getDate());
+    const year = String(d.getFullYear() - years);
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return `${day}/${month}/${year}`;
+  }
+</script>
