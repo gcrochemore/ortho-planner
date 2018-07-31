@@ -35,7 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
   gem 'rspec-rails'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.21.0'
 end
 
 group :development, :test do
