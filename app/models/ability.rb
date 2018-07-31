@@ -10,6 +10,8 @@ class Ability
 
     if user.has_role? :admin
       can :manage, :all
+      can :read, :dashboard
+      can :access, :rails_admin
     end
 
     if user.has_role? :repository_manager
