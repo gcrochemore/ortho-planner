@@ -1,9 +1,39 @@
-ortho-planner:
-  build: .
-  command: rails server -p 3000 -b '0.0.0.0'
-  volumes:
-    - .:/var/app
-  ports:
-    - "3000:3000"
-  environment:
-    RAILS_ENV: development
+version: '3.3'
+services:
+  ortho-planner-db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ortho-planner
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  ortho-planner-front:
+    build: .
+    command: /bin/sh -c "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "${FRONT_PORT}:3000"
+    links:
+      - ortho-planner-db
+    depends_on:
+      - ortho-planner-db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=front-${COMPOSE_PROJECT_NAME}"
+      - "traefik.frontend.rule=Host:${FRONT_HOST}.{domain}"
+      - "traefik.port=${FRONT_PORT}"
+      - "traefik.docker.network=${FRONT_PROXY}"
+    environment:
+      RAILS_ENV: development
+    networks:
+      - default
+      - traefik_proxy
+networks:
+  traefik_proxy:
+    external: true
