@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416150200) do
+ActiveRecord::Schema.define(version: 20180731210600) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "absences", force: :cascade do |t|
     t.integer  "patient_id"
@@ -18,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["patient_id"], name: "index_absences_on_patient_id"
+    t.index ["patient_id"], name: "index_absences_on_patient_id", using: :btree
   end
 
   create_table "acts", force: :cascade do |t|
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "address_type_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["address_type_id"], name: "index_addresses_on_address_type_id"
-    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+    t.index ["address_type_id"], name: "index_addresses_on_address_type_id", using: :btree
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
   end
 
   create_table "contact_information_types", force: :cascade do |t|
@@ -64,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.string   "value"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.index ["contactable_type", "contactable_id"], name: "index_contact_information_on_contactable"
+    t.index ["contactable_type", "contactable_id"], name: "index_contact_information_on_contactable", using: :btree
   end
 
   create_table "health_place_types", force: :cascade do |t|
@@ -78,7 +81,7 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "health_place_type_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.index ["health_place_type_id"], name: "index_health_places_on_health_place_type_id"
+    t.index ["health_place_type_id"], name: "index_health_places_on_health_place_type_id", using: :btree
   end
 
   create_table "interaction_objects", force: :cascade do |t|
@@ -103,10 +106,10 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.text     "comments"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.index ["interaction_object_id"], name: "index_interactions_on_interaction_object_id"
-    t.index ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
-    t.index ["patient_id"], name: "index_interactions_on_patient_id"
-    t.index ["practitioner_id"], name: "index_interactions_on_practitioner_id"
+    t.index ["interaction_object_id"], name: "index_interactions_on_interaction_object_id", using: :btree
+    t.index ["interaction_type_id"], name: "index_interactions_on_interaction_type_id", using: :btree
+    t.index ["patient_id"], name: "index_interactions_on_patient_id", using: :btree
+    t.index ["practitioner_id"], name: "index_interactions_on_practitioner_id", using: :btree
   end
 
   create_table "pathologies", force: :cascade do |t|
@@ -122,7 +125,7 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "available"
-    t.index ["patient_id"], name: "index_patient_availabilities_on_patient_id"
+    t.index ["patient_id"], name: "index_patient_availabilities_on_patient_id", using: :btree
   end
 
   create_table "patients", force: :cascade do |t|
@@ -143,8 +146,8 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "act_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["act_id"], name: "index_patients_acts_on_act_id"
-    t.index ["patient_id"], name: "index_patients_acts_on_patient_id"
+    t.index ["act_id"], name: "index_patients_acts_on_act_id", using: :btree
+    t.index ["patient_id"], name: "index_patients_acts_on_patient_id", using: :btree
   end
 
   create_table "patients_pathologies", force: :cascade do |t|
@@ -152,8 +155,8 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "pathology_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["pathology_id"], name: "index_patients_pathologies_on_pathology_id"
-    t.index ["patient_id"], name: "index_patients_pathologies_on_patient_id"
+    t.index ["pathology_id"], name: "index_patients_pathologies_on_pathology_id", using: :btree
+    t.index ["patient_id"], name: "index_patients_pathologies_on_patient_id", using: :btree
   end
 
   create_table "practitioner_professions", force: :cascade do |t|
@@ -171,8 +174,8 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "health_place_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.index ["health_place_id"], name: "index_practitioners_on_health_place_id"
-    t.index ["practitioner_profession_id"], name: "index_practitioners_on_practitioner_profession_id"
+    t.index ["health_place_id"], name: "index_practitioners_on_health_place_id", using: :btree
+    t.index ["practitioner_profession_id"], name: "index_practitioners_on_practitioner_profession_id", using: :btree
   end
 
   create_table "roles", force: :cascade do |t|
@@ -181,8 +184,8 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
-    t.index ["name"], name: "index_roles_on_name"
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+    t.index ["name"], name: "index_roles_on_name", using: :btree
   end
 
   create_table "school_levels", force: :cascade do |t|
@@ -211,10 +214,10 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "school_year_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["patient_id"], name: "index_schoolings_on_patient_id"
-    t.index ["school_id"], name: "index_schoolings_on_school_id"
-    t.index ["school_level_id"], name: "index_schoolings_on_school_level_id"
-    t.index ["school_year_id"], name: "index_schoolings_on_school_year_id"
+    t.index ["patient_id"], name: "index_schoolings_on_patient_id", using: :btree
+    t.index ["school_id"], name: "index_schoolings_on_school_id", using: :btree
+    t.index ["school_level_id"], name: "index_schoolings_on_school_level_id", using: :btree
+    t.index ["school_year_id"], name: "index_schoolings_on_school_year_id", using: :btree
   end
 
   create_table "schools", force: :cascade do |t|
@@ -222,7 +225,7 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "school_type_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["school_type_id"], name: "index_schools_on_school_type_id"
+    t.index ["school_type_id"], name: "index_schools_on_school_type_id", using: :btree
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -235,11 +238,11 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "health_place_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["act_id"], name: "index_sessions_on_act_id"
-    t.index ["health_place_id"], name: "index_sessions_on_health_place_id"
-    t.index ["patient_id"], name: "index_sessions_on_patient_id"
-    t.index ["practitioner_id"], name: "index_sessions_on_practitioner_id"
-    t.index ["therapy_id"], name: "index_sessions_on_therapy_id"
+    t.index ["act_id"], name: "index_sessions_on_act_id", using: :btree
+    t.index ["health_place_id"], name: "index_sessions_on_health_place_id", using: :btree
+    t.index ["patient_id"], name: "index_sessions_on_patient_id", using: :btree
+    t.index ["practitioner_id"], name: "index_sessions_on_practitioner_id", using: :btree
+    t.index ["therapy_id"], name: "index_sessions_on_therapy_id", using: :btree
   end
 
   create_table "therapies", force: :cascade do |t|
@@ -253,10 +256,10 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.integer  "act_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["act_id"], name: "index_therapies_on_act_id"
-    t.index ["health_place_id"], name: "index_therapies_on_health_place_id"
-    t.index ["patient_id"], name: "index_therapies_on_patient_id"
-    t.index ["practitioner_id"], name: "index_therapies_on_practitioner_id"
+    t.index ["act_id"], name: "index_therapies_on_act_id", using: :btree
+    t.index ["health_place_id"], name: "index_therapies_on_health_place_id", using: :btree
+    t.index ["patient_id"], name: "index_therapies_on_patient_id", using: :btree
+    t.index ["practitioner_id"], name: "index_therapies_on_practitioner_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -277,25 +280,25 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "practitioner_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["practitioner_id"], name: "index_users_on_practitioner_id"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["practitioner_id"], name: "index_users_on_practitioner_id", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
-    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
   end
 
   create_table "versions", force: :cascade do |t|
-    t.string   "item_type",                     null: false
-    t.integer  "item_id",                       null: false
-    t.string   "event",                         null: false
+    t.string   "item_type",  null: false
+    t.integer  "item_id",    null: false
+    t.string   "event",      null: false
     t.string   "whodunnit"
-    t.text     "object",     limit: 1073741823
+    t.text     "object"
     t.datetime "created_at"
-    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
   create_table "waiting_lists", force: :cascade do |t|
@@ -308,9 +311,42 @@ ActiveRecord::Schema.define(version: 20170416150200) do
     t.boolean  "waiting_for_patient_return"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.index ["health_place_id"], name: "index_waiting_lists_on_health_place_id"
-    t.index ["pathology_id"], name: "index_waiting_lists_on_pathology_id"
-    t.index ["patient_id"], name: "index_waiting_lists_on_patient_id"
+    t.index ["health_place_id"], name: "index_waiting_lists_on_health_place_id", using: :btree
+    t.index ["pathology_id"], name: "index_waiting_lists_on_pathology_id", using: :btree
+    t.index ["patient_id"], name: "index_waiting_lists_on_patient_id", using: :btree
   end
 
+  add_foreign_key "absences", "patients"
+  add_foreign_key "addresses", "address_types"
+  add_foreign_key "contact_informations", "contact_information_types"
+  add_foreign_key "health_places", "health_place_types"
+  add_foreign_key "interactions", "interaction_objects"
+  add_foreign_key "interactions", "interaction_types"
+  add_foreign_key "interactions", "patients"
+  add_foreign_key "interactions", "practitioners"
+  add_foreign_key "patient_availabilities", "patients"
+  add_foreign_key "patients_acts", "acts"
+  add_foreign_key "patients_acts", "patients"
+  add_foreign_key "patients_pathologies", "pathologies"
+  add_foreign_key "patients_pathologies", "patients"
+  add_foreign_key "practitioners", "health_places"
+  add_foreign_key "practitioners", "practitioner_professions"
+  add_foreign_key "schoolings", "patients"
+  add_foreign_key "schoolings", "school_levels"
+  add_foreign_key "schoolings", "school_years"
+  add_foreign_key "schoolings", "schools"
+  add_foreign_key "schools", "school_types"
+  add_foreign_key "sessions", "acts"
+  add_foreign_key "sessions", "health_places"
+  add_foreign_key "sessions", "patients"
+  add_foreign_key "sessions", "practitioners"
+  add_foreign_key "sessions", "therapies"
+  add_foreign_key "therapies", "acts"
+  add_foreign_key "therapies", "health_places"
+  add_foreign_key "therapies", "patients"
+  add_foreign_key "therapies", "practitioners"
+  add_foreign_key "users", "practitioners"
+  add_foreign_key "waiting_lists", "health_places"
+  add_foreign_key "waiting_lists", "pathologies"
+  add_foreign_key "waiting_lists", "patients"
 end
