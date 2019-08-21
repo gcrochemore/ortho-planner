@@ -10,7 +10,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;roles: ['ROLE_USER']<br>
 &nbsp;&nbsp;&nbsp;&nbsp;civility: <%= waiting_list.patient.is_male ? 'MR' : 'MME' %><br>
 &nbsp;&nbsp;&nbsp;&nbsp;health_place: Cabinet d'orthophonie de Tôtes<br>
-&nbsp;&nbsp;&nbsp;&nbsp;comments: "<%= waiting_list.patient.comments %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;comments: "<%= waiting_list.patient.comments.gsub! '"', '\"' %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;priority: <%= waiting_list.patient.priority %><br>
 <br>
 <br>
