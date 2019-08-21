@@ -7,6 +7,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;lastname: <%= waiting_list.patient.last_name %><br>
 &nbsp;&nbsp;&nbsp;&nbsp;email: <%= waiting_list.patient.first_name %>.<%= waiting_list.patient.last_name %>@ortho-planner.com<br>
 &nbsp;&nbsp;&nbsp;&nbsp;password: ortho-planner<br>
+&nbsp;&nbsp;&nbsp;&nbsp;birth_date: '<%= waiting_list.patient.birth_date %>'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;birth_place: '<%= waiting_list.patient.birth_place %>'<br>
 &nbsp;&nbsp;&nbsp;&nbsp;roles: ['ROLE_USER']<br>
 &nbsp;&nbsp;&nbsp;&nbsp;civility: <%= waiting_list.patient.is_male ? 'MR' : 'MME' %><br>
 &nbsp;&nbsp;&nbsp;&nbsp;health_place: Cabinet d'orthophonie de Tôtes<br>
