@@ -19,6 +19,11 @@
 		"<%= pathology.name %>",
 	<% end %>
 ]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;contacts: [
+	<% waiting_list.patient.contact_informations.each do |contact| %>
+		"<%= contact.value %>",
+	<% end %>
+]<br>
 <br>
 <br>
 
