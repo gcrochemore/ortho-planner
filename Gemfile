@@ -31,11 +31,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-  
+
   gem 'rspec-rails'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.21.0'
 end
 
 group :development, :test do
@@ -53,6 +53,9 @@ group :test do
   gem 'simplecov', require: false  # code coverage analysis tool
 end
 
+gem 'nokogiri', '~> 1.6.8'
+gem 'responders', '~> 2.3.0'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -68,7 +71,7 @@ gem 'andand'
 
 gem 'factory_girl_rails', require:false      # framework and DSL for defining and using factories
 
-gem 'paper_trail'
+gem 'paper_trail', '~> 7.0.1' # For 4.0.x
 
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
