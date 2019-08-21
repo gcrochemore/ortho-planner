@@ -1,0 +1,21 @@
+<%
+  WaitingList.where('health_place_id = 3 OR health_place_id = 7').all.each do |waiting_list|
+    %>
+
+<%= waiting_list.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;firstname: <%= waiting_list.patient.first_name %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;lastname: <%= waiting_list.patient.last_name %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;email: <%= waiting_list.patient.first_name %>.<%= waiting_list.patient.last_name %>@ortho-planner.com<br>
+&nbsp;&nbsp;&nbsp;&nbsp;password: ortho-planner<br>
+&nbsp;&nbsp;&nbsp;&nbsp;roles: ['ROLE_USER']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;civility: <%= waiting_list.patient.is_male ? 'MR' : 'MME' %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;health_place: Cabinet d'orthophonie de Tôtes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;comments: "<%= waiting_list.patient.comments %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;priority: <%= waiting_list.patient.priority %><br>
+<br>
+<br>
+
+	<%
+  end
+%>
+

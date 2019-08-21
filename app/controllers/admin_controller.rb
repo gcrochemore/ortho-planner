@@ -5,7 +5,11 @@ class AdminController < ApplicationController
 
   end
 
-  def export_db 
+  def show_fixtures_view
+
+  end
+
+  def export_db
     models = ActiveRecord::Base.descendants
 
     models = models.select do |model|
@@ -15,7 +19,7 @@ class AdminController < ApplicationController
              end
 
     export = ""
-    models.each do |model| 
+    models.each do |model|
       export = export + SeedDump.dump(model, exclude: [])
     end
 

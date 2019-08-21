@@ -2,15 +2,15 @@ Rails.application.routes.draw do
   root to: "application#index"
   devise_for :users, controllers: { confirmations: 'confirmations' }
   resources :paper_trail_versions, controller: 'versions'
-  devise_scope :user do 
+  devise_scope :user do
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
-  resources :patients, :offices, :practitioners, :practitioner_professions, 
-            :users, :sessions, :therapies, :acts, :pathologies, 
-            :health_places, :health_place_types, :absences, :interactions, 
-            :interaction_objects, :interaction_types, :patients_acts, :schoolings, 
+  resources :patients, :offices, :practitioners, :practitioner_professions,
+            :users, :sessions, :therapies, :acts, :pathologies,
+            :health_places, :health_place_types, :absences, :interactions,
+            :interaction_objects, :interaction_types, :patients_acts, :schoolings,
             :schools, :school_types, :school_levels, :school_years, :addresses,
-            :address_types, :contact_informations, :contact_information_types, 
+            :address_types, :contact_informations, :contact_information_types,
             :patients_pathologies, :patient_availabilities
 
   resources :waiting_lists do
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   get '/export_db', to: 'admin#export_db'
   get '/show_db', to: 'admin#show_db_view'
+  get '/show_fixtures', to: 'admin#show_fixtures_view'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
