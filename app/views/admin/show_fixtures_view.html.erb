@@ -4,7 +4,27 @@ Practitioner.all.each do |practitionner|
 	practitionners[practitionner.id] = practitionner.to_s
 end
 
-  WaitingList.where('health_place_id = 3 OR health_place_id = 7').all.each do |waiting_list|
+acts = Array.new
+Act.all.each do |act|
+	acts[act.id] = act.name
+end
+
+pathologies = Array.new
+Pathology.all.each do |pathology|
+	pathologies[pathology.id] = pathology.name
+end
+
+interaction_types = Array.new
+InteractionType.all.each do |interaction_type|
+	interaction_types[interaction_type.id] = interaction_type.name
+end
+
+interaction_objects = Array.new
+InteractionObject.all.each do |interaction_object|
+	interaction_objects[interaction_object.id] = interaction_object.name
+end
+
+  @waiting_lists.each do |waiting_list|
     %>
 
 <%= waiting_list.id %>:<br>
@@ -22,7 +42,7 @@ end
 &nbsp;&nbsp;&nbsp;&nbsp;priority: <%= waiting_list.patient.priority %><br>
 &nbsp;&nbsp;&nbsp;&nbsp;pathologies: [
 	<% waiting_list.patient.pathologies.each do |pathology| %>
-		"<%= pathology.name %>",
+		"<%= pathologies[pathology.id] %>",
 	<% end %>
 ]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contacts: [
@@ -35,7 +55,7 @@ end
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= waiting_list.id %>:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start_date: "<%= waiting_list.start_date %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end_date: "<%= waiting_list.end_date %>"<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathology: "<%= waiting_list.pathology.andand.name %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pathology: "<%= waiting_list.pathology_id ? pathologies[waiting_list.pathology_id] : '' %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;comments: "<%= waiting_list.comments %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;waiting_for_patient_return: "<%= waiting_list.waiting_for_patient_return %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registrer_by: "<%= waiting_list.versions.first.whodunnit.nil? ? "Inconnu" : practitionners[User.find(waiting_list.versions.first.whodunnit).andand.practitioner_id] %>"<br>
@@ -45,9 +65,20 @@ end
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= interaction.id %>:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;date: "<%= interaction.interaction_date %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: "<%= practitionners[interaction.practitioner_id] %>"<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object: "<%= interaction.interaction_object.andand.name %>"<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: "<%= interaction.interaction_type.to_s %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object: "<%= interaction.interaction_object_id ? interaction_objects[interaction.interaction_object_id] : '' %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: "<%= interaction.interaction_type_id ? interaction_types[interaction.interaction_type_id] : '' %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;comments: "<%= interaction.comments %>"<br>
+	<% end %>
+&nbsp;&nbsp;&nbsp;&nbsp;therapies: <br>
+	<% waiting_list.patient.therapies.each do |therapy| %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= therapy.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with: "<%= therapy.practitioner_id ? practitionners[therapy.practitioner_id] : '' %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;begin_date: "<%= therapy.begin_date %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end_date: "<%= therapy.end_date %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;health_place: Cabinet d'orthophonie de Tôtes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number_of_sessions: "<%= therapy.number_of_sessions %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session_duration: "<%= therapy.session_duration %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;act: "<%= therapy.act_id ? acts[therapy.act_id] : '' %>"<br>
 	<% end %>
 <br>
 <br>

@@ -6,6 +6,12 @@ class AdminController < ApplicationController
   end
 
   def show_fixtures_view
+    if params[:page].nil?
+      page = 1
+    else
+      page = params[:page].to_i
+    end
+    @waiting_lists = WaitingList.where('health_place_id = 3 OR health_place_id = 7').all.paginate(:page => page, :per_page => 400)
 
   end
 
