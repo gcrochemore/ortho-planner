@@ -40,6 +40,7 @@ end
 &nbsp;&nbsp;&nbsp;&nbsp;health_place: Cabinet d'orthophonie de Tôtes<br>
 &nbsp;&nbsp;&nbsp;&nbsp;comments: "<%= waiting_list.patient.comments.gsub '"', '\"' %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;priority: <%= waiting_list.patient.priority %><br>
+&nbsp;&nbsp;&nbsp;&nbsp;job: <%= waiting_list.patient.job %><br>
 &nbsp;&nbsp;&nbsp;&nbsp;pathologies: [
 	<% waiting_list.patient.pathologies.each do |pathology| %>
 		"<%= pathologies[pathology.id] %>",
@@ -79,6 +80,15 @@ end
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number_of_sessions: "<%= therapy.number_of_sessions %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session_duration: "<%= therapy.session_duration %>"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;act: "<%= therapy.act_id ? acts[therapy.act_id] : '' %>"<br>
+	<% end %>
+&nbsp;&nbsp;&nbsp;&nbsp;schoolings: <br>
+	<% waiting_list.patient.schoolings.each do |schooling| %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= schooling.id %>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;school: "<%= schooling.school.andand.name %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;school_type: "<%= schooling.school.andand.school_type.andand.name %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;school_level: "<%= schooling.school_level.andand.name %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;school_year_begin: "<%= schooling.school_year.andand.begin_date %>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;school_year_end: "<%= schooling.school_year.andand.end_date %>"<br>
 	<% end %>
 <br>
 <br>

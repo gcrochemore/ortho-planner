@@ -21,3 +21,5 @@
 
 # simplecov output files
 coverage
+
+.idea
